@@ -1,0 +1,416 @@
+{
+  "type": "DETAIL_PAGE_TEMPLATE",
+  "version": "3.0",
+  "name": "MARU 랜딩페이지 기반 템플릿",
+  "description": "기업형 랜딩페이지 레퍼런스. 지그재그 split 패턴, 중간 CTA 배너, 감성 이미지 활용. 화이트 기반 미니멀 클린 스타일.",
+  "created": "2026-02-10",
+  "source": {
+    "type": "reference_analysis",
+    "based_on": "REFERENCE2.png (MARU 아산나눔재단 공간 소개 페이지)",
+    "analysis_date": "2026-02-10"
+  },
+
+  "style_tags": ["미니멀", "클린", "화이트 기반", "기업형", "건축/공간 사진 중심", "지그재그 레이아웃"],
+
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 740,
+    "default_padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+    "default_item_spacing": 16,
+    "default_content_alignment": "MIXED",
+    "font_family": "Inter"
+  },
+
+  "color_system": {
+    "brand_main": "#4CAF50",
+    "accent": "#333333",
+    "dark_1": "#333333",
+    "dark_2": "#6B7B3A",
+    "light_1": "#FFFFFF",
+    "light_2": "#F5F5F0",
+    "light_text": "#FFFFFF",
+    "dark_text": "#111111",
+    "sub_text": "#888888",
+    "image_placeholder": "#E8E8E8"
+  },
+
+  "typography": {
+    "main_copy": { "fontSize": 28, "fontWeight": 700 },
+    "section_title": { "fontSize": 22, "fontWeight": 700 },
+    "sub_title": { "fontSize": 20, "fontWeight": 500 },
+    "body": { "fontSize": 15, "fontWeight": 400 },
+    "small": { "fontSize": 13, "fontWeight": 400 },
+    "stats_number": { "fontSize": 48, "fontWeight": 700 }
+  },
+
+  "taxonomy_profile": {
+    "section_ids": ["Hook", "StatsHighlight", "FeatureDetail", "FeatureDetail", "CTABanner", "EventPromo", "Reviews"],
+    "category_distribution": {
+      "intro": 1,
+      "problem": 0,
+      "features": 2,
+      "trust": 2,
+      "conversion": 2
+    },
+    "feature_detail_count": 2,
+    "mapping_coverage": "57%",
+    "note": "기업형 랜딩페이지로 이커머스 taxonomy 매핑률이 낮음. 3개 미분류 섹션(StatsHighlight, CTABanner, EventPromo) 포함."
+  },
+
+  "sections": [
+    {
+      "order": 1,
+      "id": "Section_01_Hook",
+      "taxonomy_id": "Hook",
+      "name": "Hook (히어로 배너)",
+      "composition": "composed",
+      "layout": {
+        "height": 450,
+        "background": "#FFFFFF",
+        "padding": { "top": 0, "bottom": 20, "left": 0, "right": 0 },
+        "itemSpacing": 0
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:TR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Hero_Image",
+            "role": "히어로 메인 이미지 (건물 외관 / 제품 메인컷)",
+            "ai_prompt": {
+              "prompt": "Modern building exterior or [product] hero shot, warm afternoon light, professional photography, 8k quality, clean composition",
+              "negative": "text, watermark, blurry, low quality",
+              "style": "product_lifestyle",
+              "aspect_ratio": "16:9"
+            },
+            "height": 350,
+            "placeholderColor": "#E8E8E8"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BC",
+          "element": {
+            "type": "TEXT",
+            "name": "Main_Slogan",
+            "role": "메인 슬로건 (브랜드 핵심 메시지)",
+            "fontSize": 28,
+            "fontWeight": 600,
+            "color": "#111111"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL",
+          "element": {
+            "type": "TEXT",
+            "name": "Sub_Description",
+            "role": "부가 설명 텍스트",
+            "fontSize": 13,
+            "fontWeight": 400,
+            "color": "#888888"
+          }
+        }
+      ]
+    },
+
+    {
+      "order": 2,
+      "id": "Section_02_Custom_StatsHighlight",
+      "taxonomy_id": null,
+      "custom": true,
+      "name": "StatsHighlight (핵심 수치 강조)",
+      "composition": "stack",
+      "layout": {
+        "height": 250,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 60, "right": 60 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Section_Title", "role": "섹션 제목", "fontSize": 28, "fontWeight": 700, "color": "#111111" },
+        { "type": "TEXT", "name": "Section_Sub", "role": "영문 서브타이틀", "fontSize": 14, "fontWeight": 400, "color": "#888888" },
+        {
+          "type": "FRAME",
+          "name": "Stats_Grid",
+          "role": "수치 3열 그리드 (숫자+단위+라벨 × 3)",
+          "layoutMode": "HORIZONTAL",
+          "columns": 3,
+          "items_template": {
+            "number": { "fontSize": 48, "fontWeight": 700, "color": "#111111" },
+            "unit": { "fontSize": 20, "fontWeight": 400, "color": "#111111" },
+            "label": { "fontSize": 13, "fontWeight": 400, "color": "#888888" }
+          }
+        }
+      ]
+    },
+
+    {
+      "order": 3,
+      "id": "Section_03_Feature1_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 1,
+      "name": "FeatureDetail #1 (좌 이미지 / 우 텍스트)",
+      "composition": "split",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "layout": {
+        "height": 350,
+        "background": "#FFFFFF",
+        "padding": { "top": 40, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 0
+      },
+      "left": {
+        "valign": "MC",
+        "required_elements": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature_Image",
+            "role": "기능/공간 이미지",
+            "ai_prompt": {
+              "prompt": "[product] feature detail, exterior or environment shot, natural light, professional photography, 8k",
+              "negative": "text, watermark, blurry",
+              "style": "product_lifestyle",
+              "aspect_ratio": "4:3"
+            },
+            "height": 280,
+            "placeholderColor": "#E8E8E8"
+          }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "required_elements": [
+          { "type": "IMAGE_AREA", "name": "Feature_Logo", "role": "기능/브랜드 로고", "height": 30 },
+          { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명 텍스트 (2~3줄)", "fontSize": 15, "fontWeight": 400, "color": "#333333" },
+          { "type": "BUTTON", "name": "Feature_CTA", "role": "상세보기 버튼", "backgroundColor": "#4CAF50", "color": "#FFFFFF", "cornerRadius": 4 }
+        ]
+      }
+    },
+
+    {
+      "order": 4,
+      "id": "Section_04_Feature2_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 2,
+      "name": "FeatureDetail #2 (좌 텍스트 / 우 이미지 — 반전)",
+      "composition": "split",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "layout": {
+        "height": 350,
+        "background": "#FFFFFF",
+        "padding": { "top": 40, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 0
+      },
+      "left": {
+        "valign": "MC",
+        "required_elements": [
+          { "type": "IMAGE_AREA", "name": "Feature_Logo", "role": "기능/브랜드 로고", "height": 30 },
+          { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명 텍스트 (2~3줄)", "fontSize": 15, "fontWeight": 400, "color": "#333333" },
+          { "type": "BUTTON", "name": "Feature_CTA", "role": "상세보기 버튼", "backgroundColor": "#4CAF50", "color": "#FFFFFF", "cornerRadius": 4 }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "required_elements": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature_Image",
+            "role": "기능/공간 이미지",
+            "ai_prompt": {
+              "prompt": "[product] feature detail, interior or workspace shot, bright natural light, modern design, professional photography, 8k",
+              "negative": "text, watermark, blurry, dark",
+              "style": "product_lifestyle",
+              "aspect_ratio": "4:3"
+            },
+            "height": 280,
+            "placeholderColor": "#E8E8E8"
+          }
+        ]
+      }
+    },
+
+    {
+      "order": 5,
+      "id": "Section_05_Custom_CTABanner",
+      "taxonomy_id": null,
+      "custom": true,
+      "name": "CTABanner (중간 CTA 배너)",
+      "composition": "composed",
+      "layout": {
+        "height": 120,
+        "background": "#6B7B3A",
+        "padding": { "top": 0, "bottom": 0, "left": 0, "right": 0 },
+        "itemSpacing": 0
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Banner_BG",
+            "role": "배너 배경 (단색 또는 미묘한 텍스처)",
+            "ai_prompt": {
+              "prompt": "Solid dark olive green background with subtle fabric or paper texture, muted warm tone, minimal, no objects",
+              "negative": "text, objects, patterns, people",
+              "style": "background_only",
+              "aspect_ratio": "16:3"
+            },
+            "placeholderColor": "#6B7B3A"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TL:MC",
+          "element": {
+            "type": "TEXT",
+            "name": "Banner_Title",
+            "role": "배너 제목",
+            "fontSize": 22,
+            "fontWeight": 700,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:BL",
+          "element": {
+            "type": "TEXT",
+            "name": "Banner_Desc",
+            "role": "배너 부가 설명",
+            "fontSize": 13,
+            "fontWeight": 400,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TR:MR",
+          "element": {
+            "type": "BUTTON",
+            "name": "Banner_CTA",
+            "role": "액션 버튼",
+            "backgroundColor": "#4CAF50",
+            "color": "#FFFFFF",
+            "cornerRadius": 4
+          }
+        }
+      ]
+    },
+
+    {
+      "order": 6,
+      "id": "Section_06_Custom_EventPromo",
+      "taxonomy_id": null,
+      "custom": true,
+      "name": "EventPromo (이벤트/프로그램 안내)",
+      "composition": "stack",
+      "layout": {
+        "height": 200,
+        "background": "#FFFFFF",
+        "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "MIN",
+        "counterAxisAlign": "MIN"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Event_Title", "role": "이벤트 안내 제목 (1~2줄)", "fontSize": 22, "fontWeight": 700, "color": "#111111" },
+        { "type": "TEXT", "name": "Event_Desc", "role": "부가 설명", "fontSize": 14, "fontWeight": 400, "color": "#888888" },
+        { "type": "BUTTON", "name": "Event_CTA_1", "role": "아웃라인 버튼", "backgroundColor": "#FFFFFF", "color": "#333333", "cornerRadius": 4 },
+        { "type": "BUTTON", "name": "Event_CTA_2", "role": "다크 필드 버튼", "backgroundColor": "#333333", "color": "#FFFFFF", "cornerRadius": 4 }
+      ]
+    },
+
+    {
+      "order": 7,
+      "id": "Section_07_Reviews",
+      "taxonomy_id": "Reviews",
+      "name": "Reviews (입주사/파트너 소개)",
+      "composition": "composed",
+      "layout": {
+        "height": 550,
+        "background": "#FFFFFF",
+        "padding": { "top": 0, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 20
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:MR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Mood_Image",
+            "role": "감성 이미지 (공간/브랜드 분위기)",
+            "ai_prompt": {
+              "prompt": "Modern creative office or [product] environment with dramatic colorful lighting, glass walls, open space, cinematic mood, artistic color grading, 8k quality",
+              "negative": "text, watermark, people, blurry, dark shadows",
+              "style": "mood",
+              "aspect_ratio": "16:7"
+            },
+            "height": 250,
+            "placeholderColor": "#3A2A5A"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:MR",
+          "element": {
+            "type": "TEXT",
+            "name": "Residents_Title",
+            "role": "소개 제목 텍스트",
+            "fontSize": 22,
+            "fontWeight": 700,
+            "color": "#111111"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML",
+          "element": {
+            "type": "TEXT",
+            "name": "Residents_Desc",
+            "role": "소개 부가 설명",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "#888888"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL",
+          "element": {
+            "type": "BUTTON",
+            "name": "Community_CTA",
+            "role": "커뮤니티/전체보기 버튼",
+            "backgroundColor": "#333333",
+            "color": "#FFFFFF",
+            "cornerRadius": 4
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BR",
+          "element": {
+            "type": "FRAME",
+            "name": "Partner_Cards",
+            "role": "파트너/입주사 3열 카드 캐러셀 (로고 + 이름 + 링크)",
+            "layoutMode": "HORIZONTAL",
+            "columns": 3,
+            "items_template": {
+              "tag": { "fontSize": 12, "fontWeight": 600, "color": "#4CAF50" },
+              "logo": { "type": "IMAGE_AREA", "height": 60 },
+              "name": { "fontSize": 14, "fontWeight": 400, "color": "#111111" }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "type": "SECTION_TAXONOMY",
-  "version": "1.0",
-  "description": "상세페이지 섹션 분류 체계. 레퍼런스 분석 시 매핑 기준, 템플릿 추천 시 비교 기준으로 사용",
+  "version": "1.1",
+  "description": "상세페이지 섹션 분류 체계. 레퍼런스 분석 시 매핑 기준, 템플릿 추천 시 비교 기준으로 사용. v1.1: typical_compositions 추가",
   "created": "2026-02-10",
   "updated": "2026-02-10",
 
@@ -43,6 +43,11 @@
       "frequency": 1.0,
       "keywords": ["후킹", "히어로", "메인 카피", "첫인상", "헤드라인", "대문"],
       "visual_cues": ["큰 텍스트 중심", "전체 화면 이미지", "다크 배경에 밝은 텍스트", "브랜드 컬러 강조"],
+      "typical_compositions": ["composed", "stack"],
+      "composition_examples": [
+        "composed: 풀 배경 이미지 위에 하단 텍스트 오버레이 + 우측 제품 이미지",
+        "stack: 텍스트 → 이미지 순서 수직 배치"
+      ],
       "copywriting_guide": "고객의 페인포인트를 자극하거나, 핵심 혜택을 강렬하게 전달",
       "required_elements": [
         { "type": "TEXT", "name": "Brand", "role": "브랜드/제품명", "fontSize": 20, "color": "brand_main" },
@@ -62,6 +67,11 @@
       "frequency": 0.8,
       "keywords": ["제품 소개", "정의", "한마디로", "뭔가요", "제품 정체성", "한줄 소개"],
       "visual_cues": ["질문+답변 형식", "제품 이미지 중심", "간결한 텍스트"],
+      "typical_compositions": ["stack", "split"],
+      "composition_examples": [
+        "stack: 질문 텍스트 → 제품 이미지 → 답변 텍스트 수직 나열",
+        "split: 좌측 텍스트(질문+답변) / 우측 제품 이미지"
+      ],
       "copywriting_guide": "\"한마디로, [제품]은 [핵심 가치]입니다\" 형식으로 명확하게 정의",
       "required_elements": [
         { "type": "TEXT", "name": "Question", "role": "질문 형식 제목", "fontSize": 28, "color": "brand_main" },
@@ -81,6 +91,11 @@
       "frequency": 0.5,
       "keywords": ["브랜드", "네이밍", "의미", "철학", "슬로건", "브랜드 스토리"],
       "visual_cues": ["브랜드 컬러 배경", "큰 텍스트 중심", "이미지 최소화", "의미 풀이 나열"],
+      "typical_compositions": ["stack", "composed"],
+      "composition_examples": [
+        "stack: 텍스트 중심 수직 나열 (이미지 최소)",
+        "composed: 브랜드 컬러 배경 위 텍스트 오버레이"
+      ],
       "copywriting_guide": "브랜드명에 담긴 의미를 풀어서 신뢰감과 스토리 부여",
       "required_elements": [
         { "type": "TEXT", "name": "Question", "role": "브랜드명 질문", "fontSize": 24 },
@@ -99,6 +114,11 @@
       "frequency": 0.7,
       "keywords": ["구성품", "세트", "포함", "패키지", "박스 구성", "동봉"],
       "visual_cues": ["구성품 나열 이미지", "아이템별 설명", "그리드 또는 리스트 레이아웃"],
+      "typical_compositions": ["stack", "composed"],
+      "composition_examples": [
+        "stack: 제목 → 전체 구성 이미지 → 개별 아이템 설명 수직 나열",
+        "composed: 플랫레이 배경 위 각 구성품 라벨 오버레이"
+      ],
       "copywriting_guide": "각 구성품이 왜 필요한지, 어떤 가치를 주는지 설명",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -121,6 +141,11 @@
       "frequency": 0.6,
       "keywords": ["왜 중요", "핵심 기술", "차이", "기술력", "원리", "메커니즘"],
       "visual_cues": ["비교 인포그래픽", "수치 강조", "Q&A 형식", "경쟁사 대비 수치"],
+      "typical_compositions": ["split", "stack"],
+      "composition_examples": [
+        "split: 좌측 텍스트(질문+수치) / 우측 인포그래픽 이미지",
+        "stack: Q&A 텍스트 → 비교 인포그래픽 수직 나열"
+      ],
       "copywriting_guide": "숫자와 비교를 통해 차별점을 명확하게 시각화",
       "required_elements": [
         { "type": "TEXT", "name": "Question", "role": "질문 형식 제목", "fontSize": 28, "color": "brand_main" },
@@ -143,6 +168,11 @@
       "frequency": 0.7,
       "keywords": ["불편", "문제", "고민", "페인포인트", "혹시", "경험", "짜증", "불만"],
       "visual_cues": ["체크리스트", "문제 상황 이미지", "공감 질문", "어두운 톤"],
+      "typical_compositions": ["composed", "stack"],
+      "composition_examples": [
+        "composed: 어두운 배경 이미지 위 공감 텍스트 오버레이",
+        "stack: 이미지 → 텍스트 → 체크리스트 수직 나열"
+      ],
       "copywriting_guide": "\"혹시 이런 경험 있으신가요?\" 형식으로 공감 유도",
       "required_elements": [
         { "type": "FRAME", "name": "IMAGE_AREA", "role": "페인포인트 상황 이미지", "height": 350 },
@@ -161,6 +191,11 @@
       "frequency": 0.7,
       "keywords": ["해결", "솔루션", "답", "방법", "그래서", "이제는"],
       "visual_cues": ["브랜드 컬러 배경", "해결 후 이미지", "포인트 나열", "밝은 톤 전환"],
+      "typical_compositions": ["split", "stack"],
+      "composition_examples": [
+        "split: 좌측 해결 텍스트 / 우측 해결 후 이미지",
+        "stack: 선언 텍스트 → 이미지 → 포인트 나열 수직 배치"
+      ],
       "copywriting_guide": "페인포인트와 1:1로 매칭되는 해결책 제시",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "해결 선언", "fontSize": 40, "fontWeight": 700, "color": "dark" },
@@ -183,6 +218,11 @@
       "frequency": 0.8,
       "keywords": ["기능", "특징", "핵심", "개요", "한눈에", "가지", "포인트"],
       "visual_cues": ["번호 매기기", "그리드 카드", "아이콘+텍스트 조합", "기능 리스트"],
+      "typical_compositions": ["stack", "composed"],
+      "composition_examples": [
+        "stack: 제목 → 이미지 → 기능 리스트 수직 나열",
+        "composed: 제품 이미지 배경 위 기능 번호/텍스트 오버레이"
+      ],
       "copywriting_guide": "핵심 기능을 간결하게 나열, 각 기능은 개별 섹션에서 상세 설명",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -211,6 +251,12 @@
       "frequency": 0.9,
       "keywords": ["기능 상세", "Q&A", "왜", "혜택", "장점", "스펙"],
       "visual_cues": ["큰 번호 표시", "Q&A 형식", "기능 이미지", "혜택 나열"],
+      "typical_compositions": ["split", "composed", "stack"],
+      "composition_examples": [
+        "split: 좌측 텍스트(번호+Q&A+혜택) / 우측 기능 이미지",
+        "composed: 기능 이미지 배경 위 텍스트 오버레이",
+        "stack: 번호 → Q&A → 이미지 → 혜택 수직 나열"
+      ],
       "repeatable": true,
       "max_repeat": 8,
       "copywriting_guide": "이 기능이 고객에게 주는 구체적인 혜택과 가치를 설명",
@@ -235,6 +281,10 @@
       "frequency": 0.5,
       "keywords": ["팁", "꿀팁", "활용", "노하우", "사용법", "관리법", "TIP"],
       "visual_cues": ["TIP 라벨", "번호 매기기", "아이콘+설명", "밝은 강조색"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → 팁 카드/리스트 수직 나열"
+      ],
       "copywriting_guide": "TIP 형식으로 실용적인 사용 노하우 전달",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 36, "fontWeight": 700 },
@@ -251,6 +301,12 @@
       "frequency": 0.6,
       "keywords": ["차별화", "유일", "최초", "독보적", "특허", "only", "국내 최초"],
       "visual_cues": ["배지/라벨 강조", "accent 컬러 배경", "전후 비교", "강조 텍스트"],
+      "typical_compositions": ["split", "composed", "stack"],
+      "composition_examples": [
+        "split: 좌측 문제(기존) / 우측 해결(우리) 대비",
+        "composed: 전후 비교 이미지 배경 위 텍스트 오버레이",
+        "stack: 배지 → 텍스트 → 이미지 수직 나열"
+      ],
       "copywriting_guide": "\"국내 최초\", \"업계 유일\" 등 강력한 차별점 강조",
       "required_elements": [
         { "type": "TEXT", "name": "Badge", "role": "배지 (예: 국내 최초)", "fontSize": 20, "fontWeight": 700 },
@@ -273,6 +329,11 @@
       "frequency": 0.6,
       "keywords": ["비교", "VS", "경쟁", "비교표", "대", "차이점"],
       "visual_cues": ["테이블/비교표", "2~3열 레이아웃", "체크/X 마크", "우리 제품 강조 컬럼"],
+      "typical_compositions": ["stack", "split"],
+      "composition_examples": [
+        "stack: 제목 → 비교표 인포그래픽 수직 나열",
+        "split: 좌측 경쟁사 / 우측 우리 제품 수평 비교"
+      ],
       "copywriting_guide": "우리가 이기는 항목 중심으로 비교, 객관적 데이터 사용",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -293,6 +354,10 @@
       "frequency": 0.7,
       "keywords": ["안전", "인증", "KC", "ISO", "품질", "테스트", "검증", "소재"],
       "visual_cues": ["인증 마크", "배지 나열", "안전 기능 아이콘", "포인트 리스트"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → 인증 이미지 → 포인트 리스트 수직 나열"
+      ],
       "copywriting_guide": "안전 인증, 소재, 설계 특징 등 신뢰 요소 나열",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -310,6 +375,11 @@
       "frequency": 0.7,
       "keywords": ["추천", "이런 분", "대상", "적합", "딱 맞는", "위한"],
       "visual_cues": ["체크리스트", "타겟 이미지", "브랜드 컬러 배경", "이모지/아이콘+텍스트"],
+      "typical_compositions": ["stack", "composed"],
+      "composition_examples": [
+        "stack: 제목 → 이미지 → 체크리스트 수직 나열",
+        "composed: 브랜드 컬러 배경 위 텍스트 리스트 오버레이"
+      ],
       "copywriting_guide": "\"이런 분들께 추천드려요\" 형식, 구체적인 상황 제시",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700, "color": "dark" },
@@ -326,6 +396,10 @@
       "frequency": 0.8,
       "keywords": ["후기", "리뷰", "고객", "평점", "별점", "만족도", "실사용"],
       "visual_cues": ["카드형 리뷰", "별점 표시", "인용 부호", "프로필 아이콘"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → 리뷰 카드 그리드 수직 나열"
+      ],
       "copywriting_guide": "핵심 셀링포인트를 언급하는 리뷰 선택, 다양한 고객층 포함",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -345,6 +419,11 @@
       "frequency": 0.8,
       "keywords": ["스펙", "사양", "규격", "크기", "무게", "용량", "재질"],
       "visual_cues": ["스펙 테이블", "카테고리별 그룹", "수치 강조", "제품 치수 이미지"],
+      "typical_compositions": ["stack", "split"],
+      "composition_examples": [
+        "stack: 제목 → 스펙 이미지 → 스펙 테이블 수직 나열",
+        "split: 좌측 제품 치수 이미지 / 우측 스펙 텍스트"
+      ],
       "copywriting_guide": "숫자와 단위를 명확하게, 차별화 스펙은 강조 색상 사용",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -364,6 +443,10 @@
       "frequency": 0.8,
       "keywords": ["FAQ", "질문", "궁금", "Q&A", "자주 묻는"],
       "visual_cues": ["Q/A 교차 레이아웃", "아코디언 스타일", "질문 강조", "답변 부연"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → Q&A 아코디언/카드 수직 나열"
+      ],
       "copywriting_guide": "실제 고객이 자주 묻는 질문 기반, 구매 장벽 해소 중심",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -380,6 +463,10 @@
       "frequency": 0.6,
       "keywords": ["보증", "A/S", "환불", "교환", "정책", "무상수리", "품질보증"],
       "visual_cues": ["보증 아이콘", "브랜드 컬러 배경", "신뢰 메시지", "연락처 정보"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → 보증 항목 나열 → 연락처 수직 배치"
+      ],
       "copywriting_guide": "\"품질에 대한 자신감\" 메시지로 신뢰 강화",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
@@ -398,6 +485,11 @@
       "frequency": 0.95,
       "keywords": ["구매", "주문", "CTA", "지금", "바로", "장바구니", "가격"],
       "visual_cues": ["큰 버튼", "가격 표시", "신뢰 배지", "감성 이미지", "액션 유도 카피"],
+      "typical_compositions": ["composed", "stack"],
+      "composition_examples": [
+        "composed: 감성 배경 이미지 위 카피 + 가격 + 버튼 오버레이",
+        "stack: 카피 → 이미지 → 가격 → 버튼 수직 나열"
+      ],
       "copywriting_guide": "Hook 섹션의 메인 카피를 다시 한번 상기시키며 마무리",
       "required_elements": [
         { "type": "TEXT", "name": "Main_Copy", "role": "액션 유도 카피", "fontSize": 48, "fontWeight": 700 },

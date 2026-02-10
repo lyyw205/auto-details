@@ -1,7 +1,50 @@
 /**
  * Figma Plugin - Detail Page Layout Generator
  * AI 에이전트가 생성한 레이아웃 데이터를 Figma에 적용
+ *
+ * Composition types:
+ *   - "stack" (default/legacy): VERTICAL auto-layout, center-aligned
+ *   - "composed": 9-grid free placement, layers with zIndex, no auto-layout
+ *   - "split": 2-panel horizontal/vertical split with ratio
  */
+
+// ─── 9-Grid Constants ───
+const GRID_COORDS = {
+  TL: { col: 0, row: 0 }, TC: { col: 1, row: 0 }, TR: { col: 2, row: 0 },
+  ML: { col: 0, row: 1 }, MC: { col: 1, row: 1 }, MR: { col: 2, row: 1 },
+  BL: { col: 0, row: 2 }, BC: { col: 1, row: 2 }, BR: { col: 2, row: 2 },
+};
+
+/**
+ * Convert a region string (e.g. "TL", "TL:BR") into pixel coordinates.
+ * @param {string} region - Single cell ("TL") or span ("TL:BR")
+ * @param {number} sectionWidth - Total section width in px
+ * @param {number} sectionHeight - Total section height in px
+ * @param {number} [padding=0] - Inner padding in px
+ * @returns {{ x: number, y: number, width: number, height: number }}
+ */
+function regionToRect(region, sectionWidth, sectionHeight, padding = 0) {
+  const parts = region.split(':');
+  const start = GRID_COORDS[parts[0]];
+  const end = GRID_COORDS[parts[1] || parts[0]];
+
+  if (!start || !end) throw new Error('Invalid region code: ' + region);
+
+  const colStart = Math.min(start.col, end.col);
+  const colEnd = Math.max(start.col, end.col);
+  const rowStart = Math.min(start.row, end.row);
+  const rowEnd = Math.max(start.row, end.row);
+
+  const cellW = (sectionWidth - padding * 2) / 3;
+  const cellH = (sectionHeight - padding * 2) / 3;
+
+  return {
+    x: padding + colStart * cellW,
+    y: padding + rowStart * cellH,
+    width: (colEnd - colStart + 1) * cellW,
+    height: (rowEnd - rowStart + 1) * cellH,
+  };
+}
 
 // UI 표시
 figma.showUI(__html__, { width: 450, height: 650 });
@@ -116,30 +159,12 @@ async function loadFonts(fontFamily) {
 }
 
 /**
- * 섹션 프레임 생성
+ * 섹션 배경색 적용 (공통)
  */
-async function createSection(sectionData, pageWidth, fontFamily) {
-  const frame = figma.createFrame();
-  frame.name = sectionData.name || 'Section';
-  frame.resize(pageWidth, sectionData.height || 600);
-
-  // Auto Layout 설정 (JSON 우선, 기본값 폴백)
-  frame.layoutMode = sectionData.layoutMode || 'VERTICAL';
-  frame.primaryAxisSizingMode = 'FIXED';
-  frame.counterAxisSizingMode = 'FIXED';
-  frame.paddingTop = sectionData.padding?.top ?? 80;
-  frame.paddingBottom = sectionData.padding?.bottom ?? 80;
-  frame.paddingLeft = sectionData.padding?.left ?? 60;
-  frame.paddingRight = sectionData.padding?.right ?? 60;
-  frame.itemSpacing = sectionData.itemSpacing ?? 24;
-  frame.primaryAxisAlignItems = sectionData.primaryAxisAlign || 'CENTER';
-  frame.counterAxisAlignItems = sectionData.counterAxisAlign || 'CENTER';
-
-  // 배경색 설정
+function applySectionBackground(frame, sectionData) {
   const bgColor = sectionData.background || sectionData.backgroundColor;
   if (bgColor) {
     if (bgColor.startsWith && bgColor.startsWith('gradient:')) {
-      // 그라데이션 처리
       const colors = bgColor.replace('gradient:', '').split('-');
       const gradientStops = colors.map(function(c, i) {
         const rgb = hexToRgb(c);
@@ -154,12 +179,47 @@ async function createSection(sectionData, pageWidth, fontFamily) {
         gradientTransform: [[0, 1, 0], [-1, 0, 1]]
       }];
     } else {
-      var color = hexToRgb(bgColor);
-      frame.fills = [{ type: 'SOLID', color: color }];
+      frame.fills = [{ type: 'SOLID', color: hexToRgb(bgColor) }];
     }
   }
+}
 
-  // 자식 요소 생성
+/**
+ * 섹션 프레임 생성 — composition 타입별 분기
+ */
+async function createSection(sectionData, pageWidth, fontFamily) {
+  const composition = sectionData.composition || 'stack';
+
+  if (composition === 'composed') {
+    return createComposedSection(sectionData, pageWidth, fontFamily);
+  } else if (composition === 'split') {
+    return createSplitSection(sectionData, pageWidth, fontFamily);
+  } else {
+    return createStackSection(sectionData, pageWidth, fontFamily);
+  }
+}
+
+/**
+ * Stack composition (기존/기본값 — 하위 호환)
+ */
+async function createStackSection(sectionData, pageWidth, fontFamily) {
+  const frame = figma.createFrame();
+  frame.name = sectionData.name || 'Section';
+  frame.resize(pageWidth, sectionData.height || 600);
+
+  frame.layoutMode = sectionData.layoutMode || 'VERTICAL';
+  frame.primaryAxisSizingMode = 'FIXED';
+  frame.counterAxisSizingMode = 'FIXED';
+  frame.paddingTop = sectionData.padding?.top ?? 80;
+  frame.paddingBottom = sectionData.padding?.bottom ?? 80;
+  frame.paddingLeft = sectionData.padding?.left ?? 60;
+  frame.paddingRight = sectionData.padding?.right ?? 60;
+  frame.itemSpacing = sectionData.itemSpacing ?? 24;
+  frame.primaryAxisAlignItems = sectionData.primaryAxisAlign || 'CENTER';
+  frame.counterAxisAlignItems = sectionData.counterAxisAlign || 'CENTER';
+
+  applySectionBackground(frame, sectionData);
+
   if (sectionData.children && sectionData.children.length > 0) {
     for (const child of sectionData.children) {
       try {
@@ -172,6 +232,130 @@ async function createSection(sectionData, pageWidth, fontFamily) {
         console.error('Child error:', child, e);
       }
     }
+  }
+
+  return frame;
+}
+
+/**
+ * Composed composition — 9-grid 자유 배치 (auto-layout 없음)
+ * layers 배열의 각 요소를 region 좌표로 절대 배치, zIndex 순 정렬
+ */
+async function createComposedSection(sectionData, pageWidth, fontFamily) {
+  const frame = figma.createFrame();
+  frame.name = sectionData.name || 'Section';
+  const sectionW = pageWidth;
+  const sectionH = sectionData.height || 600;
+  frame.resize(sectionW, sectionH);
+
+  // auto-layout 비활성 — 절대 좌표 배치
+  frame.layoutMode = 'NONE';
+
+  applySectionBackground(frame, sectionData);
+
+  const padding = sectionData.padding
+    ? Math.min(sectionData.padding.left ?? 0, sectionData.padding.top ?? 0)
+    : 0;
+
+  // layers를 zIndex 오름차순으로 정렬 후 순서대로 appendChild
+  const layers = (sectionData.layers || []).slice().sort((a, b) => (a.zIndex || 0) - (b.zIndex || 0));
+
+  for (const layer of layers) {
+    try {
+      const rect = regionToRect(layer.region, sectionW, sectionH, padding);
+      const contentWidth = rect.width;
+      const element = layer.element;
+
+      const childNode = await createNode(element, contentWidth, fontFamily);
+      if (childNode) {
+        childNode.x = rect.x;
+        childNode.y = rect.y;
+        childNode.resize(rect.width, rect.height);
+        frame.appendChild(childNode);
+      }
+    } catch (e) {
+      console.error('Composed layer error:', layer, e);
+    }
+  }
+
+  return frame;
+}
+
+/**
+ * Split composition — 2분할 레이아웃 (좌우 또는 상하)
+ */
+async function createSplitSection(sectionData, pageWidth, fontFamily) {
+  const frame = figma.createFrame();
+  frame.name = sectionData.name || 'Section';
+  const sectionH = sectionData.height || 600;
+  frame.resize(pageWidth, sectionH);
+
+  const direction = sectionData.direction || 'horizontal';
+  const ratio = sectionData.ratio || [1, 1];
+  const totalRatio = ratio[0] + ratio[1];
+  const gap = sectionData.gap || 0;
+
+  frame.layoutMode = direction === 'horizontal' ? 'HORIZONTAL' : 'VERTICAL';
+  frame.primaryAxisSizingMode = 'FIXED';
+  frame.counterAxisSizingMode = 'FIXED';
+  frame.itemSpacing = gap;
+  frame.primaryAxisAlignItems = 'MIN';
+  frame.counterAxisAlignItems = 'MIN';
+
+  applySectionBackground(frame, sectionData);
+
+  const isHorizontal = direction === 'horizontal';
+  const availableMain = isHorizontal ? pageWidth - gap : sectionH - gap;
+
+  const panelConfigs = isHorizontal
+    ? [{ data: sectionData.left, r: ratio[0] }, { data: sectionData.right, r: ratio[1] }]
+    : [{ data: sectionData.top, r: ratio[0] }, { data: sectionData.bottom, r: ratio[1] }];
+
+  for (const panel of panelConfigs) {
+    if (!panel.data) continue;
+    const panelSize = (panel.r / totalRatio) * availableMain;
+
+    const panelFrame = figma.createFrame();
+    panelFrame.name = (panel === panelConfigs[0] ? (isHorizontal ? 'left' : 'top') : (isHorizontal ? 'right' : 'bottom')) + '_panel';
+    panelFrame.fills = [];
+    panelFrame.layoutMode = 'VERTICAL';
+    panelFrame.primaryAxisSizingMode = 'FIXED';
+    panelFrame.counterAxisSizingMode = 'FIXED';
+    panelFrame.itemSpacing = panel.data.itemSpacing ?? 16;
+    panelFrame.paddingTop = panel.data.padding?.top ?? 24;
+    panelFrame.paddingBottom = panel.data.padding?.bottom ?? 24;
+    panelFrame.paddingLeft = panel.data.padding?.left ?? 24;
+    panelFrame.paddingRight = panel.data.padding?.right ?? 24;
+
+    if (isHorizontal) {
+      panelFrame.resize(panelSize, sectionH);
+    } else {
+      panelFrame.resize(pageWidth, panelSize);
+    }
+
+    // 수직 정렬
+    const valignMap = {
+      TL: 'MIN', TC: 'MIN', TR: 'MIN',
+      ML: 'CENTER', MC: 'CENTER', MR: 'CENTER',
+      BL: 'MAX', BC: 'MAX', BR: 'MAX',
+    };
+    panelFrame.primaryAxisAlignItems = valignMap[panel.data.valign] || 'CENTER';
+    panelFrame.counterAxisAlignItems = 'CENTER';
+
+    const contentWidth = isHorizontal
+      ? panelSize - (panel.data.padding?.left ?? 24) - (panel.data.padding?.right ?? 24)
+      : pageWidth - (panel.data.padding?.left ?? 24) - (panel.data.padding?.right ?? 24);
+
+    for (const child of (panel.data.children || [])) {
+      try {
+        const childNode = await createNode(child, contentWidth, fontFamily);
+        if (childNode) panelFrame.appendChild(childNode);
+      } catch (e) {
+        console.error('Split panel child error:', child, e);
+      }
+    }
+
+    frame.appendChild(panelFrame);
   }
 
   return frame;
@@ -549,6 +733,14 @@ async function createImageNode(nodeData, maxWidth) {
     labelText.fontSize = 14;
     labelText.fills = [{ type: 'SOLID', color: hexToRgb('#888888') }];
     frame.appendChild(labelText);
+  }
+
+  // ai_prompt 메타데이터 저장 (플러그인 데이터로)
+  if (nodeData.ai_prompt) {
+    const promptData = typeof nodeData.ai_prompt === 'string'
+      ? nodeData.ai_prompt
+      : JSON.stringify(nodeData.ai_prompt);
+    frame.setPluginData('ai_prompt', promptData);
   }
 
   // 모서리 둥글기

@@ -1,0 +1,439 @@
+{
+  "name": "MARU 랜딩페이지",
+  "width": 860,
+  "fontFamily": "Inter",
+  "template": "ref-maru",
+  "brand_color": "#4CAF50",
+  "children": [
+    {
+      "name": "Section_01_Hook",
+      "composition": "composed",
+      "height": 450,
+      "background": "#FFFFFF",
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:TR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Hero_Image",
+            "label": "MARU 건물 외관 (벽돌 건물, 녹색 식물)",
+            "ai_prompt": {
+              "prompt": "Modern co-working space building exterior, brick facade with green plants, urban setting, warm afternoon light, architectural photography, 8k",
+              "negative": "text, watermark, blurry",
+              "style": "product_lifestyle",
+              "aspect_ratio": "16:9"
+            },
+            "width": 860,
+            "height": 350,
+            "placeholderColor": "#8B9A6B"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BC",
+          "element": {
+            "type": "TEXT",
+            "name": "Main_Slogan",
+            "content": "Open Possibilities, MARU",
+            "fontSize": 28,
+            "fontWeight": 600,
+            "color": "#111111"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL",
+          "element": {
+            "type": "TEXT",
+            "name": "Sub_Description",
+            "content": "An initiative of The Asan Nanum Foundation. MARU is a platform for those people who pursue entrepreneurship.",
+            "fontSize": 13,
+            "fontWeight": 400,
+            "color": "#888888"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Section_02_StatsHighlight",
+      "height": 250,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 60, "right": 60 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Section_Title",
+          "content": "숫자로 보는 마루",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#111111",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Section_Sub",
+          "content": "MARU in Numbers",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#888888",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "GRID",
+          "name": "Stats_Grid",
+          "columns": 3,
+          "gap": 40,
+          "itemBackground": "#FFFFFF",
+          "itemCornerRadius": 0,
+          "itemPadding": 16,
+          "items": [
+            { "title": "2,148,817 명", "desc": "방문자" },
+            { "title": "392 개", "desc": "육성 기업" },
+            { "title": "10,850 개", "desc": "창업관련 이벤트" }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Section_03_Feature1_Detail",
+      "composition": "split",
+      "height": 350,
+      "background": "#FFFFFF",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "gap": 0,
+      "left": {
+        "valign": "MC",
+        "itemSpacing": 0,
+        "padding": { "top": 0, "bottom": 0, "left": 0, "right": 0 },
+        "children": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature1_Image",
+            "label": "MARU 180 건물 외관 사진",
+            "ai_prompt": {
+              "prompt": "Modern startup incubator building exterior, brick and glass facade, warm daylight, architectural photography, 8k",
+              "negative": "text, watermark, blurry",
+              "style": "product_lifestyle",
+              "aspect_ratio": "4:3"
+            },
+            "width": 380,
+            "height": 280,
+            "placeholderColor": "#C4B8A0"
+          }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "itemSpacing": 16,
+        "padding": { "top": 40, "bottom": 40, "left": 40, "right": 40 },
+        "children": [
+          {
+            "type": "TEXT",
+            "name": "Feature1_Brand",
+            "content": "MARU 180",
+            "fontSize": 20,
+            "fontWeight": 700,
+            "color": "#111111"
+          },
+          {
+            "type": "TEXT",
+            "name": "Feature1_Desc",
+            "content": "마루180은 세상을 180도 변화시킬 스타트업을 위한 공간입니다.\n스타트업의 발굴·육성의 질을 높이며, 입주 스타트업의 양적·질적인 성장을 함께 이뤄갑니다.",
+            "fontSize": 15,
+            "fontWeight": 400,
+            "color": "#333333",
+            "width": 340
+          },
+          {
+            "type": "BUTTON",
+            "name": "Feature1_CTA",
+            "text": "공간 상세보기",
+            "backgroundColor": "#4CAF50",
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "cornerRadius": 4,
+            "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+          }
+        ]
+      }
+    },
+
+    {
+      "name": "Section_04_Feature2_Detail",
+      "composition": "split",
+      "height": 350,
+      "background": "#FFFFFF",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "gap": 0,
+      "left": {
+        "valign": "MC",
+        "itemSpacing": 16,
+        "padding": { "top": 40, "bottom": 40, "left": 40, "right": 40 },
+        "children": [
+          {
+            "type": "TEXT",
+            "name": "Feature2_Brand",
+            "content": "MARU 360",
+            "fontSize": 20,
+            "fontWeight": 700,
+            "color": "#111111"
+          },
+          {
+            "type": "TEXT",
+            "name": "Feature2_Desc",
+            "content": "마루360은 스타트업의 성장을 360도로 지원하는 공간입니다. 2배 더 넓어진 공간에서 콘텐츠 크리에이션, 글로벌 네트워킹을 지원하며 물리적 확장을 넘어 스타트업의 가능성까지 확장합니다.",
+            "fontSize": 15,
+            "fontWeight": 400,
+            "color": "#333333",
+            "width": 340
+          },
+          {
+            "type": "BUTTON",
+            "name": "Feature2_CTA",
+            "text": "공간 상세보기",
+            "backgroundColor": "#4CAF50",
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "cornerRadius": 4,
+            "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+          }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "itemSpacing": 0,
+        "padding": { "top": 0, "bottom": 0, "left": 0, "right": 0 },
+        "children": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature2_Image",
+            "label": "MARU 360 내부 인테리어 (소파, 밝은 공간)",
+            "ai_prompt": {
+              "prompt": "Modern co-working space interior, bright open lounge with sofas, minimalist furniture, natural light, architectural interior photography, 8k",
+              "negative": "text, watermark, blurry, dark",
+              "style": "product_lifestyle",
+              "aspect_ratio": "4:3"
+            },
+            "width": 380,
+            "height": 280,
+            "placeholderColor": "#D4CFC8"
+          }
+        ]
+      }
+    },
+
+    {
+      "name": "Section_05_CTABanner",
+      "composition": "composed",
+      "height": 120,
+      "background": "#6B7B3A",
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Banner_BG",
+            "label": "올리브 다크그린 배경",
+            "ai_prompt": {
+              "prompt": "Solid dark olive green background, subtle texture, muted warm tone",
+              "style": "background_only",
+              "aspect_ratio": "16:3"
+            },
+            "width": 860,
+            "height": 120,
+            "placeholderColor": "#6B7B3A"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TL:MC",
+          "element": {
+            "type": "TEXT",
+            "name": "Banner_Title",
+            "content": "마루투어 예약 신청",
+            "fontSize": 22,
+            "fontWeight": 700,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:BL",
+          "element": {
+            "type": "TEXT",
+            "name": "Banner_Desc",
+            "content": "MARU를 직접 방문하여 창업 생태계를 경험할 수 있는 오프라인 공간 투어를 지원합니다.",
+            "fontSize": 13,
+            "fontWeight": 400,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TR:MR",
+          "element": {
+            "type": "BUTTON",
+            "name": "Tour_CTA",
+            "text": "마루투어 예약 신청하기",
+            "backgroundColor": "#4CAF50",
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "cornerRadius": 4,
+            "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "Section_06_EventPromo",
+      "height": 200,
+      "background": "#FFFFFF",
+      "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "MIN",
+      "counterAxisAlign": "MIN",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Event_Title",
+          "content": "마루(MARU)에서 열리는 이벤트에 참여해\n더 많은 가능성의 기회를 열어보세요.",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "color": "#111111",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Event_Desc",
+          "content": "기업가정신을 실천하고 확산하는 사람들을 위한 다양한 프로그램이 개최되고 있습니다.",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#888888",
+          "width": 760
+        },
+        {
+          "type": "FRAME",
+          "name": "Event_Buttons",
+          "layoutMode": "HORIZONTAL",
+          "children": [
+            {
+              "type": "BUTTON",
+              "name": "Event_CTA_1",
+              "text": "이벤트 더보기",
+              "backgroundColor": "#FFFFFF",
+              "color": "#333333",
+              "fontSize": 14,
+              "cornerRadius": 4,
+              "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+            },
+            {
+              "type": "BUTTON",
+              "name": "Event_CTA_2",
+              "text": "이벤트를 내려하기",
+              "backgroundColor": "#333333",
+              "color": "#FFFFFF",
+              "fontSize": 14,
+              "cornerRadius": 4,
+              "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Section_07_Reviews",
+      "composition": "composed",
+      "height": 550,
+      "background": "#FFFFFF",
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:MR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Mood_Image",
+            "label": "MARU 내부 감성 사진 (퍼플/블루 톤 조명)",
+            "ai_prompt": {
+              "prompt": "Modern creative office interior with dramatic purple and blue lighting, glass walls, open space, cinematic mood, 8k",
+              "negative": "text, watermark, people, blurry",
+              "style": "mood",
+              "aspect_ratio": "16:7"
+            },
+            "width": 860,
+            "height": 250,
+            "placeholderColor": "#3A2A5A"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:MR",
+          "element": {
+            "type": "TEXT",
+            "name": "Residents_Title",
+            "content": "마루(MARU)와 함께 새로운 변화를 만드는\n입주사를 소개합니다.",
+            "fontSize": 22,
+            "fontWeight": 700,
+            "color": "#111111"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML",
+          "element": {
+            "type": "TEXT",
+            "name": "Residents_Desc",
+            "content": "도전적인 생각과 과감한 행동력으로 가능성을 확산시키는 사람들을 만나보세요.",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "#888888"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL",
+          "element": {
+            "type": "BUTTON",
+            "name": "Community_CTA",
+            "text": "커뮤니티 바로가기",
+            "backgroundColor": "#333333",
+            "color": "#FFFFFF",
+            "fontSize": 14,
+            "cornerRadius": 4,
+            "padding": { "top": 10, "bottom": 10, "left": 20, "right": 20 }
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BR",
+          "element": {
+            "type": "GRID",
+            "name": "Partner_Cards",
+            "columns": 3,
+            "gap": 20,
+            "itemBackground": "#FFFFFF",
+            "itemCornerRadius": 8,
+            "itemPadding": 24,
+            "items": [
+              { "title": "사단법인 노란소리", "desc": "MARU 180" },
+              { "title": "코트워치", "desc": "MARU 180" },
+              { "title": "누리안심다리", "desc": "MARU 180" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

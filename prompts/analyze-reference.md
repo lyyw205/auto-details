@@ -1,4 +1,4 @@
-# 레퍼런스 상세페이지 이미지 분석 프롬프트 (v2.0 - Taxonomy 기반)
+# 레퍼런스 상세페이지 이미지 분석 프롬프트 (v3.0 - Taxonomy + Composition + AI Prompt)
 
 ## 목적
 
@@ -101,9 +101,15 @@
         "layoutMode": "VERTICAL 또는 HORIZONTAL",
         "contentAlignment": "CENTER / LEFT / RIGHT"
       },
+
+      "composition": {
+        "type": "stack | composed | split",
+        "reason": "composition 타입 선택 근거"
+      },
+
       "elements": [
         {
-          "type": "TEXT / IMAGE / FRAME / BUTTON / etc",
+          "type": "TEXT / IMAGE_AREA / FRAME / BUTTON / etc",
           "role": "이 요소의 역할 설명",
           "estimated_fontSize": "추정 px (텍스트인 경우)",
           "estimated_fontWeight": "추정 굵기 (텍스트인 경우)",
@@ -116,6 +122,135 @@
   ]
 }
 ```
+
+### Composition 타입 판단 기준
+
+각 섹션의 공간 구성을 분석하여 3가지 composition 타입 중 하나를 선택합니다.
+
+#### `stack` (기본 — 수직/수평 순차 배치)
+- 모든 요소가 위→아래 또는 좌→우로 순서대로 나열
+- 요소 간 겹침 없음
+- 대부분의 일반적인 섹션이 해당
+
+#### `composed` (9분할 자유 배치 — 요소 겹침 가능)
+- 텍스트가 이미지 위에 오버레이
+- 배경 이미지 위에 요소들이 자유롭게 배치
+- 요소들이 겹치거나, 정해진 위치에 절대 배치
+
+`composed` 선택 시 추가 분석:
+
+```json
+{
+  "composition": {
+    "type": "composed",
+    "reason": "배경 이미지 위 텍스트 오버레이, 제품 이미지 우하단 배치"
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Background_Image",
+        "label": "어두운 톤의 제품 사용 환경 배경",
+        "ai_prompt": {
+          "prompt": "Dark moody product photography background, soft gradient, minimalist workspace, 8k quality",
+          "negative": "text, watermark, logo, blurry",
+          "style": "mood",
+          "aspect_ratio": "16:9"
+        }
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL:BC",
+      "element": { "type": "TEXT", "name": "Main_Copy", "role": "헤드라인" }
+    },
+    {
+      "zIndex": 1,
+      "region": "BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Product_Cut",
+        "label": "제품 45도 앵글 컷아웃",
+        "ai_prompt": {
+          "prompt": "Product hero shot, 45-degree angle, transparent background, studio lighting, high detail",
+          "negative": "text, watermark, blurry, low quality",
+          "style": "product_hero",
+          "aspect_ratio": "1:1"
+        }
+      }
+    }
+  ]
+}
+```
+
+**9분할 그리드 코드:**
+
+```
+┌─────┬─────┬─────┐
+│ TL  │ TC  │ TR  │
+├─────┼─────┼─────┤
+│ ML  │ MC  │ MR  │
+├─────┼─────┼─────┤
+│ BL  │ BC  │ BR  │
+└─────┴─────┴─────┘
+```
+
+스팬 표기: `"TL:BR"` = 좌상단~우하단 (전체), `"TL:TR"` = 상단 전체, `"ML:MR"` = 중간 전체
+
+#### `split` (2분할 레이아웃)
+- 좌우 또는 상하로 명확히 2영역 분할
+- 한쪽은 텍스트, 한쪽은 이미지인 경우가 대표적
+
+`split` 선택 시 추가 분석:
+
+```json
+{
+  "composition": {
+    "type": "split",
+    "reason": "좌측 텍스트, 우측 이미지의 1:1 수평 분할"
+  },
+  "split_detail": {
+    "direction": "horizontal",
+    "ratio": [1, 1],
+    "left_content": "텍스트 (제목 + 설명)",
+    "right_content": "제품 이미지"
+  }
+}
+```
+
+### AI 이미지 프롬프트 생성 (`ai_prompt`)
+
+**모든 이미지 영역(IMAGE_AREA)에 `ai_prompt`를 생성합니다.**
+
+이미지의 시각적 내용을 기반으로 AI 이미지 생성에 적합한 프롬프트를 작성합니다.
+
+#### 프롬프트 구조
+
+```json
+{
+  "ai_prompt": {
+    "prompt": "영문 프롬프트 (이미지 내용, 스타일, 품질 포함)",
+    "negative": "제외할 요소 (text, watermark 등)",
+    "style": "스타일 프리셋 코드",
+    "aspect_ratio": "가로:세로 비율"
+  }
+}
+```
+
+#### 스타일 프리셋 선택 기준
+
+| style | 용도 | 선택 기준 |
+|-------|------|----------|
+| `product_hero` | 제품 메인컷 | 배경 없음/화이트, 스튜디오 조명, 정면/45도 |
+| `product_lifestyle` | 사용 환경 | 실제 사용 장면, 자연광, 공간감 |
+| `product_detail` | 부분 클로즈업 | 마크로, 디테일 강조, 질감 표현 |
+| `product_flat` | 구성품 나열 | 탑뷰/플랫레이, 정리된 배치 |
+| `infographic` | 인포그래픽/도표 | 클린 디자인, 아이콘, 수치 강조 |
+| `mood` | 감성/분위기 | 다크/감성 톤, 브랜드 무드 |
+| `comparison` | 비교/대조 | 전후 비교, 나란히 배치 |
+| `background_only` | 배경 전용 (텍스트 오버레이용) | 텍스트 공간 확보, 단순 배경 |
 
 ### 매핑 불가능한 섹션 처리
 
@@ -237,3 +372,7 @@ confidence가 0.3 미만이면 `taxonomy_mapping`을 다음과 같이 작성:
 6. **텍스트 정렬 패턴**: 가운데 정렬, 왼쪽 정렬, 또는 혼합인지 각 섹션별로 기록하세요.
 7. **여러 장의 이미지**: 레퍼런스가 여러 장으로 나뉜 경우, 순서대로 연결하여 하나의 페이지로 분석하세요.
 8. **FeatureDetail 패턴**: 유사한 구조가 반복되면 각각 FeatureDetail로 매핑하고 feature_index를 부여하세요.
+9. **composition 판단**: 모든 섹션에 `composition` 필드를 포함합니다. 요소 겹침이 없으면 `stack`, 오버레이/자유 배치면 `composed`, 명확한 2분할이면 `split`으로 판단합니다.
+10. **ai_prompt 필수**: 모든 IMAGE_AREA 요소에 `ai_prompt` 객체를 생성합니다. 이미지 내용과 용도에 적합한 영문 프롬프트를 작성하세요.
+11. **composed 섹션의 region**: 9분할 그리드 코드(TL~BR)로 각 요소의 위치를 표기합니다. 여러 셀에 걸치면 `"TL:BR"` 스팬 표기를 사용합니다.
+12. **taxonomy의 typical_compositions 참고**: `skills/section-taxonomy.json`의 `typical_compositions` 힌트를 참고하여 composition 판단에 활용합니다.

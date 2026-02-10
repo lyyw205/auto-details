@@ -219,6 +219,93 @@
   .complex-item .item-desc { font-size: 14px; color: #666; line-height: 1.6; }
   .complex-item .item-point { font-size: 14px; line-height: 1.5; }
   .complex-item .item-feature { font-size: 14px; line-height: 1.5; }
+
+  /* --- Composed Composition (9-grid absolute) --- */
+  .section--composed {
+    position: relative;
+  }
+  .section--composed > .composed-layer {
+    position: absolute;
+    overflow: hidden;
+  }
+
+  /* --- Split Composition --- */
+  .section--split {
+    display: flex !important;
+    padding: 0 !important;
+  }
+  .section--split.split--vertical {
+    flex-direction: column !important;
+  }
+  .split-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .split-panel[data-valign="MC"],
+  .split-panel[data-valign="ML"],
+  .split-panel[data-valign="MR"] { justify-content: center; }
+  .split-panel[data-valign="BL"],
+  .split-panel[data-valign="BC"],
+  .split-panel[data-valign="BR"] { justify-content: flex-end; }
+  .split-panel[data-valign="MC"],
+  .split-panel[data-valign="TC"],
+  .split-panel[data-valign="BC"] { align-items: center; }
+  .split-panel[data-valign="MR"],
+  .split-panel[data-valign="TR"],
+  .split-panel[data-valign="BR"] { align-items: flex-end; }
+
+  /* --- AI Prompt Tooltip --- */
+  .image-placeholder { cursor: pointer; }
+  .ai-prompt-tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    width: 320px;
+    max-width: 90vw;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  .ai-prompt-tip .pf { margin-bottom: 4px; }
+  .ai-prompt-tip .pf strong { color: #4f8ff7; }
+  .image-placeholder:hover .ai-prompt-tip { display: block; }
+
+  /* --- AI Prompt Panel --- */
+  .prompt-panel {
+    display: none;
+    position: fixed;
+    right: 0; top: 0;
+    width: 340px; height: 100vh;
+    background: #1a1a1a;
+    border-left: 1px solid #333;
+    padding: 16px;
+    overflow-y: auto;
+    z-index: 200;
+  }
+  .prompt-panel.active { display: block; }
+  .prompt-panel h3 { font-size: 14px; margin-bottom: 12px; color: #4f8ff7; }
+  .prompt-card {
+    background: #242424;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .prompt-card .pc-name { font-weight: 700; margin-bottom: 6px; color: #fff; }
+  .prompt-card .pc-field { margin-bottom: 3px; color: #aaa; }
+  .prompt-card .pc-field strong { color: #4f8ff7; }
 </style>
 </head>
 <body>
@@ -229,6 +316,7 @@
   <button class="btn-file" id="btnFile">JSON file</button>
   <button class="btn-secondary" id="btnToggleJson">JSON input</button>
   <button class="btn-primary" id="btnRender">Render</button>
+  <button class="btn-secondary" id="btnPrompts">AI Prompts</button>
   <div class="spacer"></div>
   <span class="info" id="statusInfo"></span>
 </div>
@@ -243,6 +331,12 @@
 
 <!-- Error -->
 <div class="error-msg" id="errorMsg"></div>
+
+<!-- AI Prompt Panel -->
+<div class="prompt-panel" id="promptPanel">
+  <h3>AI Image Prompts</h3>
+  <div id="promptList"></div>
+</div>
 
 <!-- Preview -->
 <div class="preview-area">
@@ -261,10 +355,34 @@
 </div>
 
 <script>
+// --- 9-Grid System ---
+const GRID_COORDS = {
+  TL: { col: 0, row: 0 }, TC: { col: 1, row: 0 }, TR: { col: 2, row: 0 },
+  ML: { col: 0, row: 1 }, MC: { col: 1, row: 1 }, MR: { col: 2, row: 1 },
+  BL: { col: 0, row: 2 }, BC: { col: 1, row: 2 }, BR: { col: 2, row: 2 },
+};
+
+function regionToRect(region, w, h, padding) {
+  padding = padding || 0;
+  const parts = region.split(':');
+  const s = GRID_COORDS[parts[0]];
+  const e = GRID_COORDS[parts[1] || parts[0]];
+  const colS = Math.min(s.col, e.col), colE = Math.max(s.col, e.col);
+  const rowS = Math.min(s.row, e.row), rowE = Math.max(s.row, e.row);
+  const cw = (w - padding * 2) / 3, ch = (h - padding * 2) / 3;
+  return {
+    x: padding + colS * cw,
+    y: padding + rowS * ch,
+    width: (colE - colS + 1) * cw,
+    height: (rowE - rowS + 1) * ch,
+  };
+}
+
 // --- DOM Refs ---
 const btnFile = document.getElementById('btnFile');
 const btnToggleJson = document.getElementById('btnToggleJson');
 const btnRender = document.getElementById('btnRender');
+const btnPrompts = document.getElementById('btnPrompts');
 const fileInput = document.getElementById('fileInput');
 const jsonPanel = document.getElementById('jsonPanel');
 const jsonInput = document.getElementById('jsonInput');
@@ -272,6 +390,8 @@ const errorMsg = document.getElementById('errorMsg');
 const canvas = document.getElementById('canvas');
 const emptyState = document.getElementById('emptyState');
 const statusInfo = document.getElementById('statusInfo');
+const promptPanel = document.getElementById('promptPanel');
+const promptList = document.getElementById('promptList');
 
 let jsonPanelVisible = true;
 
@@ -280,6 +400,7 @@ btnFile.addEventListener('click', () => fileInput.click());
 fileInput.addEventListener('change', handleFileLoad);
 btnToggleJson.addEventListener('click', toggleJsonPanel);
 btnRender.addEventListener('click', render);
+btnPrompts.addEventListener('click', () => promptPanel.classList.toggle('active'));
 
 // Keyboard shortcut: Ctrl/Cmd + Enter to render
 document.addEventListener('keydown', (e) => {
@@ -360,12 +481,63 @@ function render() {
 
   statusInfo.textContent = `${data.name || 'Untitled'} — ${sectionCount} sections`;
 
+  // Update AI Prompt panel
+  updatePromptPanel(data.children);
+
   // Auto-collapse JSON panel after successful render
   if (jsonPanelVisible) toggleJsonPanel();
 }
 
-// --- Section Renderer ---
+// --- AI Prompt Panel ---
+function updatePromptPanel(sections) {
+  promptList.innerHTML = '';
+
+  function collect(elements, sectionName) {
+    if (!elements) return;
+    for (const el of elements) {
+      const element = el.element || el;
+      if (element.type && element.type.toUpperCase() === 'IMAGE_AREA' && element.ai_prompt) {
+        const card = document.createElement('div');
+        card.className = 'prompt-card';
+        const prompt = element.ai_prompt;
+        let html = `<div class="pc-name">${escapeHtml(sectionName + ' / ' + (element.name || 'Image'))}</div>`;
+        if (element.label) html += `<div class="pc-field"><strong>Label:</strong> ${escapeHtml(element.label)}</div>`;
+        if (typeof prompt === 'string') {
+          html += `<div class="pc-field"><strong>Prompt:</strong> ${escapeHtml(prompt)}</div>`;
+        } else {
+          if (prompt.prompt) html += `<div class="pc-field"><strong>Prompt:</strong> ${escapeHtml(prompt.prompt)}</div>`;
+          if (prompt.negative) html += `<div class="pc-field"><strong>Negative:</strong> ${escapeHtml(prompt.negative)}</div>`;
+          if (prompt.style) html += `<div class="pc-field"><strong>Style:</strong> ${escapeHtml(prompt.style)}</div>`;
+          if (prompt.aspect_ratio) html += `<div class="pc-field"><strong>Ratio:</strong> ${escapeHtml(prompt.aspect_ratio)}</div>`;
+        }
+        card.innerHTML = html;
+        promptList.appendChild(card);
+      }
+    }
+  }
+
+  for (const s of sections) {
+    const name = s.name || 'Section';
+    if (s.layers) collect(s.layers, name);
+    if (s.children) collect(s.children, name);
+    if (s.left && s.left.children) collect(s.left.children, name + ' (L)');
+    if (s.right && s.right.children) collect(s.right.children, name + ' (R)');
+    if (s.top && s.top.children) collect(s.top.children, name + ' (T)');
+    if (s.bottom && s.bottom.children) collect(s.bottom.children, name + ' (B)');
+  }
+}
+
+// --- Section Renderer (composition routing) ---
 function renderSection(sec, pageWidth, fontFamily) {
+  const composition = sec.composition || 'stack';
+
+  if (composition === 'composed') return renderComposedSection(sec, pageWidth, fontFamily);
+  if (composition === 'split') return renderSplitSection(sec, pageWidth, fontFamily);
+  return renderStackSection(sec, pageWidth, fontFamily);
+}
+
+// Stack composition (기존/기본값)
+function renderStackSection(sec, pageWidth, fontFamily) {
   const div = document.createElement('div');
   div.className = 'section';
 
@@ -373,11 +545,8 @@ function renderSection(sec, pageWidth, fontFamily) {
   applyBackground(div, bg);
 
   const height = sec.height || 'auto';
-  if (typeof height === 'number') {
-    div.style.minHeight = height + 'px';
-  }
+  if (typeof height === 'number') div.style.minHeight = height + 'px';
 
-  // Flex layout from Figma auto-layout
   const mode = sec.layoutMode || 'VERTICAL';
   div.style.display = 'flex';
   div.style.flexDirection = mode === 'HORIZONTAL' ? 'row' : 'column';
@@ -388,13 +557,93 @@ function renderSection(sec, pageWidth, fontFamily) {
   const pad = sec.padding || {};
   div.style.padding = `${pad.top ?? 80}px ${pad.right ?? 60}px ${pad.bottom ?? 80}px ${pad.left ?? 60}px`;
 
-  // Render children
   const contentWidth = pageWidth - (pad.left ?? 60) - (pad.right ?? 60);
   if (sec.children) {
     for (const child of sec.children) {
       const el = renderNode(child, contentWidth, fontFamily);
       if (el) div.appendChild(el);
     }
+  }
+
+  return div;
+}
+
+// Composed composition (9-grid absolute placement)
+function renderComposedSection(sec, pageWidth, fontFamily) {
+  const div = document.createElement('div');
+  div.className = 'section section--composed';
+
+  const bg = sec.background || sec.backgroundColor || '#FFFFFF';
+  applyBackground(div, bg);
+
+  const w = pageWidth;
+  const h = sec.height || 600;
+  div.style.width = w + 'px';
+  div.style.height = h + 'px';
+
+  const padding = sec.padding
+    ? Math.min(sec.padding.left ?? 0, sec.padding.top ?? 0)
+    : 0;
+
+  const layers = (sec.layers || []).slice().sort((a, b) => (a.zIndex || 0) - (b.zIndex || 0));
+
+  for (const layer of layers) {
+    const rect = regionToRect(layer.region, w, h, padding);
+    const el = renderNode(layer.element, rect.width, fontFamily);
+    if (el) {
+      el.classList.add('composed-layer');
+      el.style.left = rect.x + 'px';
+      el.style.top = rect.y + 'px';
+      el.style.width = rect.width + 'px';
+      el.style.height = rect.height + 'px';
+      el.style.zIndex = layer.zIndex || 0;
+      div.appendChild(el);
+    }
+  }
+
+  return div;
+}
+
+// Split composition (2-panel)
+function renderSplitSection(sec, pageWidth, fontFamily) {
+  const div = document.createElement('div');
+  div.className = 'section section--split';
+  const direction = sec.direction || 'horizontal';
+  if (direction === 'vertical') div.classList.add('split--vertical');
+
+  const bg = sec.background || sec.backgroundColor || '#FFFFFF';
+  applyBackground(div, bg);
+
+  const h = sec.height || 600;
+  div.style.minHeight = h + 'px';
+
+  const ratio = sec.ratio || [1, 1];
+  const total = ratio[0] + ratio[1];
+  div.style.gap = (sec.gap || 0) + 'px';
+
+  const isHorizontal = direction === 'horizontal';
+  const panels = isHorizontal
+    ? [{ data: sec.left, r: ratio[0] }, { data: sec.right, r: ratio[1] }]
+    : [{ data: sec.top, r: ratio[0] }, { data: sec.bottom, r: ratio[1] }];
+
+  for (const p of panels) {
+    if (!p.data) continue;
+    const panel = document.createElement('div');
+    panel.className = 'split-panel';
+    panel.style.flex = p.r;
+    panel.style.padding = '24px';
+    panel.style.gap = (p.data.itemSpacing ?? 16) + 'px';
+    if (p.data.valign) panel.setAttribute('data-valign', p.data.valign);
+
+    const contentWidth = isHorizontal
+      ? (p.r / total) * pageWidth - 48
+      : pageWidth - 48;
+
+    for (const child of (p.data.children || [])) {
+      const el = renderNode(child, contentWidth, fontFamily);
+      if (el) panel.appendChild(el);
+    }
+    div.appendChild(panel);
   }
 
   return div;
@@ -484,8 +733,8 @@ function renderImage(node, maxWidth) {
     div.style.borderRadius = node.cornerRadius + 'px';
   }
 
-  // Camera icon
-  div.innerHTML = `
+  // Camera icon + label
+  let imgHtml = `
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
       <circle cx="12" cy="13" r="4"/>
@@ -493,6 +742,22 @@ function renderImage(node, maxWidth) {
     ${node.label ? `<span class="img-label">${escapeHtml(node.label)}</span>` : ''}
   `;
 
+  // ai_prompt tooltip
+  if (node.ai_prompt) {
+    const prompt = node.ai_prompt;
+    let tipHtml = '';
+    if (typeof prompt === 'string') {
+      tipHtml = `<div class="pf"><strong>Prompt:</strong> ${escapeHtml(prompt)}</div>`;
+    } else {
+      if (prompt.prompt) tipHtml += `<div class="pf"><strong>Prompt:</strong> ${escapeHtml(prompt.prompt)}</div>`;
+      if (prompt.negative) tipHtml += `<div class="pf"><strong>Negative:</strong> ${escapeHtml(prompt.negative)}</div>`;
+      if (prompt.style) tipHtml += `<div class="pf"><strong>Style:</strong> ${escapeHtml(prompt.style)}</div>`;
+      if (prompt.aspect_ratio) tipHtml += `<div class="pf"><strong>Ratio:</strong> ${escapeHtml(prompt.aspect_ratio)}</div>`;
+    }
+    imgHtml += `<div class="ai-prompt-tip">${tipHtml}</div>`;
+  }
+
+  div.innerHTML = imgHtml;
   return div;
 }
 

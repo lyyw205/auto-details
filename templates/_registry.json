@@ -20,6 +20,16 @@
       "category": "레퍼런스",
       "source": "reference_analysis",
       "created": "2026-02-10"
+    },
+    {
+      "id": "ref-maru",
+      "file": "ref-maru.template.json",
+      "name": "MARU 랜딩페이지 기반 템플릿",
+      "description": "기업형 랜딩페이지. 지그재그 split 패턴, 중간 CTA 배너, 감성 이미지. 화이트 기반 미니멀 클린.",
+      "section_count": 7,
+      "category": "레퍼런스",
+      "source": "reference_analysis",
+      "created": "2026-02-10"
     }
   ]
 }

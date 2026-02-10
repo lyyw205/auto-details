@@ -1,0 +1,44 @@
+{
+  "reference": "REFERENCE2.png",
+  "report_date": "2026-02-10",
+  "total_sections": 7,
+  "unmapped_count": 3,
+  "unmapped_sections": [
+    {
+      "position": 2,
+      "description": "핵심 수치 3개를 큰 숫자로 시각적 강조하는 통계 섹션. 방문자 수, 육성 기업 수, 이벤트 수를 대형 타이포그래피로 표시하여 신뢰감과 규모감을 전달.",
+      "visual_type": "3열 수치 그리드, 큰 숫자 + 단위 + 라벨, 센터 정렬",
+      "content_summary": "2,148,817명 방문자 / 392개 육성 기업 / 10,850개 창업관련 이벤트",
+      "suggested_id": "StatsHighlight",
+      "suggested_category": "trust",
+      "suggested_name": "핵심 수치 강조",
+      "suggested_keywords": ["숫자", "통계", "수치", "실적", "성과", "누적", "건수", "in numbers"],
+      "suggested_visual_cues": ["큰 숫자 나열", "3열 그리드", "수치 강조 텍스트", "단위 분리", "센터 정렬"],
+      "confidence": 0.15
+    },
+    {
+      "position": 5,
+      "description": "컴팩트한 가로형 CTA 배너. 어두운 올리브 배경색 위 좌측 텍스트(제목+설명) + 우측 액션 버튼. 페이지 중간에 삽입되어 전환을 유도하는 미니 배너.",
+      "visual_type": "다크 배경 수평 배너, 좌텍스트 + 우버튼, 컴팩트(120px 높이)",
+      "content_summary": "마루투어 예약 신청 안내 + '마루투어 예약 신청하기' 녹색 버튼",
+      "suggested_id": "CTABanner",
+      "suggested_category": "conversion",
+      "suggested_name": "중간 CTA 배너",
+      "suggested_keywords": ["배너", "CTA", "예약", "신청", "지금", "바로", "투어"],
+      "suggested_visual_cues": ["어두운 배경 배너", "좌우 배치", "액션 버튼", "컴팩트 높이", "풀 와이드"],
+      "confidence": 0.2
+    },
+    {
+      "position": 6,
+      "description": "이벤트/프로그램 참여 안내 섹션. 제목 + 설명 텍스트 + 듀얼 버튼(아웃라인 + 필드) 구성. 간결한 텍스트 중심으로 이벤트 참여와 등록을 유도.",
+      "visual_type": "텍스트 + 듀얼 버튼(아웃라인/필드), 좌측 정렬, 화이트 배경",
+      "content_summary": "MARU 이벤트 참여 안내, '이벤트 더보기' 아웃라인 버튼 + '이벤트를 내려하기' 다크 버튼",
+      "suggested_id": "EventPromo",
+      "suggested_category": "conversion",
+      "suggested_name": "이벤트/프로그램 안내",
+      "suggested_keywords": ["이벤트", "프로그램", "참여", "행사", "모집", "신청", "기회"],
+      "suggested_visual_cues": ["듀얼 버튼", "좌측 정렬 텍스트", "간결한 CTA", "화이트 배경", "아웃라인+필드 버튼 조합"],
+      "confidence": 0.15
+    }
+  ]
+}

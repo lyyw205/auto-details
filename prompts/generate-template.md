@@ -165,7 +165,121 @@ v3.0 형식의 `.template.json` 파일
 }
 ```
 
-### 6. 기능 상세 섹션 처리
+### 6. Composition 정보 보존
+
+분석 결과의 `composition` 정보를 템플릿에 그대로 보존합니다.
+
+#### 6-1. `stack` composition (기본값)
+
+composition이 `stack`이거나 명시되지 않은 경우, 기존 방식대로 변환합니다.
+`composition` 필드는 생략 가능 (하위 호환).
+
+```json
+{
+  "composition": "stack",
+  "layout": { "..." },
+  "required_elements": [ "..." ]
+}
+```
+
+#### 6-2. `composed` composition (9분할 자유 배치)
+
+분석의 `layers` 배열을 그대로 보존합니다:
+
+```json
+{
+  "composition": "composed",
+  "layout": {
+    "height": 600,
+    "background": "#1A1A2E"
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Background_Image",
+        "role": "배경 이미지",
+        "ai_prompt": {
+          "prompt": "...",
+          "style": "background_only",
+          "aspect_ratio": "16:9"
+        }
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL:BC",
+      "element": {
+        "type": "TEXT",
+        "name": "Main_Copy",
+        "role": "메인 카피",
+        "fontSize": 42,
+        "fontWeight": 700
+      }
+    }
+  ]
+}
+```
+
+- region 코드는 분석 결과 그대로 유지
+- zIndex 순서 보존
+- layers 내 element의 속성도 `required_elements` 변환 규칙과 동일하게 적용
+
+#### 6-3. `split` composition (2분할 레이아웃)
+
+분석의 `split_detail`을 구조화합니다:
+
+```json
+{
+  "composition": "split",
+  "direction": "horizontal",
+  "ratio": [1, 1],
+  "left": {
+    "valign": "MC",
+    "required_elements": [
+      { "type": "TEXT", "name": "Title", "role": "제목", "fontSize": 32, "fontWeight": 700 },
+      { "type": "TEXT", "name": "Desc", "role": "설명", "fontSize": 16 }
+    ]
+  },
+  "right": {
+    "valign": "MC",
+    "required_elements": [
+      { "type": "IMAGE_AREA", "name": "Feature_Image", "role": "기능 이미지", "height": 300 }
+    ]
+  }
+}
+```
+
+- `direction`: "horizontal" 또는 "vertical"
+- `ratio`: 분할 비율 (분석 결과에서 추정)
+- 각 패널의 `valign`: 9분할 코드 중 세로 위치 (MC = 중앙, TC = 상단, BC = 하단)
+
+#### 6-4. ai_prompt 보존 규칙
+
+- 분석에서 생성된 `ai_prompt` 객체를 **템플릿에 그대로 보존**
+- `prompt` 내 구체적 제품명은 `[product]` 플레이스홀더로 치환
+  - 예: `"Logitech K120 keyboard"` → `"[product]"`
+- `style`, `negative`, `aspect_ratio`는 그대로 유지
+
+```json
+{
+  "type": "IMAGE_AREA",
+  "name": "Main_Product_Image",
+  "role": "메인 제품 이미지",
+  "ai_prompt": {
+    "prompt": "Professional product photography of [product], front view, centered, white seamless background, studio lighting, 8k",
+    "negative": "text, watermark, logo, blurry, low quality",
+    "style": "product_hero",
+    "aspect_ratio": "4:3"
+  },
+  "height": 500,
+  "placeholderColor": "#E8E8E8"
+}
+```
+
+### 7. 기능 상세 섹션 처리
 
 레퍼런스에서 기능 상세 설명이 반복 패턴으로 나타나는 경우:
 
@@ -215,3 +329,7 @@ v3.0 형식의 `.template.json` 파일
 - [ ] 섹션 order가 연속적인가?
 - [ ] 폰트 크기가 14px 이상인가?
 - [ ] 높이가 50px 단위로 반올림되었는가?
+- [ ] `composed` 섹션에 `layers` 배열과 `region` 코드가 있는가?
+- [ ] `split` 섹션에 `direction`, `ratio`, 양쪽 패널 데이터가 있는가?
+- [ ] 모든 IMAGE_AREA에 `ai_prompt` 객체가 있는가?
+- [ ] `ai_prompt.prompt` 내 제품명이 `[product]` 플레이스홀더로 치환되었는가?

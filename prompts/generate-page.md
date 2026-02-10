@@ -49,7 +49,9 @@
 
 ### 2. 섹션 생성 규칙
 
-각 섹션은 템플릿의 layout 속성을 기반으로 생성합니다:
+각 섹션은 템플릿의 `composition` 타입에 따라 구조가 달라집니다.
+
+#### 2-1. `stack` composition (기본값)
 
 ```json
 {
@@ -64,6 +66,75 @@
   "children": [ "...요소들..." ]
 }
 ```
+
+#### 2-2. `composed` composition (9분할 자유 배치)
+
+```json
+{
+  "name": "Section_[순서번호]_[taxonomy_id]",
+  "composition": "composed",
+  "height": "템플릿 layout.height",
+  "background": "hex로 변환",
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Background_Image",
+        "label": "구체적 한글 설명",
+        "ai_prompt": { "prompt": "...", "style": "...", "aspect_ratio": "..." },
+        "placeholderColor": "#2A2A2A"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL:BC",
+      "element": {
+        "type": "TEXT",
+        "name": "Main_Copy",
+        "content": "실제 카피",
+        "fontSize": 42,
+        "fontWeight": 700,
+        "color": "#FFFFFF"
+      }
+    }
+  ]
+}
+```
+
+- `children` 대신 `layers` 배열 사용
+- 각 layer에 `zIndex`, `region`, `element` 포함
+- region은 9분할 그리드 코드 (TL~BR, 스팬: "TL:BR")
+
+#### 2-3. `split` composition (2분할 레이아웃)
+
+```json
+{
+  "name": "Section_[순서번호]_[taxonomy_id]",
+  "composition": "split",
+  "height": "템플릿 layout.height",
+  "background": "hex로 변환",
+  "direction": "horizontal",
+  "ratio": [1, 1],
+  "left": {
+    "valign": "MC",
+    "children": [
+      { "type": "TEXT", "name": "Title", "content": "실제 카피", "fontSize": 32, "fontWeight": 700, "color": "#111" },
+      { "type": "TEXT", "name": "Desc", "content": "설명 텍스트", "fontSize": 16, "fontWeight": 400, "color": "#666" }
+    ]
+  },
+  "right": {
+    "valign": "MC",
+    "children": [
+      { "type": "IMAGE_AREA", "name": "Feature_Image", "label": "기능 이미지 설명", "width": 360, "height": 270 }
+    ]
+  }
+}
+```
+
+- `children` 대신 `left`/`right` (horizontal) 또는 `top`/`bottom` (vertical) 사용
+- 각 패널은 `valign` + `children` 구조
 
 #### 섹션명 규칙
 
@@ -106,6 +177,12 @@ taxonomy의 `required_elements`를 참고하여 실제 콘텐츠를 채웁니다
   "type": "IMAGE_AREA",
   "name": "Main_Product_Image",
   "label": "이미지 설명 (한글, 구체적으로)",
+  "ai_prompt": {
+    "prompt": "Professional product photography of [제품명 영문], front view, white background, studio lighting, 8k",
+    "negative": "text, watermark, logo, blurry, low quality",
+    "style": "product_hero",
+    "aspect_ratio": "4:3"
+  },
   "width": 760,
   "height": 500,
   "placeholderColor": "#2A2A2A"
@@ -113,8 +190,34 @@ taxonomy의 `required_elements`를 참고하여 실제 콘텐츠를 채웁니다
 ```
 
 - **label**: 어떤 이미지가 들어갈지 구체적으로 한글 설명
+- **ai_prompt**: AI 이미지 생성을 위한 프롬프트 (아래 규칙 참조)
 - **placeholderColor**: 다크 배경 → `#2A2A2A`, 밝은 배경 → `#E8E8E8`
 - **cornerRadius**: 필요 시 추가
+
+#### ai_prompt 커스터마이징 규칙
+
+템플릿의 `ai_prompt`를 실제 제품 정보에 맞게 수정합니다:
+
+1. **`[product]` 플레이스홀더 치환**: 실제 제품명(영문)으로 교체
+   - 예: `"[product]"` → `"CraftVolt 20V Chainsaw"`
+2. **제품 특성 반영**: 제품의 핵심 특성을 프롬프트에 추가
+   - 예: 전동공구 → `"power tool, rugged design"`
+   - 예: 화장품 → `"luxury cosmetics, elegant packaging"`
+3. **스타일 프리셋 유지**: 템플릿의 `style` 값을 그대로 사용
+4. **비율 유지**: 템플릿의 `aspect_ratio`를 그대로 사용
+
+**스타일별 프롬프트 가이드:**
+
+| style | 프롬프트 핵심 요소 |
+|-------|-----------------|
+| `product_hero` | front/45-degree view, white/transparent background, studio lighting |
+| `product_lifestyle` | in-use scenario, natural lighting, real environment |
+| `product_detail` | macro closeup, texture detail, extreme detail |
+| `product_flat` | top-down flat lay, organized arrangement, white background |
+| `infographic` | clean design, icons, data visualization, minimal |
+| `mood` | atmospheric, brand mood, dark/warm tones, cinematic |
+| `comparison` | side-by-side, before/after, split view |
+| `background_only` | simple background, gradient, texture, space for text overlay |
 
 #### 버튼 요소
 
@@ -178,9 +281,12 @@ taxonomy의 `required_elements`를 참고하여 실제 콘텐츠를 채웁니다
 
 - [ ] `width`가 860인가?
 - [ ] 모든 색상이 hex 값인가? (시맨틱 이름 아닌 실제 값)
-- [ ] 모든 섹션에 `layoutMode`, `primaryAxisAlign`, `counterAxisAlign`이 있는가?
+- [ ] `stack` 섹션에 `layoutMode`, `primaryAxisAlign`, `counterAxisAlign`이 있는가?
+- [ ] `composed` 섹션에 `layers` 배열, 각 layer에 `zIndex`, `region`, `element`가 있는가?
+- [ ] `split` 섹션에 `direction`, `ratio`, 양쪽 패널(`left`/`right` 또는 `top`/`bottom`)이 있는가?
 - [ ] 모든 TEXT 요소에 `type`, `name`, `content`, `fontSize`, `fontWeight`, `color`가 있는가?
-- [ ] 모든 IMAGE_AREA에 `label`, `width`, `height`, `placeholderColor`가 있는가?
+- [ ] 모든 IMAGE_AREA에 `label`, `ai_prompt`, `width`, `height`, `placeholderColor`가 있는가?
+- [ ] `ai_prompt.prompt` 내 `[product]`가 실제 제품명으로 치환되었는가?
 - [ ] 긴 텍스트에 `width: 760`이 설정되었는가?
 - [ ] `\n` 줄바꿈 후 들여쓰기가 없는가?
 - [ ] 섹션 name이 `Section_XX_[ID]` 형식인가?
