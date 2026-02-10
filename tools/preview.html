@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>상세페이지 미리보기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    min-height: 100vh;
+  }
+
+  /* --- Toolbar --- */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .toolbar h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-right: 12px;
+    white-space: nowrap;
+  }
+  .toolbar button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .toolbar button:hover { opacity: 0.85; }
+  .btn-primary {
+    background: #4f8ff7;
+    color: #fff;
+  }
+  .btn-secondary {
+    background: #333;
+    color: #ccc;
+  }
+  .btn-file {
+    background: #2a2a2a;
+    color: #aaa;
+    border: 1px dashed #555 !important;
+  }
+  .toolbar .spacer { flex: 1; }
+  .toolbar .info {
+    font-size: 13px;
+    color: #888;
+  }
+
+  /* --- JSON Input Panel --- */
+  .json-panel {
+    background: #111;
+    border-bottom: 1px solid #333;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .json-panel.collapsed { display: none; }
+  .json-panel textarea {
+    width: 100%;
+    height: 180px;
+    background: #1a1a1a;
+    color: #ccc;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    resize: vertical;
+    outline: none;
+  }
+  .json-panel textarea:focus { border-color: #4f8ff7; }
+  .json-panel textarea::placeholder { color: #555; }
+
+  /* --- Preview Area --- */
+  .preview-area {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 80px;
+  }
+
+  /* --- Canvas (860px) --- */
+  .canvas {
+    width: 860px;
+    min-height: 200px;
+    background: #fff;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+
+  /* --- Empty State --- */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px;
+    color: #555;
+    text-align: center;
+  }
+  .empty-state svg { margin-bottom: 20px; opacity: 0.4; }
+  .empty-state p { font-size: 15px; line-height: 1.8; }
+
+  /* --- Error --- */
+  .error-msg {
+    background: #3a1111;
+    color: #ff6b6b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 16px 24px;
+    font-size: 13px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    display: none;
+  }
+
+  /* --- Section --- */
+  .section {
+    width: 100%;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* --- Image Placeholder --- */
+  .image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 4px;
+    color: #888;
+    font-size: 13px;
+    position: relative;
+  }
+  .image-placeholder svg {
+    opacity: 0.4;
+  }
+  .image-placeholder .img-label {
+    max-width: 80%;
+    text-align: center;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+
+  /* --- Button Node --- */
+  .btn-node {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    cursor: default;
+  }
+
+  /* --- Price Box --- */
+  .price-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border-radius: 16px;
+  }
+  .price-original {
+    font-size: 16px;
+    color: #ccc;
+    text-decoration: line-through;
+  }
+  .price-sale {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .price-discount {
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFD700;
+  }
+
+  /* --- Badge Row --- */
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .badge-item {
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* --- Complex Node Items --- */
+  .complex-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .complex-item .item-icon { font-size: 32px; }
+  .complex-item .item-title { font-size: 18px; font-weight: 600; }
+  .complex-item .item-desc { font-size: 14px; color: #666; line-height: 1.6; }
+  .complex-item .item-point { font-size: 14px; line-height: 1.5; }
+  .complex-item .item-feature { font-size: 14px; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <h1>Detail Page Preview</h1>
+  <button class="btn-file" id="btnFile">JSON file</button>
+  <button class="btn-secondary" id="btnToggleJson">JSON input</button>
+  <button class="btn-primary" id="btnRender">Render</button>
+  <div class="spacer"></div>
+  <span class="info" id="statusInfo"></span>
+</div>
+
+<!-- Hidden file input -->
+<input type="file" id="fileInput" accept=".json" style="display:none">
+
+<!-- JSON Input -->
+<div class="json-panel" id="jsonPanel">
+  <textarea id="jsonInput" placeholder="Paste layout JSON here..."></textarea>
+</div>
+
+<!-- Error -->
+<div class="error-msg" id="errorMsg"></div>
+
+<!-- Preview -->
+<div class="preview-area">
+  <div class="canvas" id="canvas">
+    <div class="empty-state" id="emptyState">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18M9 21V9"/>
+      </svg>
+      <p>
+        Load a JSON file or paste JSON, then click <strong>Render</strong>.<br>
+        Supports layout JSON generated by the detail page agent.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- DOM Refs ---
+const btnFile = document.getElementById('btnFile');
+const btnToggleJson = document.getElementById('btnToggleJson');
+const btnRender = document.getElementById('btnRender');
+const fileInput = document.getElementById('fileInput');
+const jsonPanel = document.getElementById('jsonPanel');
+const jsonInput = document.getElementById('jsonInput');
+const errorMsg = document.getElementById('errorMsg');
+const canvas = document.getElementById('canvas');
+const emptyState = document.getElementById('emptyState');
+const statusInfo = document.getElementById('statusInfo');
+
+let jsonPanelVisible = true;
+
+// --- Events ---
+btnFile.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', handleFileLoad);
+btnToggleJson.addEventListener('click', toggleJsonPanel);
+btnRender.addEventListener('click', render);
+
+// Keyboard shortcut: Ctrl/Cmd + Enter to render
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    e.preventDefault();
+    render();
+  }
+});
+
+function toggleJsonPanel() {
+  jsonPanelVisible = !jsonPanelVisible;
+  jsonPanel.classList.toggle('collapsed', !jsonPanelVisible);
+  btnToggleJson.textContent = jsonPanelVisible ? 'Hide JSON' : 'JSON input';
+}
+
+function handleFileLoad(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    jsonInput.value = ev.target.result;
+    statusInfo.textContent = `Loaded: ${file.name}`;
+    render();
+  };
+  reader.readAsText(file);
+  fileInput.value = '';
+}
+
+function showError(msg) {
+  errorMsg.textContent = msg;
+  errorMsg.style.display = 'block';
+}
+function clearError() {
+  errorMsg.style.display = 'none';
+}
+
+// --- Main Render ---
+function render() {
+  clearError();
+  const raw = jsonInput.value.trim();
+  if (!raw) {
+    showError('JSON input is empty.');
+    return;
+  }
+
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch (e) {
+    showError('JSON parse error: ' + e.message);
+    return;
+  }
+
+  // Unwrap if nested: { layout: {...} } or { data: { layout: {...} } }
+  if (data.type === 'CREATE_LAYOUT' && data.data) data = data.data.layout;
+  else if (data.layout) data = data.layout;
+
+  if (!data.children || !Array.isArray(data.children)) {
+    showError('Invalid layout: "children" array not found.');
+    return;
+  }
+
+  // Clear canvas
+  canvas.innerHTML = '';
+  emptyState?.remove();
+
+  const pageWidth = data.width || 860;
+  canvas.style.width = pageWidth + 'px';
+
+  const fontFamily = data.fontFamily || 'Inter';
+  let sectionCount = 0;
+
+  for (const section of data.children) {
+    const el = renderSection(section, pageWidth, fontFamily);
+    canvas.appendChild(el);
+    sectionCount++;
+  }
+
+  statusInfo.textContent = `${data.name || 'Untitled'} — ${sectionCount} sections`;
+
+  // Auto-collapse JSON panel after successful render
+  if (jsonPanelVisible) toggleJsonPanel();
+}
+
+// --- Section Renderer ---
+function renderSection(sec, pageWidth, fontFamily) {
+  const div = document.createElement('div');
+  div.className = 'section';
+
+  const bg = sec.background || sec.backgroundColor || '#FFFFFF';
+  applyBackground(div, bg);
+
+  const height = sec.height || 'auto';
+  if (typeof height === 'number') {
+    div.style.minHeight = height + 'px';
+  }
+
+  // Flex layout from Figma auto-layout
+  const mode = sec.layoutMode || 'VERTICAL';
+  div.style.display = 'flex';
+  div.style.flexDirection = mode === 'HORIZONTAL' ? 'row' : 'column';
+  div.style.justifyContent = mapAlign(sec.primaryAxisAlign || 'CENTER');
+  div.style.alignItems = mapAlign(sec.counterAxisAlign || 'CENTER');
+  div.style.gap = (sec.itemSpacing ?? 24) + 'px';
+
+  const pad = sec.padding || {};
+  div.style.padding = `${pad.top ?? 80}px ${pad.right ?? 60}px ${pad.bottom ?? 80}px ${pad.left ?? 60}px`;
+
+  // Render children
+  const contentWidth = pageWidth - (pad.left ?? 60) - (pad.right ?? 60);
+  if (sec.children) {
+    for (const child of sec.children) {
+      const el = renderNode(child, contentWidth, fontFamily);
+      if (el) div.appendChild(el);
+    }
+  }
+
+  return div;
+}
+
+// --- Node Renderer ---
+function renderNode(node, maxWidth, fontFamily) {
+  if (!node || !node.type) return null;
+
+  const t = node.type.toUpperCase();
+
+  switch (t) {
+    case 'TEXT':
+      return renderText(node, maxWidth, fontFamily);
+    case 'IMAGE':
+    case 'IMAGE_AREA':
+      return renderImage(node, maxWidth);
+    case 'BUTTON':
+      return renderButton(node, fontFamily);
+    case 'PRICE_BOX':
+      return renderPriceBox(node);
+    case 'STATS':
+    case 'BADGES':
+    case 'SAFETY_BADGE':
+      return renderBadges(node);
+    case 'RECTANGLE':
+      return renderRectangle(node);
+    case 'FRAME':
+    case 'SECTION':
+    case 'GRID':
+    case 'STEPS':
+    case 'STEPS_VISUAL':
+    case 'CHECKLIST':
+    case 'PRODUCTS':
+    case 'REVIEWS':
+    case 'FEATURES':
+    case 'INGREDIENTS':
+    case 'COMPARISON':
+    case 'FAQ':
+    case 'SPECS':
+      return renderComplex(node, maxWidth, fontFamily);
+    default:
+      // Fallback: render as text if content exists
+      if (node.content || node.text) {
+        return renderText(node, maxWidth, fontFamily);
+      }
+      return null;
+  }
+}
+
+// --- TEXT ---
+function renderText(node, maxWidth, fontFamily) {
+  const div = document.createElement('div');
+  const content = node.content || node.text || '';
+  div.innerHTML = escapeHtml(content).replace(/\n/g, '<br>');
+
+  const family = node.fontFamily || fontFamily || 'Inter';
+  div.style.fontFamily = `'${family}', 'Noto Sans KR', sans-serif`;
+  div.style.fontSize = (node.fontSize || 16) + 'px';
+  div.style.fontWeight = node.fontWeight || 400;
+  div.style.lineHeight = '1.5';
+  div.style.color = node.color || '#333';
+  div.style.textAlign = (node.textAlign || 'LEFT').toLowerCase();
+
+  const textWidth = node.width || Math.min(maxWidth, 800);
+  div.style.width = textWidth + 'px';
+  div.style.maxWidth = '100%';
+  div.style.wordBreak = 'keep-all';
+  div.style.overflowWrap = 'break-word';
+
+  return div;
+}
+
+// --- IMAGE ---
+function renderImage(node, maxWidth) {
+  const div = document.createElement('div');
+  div.className = 'image-placeholder';
+
+  const w = node.width || maxWidth || 760;
+  const h = node.height || 400;
+  div.style.width = w + 'px';
+  div.style.height = h + 'px';
+  div.style.maxWidth = '100%';
+  div.style.backgroundColor = node.placeholderColor || '#2A2A2A';
+
+  if (node.cornerRadius) {
+    div.style.borderRadius = node.cornerRadius + 'px';
+  }
+
+  // Camera icon
+  div.innerHTML = `
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+    ${node.label ? `<span class="img-label">${escapeHtml(node.label)}</span>` : ''}
+  `;
+
+  return div;
+}
+
+// --- BUTTON ---
+function renderButton(node, fontFamily) {
+  const div = document.createElement('div');
+  div.className = 'btn-node';
+  div.textContent = node.text || 'Button';
+
+  const family = fontFamily || 'Inter';
+  div.style.fontFamily = `'${family}', 'Noto Sans KR', sans-serif`;
+  div.style.fontSize = (node.fontSize ?? 18) + 'px';
+  div.style.color = node.color || '#6B5FD5';
+  div.style.backgroundColor = node.backgroundColor || '#fff';
+  div.style.borderRadius = (node.cornerRadius ?? 100) + 'px';
+
+  const pad = node.padding || { top: 20, bottom: 20, left: 48, right: 48 };
+  if (typeof pad === 'object') {
+    div.style.padding = `${pad.top ?? 20}px ${pad.right ?? 48}px ${pad.bottom ?? 20}px ${pad.left ?? 48}px`;
+  } else {
+    div.style.padding = pad + 'px';
+  }
+
+  return div;
+}
+
+// --- PRICE_BOX ---
+function renderPriceBox(node) {
+  const div = document.createElement('div');
+  div.className = 'price-box';
+  div.style.background = 'rgba(255,255,255,0.15)';
+  div.style.padding = '24px 48px';
+
+  if (node.original) {
+    const el = document.createElement('div');
+    el.className = 'price-original';
+    el.textContent = node.original;
+    div.appendChild(el);
+  }
+  if (node.sale) {
+    const el = document.createElement('div');
+    el.className = 'price-sale';
+    el.textContent = node.sale;
+    div.appendChild(el);
+  }
+  if (node.discount) {
+    const el = document.createElement('div');
+    el.className = 'price-discount';
+    el.textContent = node.discount;
+    div.appendChild(el);
+  }
+
+  return div;
+}
+
+// --- BADGES ---
+function renderBadges(node) {
+  const div = document.createElement('div');
+  div.className = 'badge-row';
+
+  const items = node.items || [];
+  for (const item of items) {
+    const badge = document.createElement('span');
+    badge.className = 'badge-item';
+    badge.textContent = typeof item === 'string' ? item : String(item);
+    div.appendChild(badge);
+  }
+
+  return div;
+}
+
+// --- RECTANGLE ---
+function renderRectangle(node) {
+  const div = document.createElement('div');
+  div.style.width = (node.width || 100) + 'px';
+  div.style.height = (node.height || 100) + 'px';
+  div.style.backgroundColor = node.color || node.background || '#ccc';
+  if (node.cornerRadius) {
+    div.style.borderRadius = node.cornerRadius + 'px';
+  }
+  return div;
+}
+
+// --- COMPLEX (Grid, Steps, FAQ, etc.) ---
+function renderComplex(node, maxWidth, fontFamily) {
+  const wrapper = document.createElement('div');
+  wrapper.style.display = 'flex';
+  wrapper.style.flexWrap = 'wrap';
+  wrapper.style.gap = (node.gap || 24) + 'px';
+
+  // If children exist (FRAME with nested nodes), render recursively
+  if (node.children && Array.isArray(node.children)) {
+    const mode = node.layoutMode || (node.columns > 1 ? 'HORIZONTAL' : 'VERTICAL');
+    wrapper.style.flexDirection = mode === 'HORIZONTAL' ? 'row' : 'column';
+    wrapper.style.alignItems = mapAlign(node.counterAxisAlign || 'CENTER');
+    wrapper.style.justifyContent = mapAlign(node.primaryAxisAlign || 'FLEX_START');
+    wrapper.style.width = '100%';
+
+    if (node.padding) {
+      const p = node.padding;
+      if (typeof p === 'object') {
+        wrapper.style.padding = `${p.top ?? 0}px ${p.right ?? 0}px ${p.bottom ?? 0}px ${p.left ?? 0}px`;
+      }
+    }
+    if (node.background) {
+      applyBackground(wrapper, node.background);
+    }
+    if (node.cornerRadius) {
+      wrapper.style.borderRadius = node.cornerRadius + 'px';
+    }
+
+    for (const child of node.children) {
+      const el = renderNode(child, maxWidth, fontFamily);
+      if (el) wrapper.appendChild(el);
+    }
+    return wrapper;
+  }
+
+  // Items-based layout (GRID, FAQ, etc.)
+  const isHorizontal = (node.columns && node.columns > 1) || node.type === 'COMPARISON';
+  wrapper.style.flexDirection = isHorizontal ? 'row' : 'column';
+
+  const items = node.items || [];
+  const columns = node.columns || (isHorizontal ? items.length : 1);
+  const itemWidth = isHorizontal
+    ? `calc(${100 / columns}% - ${(node.gap || 24) * (columns - 1) / columns}px)`
+    : '100%';
+
+  const itemBg = node.itemBackground || '#F5F0ED';
+  const itemRadius = node.itemCornerRadius ?? 12;
+  const itemPad = node.itemPadding ?? 24;
+
+  for (const item of items) {
+    const card = document.createElement('div');
+    card.className = 'complex-item';
+    card.style.backgroundColor = itemBg;
+    card.style.borderRadius = itemRadius + 'px';
+    card.style.width = itemWidth;
+    card.style.gap = (node.itemSpacing ?? 12) + 'px';
+
+    if (typeof itemPad === 'object') {
+      card.style.padding = `${itemPad.top ?? 24}px ${itemPad.right ?? 24}px ${itemPad.bottom ?? 24}px ${itemPad.left ?? 24}px`;
+    } else {
+      card.style.padding = itemPad + 'px';
+    }
+
+    if (typeof item === 'string') {
+      const t = document.createElement('div');
+      t.className = 'item-title';
+      t.textContent = item;
+      card.appendChild(t);
+    } else if (typeof item === 'object') {
+      if (item.icon) {
+        const icon = document.createElement('div');
+        icon.className = 'item-icon';
+        icon.textContent = item.icon;
+        card.appendChild(icon);
+      }
+      if (item.title || item.name || item.q) {
+        const title = document.createElement('div');
+        title.className = 'item-title';
+        title.textContent = item.title || item.name || `Q. ${item.q}`;
+        card.appendChild(title);
+      }
+      if (item.desc || item.text || item.content || item.a || item.effect) {
+        const desc = document.createElement('div');
+        desc.className = 'item-desc';
+        const txt = item.desc || item.text || item.content || (item.a ? `A. ${item.a}` : '') || item.effect || '';
+        desc.innerHTML = escapeHtml(txt).replace(/\n/g, '<br>');
+        card.appendChild(desc);
+      }
+      if (item.points && Array.isArray(item.points)) {
+        for (const p of item.points) {
+          const pt = document.createElement('div');
+          pt.className = 'item-point';
+          pt.textContent = '\u2022 ' + p;
+          card.appendChild(pt);
+        }
+      }
+      if (item.features && Array.isArray(item.features)) {
+        for (const f of item.features) {
+          const ft = document.createElement('div');
+          ft.className = 'item-feature';
+          ft.textContent = '\u2713 ' + f;
+          card.appendChild(ft);
+        }
+      }
+    }
+
+    wrapper.appendChild(card);
+  }
+
+  return wrapper;
+}
+
+// --- Utilities ---
+
+function mapAlign(val) {
+  switch (val) {
+    case 'CENTER': return 'center';
+    case 'MIN':
+    case 'FLEX_START': return 'flex-start';
+    case 'MAX':
+    case 'FLEX_END': return 'flex-end';
+    case 'SPACE_BETWEEN': return 'space-between';
+    case 'SPACE_AROUND': return 'space-around';
+    default: return 'center';
+  }
+}
+
+function applyBackground(el, bg) {
+  if (bg.startsWith('gradient:')) {
+    const colors = bg.replace('gradient:', '').split('-');
+    el.style.background = `linear-gradient(to bottom, ${colors.join(', ')})`;
+  } else {
+    el.style.backgroundColor = bg;
+  }
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(str));
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>
