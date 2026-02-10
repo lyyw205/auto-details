@@ -1,0 +1,619 @@
+{
+  "name": "클린에어 스마트 공기청정기 A1 상세페이지",
+  "width": 860,
+  "fontFamily": "Inter",
+  "template": "ref-logitech-k120",
+  "brand_color": "#00A8E8",
+  "children": [
+    {
+      "name": "Section_01_Hook",
+      "height": 1000,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Brand_Label",
+          "content": "CLEAN AIR",
+          "fontSize": 14,
+          "fontWeight": 500,
+          "color": "#00A8E8",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Product_Category",
+          "content": "클린에어 스마트 공기청정기 A1",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Sub_Copy",
+          "content": "4단계 필터 시스템으로 초미세먼지 99.9% 제거\n60평형까지 넓은 공간을 깨끗하게",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#888888",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Main_Product_Image",
+          "label": "스마트 공기청정기 A1 정면",
+          "width": 760,
+          "height": 500,
+          "placeholderColor": "#E8E8E8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_02_WhatIsThis",
+      "height": 800,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Brand_Name",
+          "content": "CLEAN AIR",
+          "fontSize": 24,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Model_Name",
+          "content": "A1",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "One_Liner",
+          "content": "우리 가족이 숨 쉬는 공기를 책임지는 스마트 공기청정기",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#888888",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Product_Angle_View",
+          "label": "공기청정기 A1 측면 각도 뷰",
+          "width": 760,
+          "height": 350,
+          "placeholderColor": "#E8E8E8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_03_Feature1_Detail",
+      "height": 800,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Feature_Title",
+          "content": "4단계 필터 시스템",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_Desc",
+          "content": "프리필터 → 탈취필터 → H13 헤파필터 → 항균필터\n초미세먼지(PM 0.3)까지 99.9% 제거합니다",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Filter_System_Image",
+          "label": "4단계 필터 구조 분해도",
+          "width": 760,
+          "height": 350,
+          "placeholderColor": "#E8E8E8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_04_Feature2_Detail",
+      "height": 800,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Feature_Title",
+          "content": "스마트 자동 모드",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_Desc",
+          "content": "내장 센서가 실시간으로 공기질을 감지하여\n풍량을 자동으로 조절합니다",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Smart_Mode_Image",
+          "label": "공기질 센서 및 LED 인디케이터",
+          "width": 760,
+          "height": 350,
+          "placeholderColor": "#E8E8E8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_05_Feature3_Detail",
+      "height": 800,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Feature_Title",
+          "content": "수면 모드 20dB 이하",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_Desc",
+          "content": "도서관보다 조용한 20dB 저소음 설계로\n아이가 자는 밤에도 안심하고 사용하세요",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Silent_Mode_Image",
+          "label": "수면 모드 작동 장면",
+          "width": 760,
+          "height": 350,
+          "placeholderColor": "#E8E8E8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_06_FeaturesOverview",
+      "height": 1100,
+      "background": "#1A1A1A",
+      "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+      "itemSpacing": 24,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Brand_Name",
+          "content": "CLEAN AIR",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Model_Name",
+          "content": "A1",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Slogan",
+          "content": "당신의 공간을 가장 깨끗하게",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#CCCCCC",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Product_Dark_Image",
+          "label": "공기청정기 A1 다크 배경",
+          "width": 760,
+          "height": 350,
+          "placeholderColor": "#2A2A2A"
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_01",
+          "content": "01  4단계 필터 시스템 — 초미세먼지 99.9% 제거",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_02",
+          "content": "02  스마트 자동 모드 — 공기질 감지 자동 풍량 조절",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_03",
+          "content": "03  저소음 설계 — 수면 모드 20dB 이하",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_04",
+          "content": "04  넓은 커버리지 — 60평형까지 사용 가능",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_05",
+          "content": "05  필터 교체 알림 — 앱으로 필터 상태 실시간 확인",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Feature_06",
+          "content": "06  에너지 절약 — 24시간 사용해도 월 3,000원",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        }
+      ]
+    },
+
+    {
+      "name": "Section_07_Differentiator",
+      "height": 900,
+      "background": "#222222",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Badge",
+          "content": "업계 최대 커버리지 + 최저 소음",
+          "fontSize": 14,
+          "fontWeight": 600,
+          "color": "#00A8E8",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Diff_Title",
+          "content": "60평형 커버리지,\n그런데 20dB 이하",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "TEXT",
+          "name": "Diff_Desc",
+          "content": "일반 공기청정기 대비 2배 넓은 공간을 커버하면서도\n소음은 절반 수준입니다.\n넓은 거실부터 아이 방까지, 하나로 충분합니다.",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#AAAAAA",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Coverage_Comparison",
+          "label": "커버리지 비교 인포그래픽",
+          "width": 760,
+          "height": 300,
+          "placeholderColor": "#2A2A2A"
+        },
+        {
+          "type": "TEXT",
+          "name": "Compare_Others",
+          "content": "일반 공기청정기: 30평형 / 35dB",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Compare_Ours",
+          "content": "클린에어 A1: 60평형 / 20dB",
+          "fontSize": 16,
+          "fontWeight": 600,
+          "color": "#00A8E8",
+          "textAlign": "CENTER"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_08_Safety",
+      "height": 650,
+      "background": "#00A8E8",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 20,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Safety_Title",
+          "content": "안전하고 믿을 수 있는 공기청정",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Safety_Desc",
+          "content": "KC 안전인증 획득\nCA 인증 (한국공기청정협회)\n전자파 적합성 인증\n어린이 안전 잠금 기능",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "color": "#E0F4FF",
+          "textAlign": "CENTER",
+          "width": 760
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Cert_Badges",
+          "label": "인증 마크 (KC / CA / 전자파)",
+          "width": 400,
+          "height": 80,
+          "placeholderColor": "#0090C8"
+        }
+      ]
+    },
+
+    {
+      "name": "Section_09_ProductSpec",
+      "height": 700,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Spec_Title",
+          "content": "제품 크기",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Dimension_Image",
+          "label": "공기청정기 정면/측면 치수 인포그래픽",
+          "width": 760,
+          "height": 400,
+          "placeholderColor": "#E8E8E8"
+        },
+        {
+          "type": "TEXT",
+          "name": "Dimension_Labels",
+          "content": "가로 380mm × 세로 380mm × 높이 620mm / 무게 8.5kg",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER",
+          "width": 760
+        }
+      ]
+    },
+
+    {
+      "name": "Section_10_SetContents",
+      "height": 600,
+      "background": "#FFFFFF",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Contents_Title",
+          "content": "패키지 구성품",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "#222222",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Package_Image",
+          "label": "구성품 전체 이미지",
+          "width": 760,
+          "height": 300,
+          "placeholderColor": "#E8E8E8"
+        },
+        {
+          "type": "TEXT",
+          "name": "Contents_List",
+          "content": "공기청정기 본체 × 1 / 복합필터 (기본 장착) × 1\n전원 어댑터 × 1 / 사용설명서 × 1 / 보증서 × 1",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#666666",
+          "textAlign": "CENTER",
+          "width": 760
+        }
+      ]
+    },
+
+    {
+      "name": "Section_11_SpecText",
+      "height": 550,
+      "background": "#FFFFFF",
+      "padding": { "top": 40, "bottom": 40, "left": 50, "right": 50 },
+      "itemSpacing": 12,
+      "primaryAxisAlign": "MIN",
+      "counterAxisAlign": "MIN",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Spec_Title",
+          "content": "제품 사양",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "name": "Spec_Table",
+          "content": "제품명: 스마트 공기청정기 A1\n브랜드: 클린에어 (CLEAN AIR)\n모델명: CA-A1-WH\n정격전압: AC 220V / 60Hz\n소비전력: 50W\n적용면적: 최대 60평형 (198m²)\n필터 구성: 프리필터 + 탈취필터 + H13 헤파필터 + 항균필터\n소음 (수면모드): 20dB 이하\n소음 (최대): 52dB\n연결: Wi-Fi (2.4GHz), 전용 앱 지원\n크기: 380 × 380 × 620mm\n무게: 8.5kg\n색상: 화이트\n제조국: 대한민국\n보증기간: 2년 무상 보증",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#444444",
+          "textAlign": "LEFT",
+          "width": 760
+        }
+      ]
+    },
+
+    {
+      "name": "Section_12_Warranty",
+      "height": 500,
+      "background": "#333333",
+      "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+      "itemSpacing": 16,
+      "layoutMode": "VERTICAL",
+      "primaryAxisAlign": "CENTER",
+      "counterAxisAlign": "CENTER",
+      "children": [
+        {
+          "type": "TEXT",
+          "name": "Brand_Logo_Text",
+          "content": "CLEAN AIR",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "#00A8E8",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Warranty_Info",
+          "content": "2년 무상 보증 / 필터 정기 배송 서비스",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#CCCCCC",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "CS_Title",
+          "content": "클린에어 고객센터",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#CCCCCC",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Phone_Number",
+          "content": "1588-0000",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "CS_Hours",
+          "content": "평일 09:00 ~ 18:00 (주말/공휴일 휴무)",
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#999999",
+          "textAlign": "CENTER"
+        },
+        {
+          "type": "TEXT",
+          "name": "Price_Info",
+          "content": "599,000원",
+          "fontSize": 28,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "textAlign": "CENTER"
+        }
+      ]
+    }
+  ]
+}

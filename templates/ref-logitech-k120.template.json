@@ -1,0 +1,358 @@
+{
+  "type": "DETAIL_PAGE_TEMPLATE",
+  "version": "3.1",
+  "name": "로지텍 K120 기반 템플릿",
+  "description": "로지텍 K120 쿠팡 상세페이지 분석 기반 템플릿. 미니멀 클린 스타일, 12섹션, taxonomy v1.0 매핑 완료.",
+  "created": "2026-02-10",
+  "updated": "2026-02-10",
+  "source": {
+    "type": "reference_analysis",
+    "based_on": "CaptureX_2026-02-10_134148_www.coupang.com.png",
+    "analysis_date": "2026-02-10",
+    "analysis_file": "output/analysis-logitech-k120.json",
+    "taxonomy_version": "1.0"
+  },
+
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 760,
+    "default_padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+    "default_item_spacing": 16,
+    "default_content_alignment": "CENTER",
+    "font_family": "Inter"
+  },
+
+  "color_system": {
+    "brand_main": "#00B050",
+    "accent": "#333333",
+    "dark_1": "#1A1A1A",
+    "dark_2": "#111111",
+    "light_1": "#FFFFFF",
+    "light_2": "#F5F5F5",
+    "dark_text": "#222222",
+    "light_text": "#FFFFFF",
+    "sub_text": "#666666",
+    "muted_text": "#888888",
+    "image_placeholder": "#E8E8E8"
+  },
+
+  "typography": {
+    "main_copy": { "fontSize": 48, "fontWeight": 700 },
+    "section_title": { "fontSize": 28, "fontWeight": 700 },
+    "sub_title": { "fontSize": 24, "fontWeight": 500 },
+    "body": { "fontSize": 18, "fontWeight": 400 },
+    "small": { "fontSize": 14, "fontWeight": 400 }
+  },
+
+  "taxonomy_profile": {
+    "section_ids": ["Hook", "WhatIsThis", "FeatureDetail", "FeatureDetail", "FeatureDetail", "BrandName", "FeatureDetail", "FeatureDetail", "Differentiator", "SetContents", "ProductSpec", "Warranty"],
+    "category_distribution": {
+      "intro": 2,
+      "problem": 0,
+      "features": 7,
+      "trust": 2,
+      "conversion": 0
+    },
+    "feature_detail_count": 5,
+    "style_tags": ["미니멀", "클린", "화이트 기조", "이미지 중심", "텍스트 최소화"]
+  },
+
+  "sections": [
+    {
+      "order": 1,
+      "id": "Section_01_Hook",
+      "taxonomy_id": "Hook",
+      "name": "Hook (제품 타이틀 히어로)",
+      "purpose": "브랜드 로고, 제품명, 간략 소개, 메인 제품 이미지로 첫인상",
+      "layout": {
+        "height": 900,
+        "background": "#FFFFFF",
+        "padding": { "top": 40, "bottom": 40, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "IMAGE", "name": "Brand_Logo", "role": "브랜드 로고 이미지", "height": 40 },
+        { "type": "TEXT", "name": "Product_Category", "role": "제품 카테고리/풀네임", "fontSize": 16, "fontWeight": 400, "color": "#666666" },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "제품 간략 소개 텍스트", "fontSize": 14, "fontWeight": 400, "color": "#888888" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "메인 제품 이미지 (정면)", "height": 400 }
+      ],
+      "copywriting_guide": "클린하고 절제된 톤. 제품명과 카테고리만으로 임팩트 전달."
+    },
+    {
+      "order": 2,
+      "id": "Section_02_WhatIsThis",
+      "taxonomy_id": "WhatIsThis",
+      "name": "WhatIsThis (브랜드+모델명 강조)",
+      "purpose": "브랜드명과 모델명을 대형 타이포로 강조하여 제품 정체성 각인",
+      "layout": {
+        "height": 800,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Brand_Name", "role": "브랜드명", "fontSize": 24, "fontWeight": 400, "color": "#666666" },
+        { "type": "TEXT", "name": "Model_Name", "role": "모델명 (대형 텍스트)", "fontSize": 48, "fontWeight": 700, "color": "#222222" },
+        { "type": "TEXT", "name": "One_Liner", "role": "제품 한줄 정의", "fontSize": 16, "fontWeight": 400, "color": "#888888" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "제품 이미지 (각도 뷰)", "height": 350 }
+      ],
+      "copywriting_guide": "모델명을 가장 크게 배치. 브랜드 인지도를 활용한 간결한 소개."
+    },
+    {
+      "order": 3,
+      "id": "Section_03_Feature1_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 1,
+      "name": "Feature1 Detail (기능 1 상세)",
+      "purpose": "첫 번째 핵심 기능 상세 설명",
+      "layout": {
+        "height": 700,
+        "background": "#F5F5F5",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 24, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명", "fontSize": 14, "fontWeight": 400, "color": "#666666" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 시연 이미지", "height": 350 }
+      ],
+      "copywriting_guide": "제목 + 1~2줄 설명 + 이미지. 텍스트는 최소화하고 이미지로 전달."
+    },
+    {
+      "order": 4,
+      "id": "Section_04_Feature2_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 2,
+      "name": "Feature2 Detail (기능 2 상세)",
+      "purpose": "두 번째 핵심 기능 상세 설명",
+      "layout": {
+        "height": 700,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 24, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명", "fontSize": 14, "fontWeight": 400, "color": "#666666" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 시연 이미지", "height": 350 }
+      ],
+      "copywriting_guide": "기능 1과 동일한 레이아웃 패턴. 배경색 교차로 시각 구분."
+    },
+    {
+      "order": 5,
+      "id": "Section_05_Feature3_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 3,
+      "name": "Feature3 Detail (기능 3 상세)",
+      "purpose": "세 번째 핵심 기능 상세 설명",
+      "layout": {
+        "height": 700,
+        "background": "#F5F5F5",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 24, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명", "fontSize": 14, "fontWeight": 400, "color": "#666666" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 시연 이미지", "height": 350 }
+      ],
+      "copywriting_guide": "밝은 배경 마지막 기능 섹션. 다음 다크 전환 전 마무리."
+    },
+    {
+      "order": 6,
+      "id": "Section_06_BrandName",
+      "taxonomy_id": "BrandName",
+      "name": "BrandName (브랜드 감성 전환 - 다크)",
+      "purpose": "다크 배경으로 전환하며 브랜드명 + 슬로건으로 분위기 리셋",
+      "layout": {
+        "height": 900,
+        "background": "#1A1A1A",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Brand_Name", "role": "브랜드명", "fontSize": 20, "fontWeight": 400, "color": "#AAAAAA" },
+        { "type": "TEXT", "name": "Model_Name", "role": "모델명 (대형)", "fontSize": 48, "fontWeight": 700, "color": "#FFFFFF" },
+        { "type": "TEXT", "name": "Slogan", "role": "제품 슬로건/핵심 메시지", "fontSize": 16, "fontWeight": 400, "color": "#CCCCCC" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "제품 라이프스타일 이미지 (다크 배경)", "height": 400 }
+      ],
+      "copywriting_guide": "다크 배경 전환으로 시각적 클라이맥스. 브랜드 감성과 슬로건 전달."
+    },
+    {
+      "order": 7,
+      "id": "Section_07_Feature4_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 4,
+      "name": "Feature4 Detail (기능 4 상세 - 다크)",
+      "purpose": "네 번째 핵심 기능 상세 설명 (다크 배경 지속)",
+      "layout": {
+        "height": 700,
+        "background": "#111111",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 24, "fontWeight": 600, "color": "#FFFFFF" },
+        { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명", "fontSize": 14, "fontWeight": 400, "color": "#AAAAAA" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 시연 이미지", "height": 300 }
+      ],
+      "copywriting_guide": "다크 배경에서의 기능 설명. 밝은 텍스트 사용."
+    },
+    {
+      "order": 8,
+      "id": "Section_08_Feature5_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 5,
+      "name": "Feature5 Detail (기능 5 상세 - 다크)",
+      "purpose": "다섯 번째 핵심 기능 상세 설명 (다크 배경 지속)",
+      "layout": {
+        "height": 700,
+        "background": "#1A1A1A",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 24, "fontWeight": 600, "color": "#FFFFFF" },
+        { "type": "TEXT", "name": "Feature_Desc", "role": "기능 설명", "fontSize": 14, "fontWeight": 400, "color": "#AAAAAA" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 시연 이미지", "height": 300 }
+      ],
+      "copywriting_guide": "다크 배경 연속. 기능 4와 동일 패턴."
+    },
+    {
+      "order": 9,
+      "id": "Section_09_Differentiator",
+      "taxonomy_id": "Differentiator",
+      "name": "Differentiator (핵심 차별화 - 그린 포인트)",
+      "purpose": "브랜드 그린 컬러로 친환경/지속가능성 등 핵심 차별화 포인트 강조",
+      "layout": {
+        "height": 600,
+        "background": "#00B050",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Diff_Title", "role": "차별화 메시지", "fontSize": 28, "fontWeight": 700, "color": "#FFFFFF" },
+        { "type": "TEXT", "name": "Diff_Desc", "role": "부가 설명", "fontSize": 14, "fontWeight": 400, "color": "#E0FFE0" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "차별화 아이콘/이미지", "height": 200 }
+      ],
+      "copywriting_guide": "브랜드 컬러(그린)로 시각적 임팩트. 친환경, 인증 등 독보적 강점 강조."
+    },
+    {
+      "order": 10,
+      "id": "Section_10_SetContents",
+      "taxonomy_id": "SetContents",
+      "name": "SetContents (패키지 구성품)",
+      "purpose": "구매 시 포함되는 구성품 안내",
+      "layout": {
+        "height": 700,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Contents_Title", "role": "구성품 섹션 제목", "fontSize": 24, "fontWeight": 600, "color": "#222222" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "패키지 박스 + 구성품 이미지", "height": 400 }
+      ],
+      "copywriting_guide": "박스에 포함된 구성품을 이미지로 명확하게 안내."
+    },
+    {
+      "order": 11,
+      "id": "Section_11_ProductSpec",
+      "taxonomy_id": "ProductSpec",
+      "name": "ProductSpec (제품 스펙)",
+      "purpose": "제품 치수, 사양 정보를 인포그래픽과 텍스트로 전달",
+      "layout": {
+        "height": 600,
+        "background": "#FFFFFF",
+        "padding": { "top": 40, "bottom": 40, "left": 50, "right": 50 },
+        "itemSpacing": 12,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Spec_Title", "role": "스펙 섹션 제목", "fontSize": 20, "fontWeight": 600, "color": "#222222" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "치수 표기된 제품 도면", "height": 250 },
+        { "type": "TEXT", "name": "Spec_Table", "role": "스펙 항목 나열 (모델명, 연결방식, 무게 등)", "fontSize": 14, "fontWeight": 400, "color": "#666666", "textAlign": "LEFT" }
+      ],
+      "copywriting_guide": "인포그래픽 + 텍스트 테이블 조합. 치수 도면 위에 수치 직접 표기."
+    },
+    {
+      "order": 12,
+      "id": "Section_12_Warranty",
+      "taxonomy_id": "Warranty",
+      "name": "Warranty (고객지원/브랜드 푸터)",
+      "purpose": "고객 서비스 연락처와 브랜드 정보로 마무리",
+      "layout": {
+        "height": 400,
+        "background": "#F5F5F5",
+        "padding": { "top": 40, "bottom": 40, "left": 50, "right": 50 },
+        "itemSpacing": 12,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "IMAGE", "name": "Brand_Logo", "role": "브랜드 로고", "height": 30 },
+        { "type": "TEXT", "name": "CS_Title", "role": "고객지원 안내 텍스트", "fontSize": 16, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Phone_Number", "role": "전화번호", "fontSize": 24, "fontWeight": 700, "color": "#222222" },
+        { "type": "TEXT", "name": "CS_Hours", "role": "운영시간/회사 정보", "fontSize": 12, "fontWeight": 400, "color": "#888888" }
+      ],
+      "copywriting_guide": "연회색 배경으로 마무리. 브랜드 로고 + 고객 서비스 연락처."
+    }
+  ],
+
+  "feature_detail_template": {
+    "description": "기능 상세 섹션(03~05, 07~08)은 이 공통 구조를 따릅니다",
+    "total_count": 5,
+    "light_sections": [3, 4, 5],
+    "dark_sections": [7, 8],
+    "structure": {
+      "Feature_Title": "기능 제목 (24px, Semi Bold)",
+      "Feature_Desc": "기능 설명 1~2줄 (14px, Regular)",
+      "IMAGE_AREA": "기능 시연/설명 이미지"
+    },
+    "notes": "Q&A 형식이 아닌 제목+설명+이미지의 심플한 3요소 구조. 밝은 섹션(03~05)과 다크 섹션(07~08)으로 나뉘며, 중간에 BrandName 섹션이 분위기 전환 역할."
+  },
+
+  "usage_guide": {
+    "style": "미니멀 클린 (화이트 기반, 텍스트 최소화, 이미지 중심)",
+    "step_1": "이 템플릿은 12섹션 구조, 기능 5개를 상세 설명합니다.",
+    "step_2": "기능 섹션은 간결한 제목+설명+이미지 3요소 구조를 따릅니다.",
+    "step_3": "배경 패턴: 밝은(#FFF/#F5F5F5) 교차 → 다크(#1A1A1A/#111) → 그린(brand_main) → 밝은 → 연회색",
+    "step_4": "텍스트는 최소화하고 이미지로 제품을 전달하는 것이 핵심입니다.",
+    "step_5": "brand_main(#00B050)은 Differentiator 섹션에서 배경색으로 사용합니다.",
+    "step_6": "CTA 섹션 없음 - 플랫폼(쿠팡 등)이 구매 UI를 제공하는 경우에 적합합니다.",
+    "step_7": "완성된 JSON을 tools/preview.html에서 미리보기 후 Figma 플러그인에 적용합니다."
+  }
+}

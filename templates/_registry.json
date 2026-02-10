@@ -1,0 +1,25 @@
+{
+  "default": "default-24section",
+  "templates": [
+    {
+      "id": "default-24section",
+      "file": "default-24section.template.json",
+      "name": "기본 24섹션 템플릿",
+      "description": "크래프트볼트 상세페이지 기반 기본 구조 (핵심 기능 6개 개별 섹션 포함)",
+      "section_count": 24,
+      "category": "기본",
+      "source": "manual",
+      "created": "2026-01-13"
+    },
+    {
+      "id": "ref-logitech-k120",
+      "file": "ref-logitech-k120.template.json",
+      "name": "로지텍 K120 기반 템플릿",
+      "description": "미니멀 클린 스타일, 12섹션 간결 구조. 화이트 기반 + 다크/그린 포인트.",
+      "section_count": 12,
+      "category": "레퍼런스",
+      "source": "reference_analysis",
+      "created": "2026-02-10"
+    }
+  ]
+}
