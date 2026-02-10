@@ -1,0 +1,443 @@
+{
+  "type": "SECTION_TAXONOMY",
+  "version": "1.0",
+  "description": "상세페이지 섹션 분류 체계. 레퍼런스 분석 시 매핑 기준, 템플릿 추천 시 비교 기준으로 사용",
+  "created": "2026-02-10",
+  "updated": "2026-02-10",
+
+  "categories": {
+    "intro": {
+      "name": "도입부",
+      "description": "첫인상과 제품 정체성을 전달하는 오프닝 섹션들",
+      "typical_position": "1~4"
+    },
+    "problem": {
+      "name": "문제/해결",
+      "description": "고객 페인포인트를 공감하고 해결책을 제시하는 섹션들",
+      "typical_position": "5~7"
+    },
+    "features": {
+      "name": "기능/차별화",
+      "description": "제품의 핵심 기능과 차별점을 상세히 설명하는 섹션들",
+      "typical_position": "8~16"
+    },
+    "trust": {
+      "name": "신뢰/검증",
+      "description": "비교, 안전, 후기, 스펙 등으로 신뢰를 구축하는 섹션들",
+      "typical_position": "17~23"
+    },
+    "conversion": {
+      "name": "전환",
+      "description": "최종 구매 결정을 유도하는 마무리 섹션",
+      "typical_position": "24"
+    }
+  },
+
+  "sections": [
+    {
+      "id": "Hook",
+      "name": "후킹",
+      "category": "intro",
+      "purpose": "강렬한 메인 카피로 시선 사로잡기",
+      "is_required": true,
+      "frequency": 1.0,
+      "keywords": ["후킹", "히어로", "메인 카피", "첫인상", "헤드라인", "대문"],
+      "visual_cues": ["큰 텍스트 중심", "전체 화면 이미지", "다크 배경에 밝은 텍스트", "브랜드 컬러 강조"],
+      "copywriting_guide": "고객의 페인포인트를 자극하거나, 핵심 혜택을 강렬하게 전달",
+      "required_elements": [
+        { "type": "TEXT", "name": "Brand", "role": "브랜드/제품명", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Main_Copy", "role": "메인 후킹 카피 (핵심 메시지)", "fontSize": 56, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피 (핵심 스펙/혜택)", "fontSize": 28 },
+        { "type": "TEXT", "name": "Description_1", "role": "부가 설명 1", "fontSize": 20, "color": "#888888" },
+        { "type": "TEXT", "name": "Description_2", "role": "부가 설명 2", "fontSize": 20, "color": "#888888" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "메인 제품 이미지", "height": 600 }
+      ]
+    },
+    {
+      "id": "WhatIsThis",
+      "name": "이게 뭔가요?",
+      "category": "intro",
+      "purpose": "제품을 한마디로 정의",
+      "is_required": false,
+      "frequency": 0.8,
+      "keywords": ["제품 소개", "정의", "한마디로", "뭔가요", "제품 정체성", "한줄 소개"],
+      "visual_cues": ["질문+답변 형식", "제품 이미지 중심", "간결한 텍스트"],
+      "copywriting_guide": "\"한마디로, [제품]은 [핵심 가치]입니다\" 형식으로 명확하게 정의",
+      "required_elements": [
+        { "type": "TEXT", "name": "Question", "role": "질문 형식 제목", "fontSize": 28, "color": "brand_main" },
+        { "type": "TEXT", "name": "Answer_1", "role": "한줄 정의", "fontSize": 24, "fontWeight": 700 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "제품 구성 이미지", "height": 300 },
+        { "type": "TEXT", "name": "Explain_Title", "role": "사용법 제목", "fontSize": 22 },
+        { "type": "TEXT", "name": "Explain_1~3", "role": "3단계 간단 사용법", "fontSize": 22 },
+        { "type": "TEXT", "name": "Summary", "role": "사용법 요약", "fontSize": 22, "color": "brand_main" }
+      ]
+    },
+    {
+      "id": "BrandName",
+      "name": "브랜드 의미",
+      "category": "intro",
+      "purpose": "브랜드명의 의미와 철학 전달",
+      "is_required": false,
+      "frequency": 0.5,
+      "keywords": ["브랜드", "네이밍", "의미", "철학", "슬로건", "브랜드 스토리"],
+      "visual_cues": ["브랜드 컬러 배경", "큰 텍스트 중심", "이미지 최소화", "의미 풀이 나열"],
+      "copywriting_guide": "브랜드명에 담긴 의미를 풀어서 신뢰감과 스토리 부여",
+      "required_elements": [
+        { "type": "TEXT", "name": "Question", "role": "브랜드명 질문", "fontSize": 24 },
+        { "type": "TEXT", "name": "Meaning_1~N", "role": "의미 풀이", "fontSize": 22 },
+        { "type": "TEXT", "name": "Translation", "role": "최종 해석", "fontSize": 28, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Desc", "role": "브랜드 철학", "fontSize": 22 },
+        { "type": "TEXT", "name": "Slogan", "role": "슬로건", "fontSize": 24, "color": "dark" }
+      ]
+    },
+    {
+      "id": "SetContents",
+      "name": "세트 구성품",
+      "category": "intro",
+      "purpose": "구매 시 받는 구성품 안내",
+      "is_required": false,
+      "frequency": 0.7,
+      "keywords": ["구성품", "세트", "포함", "패키지", "박스 구성", "동봉"],
+      "visual_cues": ["구성품 나열 이미지", "아이템별 설명", "그리드 또는 리스트 레이아웃"],
+      "copywriting_guide": "각 구성품이 왜 필요한지, 어떤 가치를 주는지 설명",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "세트명", "fontSize": 22, "color": "brand_main" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "구성품 전체 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Item1_Title", "role": "구성품 1 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Item1_Desc1~3", "role": "구성품 1 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Item2_Title", "role": "구성품 2 제목 (핵심)", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Item2_Desc1~3", "role": "구성품 2 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Item3_Title", "role": "구성품 3 제목 (부가)", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Item3_Desc1~2", "role": "구성품 3 설명", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "WhyCore",
+      "name": "핵심 기능 중요성",
+      "category": "problem",
+      "purpose": "핵심 차별점이 왜 중요한지 설명",
+      "is_required": false,
+      "frequency": 0.6,
+      "keywords": ["왜 중요", "핵심 기술", "차이", "기술력", "원리", "메커니즘"],
+      "visual_cues": ["비교 인포그래픽", "수치 강조", "Q&A 형식", "경쟁사 대비 수치"],
+      "copywriting_guide": "숫자와 비교를 통해 차별점을 명확하게 시각화",
+      "required_elements": [
+        { "type": "TEXT", "name": "Question", "role": "질문 형식 제목", "fontSize": 28, "color": "brand_main" },
+        { "type": "TEXT", "name": "Answer", "role": "핵심 답변", "fontSize": 36, "fontWeight": 700 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "비교 인포그래픽", "height": 300 },
+        { "type": "TEXT", "name": "Compare_Title", "role": "비교 제목", "fontSize": 22 },
+        { "type": "TEXT", "name": "Compare_1_Title", "role": "경쟁사/일반 제품", "fontSize": 22, "color": "#888888" },
+        { "type": "TEXT", "name": "Compare_1_Value", "role": "경쟁사 수치", "fontSize": 22, "color": "#666666" },
+        { "type": "TEXT", "name": "Compare_2_Title", "role": "우리 제품", "fontSize": 22, "color": "brand_main" },
+        { "type": "TEXT", "name": "Compare_2_Value", "role": "우리 수치 (강조)", "fontSize": 22, "color": "accent" },
+        { "type": "TEXT", "name": "Conclusion", "role": "결론 메시지", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "PainPoint",
+      "name": "페인포인트 공감",
+      "category": "problem",
+      "purpose": "고객 불편함에 공감",
+      "is_required": false,
+      "frequency": 0.7,
+      "keywords": ["불편", "문제", "고민", "페인포인트", "혹시", "경험", "짜증", "불만"],
+      "visual_cues": ["체크리스트", "문제 상황 이미지", "공감 질문", "어두운 톤"],
+      "copywriting_guide": "\"혹시 이런 경험 있으신가요?\" 형식으로 공감 유도",
+      "required_elements": [
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "페인포인트 상황 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Main_Copy", "role": "공감 메시지", "fontSize": 36, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Desc", "role": "질문", "fontSize": 22 },
+        { "type": "TEXT", "name": "Check_1~4", "role": "체크리스트 (4개)", "fontSize": 22, "prefix": "✓" },
+        { "type": "TEXT", "name": "Solution", "role": "해결 암시", "fontSize": 22, "color": "brand_main" }
+      ]
+    },
+    {
+      "id": "Solution",
+      "name": "해결책 제시",
+      "category": "problem",
+      "purpose": "우리 제품의 해결 방법",
+      "is_required": false,
+      "frequency": 0.7,
+      "keywords": ["해결", "솔루션", "답", "방법", "그래서", "이제는"],
+      "visual_cues": ["브랜드 컬러 배경", "해결 후 이미지", "포인트 나열", "밝은 톤 전환"],
+      "copywriting_guide": "페인포인트와 1:1로 매칭되는 해결책 제시",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "해결 선언", "fontSize": 40, "fontWeight": 700, "color": "dark" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "해결 후 모습 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Point1_Title", "role": "해결점 1 제목", "fontSize": 24, "color": "dark" },
+        { "type": "TEXT", "name": "Point1_Desc", "role": "해결점 1 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Point2_Title", "role": "해결점 2 제목", "fontSize": 24, "color": "dark" },
+        { "type": "TEXT", "name": "Point2_Desc", "role": "해결점 2 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Point3_Title", "role": "해결점 3 제목", "fontSize": 24, "color": "dark" },
+        { "type": "TEXT", "name": "Point3_Desc", "role": "해결점 3 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Result", "role": "결과 요약", "fontSize": 22, "fontWeight": 600, "color": "dark" }
+      ]
+    },
+    {
+      "id": "FeaturesOverview",
+      "name": "핵심 기능 개요",
+      "category": "features",
+      "purpose": "핵심 기능을 한눈에 보기",
+      "is_required": false,
+      "frequency": 0.8,
+      "keywords": ["기능", "특징", "핵심", "개요", "한눈에", "가지", "포인트"],
+      "visual_cues": ["번호 매기기", "그리드 카드", "아이콘+텍스트 조합", "기능 리스트"],
+      "copywriting_guide": "핵심 기능을 간결하게 나열, 각 기능은 개별 섹션에서 상세 설명",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피", "fontSize": 22 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 개요 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Feature1_Num", "role": "01", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature1_Title", "role": "기능 1 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Feature2_Num", "role": "02", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature2_Title", "role": "기능 2 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Feature3_Num", "role": "03", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature3_Title", "role": "기능 3 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Feature4_Num", "role": "04", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature4_Title", "role": "기능 4 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Feature5_Num", "role": "05", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature5_Title", "role": "기능 5 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Feature6_Num", "role": "06", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Feature6_Title", "role": "기능 6 제목", "fontSize": 24, "fontWeight": 600 }
+      ]
+    },
+    {
+      "id": "FeatureDetail",
+      "name": "기능 상세",
+      "category": "features",
+      "purpose": "개별 핵심 기능 Q&A 상세 설명 (반복 사용 가능)",
+      "is_required": false,
+      "frequency": 0.9,
+      "keywords": ["기능 상세", "Q&A", "왜", "혜택", "장점", "스펙"],
+      "visual_cues": ["큰 번호 표시", "Q&A 형식", "기능 이미지", "혜택 나열"],
+      "repeatable": true,
+      "max_repeat": 8,
+      "copywriting_guide": "이 기능이 고객에게 주는 구체적인 혜택과 가치를 설명",
+      "required_elements": [
+        { "type": "TEXT", "name": "Feature_Num", "role": "기능 번호 (01~N)", "fontSize": 72, "fontWeight": 700, "color": "brand_main" },
+        { "type": "TEXT", "name": "Question", "role": "질문 형식 제목", "fontSize": 28, "color": "brand_main" },
+        { "type": "TEXT", "name": "Answer", "role": "기능 핵심 답변", "fontSize": 36, "fontWeight": 700 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "기능 상세 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Benefit_Title", "role": "혜택 제목", "fontSize": 24, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Benefit_1", "role": "혜택 1", "fontSize": 22 },
+        { "type": "TEXT", "name": "Benefit_2", "role": "혜택 2", "fontSize": 22 },
+        { "type": "TEXT", "name": "Benefit_3", "role": "혜택 3", "fontSize": 22 },
+        { "type": "TEXT", "name": "Spec_Highlight", "role": "스펙 강조 (선택)", "fontSize": 22, "color": "accent" }
+      ]
+    },
+    {
+      "id": "Tips",
+      "name": "사용 꿀팁",
+      "category": "features",
+      "purpose": "활용 노하우 제공",
+      "is_required": false,
+      "frequency": 0.5,
+      "keywords": ["팁", "꿀팁", "활용", "노하우", "사용법", "관리법", "TIP"],
+      "visual_cues": ["TIP 라벨", "번호 매기기", "아이콘+설명", "밝은 강조색"],
+      "copywriting_guide": "TIP 형식으로 실용적인 사용 노하우 전달",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 36, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Tip1~4_Title", "role": "팁 제목", "fontSize": 22, "color": "brand_main" },
+        { "type": "TEXT", "name": "Tip1~4_Desc", "role": "팁 설명", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "Differentiator",
+      "name": "핵심 차별화",
+      "category": "features",
+      "purpose": "경쟁사와 다른 우리만의 강점",
+      "is_required": false,
+      "frequency": 0.6,
+      "keywords": ["차별화", "유일", "최초", "독보적", "특허", "only", "국내 최초"],
+      "visual_cues": ["배지/라벨 강조", "accent 컬러 배경", "전후 비교", "강조 텍스트"],
+      "copywriting_guide": "\"국내 최초\", \"업계 유일\" 등 강력한 차별점 강조",
+      "required_elements": [
+        { "type": "TEXT", "name": "Badge", "role": "배지 (예: 국내 최초)", "fontSize": 20, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Main_Copy", "role": "차별화 포인트", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "부가 설명", "fontSize": 22 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "차별화 비교 이미지", "height": 300 },
+        { "type": "TEXT", "name": "Problem_Title", "role": "기존 문제", "fontSize": 24 },
+        { "type": "TEXT", "name": "Problem_Desc", "role": "문제 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Solution_Title", "role": "우리의 해결책", "fontSize": 24 },
+        { "type": "TEXT", "name": "Solution_Desc1~2", "role": "해결책 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Result", "role": "결과 강조", "fontSize": 22, "fontWeight": 600 }
+      ]
+    },
+    {
+      "id": "Comparison",
+      "name": "경쟁사 비교",
+      "category": "trust",
+      "purpose": "직접 비교표",
+      "is_required": false,
+      "frequency": 0.6,
+      "keywords": ["비교", "VS", "경쟁", "비교표", "대", "차이점"],
+      "visual_cues": ["테이블/비교표", "2~3열 레이아웃", "체크/X 마크", "우리 제품 강조 컬럼"],
+      "copywriting_guide": "우리가 이기는 항목 중심으로 비교, 객관적 데이터 사용",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피", "fontSize": 22 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "비교표 인포그래픽", "height": 400 },
+        { "type": "TEXT", "name": "Compare1~5_Label", "role": "비교 항목", "fontSize": 22, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Compare1~5_Competitor", "role": "경쟁사 수치", "fontSize": 22, "color": "#888888" },
+        { "type": "TEXT", "name": "Compare1~5_Ours", "role": "우리 수치 (강조)", "fontSize": 22, "color": "brand_main" },
+        { "type": "TEXT", "name": "Conclusion", "role": "결론", "fontSize": 22, "color": "accent" }
+      ]
+    },
+    {
+      "id": "Safety",
+      "name": "안전/신뢰",
+      "category": "trust",
+      "purpose": "안전성, 인증, 품질 보증",
+      "is_required": false,
+      "frequency": 0.7,
+      "keywords": ["안전", "인증", "KC", "ISO", "품질", "테스트", "검증", "소재"],
+      "visual_cues": ["인증 마크", "배지 나열", "안전 기능 아이콘", "포인트 리스트"],
+      "copywriting_guide": "안전 인증, 소재, 설계 특징 등 신뢰 요소 나열",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "안전/인증 이미지", "height": 300 },
+        { "type": "TEXT", "name": "Point1~6_Title", "role": "안전 포인트 제목", "fontSize": 22, "color": "brand_main" },
+        { "type": "TEXT", "name": "Point1~6_Desc", "role": "안전 포인트 설명", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "Target",
+      "name": "추천 대상",
+      "category": "trust",
+      "purpose": "어떤 고객에게 적합한지",
+      "is_required": false,
+      "frequency": 0.7,
+      "keywords": ["추천", "이런 분", "대상", "적합", "딱 맞는", "위한"],
+      "visual_cues": ["체크리스트", "타겟 이미지", "브랜드 컬러 배경", "이모지/아이콘+텍스트"],
+      "copywriting_guide": "\"이런 분들께 추천드려요\" 형식, 구체적인 상황 제시",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700, "color": "dark" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "타겟 고객 이미지", "height": 300 },
+        { "type": "TEXT", "name": "Target_1~6", "role": "추천 대상 리스트", "fontSize": 22, "prefix": "✓", "color": "dark" }
+      ]
+    },
+    {
+      "id": "Reviews",
+      "name": "고객 후기",
+      "category": "trust",
+      "purpose": "실사용자 후기",
+      "is_required": false,
+      "frequency": 0.8,
+      "keywords": ["후기", "리뷰", "고객", "평점", "별점", "만족도", "실사용"],
+      "visual_cues": ["카드형 리뷰", "별점 표시", "인용 부호", "프로필 아이콘"],
+      "copywriting_guide": "핵심 셀링포인트를 언급하는 리뷰 선택, 다양한 고객층 포함",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피", "fontSize": 22 },
+        { "type": "TEXT", "name": "Review1~3_Type", "role": "리뷰어 유형", "fontSize": 20, "color": "brand_main" },
+        { "type": "TEXT", "name": "Review1~3_Title", "role": "리뷰 핵심 문구", "fontSize": 22, "fontWeight": 600 },
+        { "type": "TEXT", "name": "Review1~3_Content", "role": "리뷰 상세 내용", "fontSize": 22 },
+        { "type": "TEXT", "name": "Stats", "role": "통계 (만족도 등)", "fontSize": 20, "color": "#666666" }
+      ]
+    },
+    {
+      "id": "ProductSpec",
+      "name": "제품 스펙",
+      "category": "trust",
+      "purpose": "상세 사양 정보",
+      "is_required": false,
+      "frequency": 0.8,
+      "keywords": ["스펙", "사양", "규격", "크기", "무게", "용량", "재질"],
+      "visual_cues": ["스펙 테이블", "카테고리별 그룹", "수치 강조", "제품 치수 이미지"],
+      "copywriting_guide": "숫자와 단위를 명확하게, 차별화 스펙은 강조 색상 사용",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "제품 스펙 이미지", "height": 350 },
+        { "type": "TEXT", "name": "Category1_Title", "role": "카테고리 1 제목", "fontSize": 24, "color": "brand_main" },
+        { "type": "TEXT", "name": "Spec1~N", "role": "스펙 항목들", "fontSize": 22 },
+        { "type": "TEXT", "name": "Category2_Title", "role": "카테고리 2 제목 (선택)", "fontSize": 24, "color": "accent" },
+        { "type": "TEXT", "name": "Common", "role": "공통 정보 (제조국, A/S 등)", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "FAQ",
+      "name": "자주 묻는 질문",
+      "category": "trust",
+      "purpose": "구매 전 궁금증 해소",
+      "is_required": false,
+      "frequency": 0.8,
+      "keywords": ["FAQ", "질문", "궁금", "Q&A", "자주 묻는"],
+      "visual_cues": ["Q/A 교차 레이아웃", "아코디언 스타일", "질문 강조", "답변 부연"],
+      "copywriting_guide": "실제 고객이 자주 묻는 질문 기반, 구매 장벽 해소 중심",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Q1~7", "role": "질문", "fontSize": 22, "fontWeight": 600 },
+        { "type": "TEXT", "name": "A1~7", "role": "답변", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "Warranty",
+      "name": "보증/정책",
+      "category": "trust",
+      "purpose": "A/S, 보증, 환불 정책",
+      "is_required": false,
+      "frequency": 0.6,
+      "keywords": ["보증", "A/S", "환불", "교환", "정책", "무상수리", "품질보증"],
+      "visual_cues": ["보증 아이콘", "브랜드 컬러 배경", "신뢰 메시지", "연락처 정보"],
+      "copywriting_guide": "\"품질에 대한 자신감\" 메시지로 신뢰 강화",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 40, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피", "fontSize": 22 },
+        { "type": "TEXT", "name": "Warranty1~3_Title", "role": "보증 항목", "fontSize": 24 },
+        { "type": "TEXT", "name": "Warranty1~3_Desc", "role": "보증 설명", "fontSize": 22 },
+        { "type": "TEXT", "name": "Contact", "role": "연락처", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "CTA",
+      "name": "구매 유도",
+      "category": "conversion",
+      "purpose": "최종 구매 전환",
+      "is_required": true,
+      "frequency": 0.95,
+      "keywords": ["구매", "주문", "CTA", "지금", "바로", "장바구니", "가격"],
+      "visual_cues": ["큰 버튼", "가격 표시", "신뢰 배지", "감성 이미지", "액션 유도 카피"],
+      "copywriting_guide": "Hook 섹션의 메인 카피를 다시 한번 상기시키며 마무리",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "액션 유도 카피", "fontSize": 48, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "메인 카피 반복", "fontSize": 28, "color": "brand_main" },
+        { "type": "FRAME", "name": "IMAGE_AREA", "role": "제품 감성 이미지", "height": 280 },
+        { "type": "TEXT", "name": "Price_Info", "role": "가격 정보", "fontSize": 22 },
+        { "type": "TEXT", "name": "Price_Value", "role": "가격", "fontSize": 36, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Trust", "role": "신뢰 배지들", "fontSize": 20 },
+        { "type": "BUTTON", "name": "CTA_Button", "role": "구매 버튼", "text": "지금 구매하기" }
+      ]
+    }
+  ],
+
+  "matching_config": {
+    "weights": {
+      "section_overlap": 1.0,
+      "order_similarity": 0.5,
+      "category_ratio": 0.3
+    },
+    "penalty": {
+      "missing_required": 2.0
+    },
+    "description": "매칭 점수 = (겹치는 섹션 × 1.0) + (순서 유사도 × 0.5) + (카테고리 비율 유사도 × 0.3) - (누락 필수 섹션 × 2.0)"
+  },
+
+  "unmapped_report_schema": {
+    "description": "매핑되지 않는 섹션 발견 시 이 형식으로 skills/unmapped-sections/에 저장",
+    "format": {
+      "reference": "레퍼런스 파일명",
+      "report_date": "YYYY-MM-DD",
+      "unmapped_sections": [
+        {
+          "position": "레퍼런스 내 순서 번호",
+          "description": "이 섹션이 하는 역할 상세 설명",
+          "visual_type": "시각적 특징 요약",
+          "suggested_id": "제안하는 섹션 ID",
+          "suggested_category": "intro | problem | features | trust | conversion",
+          "confidence": "0.0~1.0 매핑 확신도"
+        }
+      ]
+    }
+  }
+}
