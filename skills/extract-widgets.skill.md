@@ -6,6 +6,7 @@
 ## Context
 - 입력: `output/analysis-{name}.json` (analyze-ref 출력)
 - taxonomy: `skills/section-taxonomy.json`에서 매칭된 섹션의 `required_elements`만 selective 로딩
+- **스타일 가이드**: `templates/style-guide.md` — 토큰 체계, 색상/타이포 규칙, 시각 효과 정의
 - 섹션 패턴: `templates/html-section-patterns.md` — composition별 HTML/CSS 패턴 참조
 - 위젯 저장소: `widgets/` 디렉토리
 
@@ -160,7 +161,7 @@
   - `fontSize: 36` → `text-[36px]`
   - `fontWeight: 700` → `font-bold`
 - **레이아웃**: 분석의 `height`, `padding`, `itemSpacing` 값을 CSS로 반영
-- **시각 효과**: `html-section-patterns.md`의 클래스 활용
+- **시각 효과**: `templates/style-guide.md` Section 5 + `html-section-patterns.md` 참조
   - `glass-card`, `glass-card-strong` (카드)
   - `tracking-tight` (타이틀)
   - `text-shadow-hero` (composed 섹션)

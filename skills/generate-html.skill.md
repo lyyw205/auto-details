@@ -6,6 +6,7 @@
 위젯이 이미 HTML이므로, JSON→HTML 변환 없이 **직접 조합**합니다.
 
 ## Context
+- **스타일 가이드**: `templates/style-guide.md` — 토큰 체계, 컬러 리매핑, 배경 교차, 호환성 규칙
 - HTML 골격: `templates/html-base.html`
 - **위젯 셀렉션**: `output/{product}-widget-selection.json` (`/select-widgets` 결과)
 - 위젯 파일: `widgets/{taxonomy_id_lower}/*.widget.html`
@@ -24,6 +25,7 @@
    - 가격 정보 (선택)
    - 브랜드 컬러: `brand_main` (필수), `accent` (선택, 없으면 brand_main의 밝은 변형)
 3. **수정 요청**: (선택) 위젯 구조에서 변경할 사항
+4. (선택) **제품 이미지**: `[{ "file": "경로", "label": "설명" }, ...]`
 
 ## Processing
 
@@ -74,6 +76,71 @@
 | 소스 프리셋의 `dark_1`/`dark_2` | → 밝기 유지하며 다크 배경으로 사용 |
 
 3. **컬러가 포함된 Tailwind 클래스**도 확인하여 필요시 인라인 스타일로 대체
+
+### 2.5. 실제 이미지 매핑 + 치환
+
+> 이미지 미제공 시 이 단계를 건너뜁니다 (완전 하위호환).
+
+#### 이미지 분류
+
+각 이미지를 시각적으로 분석하여 `data-ai-style` 타입으로 분류합니다:
+
+| data-ai-style | 판단 기준 |
+|---|---|
+| product_hero | 깨끗한 배경, 제품 전체, 스튜디오 |
+| product_lifestyle | 실사용 환경, 생활 장면 |
+| product_detail | 클로즈업, 부분 확대 |
+| product_flat | 탑뷰, 구성품 나열 |
+| infographic | 다이어그램, 기능 설명 |
+| mood | 분위기, 감성, 배경용 |
+| comparison | 비교, 전후 |
+| background_only | 텍스처, 오버레이용 |
+
+#### 매핑 규칙
+
+1. 위젯 HTML 내 `img-placeholder` 요소를 순서대로 수집
+2. 각 플레이스홀더의 `data-ai-style` + `img-label`로 필요 이미지 특성 파악
+3. 분류된 이미지 풀에서 가장 적합한 이미지 매핑
+   - 우선: style 타입 일치 → label 유사성
+   - Hook 섹션 우선 배치 (product_hero)
+   - 이미지 수 < 플레이스홀더 수이면 재사용 허용
+   - 무리한 매칭 금지 (mood에 product_detail 매핑 ✗)
+4. 매핑 안 된 플레이스홀더 → AI 프롬프트 그대로 유지
+
+#### HTML 치환 — 일반 섹션 (stack/split)
+
+```html
+<!-- Before: placeholder -->
+<div class="img-placeholder w-[760px] h-[500px] rounded-xl"
+     data-ai-prompt="..." data-ai-style="product_hero" data-ai-ratio="3:2">
+  <svg>...</svg>
+  <span class="img-label">설명</span>
+</div>
+
+<!-- After: real image -->
+<img src="이미지경로" alt="설명"
+     class="real-image w-[760px] h-[500px] rounded-xl object-cover"
+     data-original-style="product_hero" />
+```
+
+#### HTML 치환 — Composed 섹션 (전체 배경)
+
+```html
+<!-- Before -->
+<div class="composed-layer inset-0">
+  <div class="img-placeholder w-full h-full" data-ai-prompt="...">
+    <svg>...</svg>
+    <span class="img-label">배경</span>
+  </div>
+</div>
+
+<!-- After -->
+<div class="composed-layer inset-0">
+  <img src="이미지경로" alt="배경"
+       class="real-image w-full h-full object-cover"
+       data-original-style="mood" />
+</div>
+```
 
 ### 3. 콘텐츠 치환
 
@@ -160,7 +227,8 @@ HTML 조합 완료 후, 아래 항목을 자체 검증합니다:
 - [ ] `--brand-main`, `--accent` CSS 변수 정의
 - [ ] `.page-canvas` 래퍼 860px 고정
 - [ ] 모든 섹션에 고유 `id` 속성 부여
-- [ ] 모든 이미지에 `img-placeholder` 클래스 + `data-ai-prompt` 속성
+- [ ] 모든 이미지에 `img-placeholder` 클래스 + `data-ai-prompt` 속성 (또는 `real-image` + `data-original-style`)
+- [ ] 이미지 제공 시: 매핑된 영역에 `<img class="real-image">` 적용, 나머지는 `img-placeholder` 유지
 - [ ] 인접 섹션 배경 교차 (같은 배경 연속 금지)
 - [ ] `position: fixed/sticky` 사용하지 않음
 - [ ] CSS 애니메이션/트랜지션 사용하지 않음
@@ -178,3 +246,11 @@ HTML 조합 완료 후, 아래 항목을 자체 검증합니다:
 - 파일: `output/{product}-detail.html`
 - 미리보기 안내: `브라우저에서 직접 열어 확인 가능`
 - Figma 변환: `html.to.design (Figma 플러그인)으로 가져오기`
+- 이미지 매핑 시 요약 출력:
+```
+이미지 매핑 결과: 5개 제공 → 3개 매핑 / 13개 AI 프롬프트 유지
+- hero-main.jpg → 섹션 1 (Hook) ✓
+- detail-closeup.jpg → 섹션 6 (FeatureDetail 1) ✓
+- lifestyle.jpg → 섹션 11 (FeatureDetail 6) ✓
+- unused-extra.jpg → 미사용
+```

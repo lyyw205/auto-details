@@ -30,7 +30,9 @@ HTML의 구조·콘텐츠·시각 효과를 자연어 디자인 지시문으로 
 HTML에서 다음을 추출합니다:
 - 섹션 수, 각 섹션의 id와 composition 타입
 - 각 섹션의 텍스트 콘텐츠 (카피라이팅)
-- 이미지 플레이스홀더의 `data-ai-prompt`, `data-ai-style`, `img-label`
+- 이미지 영역 구분:
+  - `img-placeholder` + `data-ai-prompt` → AI 생성 이미지 (기존)
+  - `img.real-image` + `data-original-style` → 실제 제품 이미지
 - 브랜드 컬러 (`--brand-main`, `--accent`)
 - 배경 패턴 (gradient 교차)
 
@@ -77,12 +79,22 @@ HTML에서 다음을 추출합니다:
 
 #### 이미지 영역 변환
 
+**AI 이미지 (플레이스홀더):**
 ```
-📸 이미지 영역: [img-label 한글 설명]
+📸 AI 이미지 영역: [img-label 한글 설명]
    위치: [섹션 내 위치 설명]
    크기: [너비 × 높이]
    스타일: [data-ai-style]
    AI 이미지 프롬프트: "[data-ai-prompt]"
+```
+
+**실제 제품 이미지 (`<img class="real-image">`):**
+```
+🖼️ 제품 이미지: [alt 텍스트]
+   위치: [섹션 내 위치 설명]
+   크기: [너비 × 높이]
+   원본 스타일: [data-original-style]
+   → 이 위치에 첨부한 제품 이미지를 배치하세요
 ```
 
 ### 4단계: 디자인 품질 지침 추가

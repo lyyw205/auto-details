@@ -42,35 +42,18 @@ AI 기반 상세페이지 자동 제작 시스템. 레퍼런스 분석 → HTML 
 
 ---
 
-## 색상 시스템
+## 스타일 가이드
 
-```json
-{
-  "brand_main": "브랜드 메인 컬러 (예: #FF6B00)",
-  "accent": "강조 컬러 (예: #FFD700)",
-  "dark_1": "#111111",
-  "dark_2": "#1A1A1A",
-  "image_placeholder": "#2A2A2A",
-  "sub_text": "#888888",
-  "muted_text": "#666666"
-}
-```
+> **모든 스타일 규칙은 `templates/style-guide.md`에 통합 관리됩니다.**
+> 색상 시스템, 레이아웃, 타이포그래피, 시각 효과 등은 해당 문서를 참조하세요.
+> (W3C Design Tokens, Style Dictionary, Material Design 3 표준 기반)
 
----
-
-## 레이아웃 기본값
-
-- **캔버스 너비**: 860px
-- **이미지 영역 너비**: 760px
-- **섹션 배경**: 인접 섹션 톤 교차 (같은 톤 연속 금지)
-
----
-
-## 텍스트 스타일 가이드라인
-
-- **기본 정렬**: 가운데 정렬 (CENTER). 나열형만 LEFT.
-- **긴 텍스트**: `max-w-[760px]` 또는 `width: 760` 적용
-- **줄바꿈**: HTML은 `<br>`, JSON은 `\n`. 들여쓰기 금지.
+**핵심 요약:**
+- **캔버스**: 860px / 콘텐츠: 760px
+- **색상**: CSS 변수 `--brand-main`, `--accent` + 고정 neutral 팔레트
+- **배경**: 인접 섹션 톤 교차 (같은 톤 연속 금지), 항상 subtle gradient
+- **텍스트**: 가운데 정렬 기본, 나열형만 LEFT. `<br>` 줄바꿈. 들여쓰기 금지.
+- **카드**: glassmorphism (`glass-card`, `glass-card-strong`)
 
 ---
 
@@ -109,6 +92,7 @@ figma-detail-page-agent/
 │   └── product-to-html.md      # 제품 → HTML 상세페이지 (위젯 조합)
 │
 ├── templates/                  # HTML 생성용 리소스
+│   ├── style-guide.md          # 통합 스타일 가이드 (Single Source of Truth)
 │   ├── html-base.html          # HTML 골격 + Tailwind config + 유틸리티 CSS
 │   └── html-section-patterns.md    # 섹션별 HTML/CSS 패턴 라이브러리
 │
@@ -123,7 +107,10 @@ figma-detail-page-agent/
 ├── output/                     # 결과물 (분석, 플랜, 위젯 셀렉션, HTML)
 ├── tools/                      # 개발 도구
 │   ├── preview.html            # JSON → HTML 미리보기
-│   └── template-editor.html    # 템플릿 와이어프레임 에디터
+│   ├── template-editor.html    # 템플릿 와이어프레임 에디터
+│   └── scraper/                # Behance 상세페이지 이미지 추출 CLI
+│       ├── package.json
+│       └── scrape-behance.js
 └── figma-plugin/               # Figma 플러그인 (v1용)
 ```
 
@@ -222,11 +209,7 @@ figma-detail-page-agent/
 - generate-html은 위젯 로딩 → 컬러 리매핑 → 콘텐츠 치환 → 순서 조합
 
 ### 시각 효과
-- 섹션 배경: 항상 subtle gradient (단색 금지)
-- 카드: glassmorphism (`glass-card`, `glass-card-strong`)
-- 타이포: `tracking-tight`, `text-shadow-hero`
-- 섹션 전환: 장식 분리선, 배경 교차
-- 브랜드 컬러: accent border, 그라데이션 텍스트, 글로우 효과
+> 상세 정의: `templates/style-guide.md` Section 5 참조
 
 ### 프리뷰 방법
 1. `output/{product}-detail.html`을 브라우저에서 열기
@@ -236,5 +219,6 @@ figma-detail-page-agent/
 ### 주요 리소스
 | 파일 | 용도 |
 |------|------|
-| `templates/html-base.html` | HTML 골격 + Tailwind config + 유틸리티 CSS |
+| `templates/style-guide.md` | 통합 스타일 가이드 — 토큰, 색상, 타이포, 시각 효과, 호환성 규칙 |
+| `templates/html-base.html` | HTML 골격 + Tailwind config + 유틸리티 CSS 구현체 |
 | `templates/html-section-patterns.md` | 섹션별 HTML/CSS 패턴 라이브러리 (extract-widgets에서 참조) |
