@@ -1,0 +1,82 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "comparison--default",
+  "taxonomy_id": "Comparison",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1200,
+    "background": "#111111",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목",
+      "fontSize": 40,
+      "fontWeight": 700
+    },
+    {
+      "type": "TEXT",
+      "name": "Sub_Copy",
+      "role": "서브 카피",
+      "fontSize": 22
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "비교표 인포그래픽",
+      "height": 400
+    },
+    {
+      "type": "TEXT",
+      "name": "Compare1~5_Label",
+      "role": "비교 항목",
+      "fontSize": 22,
+      "fontWeight": 600
+    },
+    {
+      "type": "TEXT",
+      "name": "Compare1~5_Competitor",
+      "role": "경쟁사 수치",
+      "fontSize": 22,
+      "color": "#888888"
+    },
+    {
+      "type": "TEXT",
+      "name": "Compare1~5_Ours",
+      "role": "우리 수치 (강조)",
+      "fontSize": 22,
+      "color": "brand_main"
+    },
+    {
+      "type": "TEXT",
+      "name": "Conclusion",
+      "role": "결론",
+      "fontSize": 22,
+      "color": "accent"
+    }
+  ],
+  "copywriting_guide": "우리가 이기는 항목 중심으로 비교, 객관적 데이터 사용"
+}

@@ -1,0 +1,57 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "featuredetail--ref-logitech-k120--stack-dark",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "provenance": {
+    "source_ref": "ref-logitech-k120",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 700,
+    "background": "#111111",
+    "padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Feature_Title",
+      "role": "기능 제목",
+      "fontSize": 24,
+      "fontWeight": 600,
+      "color": "#FFFFFF"
+    },
+    {
+      "type": "TEXT",
+      "name": "Feature_Desc",
+      "role": "기능 설명",
+      "fontSize": 14,
+      "fontWeight": 400,
+      "color": "#AAAAAA"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "기능 시연 이미지",
+      "height": 300
+    }
+  ],
+  "copywriting_guide": "다크 배경에서의 기능 설명. 밝은 텍스트 사용."
+}

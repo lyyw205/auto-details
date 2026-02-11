@@ -1,28 +1,29 @@
-# /generate-html — HTML/CSS 상세페이지 생성
+# /generate-html — HTML/CSS 상세페이지 조합
 
 ## Purpose
-선택된 템플릿과 섹션 플랜을 기반으로, 제품 콘텐츠를 채워 넣어
+선택된 HTML 위젯들을 **조합하고 커스터마이징**하여
 **self-contained HTML/CSS 단일 파일**을 생성합니다.
-Figma 플러그인 대신 **브라우저 프리뷰 → html.to.design → Figma** 워크플로우에 사용됩니다.
+위젯이 이미 HTML이므로, JSON→HTML 변환 없이 **직접 조합**합니다.
 
 ## Context
 - HTML 골격: `templates/html-base.html`
-- 섹션 패턴: `templates/html-section-patterns.md`
-- 선택된 템플릿: `templates/[선택].template.json`
-- 섹션 플랜: `output/{product}-section-plan.json`
-- `skills/section-taxonomy.json`에서 **플랜 포함 섹션의 `copywriting_guide` + `required_elements`만** selective 로딩
+- **위젯 셀렉션**: `output/{product}-widget-selection.json` (`/select-widgets` 결과)
+- 위젯 파일: `widgets/{taxonomy_id_lower}/*.widget.html`
+- 스타일 프리셋: `widgets/_presets/preset--*.json`
+- `skills/section-taxonomy.json`에서 **플랜 포함 섹션의 `copywriting_guide`만** selective 로딩
 - 미리보기: 브라우저에서 직접 열기
 
 ## Input
-1. **선택된 템플릿**: `/match-template`에서 유저가 선택한 템플릿
-2. **섹션 플랜**: 수정 사항 반영된 최종 플랜
-3. **제품 정보**:
+1. **위젯 셀렉션**: `/select-widgets`에서 유저가 확인한 최종 선택 결과
+   - `output/{product}-widget-selection.json`
+   - 각 섹션별 선택된 위젯 ID, 파일 경로, 스타일 프리셋
+2. **제품 정보**:
    - 제품명, 브랜드명
    - 제품 설명 텍스트
    - 핵심 기능 목록
    - 가격 정보 (선택)
    - 브랜드 컬러: `brand_main` (필수), `accent` (선택, 없으면 brand_main의 밝은 변형)
-4. **수정 요청**: (선택) 추천된 템플릿에서 변경할 사항
+3. **수정 요청**: (선택) 위젯 구조에서 변경할 사항
 
 ## Processing
 
@@ -42,7 +43,7 @@ Figma 플러그인 대신 **브라우저 프리뷰 → html.to.design → Figma*
 </head>
 <body>
   <div class="page-canvas">
-    <!-- 섹션들 -->
+    <!-- 위젯 HTML 순서대로 조합 -->
   </div>
 </body>
 </html>
@@ -52,96 +53,71 @@ Figma 플러그인 대신 **브라우저 프리뷰 → html.to.design → Figma*
 - `{{PRODUCT_NAME}}` → 실제 제품명
 - `{{BRAND_MAIN}}` → 실제 brand_main hex (예: `#2E7DF7`)
 - `{{ACCENT}}` → 실제 accent hex (예: `#60A5FA`)
-- `{{SECTIONS}}` → 생성된 섹션 HTML
+- `{{SECTIONS}}` → 조합된 섹션 HTML
 
-### 2. 섹션별 HTML 생성
+### 2. 위젯 로딩 + 컬러 리매핑
 
-`templates/html-section-patterns.md`를 참조하여 각 섹션의 HTML을 생성합니다.
+위젯 셀렉션에서 각 섹션의 `.widget.html` 파일을 순서대로 로드합니다.
 
-#### Composition별 매핑
+#### 컬러 리매핑 규칙
 
-| Composition | CSS 패턴 | 용도 |
-|-------------|---------|------|
-| `stack` | `flex flex-col items-center gap-6 section-padding` | 기본 수직 나열 |
-| `split` | `grid grid-cols-2` (비율 조정 가능) | 좌우 분할 |
-| `composed` | `composed-section relative` + 절대 위치 레이어 | 이미지 위 텍스트 오버레이 |
+위젯 HTML에 포함된 소스 프리셋의 brand/accent hex 색상을 CSS 변수로 치환합니다:
 
-#### 섹션별 composition 선택 가이드
+1. **소스 프리셋 로드**: 위젯의 `source_ref`에 해당하는 프리셋 파일에서 `color_system` 읽기
+2. **hex → CSS 변수 치환**:
 
-| 섹션 | 우선 composition | 비고 |
-|------|-----------------|------|
-| Hook | `composed` | 배경 이미지 + 텍스트 오버레이 |
-| WhatIsThis | `stack` | 질문 → 이미지 → 설명 |
-| BrandName | `stack` | 브랜드 배경 + 텍스트 중심 |
-| SetContents | `stack` | 이미지 → 구성품 카드 |
-| WhyCore | `split` | 텍스트/비교 좌 + 이미지 우 |
-| PainPoint | `composed` | 어두운 이미지 + 공감 텍스트 |
-| Solution | `stack` | 브랜드 배경 + 해결 포인트 |
-| FeaturesOverview | `stack` | 이미지 + 기능 그리드 |
-| FeatureDetail | `split` | Q&A + 이미지 (좌우 교차) |
-| Tips | `stack` | 팁 카드 나열 |
-| Differentiator | `stack` | 배지 + 비교 카드 |
-| StatsHighlight | `stack` | 수치 그리드 |
-| Comparison | `stack` | 비교 테이블 |
-| Safety | `stack` | 인증 이미지 + 포인트 그리드 |
-| Target | `stack` | 체크리스트 |
-| Reviews | `stack` | 리뷰 카드 나열 |
-| ProductSpec | `stack` | 스펙 테이블 |
-| FAQ | `stack` | Q&A 카드 나열 |
-| Warranty | `stack` | 보증 카드 그리드 |
-| CTABanner | `stack` | 컴팩트 배너 |
-| EventPromo | `stack` | 듀얼 버튼 |
-| CTA | `composed` | 감성 이미지 + 구매 버튼 |
+| 위젯 HTML 내 색상 | 치환 대상 |
+|-------------------|----------|
+| 소스 프리셋의 `brand_main` hex | → `var(--brand-main)` |
+| 소스 프리셋의 `accent` hex | → `var(--accent)` |
+| `#FFFFFF`, `#888888`, `#666666` 등 중립색 | → 그대로 유지 |
+| 소스 프리셋의 `dark_1`/`dark_2` | → 밝기 유지하며 다크 배경으로 사용 |
 
-### 3. 콘텐츠 채우기 규칙
+3. **컬러가 포함된 Tailwind 클래스**도 확인하여 필요시 인라인 스타일로 대체
 
-기존 `generate-page.skill.md`와 **동일한 카피라이팅 규칙**을 따릅니다:
+### 3. 콘텐츠 치환
 
+위젯 HTML 내 placeholder를 실제 제품 정보로 교체합니다:
+
+| Placeholder | 치환 대상 |
+|-------------|----------|
+| `[브랜드명]` | 실제 브랜드명 |
+| `[제품명]` | 실제 제품명 |
+| `[메인 카피]` | 제품 특성 기반 생성 (taxonomy의 `copywriting_guide` 참고) |
+| `[서브 카피]` | 제품 설명 기반 생성 |
+| `[기능명]`, `[설명]` | 핵심 기능 목록에서 매핑 |
+| `[가격]` | 실제 가격 정보 |
+| `[product]` in `data-ai-prompt` | 실제 제품명 (영문) |
+
+#### 카피라이팅 규칙
 - **텍스트 정렬**: 기본 `text-center`, 나열형만 `text-left`
-- **줄바꿈**: `<br>` 사용 (`\n` 대신), 들여쓰기 금지
+- **줄바꿈**: `<br>` 사용, 들여쓰기 금지
 - **긴 텍스트**: `max-w-[760px]` 적용
 - **시맨틱 컬러**: `style="color: var(--brand-main)"` 등 CSS 변수 사용
 - **카피라이팅**: taxonomy의 `copywriting_guide` 참고
 
-### 4. 시각 효과 가이드라인 (Distilled Aesthetics)
+### 4. 섹션 조합 + 배경 교차 검증
 
-**v2의 핵심 차별점: 모든 섹션에 시각 효과를 반드시 적용합니다.**
+위젯 HTML을 셀렉션 순서대로 `page-canvas` 안에 배치합니다.
 
-#### 배경
-- **단색 금지**: 모든 섹션 배경은 subtle gradient 사용
-  - `bg-dark-gradient-1` (dark_1 계열)
-  - `bg-dark-gradient-2` (dark_2 계열)
-  - `bg-brand-gradient` (brand 계열)
-  - `bg-accent-gradient` (accent 계열)
-- 인접 섹션 배경은 반드시 교차: `gradient-1` → `gradient-2` → `brand` → `gradient-1` ...
+#### 배경 교차 규칙
+인접 섹션 배경이 겹치지 않도록 사후 검증:
+- Hook, PainPoint, CTA: `composed` (배경 이미지 사용)
+- Solution, BrandName, Target, Warranty: `bg-brand-gradient`
+- Differentiator: `bg-accent-gradient`
+- 나머지: `bg-dark-gradient-1` ↔ `bg-dark-gradient-2` 교차
 
-#### 카드
-- 모든 카드/리스트 아이템에 glassmorphism 적용
-  - 기본: `glass-card` (`bg-white/5 backdrop-blur border-white/8`)
-  - 강조: `glass-card-strong` (`bg-white/8 backdrop-blur border-white/12`)
+같은 배경이 연속되면 위젯 HTML의 배경 클래스를 교체합니다.
 
-#### 타이포그래피
-- `tracking-tight` (hero, section title, answer)
-- `text-shadow-hero` (composed 섹션의 텍스트)
-- `text-shadow-subtle` (brand 배경 위 텍스트)
-- `text-gradient-brand` (기능 번호, 핵심 수치)
+### 5. FeatureDetail 좌우 교차
 
-#### 섹션 전환
-- 장식 분리선: `divider-gradient` 또는 `divider-brand`
-- 배경 교차로 자연스러운 전환
+FeatureDetail 섹션은 split composition에서 **홀짝 교차**합니다:
+- **홀수 번호** (01, 03, 05): 텍스트 좌측 / 이미지 우측
+- **짝수 번호** (02, 04, 06): 이미지 좌측 / 텍스트 우측
 
-#### 브랜드 컬러 활용
-- 카드 좌측 보더: `border-brand-left`
-- 번호 배지: `num-badge`
-- 텍스트 강조: `style="color: var(--brand-main)"` / `style="color: var(--accent)"`
-- CTA 버튼: `linear-gradient(135deg, var(--brand-main), var(--accent))`
+위젯의 원래 방향과 다르면 `grid-cols-2` 내 child 순서를 swap합니다.
 
-#### 이미지 오버레이 (composed 섹션)
-- 하단 페이드: `bg-gradient-to-t from-black/80 via-black/30 to-transparent`
-- 브랜드 글로우: `bg-radial-glow opacity-30`
-- 항상 텍스트 위에 `text-shadow` 병행
-
-### 5. 이미지 플레이스홀더 규칙
+### 6. 이미지 플레이스홀더 커스터마이징
 
 ```html
 <div class="img-placeholder w-[760px] h-[500px] rounded-xl"
@@ -156,29 +132,11 @@ Figma 플러그인 대신 **브라우저 프리뷰 → html.to.design → Figma*
 </div>
 ```
 
-- **`data-ai-prompt`**: 영문 AI 이미지 생성 프롬프트 (`[product]` → 실제 제품명 영문)
-- **`data-ai-style`**: 스타일 타입 (`product_hero`, `product_lifestyle`, `product_detail`, `product_flat`, `infographic`, `mood`, `comparison`, `background_only`)
-- **`data-ai-ratio`**: 종횡비 (`4:3`, `16:9`, `1:1`, `3:4`)
-- **`img-label`**: 이미지 내 표시되는 구체적 한글 설명
-- **배경색**: 다크 배경 → `#2A2A2A` (기본), 밝은 배경 → `#E8E8E8`
+- `data-ai-prompt`의 `[product]` → 실제 제품명 (영문)
+- 제품 특성 반영하여 프롬프트 보강
+- `img-label`을 실제 제품에 맞게 업데이트
 
-#### ai_prompt 커스터마이징
-1. `[product]` → 실제 제품명 (영문)
-2. 제품 특성 반영 추가
-3. style별 핵심 키워드:
-
-| style | 핵심 프롬프트 요소 |
-|-------|-----------------|
-| `product_hero` | front/45-degree view, white background, studio lighting |
-| `product_lifestyle` | in-use scenario, natural lighting, real environment |
-| `product_detail` | macro closeup, texture detail, extreme detail |
-| `product_flat` | top-down flat lay, organized arrangement |
-| `infographic` | clean design, icons, data visualization |
-| `mood` | atmospheric, brand mood, cinematic |
-| `comparison` | side-by-side, before/after |
-| `background_only` | simple background, gradient, space for text overlay |
-
-### 6. html.to.design 호환 규칙
+### 7. html.to.design 호환 규칙
 
 **반드시 준수**해야 Figma 변환 시 정확하게 반영됩니다:
 
@@ -192,9 +150,9 @@ Figma 플러그인 대신 **브라우저 프리뷰 → html.to.design → Figma*
 | **절대값 크기 선호** | `w-[760px]`, `h-[500px]` 등 |
 | **Tailwind CDN 사용** | 인라인 스타일 최소화 |
 
-### 7. 인라인 검증 체크리스트
+### 8. 인라인 검증 체크리스트
 
-HTML 생성 완료 후, 아래 항목을 자체 검증합니다 (별도 validate 스킬 불필요):
+HTML 조합 완료 후, 아래 항목을 자체 검증합니다:
 
 - [ ] `<!DOCTYPE html>` + `<html lang="ko">` 존재
 - [ ] Tailwind CDN `<script>` 태그 존재
@@ -210,6 +168,8 @@ HTML 생성 완료 후, 아래 항목을 자체 검증합니다 (별도 validate
 - [ ] composed 섹션에 그라데이션 오버레이 + text-shadow 적용
 - [ ] 버튼에 그라데이션 배경 적용
 - [ ] 텍스트 가운데 정렬 기본, 나열형만 좌측 정렬
+- [ ] 소스 프리셋의 brand/accent hex가 CSS 변수로 치환되었는가
+- [ ] 모든 placeholder(`[브랜드명]`, `[제품명]` 등)가 실제 값으로 치환되었는가
 
 검증 통과 시 → 파일 저장
 검증 실패 시 → 실패 항목 수정 후 재저장
@@ -218,27 +178,3 @@ HTML 생성 완료 후, 아래 항목을 자체 검증합니다 (별도 validate
 - 파일: `output/{product}-detail.html`
 - 미리보기 안내: `브라우저에서 직접 열어 확인 가능`
 - Figma 변환: `html.to.design (Figma 플러그인)으로 가져오기`
-
-## FeatureDetail 좌우 교차 규칙
-
-FeatureDetail 섹션은 split composition에서 **홀짝 교차**합니다:
-- **홀수 번호** (01, 03, 05): 텍스트 좌측 / 이미지 우측
-- **짝수 번호** (02, 04, 06): 이미지 좌측 / 텍스트 우측
-
-이를 통해 시각적 단조로움을 방지합니다.
-
-## 배경 교차 패턴
-
-```
-Section 1  → bg-dark-gradient-1  (또는 composed)
-Section 2  → bg-dark-gradient-2
-Section 3  → bg-brand-gradient
-Section 4  → bg-dark-gradient-1
-Section 5  → bg-dark-gradient-2
-...
-```
-
-- Hook, PainPoint, CTA: `composed` (배경 이미지 사용)
-- Solution, BrandName, Target, Warranty: `bg-brand-gradient`
-- Differentiator: `bg-accent-gradient`
-- 나머지: `bg-dark-gradient-1` ↔ `bg-dark-gradient-2` 교차

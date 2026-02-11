@@ -1,0 +1,49 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "setcontents--ref-logitech-k120",
+  "taxonomy_id": "SetContents",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "ref-logitech-k120",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "layout": {
+    "height": 700,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Contents_Title",
+      "role": "구성품 섹션 제목",
+      "fontSize": 24,
+      "fontWeight": 600,
+      "color": "#222222"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "패키지 박스 + 구성품 이미지",
+      "height": 400
+    }
+  ],
+  "copywriting_guide": "박스에 포함된 구성품을 이미지로 명확하게 안내."
+}

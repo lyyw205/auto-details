@@ -1,0 +1,65 @@
+{
+  "type": "STYLE_PRESET",
+  "id": "preset--ref-reference3",
+  "name": "화장품 수납 정리대 기반 템플릿",
+  "source_ref": "ref-reference3",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한",
+    "프리미엄",
+    "베이지 팔레트"
+  ],
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 740,
+    "default_padding": {
+      "top": 50,
+      "bottom": 50,
+      "left": 60,
+      "right": 60
+    },
+    "default_item_spacing": 20,
+    "default_content_alignment": "CENTER",
+    "font_family": "Inter"
+  },
+  "color_system": {
+    "brand_main": "#C8A87C",
+    "accent": "#8B6F4E",
+    "dark_1": "#1A1410",
+    "dark_2": "#2A2218",
+    "light_1": "#FFFFFF",
+    "light_2": "#F5F0EB",
+    "light_text": "#FFFFFF",
+    "dark_text": "#222222",
+    "sub_text": "#888888",
+    "muted_text": "#666666",
+    "image_placeholder": "#E0D5C8"
+  },
+  "typography": {
+    "main_copy": {
+      "fontSize": 36,
+      "fontWeight": 700
+    },
+    "section_title": {
+      "fontSize": 28,
+      "fontWeight": 700
+    },
+    "sub_title": {
+      "fontSize": 22,
+      "fontWeight": 500
+    },
+    "body": {
+      "fontSize": 16,
+      "fontWeight": 400
+    },
+    "small": {
+      "fontSize": 14,
+      "fontWeight": 400
+    },
+    "stats_number": {
+      "fontSize": 48,
+      "fontWeight": 700
+    }
+  }
+}

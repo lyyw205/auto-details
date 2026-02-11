@@ -1,0 +1,94 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "setcontents--default",
+  "taxonomy_id": "SetContents",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1100,
+    "background": "#111111",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목",
+      "fontSize": 40,
+      "fontWeight": 700
+    },
+    {
+      "type": "TEXT",
+      "name": "Sub_Copy",
+      "role": "세트명",
+      "fontSize": 22,
+      "color": "brand_main"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "구성품 전체 이미지",
+      "height": 350
+    },
+    {
+      "type": "TEXT",
+      "name": "Item1_Title",
+      "role": "구성품 1 제목",
+      "fontSize": 24,
+      "fontWeight": 600
+    },
+    {
+      "type": "TEXT",
+      "name": "Item1_Desc1~3",
+      "role": "구성품 1 설명",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Item2_Title",
+      "role": "구성품 2 제목 (핵심)",
+      "fontSize": 24,
+      "fontWeight": 600
+    },
+    {
+      "type": "TEXT",
+      "name": "Item2_Desc1~3",
+      "role": "구성품 2 설명",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Item3_Title",
+      "role": "구성품 3 제목 (부가)",
+      "fontSize": 24,
+      "fontWeight": 600
+    },
+    {
+      "type": "TEXT",
+      "name": "Item3_Desc1~2",
+      "role": "구성품 3 설명",
+      "fontSize": 22
+    }
+  ],
+  "copywriting_guide": "각 구성품이 왜 필요한지, 어떤 가치를 주는지 설명"
+}

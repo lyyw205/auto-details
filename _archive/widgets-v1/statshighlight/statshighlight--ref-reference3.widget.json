@@ -1,0 +1,66 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "statshighlight--ref-reference3",
+  "taxonomy_id": "StatsHighlight",
+  "category": "features",
+  "provenance": {
+    "source_ref": "ref-reference3",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 300,
+    "background": "#2A2218",
+    "padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Section_Title",
+      "role": "섹션 제목",
+      "fontSize": 22,
+      "fontWeight": 700,
+      "color": "#FFFFFF"
+    },
+    {
+      "type": "FRAME",
+      "name": "Stats_Grid",
+      "role": "수치 3열 그리드 (숫자+단위+라벨 × 3)",
+      "layoutMode": "HORIZONTAL",
+      "columns": 3,
+      "items_template": {
+        "number": {
+          "fontSize": 48,
+          "fontWeight": 700,
+          "color": "#C8A87C"
+        },
+        "unit": {
+          "fontSize": 20,
+          "fontWeight": 400,
+          "color": "#FFFFFF"
+        },
+        "label": {
+          "fontSize": 14,
+          "fontWeight": 400,
+          "color": "#888888"
+        }
+      }
+    }
+  ]
+}

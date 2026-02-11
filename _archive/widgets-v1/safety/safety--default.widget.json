@@ -1,0 +1,61 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "safety--default",
+  "taxonomy_id": "Safety",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1300,
+    "background": "#1A1A1A",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목",
+      "fontSize": 40,
+      "fontWeight": 700
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "안전/인증 이미지",
+      "height": 300
+    },
+    {
+      "type": "TEXT",
+      "name": "Point1~6_Title",
+      "role": "안전 포인트 제목",
+      "fontSize": 22,
+      "color": "brand_main"
+    },
+    {
+      "type": "TEXT",
+      "name": "Point1~6_Desc",
+      "role": "안전 포인트 설명",
+      "fontSize": 22
+    }
+  ],
+  "copywriting_guide": "안전 인증, 소재, 설계 특징 등 신뢰 요소 나열"
+}

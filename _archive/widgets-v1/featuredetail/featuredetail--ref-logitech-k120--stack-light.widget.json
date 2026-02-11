@@ -1,0 +1,57 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "featuredetail--ref-logitech-k120--stack-light",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "provenance": {
+    "source_ref": "ref-logitech-k120",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "layout": {
+    "height": 700,
+    "background": "#F5F5F5",
+    "padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Feature_Title",
+      "role": "기능 제목",
+      "fontSize": 24,
+      "fontWeight": 600,
+      "color": "#222222"
+    },
+    {
+      "type": "TEXT",
+      "name": "Feature_Desc",
+      "role": "기능 설명",
+      "fontSize": 14,
+      "fontWeight": 400,
+      "color": "#666666"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "기능 시연 이미지",
+      "height": 350
+    }
+  ],
+  "copywriting_guide": "제목 + 1~2줄 설명 + 이미지. 텍스트는 최소화하고 이미지로 전달."
+}

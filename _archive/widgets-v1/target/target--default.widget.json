@@ -1,0 +1,57 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "target--default",
+  "taxonomy_id": "Target",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 900,
+    "background": "brand_main",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목",
+      "fontSize": 40,
+      "fontWeight": 700,
+      "color": "dark"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "타겟 고객 이미지",
+      "height": 300
+    },
+    {
+      "type": "TEXT",
+      "name": "Target_1~6",
+      "role": "추천 대상 리스트",
+      "fontSize": 22,
+      "prefix": "✓",
+      "color": "dark"
+    }
+  ],
+  "copywriting_guide": "\"이런 분들께 추천드려요\" 형식, 구체적인 상황 제시"
+}

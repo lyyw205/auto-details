@@ -1,0 +1,83 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "ctabanner--ref-maru",
+  "taxonomy_id": "CTABanner",
+  "category": "conversion",
+  "provenance": {
+    "source_ref": "ref-maru",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기반"
+  ],
+  "theme": "dark",
+  "composition": "composed",
+  "layout": {
+    "height": 120,
+    "background": "#6B7B3A",
+    "padding": {
+      "top": 0,
+      "bottom": 0,
+      "left": 0,
+      "right": 0
+    },
+    "itemSpacing": 0
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Banner_BG",
+        "role": "배너 배경 (단색 또는 미묘한 텍스처)",
+        "ai_prompt": {
+          "prompt": "Solid dark olive green background with subtle fabric or paper texture, muted warm tone, minimal, no objects",
+          "negative": "text, objects, patterns, people",
+          "style": "background_only",
+          "aspect_ratio": "16:3"
+        },
+        "placeholderColor": "#6B7B3A"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TL:MC",
+      "element": {
+        "type": "TEXT",
+        "name": "Banner_Title",
+        "role": "배너 제목",
+        "fontSize": 22,
+        "fontWeight": 700,
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "ML:BL",
+      "element": {
+        "type": "TEXT",
+        "name": "Banner_Desc",
+        "role": "배너 부가 설명",
+        "fontSize": 13,
+        "fontWeight": 400,
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TR:MR",
+      "element": {
+        "type": "BUTTON",
+        "name": "Banner_CTA",
+        "role": "액션 버튼",
+        "backgroundColor": "#4CAF50",
+        "color": "#FFFFFF",
+        "cornerRadius": 4
+      }
+    }
+  ]
+}

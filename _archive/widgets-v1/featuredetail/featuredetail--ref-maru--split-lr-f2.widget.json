@@ -1,0 +1,79 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "featuredetail--ref-maru--split-lr-f2",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "provenance": {
+    "source_ref": "ref-maru",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기반"
+  ],
+  "theme": "light",
+  "composition": "split",
+  "layout": {
+    "height": 350,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 40,
+      "bottom": 40,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 0
+  },
+  "direction": "horizontal",
+  "ratio": [
+    1,
+    1
+  ],
+  "left": {
+    "valign": "MC",
+    "required_elements": [
+      {
+        "type": "IMAGE_AREA",
+        "name": "Feature_Logo",
+        "role": "기능/브랜드 로고",
+        "height": 30
+      },
+      {
+        "type": "TEXT",
+        "name": "Feature_Desc",
+        "role": "기능 설명 텍스트 (2~3줄)",
+        "fontSize": 15,
+        "fontWeight": 400,
+        "color": "#333333"
+      },
+      {
+        "type": "BUTTON",
+        "name": "Feature_CTA",
+        "role": "상세보기 버튼",
+        "backgroundColor": "#4CAF50",
+        "color": "#FFFFFF",
+        "cornerRadius": 4
+      }
+    ]
+  },
+  "right": {
+    "valign": "MC",
+    "required_elements": [
+      {
+        "type": "IMAGE_AREA",
+        "name": "Feature_Image",
+        "role": "기능/공간 이미지",
+        "ai_prompt": {
+          "prompt": "[product] feature detail, interior or workspace shot, bright natural light, modern design, professional photography, 8k",
+          "negative": "text, watermark, blurry, dark",
+          "style": "product_lifestyle",
+          "aspect_ratio": "4:3"
+        },
+        "height": 280,
+        "placeholderColor": "#E8E8E8"
+      }
+    ]
+  }
+}

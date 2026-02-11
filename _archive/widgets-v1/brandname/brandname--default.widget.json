@@ -1,0 +1,67 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "brandname--default",
+  "taxonomy_id": "BrandName",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 700,
+    "background": "brand_main",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Question",
+      "role": "브랜드명 질문",
+      "fontSize": 24
+    },
+    {
+      "type": "TEXT",
+      "name": "Meaning_1~N",
+      "role": "의미 풀이",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Translation",
+      "role": "최종 해석",
+      "fontSize": 28,
+      "fontWeight": 700
+    },
+    {
+      "type": "TEXT",
+      "name": "Desc",
+      "role": "브랜드 철학",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Slogan",
+      "role": "슬로건",
+      "fontSize": 24,
+      "color": "dark"
+    }
+  ],
+  "copywriting_guide": "브랜드명에 담긴 의미를 풀어서 신뢰감과 스토리 부여"
+}

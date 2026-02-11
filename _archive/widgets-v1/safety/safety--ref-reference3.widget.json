@@ -1,0 +1,87 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "safety--ref-reference3",
+  "taxonomy_id": "Safety",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "ref-reference3",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "layout": {
+    "height": 400,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 50,
+      "bottom": 50,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 20,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목 (소재/품질)",
+      "fontSize": 28,
+      "fontWeight": 700,
+      "color": "#222222"
+    },
+    {
+      "type": "IMAGE_AREA",
+      "name": "Material_Image",
+      "role": "소재 클로즈업 / 마감 디테일 이미지",
+      "ai_prompt": {
+        "prompt": "Natural wood grain texture close-up of [product], warm oak color, furniture surface detail, professional macro photography, 8k quality, clean and minimal",
+        "negative": "text, watermark, blurry, painted, artificial",
+        "style": "product_detail",
+        "aspect_ratio": "16:9"
+      },
+      "height": 200,
+      "placeholderColor": "#E0D5C8"
+    },
+    {
+      "type": "TEXT",
+      "name": "Point1_Title",
+      "role": "품질 포인트 1 제목",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#222222"
+    },
+    {
+      "type": "TEXT",
+      "name": "Point1_Desc",
+      "role": "품질 포인트 1 설명",
+      "fontSize": 15,
+      "fontWeight": 400,
+      "color": "#666666"
+    },
+    {
+      "type": "TEXT",
+      "name": "Point2_Title",
+      "role": "품질 포인트 2 제목",
+      "fontSize": 18,
+      "fontWeight": 600,
+      "color": "#222222"
+    },
+    {
+      "type": "TEXT",
+      "name": "Point2_Desc",
+      "role": "품질 포인트 2 설명",
+      "fontSize": 15,
+      "fontWeight": 400,
+      "color": "#666666"
+    }
+  ]
+}

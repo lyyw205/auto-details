@@ -1,0 +1,83 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "cta--ref-reference3",
+  "taxonomy_id": "CTA",
+  "category": "conversion",
+  "provenance": {
+    "source_ref": "ref-reference3",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "dark",
+  "composition": "composed",
+  "layout": {
+    "height": 500,
+    "background": "#1A1410",
+    "padding": {
+      "top": 0,
+      "bottom": 0,
+      "left": 0,
+      "right": 0
+    },
+    "itemSpacing": 24
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "CTA_BG",
+        "role": "다크 감성 배경 이미지",
+        "ai_prompt": {
+          "prompt": "Elegant dark wooden desk setup with warm ambient lighting, [product] beautifully arranged, moody atmosphere, professional photography, 8k quality",
+          "negative": "text, watermark, blurry, bright, cluttered",
+          "style": "mood",
+          "aspect_ratio": "4:3"
+        },
+        "placeholderColor": "#1A1410"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TL:TR",
+      "element": {
+        "type": "TEXT",
+        "name": "CTA_Copy",
+        "role": "구매 유도 카피 (Hook 메시지 반복 또는 감성 카피)",
+        "fontSize": 32,
+        "fontWeight": 700,
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "ML:MR",
+      "element": {
+        "type": "TEXT",
+        "name": "CTA_Sub",
+        "role": "서브 카피",
+        "fontSize": 16,
+        "fontWeight": 400,
+        "color": "#CCCCCC"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL:BC",
+      "element": {
+        "type": "BUTTON",
+        "name": "CTA_Button",
+        "role": "구매 버튼",
+        "backgroundColor": "#C8A87C",
+        "color": "#FFFFFF",
+        "cornerRadius": 4
+      }
+    }
+  ]
+}

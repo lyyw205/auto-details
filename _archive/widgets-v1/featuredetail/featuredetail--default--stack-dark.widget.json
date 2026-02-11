@@ -1,0 +1,95 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "featuredetail--default--stack-dark",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1000,
+    "background": "#1A1A1A",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Feature_Num",
+      "role": "기능 번호 (01)",
+      "fontSize": 72,
+      "fontWeight": 700,
+      "color": "brand_main"
+    },
+    {
+      "type": "TEXT",
+      "name": "Question",
+      "role": "질문 형식 제목",
+      "fontSize": 28,
+      "color": "brand_main"
+    },
+    {
+      "type": "TEXT",
+      "name": "Answer",
+      "role": "기능 핵심 답변",
+      "fontSize": 36,
+      "fontWeight": 700
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "기능 1 상세 이미지",
+      "height": 350
+    },
+    {
+      "type": "TEXT",
+      "name": "Benefit_Title",
+      "role": "혜택 제목",
+      "fontSize": 24,
+      "fontWeight": 600
+    },
+    {
+      "type": "TEXT",
+      "name": "Benefit_1",
+      "role": "혜택 1",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Benefit_2",
+      "role": "혜택 2",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Benefit_3",
+      "role": "혜택 3",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Spec_Highlight",
+      "role": "스펙 강조 (선택)",
+      "fontSize": 22,
+      "color": "accent"
+    }
+  ],
+  "copywriting_guide": "이 기능이 고객에게 주는 구체적인 혜택과 가치를 설명"
+}

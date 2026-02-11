@@ -1,0 +1,100 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "hook--ref-reference3",
+  "taxonomy_id": "Hook",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "ref-reference3",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "dark",
+  "composition": "composed",
+  "layout": {
+    "height": 700,
+    "background": "#1A1410",
+    "padding": {
+      "top": 60,
+      "bottom": 40,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 20
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Hero_BG",
+        "role": "다크톤 우드 텍스처 배경",
+        "ai_prompt": {
+          "prompt": "Dark warm brown wood texture background, subtle grain pattern, professional [product] photography backdrop, 8k quality",
+          "negative": "text, watermark, objects, people, bright colors",
+          "style": "background_only",
+          "aspect_ratio": "4:5"
+        },
+        "placeholderColor": "#1A1410"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TL",
+      "element": {
+        "type": "TEXT",
+        "name": "Brand",
+        "role": "브랜드/카테고리 텍스트",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "color": "#C8A87C"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TL:TR",
+      "element": {
+        "type": "TEXT",
+        "name": "Main_Copy",
+        "role": "메인 후킹 카피 (2줄 헤드라인)",
+        "fontSize": 36,
+        "fontWeight": 700,
+        "color": "#FFFFFF"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "TC:TR",
+      "element": {
+        "type": "TEXT",
+        "name": "Sub_Copy",
+        "role": "서브 카피 (핵심 혜택 한줄)",
+        "fontSize": 16,
+        "fontWeight": 400,
+        "color": "#CCCCCC"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "ML:BR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Hero_Product",
+        "role": "메인 제품 이미지 (소품 배치된 전체 모습)",
+        "ai_prompt": {
+          "prompt": "[product] hero shot with items neatly arranged, warm studio lighting, beige and natural wood tones, professional product photography, 8k quality, clean composition",
+          "negative": "text, watermark, blurry, dark shadows, cluttered",
+          "style": "product_hero",
+          "aspect_ratio": "4:3"
+        },
+        "height": 450,
+        "placeholderColor": "#E0D5C8"
+      }
+    }
+  ]
+}

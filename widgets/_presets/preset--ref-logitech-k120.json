@@ -1,0 +1,61 @@
+{
+  "type": "STYLE_PRESET",
+  "id": "preset--ref-logitech-k120",
+  "name": "로지텍 K120 기반 템플릿",
+  "source_ref": "ref-logitech-k120",
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조",
+    "이미지 중심",
+    "텍스트 최소화"
+  ],
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 760,
+    "default_padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "default_item_spacing": 16,
+    "default_content_alignment": "CENTER",
+    "font_family": "Inter"
+  },
+  "color_system": {
+    "brand_main": "#00B050",
+    "accent": "#333333",
+    "dark_1": "#1A1A1A",
+    "dark_2": "#111111",
+    "light_1": "#FFFFFF",
+    "light_2": "#F5F5F5",
+    "dark_text": "#222222",
+    "light_text": "#FFFFFF",
+    "sub_text": "#666666",
+    "muted_text": "#888888",
+    "image_placeholder": "#E8E8E8"
+  },
+  "typography": {
+    "main_copy": {
+      "fontSize": 48,
+      "fontWeight": 700
+    },
+    "section_title": {
+      "fontSize": 28,
+      "fontWeight": 700
+    },
+    "sub_title": {
+      "fontSize": 24,
+      "fontWeight": 500
+    },
+    "body": {
+      "fontSize": 18,
+      "fontWeight": 400
+    },
+    "small": {
+      "fontSize": 14,
+      "fontWeight": 400
+    }
+  }
+}

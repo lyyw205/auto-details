@@ -40,7 +40,9 @@
     },
     "visual_rhythm": "배경색 교차 패턴 설명",
     "overall_style": "전반적인 스타일 (예: 미니멀, 다크모드, 컬러풀, 내추럴 등)",
-    "content_alignment": "CENTER / LEFT / MIXED"
+    "content_alignment": "CENTER / LEFT / MIXED",
+    "style_tags": ["3~5개 스타일 키워드 (예: 미니멀, 클린, 다크 기조, 프리미엄, 이미지 중심)"],
+    "theme": "dark | light | mixed (전체 페이지의 주요 톤)"
   }
 }
 ```

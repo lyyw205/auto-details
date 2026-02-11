@@ -1,0 +1,712 @@
+{
+  "type": "WIDGET_REGISTRY",
+  "version": "1.0",
+  "total_widgets": 54,
+  "presets": [
+    "preset--ref-reference3",
+    "preset--ref-maru",
+    "preset--ref-logitech-k120",
+    "preset--default"
+  ],
+  "widgets": {
+    "Hook": [
+      {
+        "widget_id": "hook--ref-reference3",
+        "file": "hook/hook--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "composed",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "hook--ref-maru",
+        "file": "hook/hook--ref-maru.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "composed",
+        "theme": "light"
+      },
+      {
+        "widget_id": "hook--ref-logitech-k120",
+        "file": "hook/hook--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "hook--default",
+        "file": "hook/hook--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "WhatIsThis": [
+      {
+        "widget_id": "whatisthis--ref-reference3",
+        "file": "whatisthis/whatisthis--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "whatisthis--ref-logitech-k120",
+        "file": "whatisthis/whatisthis--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "whatisthis--default",
+        "file": "whatisthis/whatisthis--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "FeaturesOverview": [
+      {
+        "widget_id": "featuresoverview--ref-reference3",
+        "file": "featuresoverview/featuresoverview--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "featuresoverview--default",
+        "file": "featuresoverview/featuresoverview--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "FeatureDetail": [
+      {
+        "widget_id": "featuredetail--ref-reference3--split-lr",
+        "file": "featuredetail/featuredetail--ref-reference3--split-lr.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left"
+      },
+      {
+        "widget_id": "featuredetail--ref-reference3--split-rl",
+        "file": "featuredetail/featuredetail--ref-reference3--split-rl.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-right"
+      },
+      {
+        "widget_id": "featuredetail--ref-reference3--split-lr-f3",
+        "file": "featuredetail/featuredetail--ref-reference3--split-lr-f3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left"
+      },
+      {
+        "widget_id": "featuredetail--ref-maru--split-lr",
+        "file": "featuredetail/featuredetail--ref-maru--split-lr.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left"
+      },
+      {
+        "widget_id": "featuredetail--ref-maru--split-lr-f2",
+        "file": "featuredetail/featuredetail--ref-maru--split-lr-f2.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left"
+      },
+      {
+        "widget_id": "featuredetail--ref-logitech-k120--stack-light",
+        "file": "featuredetail/featuredetail--ref-logitech-k120--stack-light.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "featuredetail--ref-logitech-k120--stack-light-f2",
+        "file": "featuredetail/featuredetail--ref-logitech-k120--stack-light-f2.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "featuredetail--ref-logitech-k120--stack-light-f3",
+        "file": "featuredetail/featuredetail--ref-logitech-k120--stack-light-f3.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "featuredetail--ref-logitech-k120--stack-dark",
+        "file": "featuredetail/featuredetail--ref-logitech-k120--stack-dark.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--ref-logitech-k120--stack-dark-f5",
+        "file": "featuredetail/featuredetail--ref-logitech-k120--stack-dark-f5.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark",
+        "file": "featuredetail/featuredetail--default--stack-dark.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark-2",
+        "file": "featuredetail/featuredetail--default--stack-dark-2.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark-3",
+        "file": "featuredetail/featuredetail--default--stack-dark-3.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark-4",
+        "file": "featuredetail/featuredetail--default--stack-dark-4.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark-5",
+        "file": "featuredetail/featuredetail--default--stack-dark-5.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "featuredetail--default--stack-dark-6",
+        "file": "featuredetail/featuredetail--default--stack-dark-6.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "StatsHighlight": [
+      {
+        "widget_id": "statshighlight--ref-reference3",
+        "file": "statshighlight/statshighlight--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "statshighlight--ref-maru",
+        "file": "statshighlight/statshighlight--ref-maru.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "Safety": [
+      {
+        "widget_id": "safety--ref-reference3",
+        "file": "safety/safety--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "safety--default",
+        "file": "safety/safety--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "_custom": [
+      {
+        "widget_id": "coloroptions컬러옵션선택--ref-reference3",
+        "file": "_custom/coloroptions컬러옵션선택--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "ProductSpec": [
+      {
+        "widget_id": "productspec--ref-reference3",
+        "file": "productspec/productspec--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "productspec--ref-logitech-k120",
+        "file": "productspec/productspec--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "productspec--default",
+        "file": "productspec/productspec--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "CTA": [
+      {
+        "widget_id": "cta--ref-reference3",
+        "file": "cta/cta--ref-reference3.widget.json",
+        "source_ref": "ref-reference3",
+        "style_tags": [
+          "내추럴",
+          "우드톤",
+          "따뜻한"
+        ],
+        "composition": "composed",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "cta--default",
+        "file": "cta/cta--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "CTABanner": [
+      {
+        "widget_id": "ctabanner--ref-maru",
+        "file": "ctabanner/ctabanner--ref-maru.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "composed",
+        "theme": "dark"
+      }
+    ],
+    "EventPromo": [
+      {
+        "widget_id": "eventpromo--ref-maru",
+        "file": "eventpromo/eventpromo--ref-maru.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "Reviews": [
+      {
+        "widget_id": "reviews--ref-maru",
+        "file": "reviews/reviews--ref-maru.widget.json",
+        "source_ref": "ref-maru",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기반"
+        ],
+        "composition": "composed",
+        "theme": "light"
+      },
+      {
+        "widget_id": "reviews--default",
+        "file": "reviews/reviews--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "BrandName": [
+      {
+        "widget_id": "brandname--ref-logitech-k120",
+        "file": "brandname/brandname--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "brandname--default",
+        "file": "brandname/brandname--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Differentiator": [
+      {
+        "widget_id": "differentiator--ref-logitech-k120",
+        "file": "differentiator/differentiator--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      },
+      {
+        "widget_id": "differentiator--default",
+        "file": "differentiator/differentiator--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "SetContents": [
+      {
+        "widget_id": "setcontents--ref-logitech-k120",
+        "file": "setcontents/setcontents--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "setcontents--default",
+        "file": "setcontents/setcontents--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Warranty": [
+      {
+        "widget_id": "warranty--ref-logitech-k120",
+        "file": "warranty/warranty--ref-logitech-k120.widget.json",
+        "source_ref": "ref-logitech-k120",
+        "style_tags": [
+          "미니멀",
+          "클린",
+          "화이트 기조"
+        ],
+        "composition": "stack",
+        "theme": "light"
+      },
+      {
+        "widget_id": "warranty--default",
+        "file": "warranty/warranty--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "WhyCore": [
+      {
+        "widget_id": "whycore--default",
+        "file": "whycore/whycore--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "PainPoint": [
+      {
+        "widget_id": "painpoint--default",
+        "file": "painpoint/painpoint--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Solution": [
+      {
+        "widget_id": "solution--default",
+        "file": "solution/solution--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Tips": [
+      {
+        "widget_id": "tips--default",
+        "file": "tips/tips--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Comparison": [
+      {
+        "widget_id": "comparison--default",
+        "file": "comparison/comparison--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "Target": [
+      {
+        "widget_id": "target--default",
+        "file": "target/target--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ],
+    "FAQ": [
+      {
+        "widget_id": "faq--default",
+        "file": "faq/faq--default.widget.json",
+        "source_ref": "default",
+        "style_tags": [
+          "다크 기조",
+          "프리미엄",
+          "Q&A 형식"
+        ],
+        "composition": "stack",
+        "theme": "dark"
+      }
+    ]
+  }
+}

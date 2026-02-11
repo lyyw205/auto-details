@@ -1,0 +1,111 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "reviews--ref-maru",
+  "taxonomy_id": "Reviews",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "ref-maru",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기반"
+  ],
+  "theme": "light",
+  "composition": "composed",
+  "layout": {
+    "height": 550,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 0,
+      "bottom": 40,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 20
+  },
+  "layers": [
+    {
+      "zIndex": 0,
+      "region": "TL:MR",
+      "element": {
+        "type": "IMAGE_AREA",
+        "name": "Mood_Image",
+        "role": "감성 이미지 (공간/브랜드 분위기)",
+        "ai_prompt": {
+          "prompt": "Modern creative office or [product] environment with dramatic colorful lighting, glass walls, open space, cinematic mood, artistic color grading, 8k quality",
+          "negative": "text, watermark, people, blurry, dark shadows",
+          "style": "mood",
+          "aspect_ratio": "16:7"
+        },
+        "height": 250,
+        "placeholderColor": "#3A2A5A"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "ML:MR",
+      "element": {
+        "type": "TEXT",
+        "name": "Residents_Title",
+        "role": "소개 제목 텍스트",
+        "fontSize": 22,
+        "fontWeight": 700,
+        "color": "#111111"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "ML",
+      "element": {
+        "type": "TEXT",
+        "name": "Residents_Desc",
+        "role": "소개 부가 설명",
+        "fontSize": 14,
+        "fontWeight": 400,
+        "color": "#888888"
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL",
+      "element": {
+        "type": "BUTTON",
+        "name": "Community_CTA",
+        "role": "커뮤니티/전체보기 버튼",
+        "backgroundColor": "#333333",
+        "color": "#FFFFFF",
+        "cornerRadius": 4
+      }
+    },
+    {
+      "zIndex": 1,
+      "region": "BL:BR",
+      "element": {
+        "type": "FRAME",
+        "name": "Partner_Cards",
+        "role": "파트너/입주사 3열 카드 캐러셀 (로고 + 이름 + 링크)",
+        "layoutMode": "HORIZONTAL",
+        "columns": 3,
+        "items_template": {
+          "tag": {
+            "fontSize": 12,
+            "fontWeight": 600,
+            "color": "#4CAF50"
+          },
+          "logo": {
+            "type": "IMAGE_AREA",
+            "height": 60
+          },
+          "name": {
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "#111111"
+          }
+        }
+      }
+    }
+  ]
+}

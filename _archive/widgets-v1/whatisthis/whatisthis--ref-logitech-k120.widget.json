@@ -1,0 +1,65 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "whatisthis--ref-logitech-k120",
+  "taxonomy_id": "WhatIsThis",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "ref-logitech-k120",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "layout": {
+    "height": 800,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Brand_Name",
+      "role": "브랜드명",
+      "fontSize": 24,
+      "fontWeight": 400,
+      "color": "#666666"
+    },
+    {
+      "type": "TEXT",
+      "name": "Model_Name",
+      "role": "모델명 (대형 텍스트)",
+      "fontSize": 48,
+      "fontWeight": 700,
+      "color": "#222222"
+    },
+    {
+      "type": "TEXT",
+      "name": "One_Liner",
+      "role": "제품 한줄 정의",
+      "fontSize": 16,
+      "fontWeight": 400,
+      "color": "#888888"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "제품 이미지 (각도 뷰)",
+      "height": 350
+    }
+  ],
+  "copywriting_guide": "모델명을 가장 크게 배치. 브랜드 인지도를 활용한 간결한 소개."
+}

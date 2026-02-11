@@ -1,0 +1,92 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "differentiator--default",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1000,
+    "background": "accent",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Badge",
+      "role": "배지 (예: 국내 최초)",
+      "fontSize": 20,
+      "fontWeight": 700
+    },
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "차별화 포인트",
+      "fontSize": 40,
+      "fontWeight": 700
+    },
+    {
+      "type": "TEXT",
+      "name": "Sub_Copy",
+      "role": "부가 설명",
+      "fontSize": 22
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "차별화 비교 이미지",
+      "height": 300
+    },
+    {
+      "type": "TEXT",
+      "name": "Problem_Title",
+      "role": "기존 문제",
+      "fontSize": 24
+    },
+    {
+      "type": "TEXT",
+      "name": "Problem_Desc",
+      "role": "문제 설명",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Solution_Title",
+      "role": "우리의 해결책",
+      "fontSize": 24
+    },
+    {
+      "type": "TEXT",
+      "name": "Solution_Desc1~2",
+      "role": "해결책 설명",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Result",
+      "role": "결과 강조",
+      "fontSize": 22,
+      "fontWeight": 600
+    }
+  ],
+  "copywriting_guide": "\"국내 최초\", \"업계 유일\" 등 강력한 차별점 강조"
+}

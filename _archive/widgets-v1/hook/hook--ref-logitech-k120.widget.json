@@ -1,0 +1,63 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "hook--ref-logitech-k120",
+  "taxonomy_id": "Hook",
+  "category": "intro",
+  "provenance": {
+    "source_ref": "ref-logitech-k120",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "미니멀",
+    "클린",
+    "화이트 기조"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "layout": {
+    "height": 900,
+    "background": "#FFFFFF",
+    "padding": {
+      "top": 40,
+      "bottom": 40,
+      "left": 50,
+      "right": 50
+    },
+    "itemSpacing": 16,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "IMAGE",
+      "name": "Brand_Logo",
+      "role": "브랜드 로고 이미지",
+      "height": 40
+    },
+    {
+      "type": "TEXT",
+      "name": "Product_Category",
+      "role": "제품 카테고리/풀네임",
+      "fontSize": 16,
+      "fontWeight": 400,
+      "color": "#666666"
+    },
+    {
+      "type": "TEXT",
+      "name": "Sub_Copy",
+      "role": "제품 간략 소개 텍스트",
+      "fontSize": 14,
+      "fontWeight": 400,
+      "color": "#888888"
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "메인 제품 이미지 (정면)",
+      "height": 400
+    }
+  ],
+  "copywriting_guide": "클린하고 절제된 톤. 제품명과 카테고리만으로 임팩트 전달."
+}

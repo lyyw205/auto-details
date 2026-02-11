@@ -1,0 +1,74 @@
+{
+  "type": "SECTION_WIDGET",
+  "version": "1.0",
+  "widget_id": "productspec--default",
+  "taxonomy_id": "ProductSpec",
+  "category": "trust",
+  "provenance": {
+    "source_ref": "default",
+    "extracted_date": "2026-02-11"
+  },
+  "style_tags": [
+    "다크 기조",
+    "프리미엄",
+    "Q&A 형식"
+  ],
+  "theme": "dark",
+  "composition": "stack",
+  "layout": {
+    "height": 1000,
+    "background": "#1A1A1A",
+    "padding": {
+      "top": 80,
+      "bottom": 80,
+      "left": 60,
+      "right": 60
+    },
+    "itemSpacing": 24,
+    "layoutMode": "VERTICAL",
+    "primaryAxisAlign": "CENTER",
+    "counterAxisAlign": "CENTER"
+  },
+  "required_elements": [
+    {
+      "type": "TEXT",
+      "name": "Main_Copy",
+      "role": "섹션 제목",
+      "fontSize": 40,
+      "fontWeight": 700
+    },
+    {
+      "type": "FRAME",
+      "name": "IMAGE_AREA",
+      "role": "제품 스펙 이미지",
+      "height": 350
+    },
+    {
+      "type": "TEXT",
+      "name": "Category1_Title",
+      "role": "카테고리 1 제목",
+      "fontSize": 24,
+      "color": "brand_main"
+    },
+    {
+      "type": "TEXT",
+      "name": "Spec1~N",
+      "role": "스펙 항목들",
+      "fontSize": 22
+    },
+    {
+      "type": "TEXT",
+      "name": "Category2_Title",
+      "role": "카테고리 2 제목 (선택)",
+      "fontSize": 24,
+      "color": "accent"
+    },
+    {
+      "type": "TEXT",
+      "name": "Common",
+      "role": "공통 정보 (제조국, A/S 등)",
+      "fontSize": 22
+    }
+  ],
+  "copywriting_guide": "숫자와 단위를 명확하게, 차별화 스펙은 강조 색상 사용"
+}

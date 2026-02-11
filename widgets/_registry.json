@@ -1,0 +1,12 @@
+{
+  "type": "WIDGET_REGISTRY",
+  "version": "2.0",
+  "total_widgets": 0,
+  "presets": [
+    "preset--ref-reference3",
+    "preset--ref-maru",
+    "preset--ref-logitech-k120",
+    "preset--default"
+  ],
+  "widgets": {}
+}
