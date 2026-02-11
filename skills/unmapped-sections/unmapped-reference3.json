@@ -1,0 +1,20 @@
+{
+  "reference": "reference3.png",
+  "report_date": "2026-02-11",
+  "total_sections": 11,
+  "unmapped_count": 1,
+  "unmapped_sections": [
+    {
+      "position": 9,
+      "description": "제품의 다양한 색상/마감 옵션을 나란히 보여주며 고객의 선택을 돕는 섹션. 가구/인테리어 카테고리에서 빈번하게 등장.",
+      "visual_type": "2~3가지 컬러 변형 제품 이미지를 그리드 또는 수평 나열, 각 옵션에 라벨",
+      "content_summary": "컬러명 + 제품 이미지 × N개 옵션",
+      "suggested_id": "ColorOptions",
+      "suggested_category": "features",
+      "suggested_name": "컬러/옵션 선택",
+      "suggested_keywords": ["컬러", "색상", "옵션", "선택", "마감", "variant", "모델"],
+      "suggested_visual_cues": ["컬러 변형 나열", "가로 그리드", "옵션별 라벨", "동일 구도 반복"],
+      "confidence": 0.15
+    }
+  ]
+}

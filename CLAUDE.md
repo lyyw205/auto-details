@@ -181,24 +181,31 @@ Spec_Highlight: 관련 스펙 수치 강조 (선택)
 
 ```
 figma-detail-page-agent/
+├── agents/                 # 에이전트 오케스트레이터
+│   ├── ref-to-template.md     # Agent 1: 레퍼런스 → 템플릿
+│   └── product-to-page.md     # Agent 2: 제품 → 상세페이지
+├── skills/                 # 스킬 시스템
+│   ├── section-taxonomy.json  # 섹션 분류 체계 (마스터 데이터)
+│   ├── unmapped-sections/     # 미분류 섹션 리포트 저장소
+│   ├── analyze-ref.skill.md       # 레퍼런스 분석
+│   ├── generate-template.skill.md # 분석 → 템플릿 변환
+│   ├── register-template.skill.md # 레지스트리 등록
+│   ├── plan-sections.skill.md     # 섹션 플랜 설계
+│   ├── match-template.skill.md    # 템플릿 매칭/추천
+│   ├── generate-page.skill.md     # 레이아웃 JSON 생성
+│   └── validate-layout.skill.md   # 구조 검증
 ├── templates/              # 상세페이지 템플릿 (v3.0)
 │   ├── _registry.json      # 템플릿 레지스트리 (목록 관리)
 │   ├── default-24section.template.json  # 기본 24섹션 템플릿 (v3.0)
 │   └── detail-page-structure.json       # 레거시 템플릿 (v2.0)
-├── skills/                 # 스킬 시스템
-│   ├── section-taxonomy.json  # 섹션 분류 체계 (20+ 섹션, 확장 가능)
-│   └── unmapped-sections/     # 미분류 섹션 리포트 저장소
-├── prompts/                # AI 프롬프트
-│   ├── analyze-reference.md   # 레퍼런스 분석 + taxonomy 매핑 (v2.0)
-│   ├── generate-template.md   # 분석 결과 → 템플릿 변환
-│   ├── recommend-template.md  # 섹션 설계 + 템플릿 추천
-│   └── generate-page.md       # 상세페이지 JSON 생성
+├── prompts/                # deprecated (참조용 보존)
 ├── references/             # 레퍼런스 이미지 저장소
 ├── 크래프트볼트/            # 크래프트볼트 상세페이지 결과물 (기준)
 │   └── craftvolt-chainsaw-v3-final.json  # 최신 기준 파일 (24섹션)
-├── output/                 # AI 생성 결과물
+├── output/                 # 에이전트/스킬 중간 + 최종 결과물
 ├── tools/                  # 개발 도구
-│   └── preview.html        # JSON → HTML 미리보기 (브라우저에서 열기)
+│   ├── preview.html        # JSON → HTML 미리보기 (브라우저에서 열기)
+│   └── template-editor.html # 템플릿 와이어프레임 프리뷰어/에디터
 └── figma-plugin/           # Figma 플러그인
     ├── manifest.json       # 플러그인 설정
     ├── code.js             # 플러그인 메인 코드 (레이아웃 유연 지원)
@@ -207,65 +214,49 @@ figma-detail-page-agent/
 
 ---
 
-## 워크플로우
+## 에이전트/스킬 시스템
 
-### 워크플로우 A: 기본 템플릿 사용 (기존)
+### 에이전트 (워크플로우 오케스트레이터)
 
+| 에이전트 | 파일 | 용도 | 스킬 체인 |
+|---------|------|------|----------|
+| `/ref-to-template` | `agents/ref-to-template.md` | 레퍼런스 → 템플릿 | analyze-ref → generate-template → **template-editor 검수** → register-template |
+| `/product-to-page` | `agents/product-to-page.md` | 제품 → 상세페이지 | plan-sections → match-template → generate-page → validate-layout |
+
+### 스킬 (개별 단계)
+
+| 스킬 | 파일 | Input | Output |
+|------|------|-------|--------|
+| `/analyze-ref` | `skills/analyze-ref.skill.md` | 레퍼런스 이미지 | `output/analysis-{name}.json` |
+| `/generate-template` | `skills/generate-template.skill.md` | analysis JSON | `templates/ref-{name}.template.json` |
+| `/register-template` | `skills/register-template.skill.md` | template JSON | `_registry.json` 업데이트 |
+| `/plan-sections` | `skills/plan-sections.skill.md` | 제품 정보 | `output/{product}-section-plan.json` |
+| `/match-template` | `skills/match-template.skill.md` | section plan | `output/{product}-template-match.json` |
+| `/generate-page` | `skills/generate-page.skill.md` | template + plan | `output/{product}-layout.json` |
+| `/validate-layout` | `skills/validate-layout.skill.md` | layout JSON | `output/{product}-validation.json` |
+
+### Taxonomy 슬라이싱
+
+각 스킬은 `skills/section-taxonomy.json` 전체를 로딩하지 않고 **필요한 필드만** 추출합니다:
+
+- **Slim** (분석/플래닝용): `id, name, category, purpose, is_required, frequency, keywords, visual_cues, typical_compositions` → ~3,000 토큰
+- **Selective** (생성용): 플랜 포함 섹션의 `required_elements, copywriting_guide`만 → ~3,600 토큰
+- **Match Config**: `matching_config` 블록만 → ~200 토큰
+
+### 워크플로우
+
+#### 새 레퍼런스 분석 시
 ```
-1. 제품 초안 작성 (6가지 핵심 기능 정의 필수)
-      ↓
-2. 레이아웃 JSON 생성 (기본 24섹션 템플릿 기반)
-      ↓
-3. Figma 플러그인으로 레이아웃 적용
-      ↓
-4. 수동 이미지 교체 및 미세 조정
-```
-
-### 워크플로우 B: 레퍼런스 이미지 기반 (`/analyze-ref`)
-
-```
-1. 레퍼런스 이미지 제공 (references/ 폴더에 저장)
-      ↓
-2. /analyze-ref 실행 (prompts/analyze-reference.md)
-   → taxonomy 기반 섹션 매핑
-   → 미분류 섹션은 skills/unmapped-sections/에 리포트 저장
-      ↓
-3. 템플릿 생성 (prompts/generate-template.md 사용)
-   → ref-[이름].template.json 생성
-   → templates/_registry.json에 등록
-```
-
-### 워크플로우 C: 새 제품 상세페이지 제작 (`/recommend-template` → `/generate-page`)
-
-```
-1. 제품 정보 제공 (제품명, 설명, 핵심 기능 등)
-      ↓
-2. /recommend-template 실행 (prompts/recommend-template.md)
-   → 필요한 섹션 설계 (taxonomy 기반)
-   → 기존 템플릿과 매칭 점수 계산
-   → 상위 3개 템플릿 추천
-      ↓
-3. 사용자가 템플릿 선택 + 수정 요청
-      ↓
-4. /generate-page 실행 (prompts/generate-page.md)
-   → 선택된 템플릿 + 섹션 플랜 기반으로 레이아웃 JSON 생성
-   → output/[제품명]-layout.json 저장
-      ↓
-5. HTML 미리보기로 확인 (tools/preview.html)
-   → 수정 필요 시 JSON 수정 후 재렌더링 (반복)
-      ↓
-6. Figma 플러그인으로 레이아웃 적용
-      ↓
-7. 수동 이미지 교체 및 미세 조정
+/ref-to-template → (analyze-ref → generate-template → [유저 검수: template-editor] → register-template)
 ```
 
-### 스킬 요약
+#### 새 상세페이지 생성 시
+```
+/product-to-page → (plan-sections → [유저 확인] → match-template → [유저 선택] → generate-page → validate-layout)
+```
 
-| 스킬 | 프롬프트 | 역할 |
-|------|---------|------|
-| `/analyze-ref` | `prompts/analyze-reference.md` | 레퍼런스 분석 + taxonomy 매핑 |
-| `/recommend-template` | `prompts/recommend-template.md` | 섹션 설계 + 템플릿 추천 |
-| `/generate-page` | `prompts/generate-page.md` | 상세페이지 JSON 생성 |
+#### 개별 스킬 직접 실행
+각 스킬은 독립적으로도 실행 가능합니다.
 
 ### 섹션 분류 체계 (Taxonomy)
 

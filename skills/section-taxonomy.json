@@ -1,7 +1,7 @@
 {
   "type": "SECTION_TAXONOMY",
-  "version": "1.1",
-  "description": "상세페이지 섹션 분류 체계. 레퍼런스 분석 시 매핑 기준, 템플릿 추천 시 비교 기준으로 사용. v1.1: typical_compositions 추가",
+  "version": "1.2",
+  "description": "상세페이지 섹션 분류 체계. 레퍼런스 분석 시 매핑 기준, 템플릿 추천 시 비교 기준으로 사용. v1.2: StatsHighlight, CTABanner, EventPromo 추가 (MARU 레퍼런스 기반)",
   "created": "2026-02-10",
   "updated": "2026-02-10",
 
@@ -28,8 +28,8 @@
     },
     "conversion": {
       "name": "전환",
-      "description": "최종 구매 결정을 유도하는 마무리 섹션",
-      "typical_position": "24"
+      "description": "구매/참여 전환을 유도하는 섹션. 중간 CTA 배너, 이벤트 안내, 최종 구매 유도 포함",
+      "typical_position": "중간 삽입 가능, 마지막 섹션"
     }
   },
 
@@ -321,6 +321,26 @@
       ]
     },
     {
+      "id": "StatsHighlight",
+      "name": "핵심 수치 강조",
+      "category": "trust",
+      "purpose": "핵심 실적/성과 수치를 대형 타이포그래피로 시각적 강조하여 신뢰감과 규모감 전달",
+      "is_required": false,
+      "frequency": 0.4,
+      "keywords": ["숫자", "통계", "수치", "실적", "성과", "누적", "건수", "in numbers", "달성", "기록"],
+      "visual_cues": ["큰 숫자 나열", "3열 그리드", "수치 강조 텍스트", "단위 분리", "센터 정렬"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 섹션 제목 → 3열 수치 그리드 수직 나열"
+      ],
+      "copywriting_guide": "핵심 수치 3~4개를 선별하여 큰 숫자 + 단위 + 라벨로 시각적 임팩트 전달",
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목", "fontSize": 28, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "영문 서브 타이틀 (선택)", "fontSize": 14, "color": "#888888" },
+        { "type": "GRID", "name": "Stats_Grid", "role": "수치 그리드 (3~4열)", "columns": 3 }
+      ]
+    },
+    {
       "id": "Comparison",
       "name": "경쟁사 비교",
       "category": "trust",
@@ -474,6 +494,49 @@
         { "type": "TEXT", "name": "Warranty1~3_Title", "role": "보증 항목", "fontSize": 24 },
         { "type": "TEXT", "name": "Warranty1~3_Desc", "role": "보증 설명", "fontSize": 22 },
         { "type": "TEXT", "name": "Contact", "role": "연락처", "fontSize": 22 }
+      ]
+    },
+    {
+      "id": "CTABanner",
+      "name": "중간 CTA 배너",
+      "category": "conversion",
+      "purpose": "페이지 중간에 삽입되어 특정 행동(예약, 신청, 문의)을 유도하는 컴팩트 배너",
+      "is_required": false,
+      "frequency": 0.3,
+      "repeatable": true,
+      "max_repeat": 3,
+      "keywords": ["배너", "CTA", "예약", "신청", "지금", "바로", "투어", "문의", "상담"],
+      "visual_cues": ["어두운 배경 배너", "좌우 배치 또는 센터 정렬", "액션 버튼", "컴팩트 높이(120~200px)", "풀 와이드"],
+      "typical_compositions": ["stack", "split"],
+      "composition_examples": [
+        "stack: 제목 → 설명 → 버튼 센터 정렬 수직 나열",
+        "split: 좌측 텍스트(제목+설명) / 우측 액션 버튼"
+      ],
+      "copywriting_guide": "짧고 강렬한 행동 유도 문구 + 명확한 CTA 버튼",
+      "required_elements": [
+        { "type": "TEXT", "name": "Banner_Title", "role": "배너 제목", "fontSize": 22, "fontWeight": 700, "color": "#FFFFFF" },
+        { "type": "TEXT", "name": "Banner_Desc", "role": "배너 설명 (선택)", "fontSize": 13, "color": "#FFFFFF" },
+        { "type": "BUTTON", "name": "Banner_CTA", "role": "액션 버튼", "text": "신청하기" }
+      ]
+    },
+    {
+      "id": "EventPromo",
+      "name": "이벤트/프로그램 안내",
+      "category": "conversion",
+      "purpose": "이벤트, 프로그램, 캠페인 참여를 유도하는 안내 섹션",
+      "is_required": false,
+      "frequency": 0.3,
+      "keywords": ["이벤트", "프로그램", "참여", "행사", "모집", "신청", "기회", "캠페인"],
+      "visual_cues": ["듀얼 버튼", "좌측 정렬 텍스트", "간결한 CTA", "화이트 배경", "아웃라인+필드 버튼 조합"],
+      "typical_compositions": ["stack"],
+      "composition_examples": [
+        "stack: 제목 → 설명 → 듀얼 버튼(아웃라인+필드) 수직 나열"
+      ],
+      "copywriting_guide": "참여의 가치와 혜택을 간결하게 전달, 듀얼 버튼으로 선택지 제공",
+      "required_elements": [
+        { "type": "TEXT", "name": "Event_Title", "role": "이벤트 제목", "fontSize": 22, "fontWeight": 700 },
+        { "type": "TEXT", "name": "Event_Desc", "role": "이벤트 설명", "fontSize": 14, "color": "#888888" },
+        { "type": "FRAME", "name": "Event_Buttons", "role": "듀얼 버튼 프레임 (HORIZONTAL)", "layoutMode": "HORIZONTAL" }
       ]
     },
     {

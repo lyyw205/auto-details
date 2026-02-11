@@ -250,6 +250,7 @@ async function createComposedSection(sectionData, pageWidth, fontFamily) {
 
   // auto-layout 비활성 — 절대 좌표 배치
   frame.layoutMode = 'NONE';
+  frame.clipsContent = true;
 
   applySectionBackground(frame, sectionData);
 
@@ -263,14 +264,17 @@ async function createComposedSection(sectionData, pageWidth, fontFamily) {
   for (const layer of layers) {
     try {
       const rect = regionToRect(layer.region, sectionW, sectionH, padding);
-      const contentWidth = rect.width;
       const element = layer.element;
+      const nodeType = (element.type || '').toUpperCase();
 
-      const childNode = await createNode(element, contentWidth, fontFamily);
+      const childNode = await createNode(element, rect.width, fontFamily);
       if (childNode) {
         childNode.x = rect.x;
         childNode.y = rect.y;
-        childNode.resize(rect.width, rect.height);
+        // IMAGE_AREA만 그리드 영역 전체를 채움; 나머지는 자연 크기 유지
+        if (nodeType === 'IMAGE_AREA' || nodeType === 'IMAGE') {
+          childNode.resize(rect.width, rect.height);
+        }
         frame.appendChild(childNode);
       }
     } catch (e) {
@@ -425,6 +429,13 @@ async function createNode(nodeData, maxWidth, fontFamily) {
       break;
 
     case 'FRAME':
+      if (nodeData.children && nodeData.children.length > 0) {
+        node = await createFrameNode(nodeData, maxWidth, fontFamily);
+      } else {
+        node = await createComplexNode(nodeData, maxWidth);
+      }
+      break;
+
     case 'SECTION':
     case 'GRID':
     case 'STEPS':
@@ -594,6 +605,41 @@ async function createButton(nodeData) {
 }
 
 /**
+ * 일반 FRAME 노드 생성 (children 재귀 처리)
+ */
+async function createFrameNode(nodeData, maxWidth, fontFamily) {
+  const frame = figma.createFrame();
+  frame.name = nodeData.name || 'Frame';
+  frame.fills = [];
+  frame.layoutMode = nodeData.layoutMode || 'VERTICAL';
+  frame.primaryAxisSizingMode = 'AUTO';
+  frame.counterAxisSizingMode = 'AUTO';
+  frame.itemSpacing = nodeData.itemSpacing || nodeData.gap || 16;
+
+  if (nodeData.padding) {
+    frame.paddingTop = nodeData.padding.top ?? 0;
+    frame.paddingBottom = nodeData.padding.bottom ?? 0;
+    frame.paddingLeft = nodeData.padding.left ?? 0;
+    frame.paddingRight = nodeData.padding.right ?? 0;
+  }
+
+  if (nodeData.background) {
+    frame.fills = [{ type: 'SOLID', color: hexToRgb(nodeData.background) }];
+  }
+
+  for (const child of (nodeData.children || [])) {
+    try {
+      const childNode = await createNode(child, maxWidth, fontFamily);
+      if (childNode) frame.appendChild(childNode);
+    } catch (e) {
+      console.error('Frame child error:', child, e);
+    }
+  }
+
+  return frame;
+}
+
+/**
  * 가격 박스 생성
  */
 async function createPriceBox(nodeData) {
@@ -725,6 +771,8 @@ async function createImageNode(nodeData, maxWidth) {
   // 이미지 레이블 추가 (선택적)
   if (nodeData.label) {
     frame.layoutMode = 'VERTICAL';
+    frame.primaryAxisSizingMode = 'FIXED';
+    frame.counterAxisSizingMode = 'FIXED';
     frame.primaryAxisAlignItems = 'CENTER';
     frame.counterAxisAlignItems = 'CENTER';
 

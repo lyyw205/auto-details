@@ -30,6 +30,16 @@
       "category": "레퍼런스",
       "source": "reference_analysis",
       "created": "2026-02-10"
+    },
+    {
+      "id": "ref-reference3",
+      "file": "ref-reference3.template.json",
+      "name": "화장품 수납 정리대 기반 템플릿",
+      "description": "내추럴 우드톤 가구/인테리어 스타일. 지그재그 split, 다크-라이트 교차 리듬, 베이지 팔레트. 기능 중심 11섹션.",
+      "section_count": 11,
+      "category": "레퍼런스",
+      "source": "reference_analysis",
+      "created": "2026-02-11"
     }
   ]
 }

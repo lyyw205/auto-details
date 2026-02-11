@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>템플릿 에디터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* --- Toolbar --- */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1a1a1a;
+    border-bottom: 1px solid #333;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .toolbar h1 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    margin-right: 12px;
+    white-space: nowrap;
+  }
+  .toolbar button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .toolbar button:hover { opacity: 0.85; }
+  .btn-primary { background: #4f8ff7; color: #fff; }
+  .btn-secondary { background: #333; color: #ccc; }
+  .btn-file { background: #2a2a2a; color: #aaa; border: 1px dashed #555 !important; }
+  .btn-export { background: #2ecc71; color: #fff; }
+  .toolbar .spacer { flex: 1; }
+  .toolbar .info { font-size: 13px; color: #888; }
+
+  /* --- JSON Input Panel --- */
+  .json-panel {
+    background: #111;
+    border-bottom: 1px solid #333;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .json-panel.collapsed { display: none; }
+  .json-panel textarea {
+    width: 100%;
+    height: 180px;
+    background: #1a1a1a;
+    color: #ccc;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 13px;
+    resize: vertical;
+    outline: none;
+  }
+  .json-panel textarea:focus { border-color: #4f8ff7; }
+  .json-panel textarea::placeholder { color: #555; }
+
+  /* --- Error --- */
+  .error-msg {
+    background: #3a1111;
+    color: #ff6b6b;
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin: 16px 24px;
+    font-size: 13px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    display: none;
+  }
+
+  /* --- Main Layout --- */
+  .main-layout {
+    display: flex;
+    min-height: calc(100vh - 60px);
+  }
+
+  /* --- Canvas Area --- */
+  .canvas-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 80px;
+    overflow-y: auto;
+  }
+  .canvas {
+    width: 860px;
+    min-height: 200px;
+    background: #fff;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+  }
+
+  /* --- Empty State --- */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px;
+    color: #555;
+    text-align: center;
+  }
+  .empty-state svg { margin-bottom: 20px; opacity: 0.4; }
+  .empty-state p { font-size: 15px; line-height: 1.8; }
+
+  /* --- Side Panel --- */
+  .side-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #141414;
+    border-left: 1px solid #333;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px);
+    position: sticky;
+    top: 52px;
+  }
+  .side-panel.hidden { display: none; }
+
+  .panel-section {
+    border-bottom: 1px solid #2a2a2a;
+    padding: 16px;
+  }
+  .panel-section h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4f8ff7;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .panel-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .panel-row label {
+    font-size: 12px;
+    color: #888;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  .panel-row input[type="number"] {
+    width: 70px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    outline: none;
+  }
+  .panel-row input[type="number"]:focus { border-color: #4f8ff7; }
+  .panel-row input[type="color"] {
+    width: 36px;
+    height: 28px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .panel-row .color-hex {
+    font-size: 12px;
+    color: #aaa;
+    font-family: monospace;
+  }
+  .panel-row .readonly-val {
+    font-size: 12px;
+    color: #ccc;
+    background: #222;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .panel-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .panel-actions button {
+    flex: 1;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .panel-actions button:hover { opacity: 0.85; }
+  .btn-up { background: #333; color: #ccc; }
+  .btn-down { background: #333; color: #ccc; }
+  .btn-delete { background: #5a2020; color: #ff6b6b; }
+
+  /* --- Section List (mini-map) --- */
+  .section-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  .section-list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #aaa;
+    transition: background 0.1s;
+  }
+  .section-list-item:hover { background: #222; }
+  .section-list-item.active { background: #1a2a4a; color: #fff; }
+  .section-list-item .sl-order {
+    font-weight: 700;
+    color: #4f8ff7;
+    min-width: 20px;
+    text-align: right;
+  }
+  .section-list-item .sl-comp {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: #333;
+    color: #999;
+    text-transform: uppercase;
+  }
+  .section-list-item .sl-comp.comp-stack { color: #4f8ff7; }
+  .section-list-item .sl-comp.comp-composed { color: #e67e22; }
+  .section-list-item .sl-comp.comp-split { color: #2ecc71; }
+
+  /* --- Wireframe Section Styles --- */
+  .wf-section {
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: outline 0.15s;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+  }
+  .wf-section:hover { outline-color: rgba(79, 143, 247, 0.3); }
+  .wf-section.selected { outline-color: #4f8ff7; }
+
+  .wf-section-label {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(0,0,0,0.25);
+    z-index: 10;
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- Wireframe Element Blocks --- */
+  .wf-element {
+    border: 1px dashed rgba(0,0,0,0.15);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wf-text {
+    background: rgba(79, 143, 247, 0.08);
+    padding: 8px 12px;
+    min-height: 32px;
+  }
+  .wf-text .wf-role {
+    font-size: 11px;
+    color: #4f8ff7;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .wf-text .wf-meta {
+    font-size: 9px;
+    color: #999;
+    margin-top: 2px;
+    text-align: center;
+  }
+
+  .wf-image {
+    background: #e0e0e0;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 60px;
+    color: #999;
+  }
+  .wf-image svg { opacity: 0.4; }
+  .wf-image .wf-role {
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 80%;
+  }
+
+  .wf-button {
+    background: rgba(46, 204, 113, 0.15);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    border-radius: 100px;
+    padding: 6px 24px;
+    min-height: 32px;
+  }
+  .wf-button .wf-role {
+    font-size: 11px;
+    color: #2ecc71;
+    font-weight: 600;
+  }
+
+  .wf-frame {
+    background: rgba(155, 89, 182, 0.08);
+    border-style: dotted;
+    border-color: rgba(155, 89, 182, 0.3);
+    flex-direction: column;
+    padding: 8px;
+    gap: 4px;
+    min-height: 48px;
+  }
+  .wf-frame .wf-role {
+    font-size: 10px;
+    color: #9b59b6;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  /* --- Composition-specific --- */
+
+  /* Stack */
+  .wf-section--stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Composed */
+  .wf-section--composed {
+    position: relative;
+  }
+  .wf-section--composed > .wf-composed-layer {
+    position: absolute;
+    overflow: hidden;
+  }
+
+  /* Split */
+  .wf-section--split {
+    display: flex !important;
+    padding: 0 !important;
+  }
+  .wf-split-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 8px;
+  }
+  .wf-split-panel[data-valign="MC"],
+  .wf-split-panel[data-valign="ML"],
+  .wf-split-panel[data-valign="MR"] { justify-content: center; }
+  .wf-split-panel[data-valign="BL"],
+  .wf-split-panel[data-valign="BC"],
+  .wf-split-panel[data-valign="BR"] { justify-content: flex-end; }
+  .wf-split-panel[data-valign="MC"],
+  .wf-split-panel[data-valign="TC"],
+  .wf-split-panel[data-valign="BC"] { align-items: center; }
+  .wf-split-panel[data-valign="MR"],
+  .wf-split-panel[data-valign="TR"],
+  .wf-split-panel[data-valign="BR"] { align-items: flex-end; }
+
+  /* --- AI Prompt Tooltip --- */
+  .wf-image { cursor: pointer; }
+  .ai-prompt-tip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    width: 320px;
+    max-width: 90vw;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+  .ai-prompt-tip .pf { margin-bottom: 4px; }
+  .ai-prompt-tip .pf strong { color: #4f8ff7; }
+  .wf-image:hover .ai-prompt-tip { display: block; }
+
+  /* --- Typography Panel --- */
+  .typo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .typo-row label {
+    font-size: 11px;
+    color: #888;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+  .typo-row input[type="number"] {
+    width: 50px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 11px;
+    outline: none;
+  }
+  .typo-row input[type="number"]:focus { border-color: #4f8ff7; }
+  .typo-row span {
+    font-size: 10px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <h1>Template Editor</h1>
+  <button class="btn-file" id="btnFile">JSON file</button>
+  <button class="btn-secondary" id="btnToggleJson">JSON input</button>
+  <button class="btn-primary" id="btnRender">Render</button>
+  <div class="spacer"></div>
+  <span class="info" id="statusInfo"></span>
+  <button class="btn-export" id="btnExport">Export JSON</button>
+</div>
+
+<!-- Hidden file input -->
+<input type="file" id="fileInput" accept=".json" style="display:none">
+
+<!-- JSON Input -->
+<div class="json-panel" id="jsonPanel">
+  <textarea id="jsonInput" placeholder="Paste template JSON here..."></textarea>
+</div>
+
+<!-- Error -->
+<div class="error-msg" id="errorMsg"></div>
+
+<!-- Main Layout -->
+<div class="main-layout">
+  <!-- Canvas -->
+  <div class="canvas-area">
+    <div class="canvas" id="canvas">
+      <div class="empty-state" id="emptyState">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M9 21V9"/>
+        </svg>
+        <p>
+          Load a template JSON file or paste JSON, then click <strong>Render</strong>.<br>
+          Renders wireframe preview of template structure<br>
+          (sections, required elements, compositions).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side Panel -->
+  <div class="side-panel" id="sidePanel">
+    <!-- Section List -->
+    <div class="panel-section">
+      <h3>Sections</h3>
+      <div class="section-list" id="sectionList"></div>
+    </div>
+
+    <!-- Global Settings -->
+    <div class="panel-section" id="globalPanel">
+      <h3>Color System</h3>
+      <div id="colorInputs"></div>
+    </div>
+
+    <div class="panel-section" id="typoPanel">
+      <h3>Typography Scale</h3>
+      <div id="typoInputs"></div>
+    </div>
+
+    <!-- Selected Section Panel -->
+    <div class="panel-section" id="selectedPanel" style="display:none">
+      <h3>Selected Section</h3>
+      <div id="selectedSectionName" style="font-size:13px;color:#fff;margin-bottom:12px;font-weight:600;"></div>
+
+      <div class="panel-row">
+        <label>taxonomy_id</label>
+        <span class="readonly-val" id="selTaxonomy">—</span>
+      </div>
+      <div class="panel-row">
+        <label>composition</label>
+        <span class="readonly-val" id="selComposition">—</span>
+      </div>
+      <div class="panel-row">
+        <label>height</label>
+        <input type="number" id="selHeight" min="50" max="2000" step="10">
+      </div>
+      <div class="panel-row">
+        <label>background</label>
+        <input type="color" id="selBgColor">
+        <span class="color-hex" id="selBgHex">#FFFFFF</span>
+      </div>
+      <div class="panel-row">
+        <label>padding top</label>
+        <input type="number" id="selPadTop" min="0" max="200" step="5">
+      </div>
+      <div class="panel-row">
+        <label>padding right</label>
+        <input type="number" id="selPadRight" min="0" max="200" step="5">
+      </div>
+      <div class="panel-row">
+        <label>padding bottom</label>
+        <input type="number" id="selPadBottom" min="0" max="200" step="5">
+      </div>
+      <div class="panel-row">
+        <label>padding left</label>
+        <input type="number" id="selPadLeft" min="0" max="200" step="5">
+      </div>
+      <div class="panel-row">
+        <label>itemSpacing</label>
+        <input type="number" id="selSpacing" min="0" max="200" step="2">
+      </div>
+
+      <div class="panel-actions">
+        <button class="btn-up" id="btnMoveUp">&#9650; Up</button>
+        <button class="btn-down" id="btnMoveDown">&#9660; Down</button>
+        <button class="btn-delete" id="btnDelete">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// 9-Grid System (reused from preview.html)
+// ============================================================
+const GRID_COORDS = {
+  TL: { col: 0, row: 0 }, TC: { col: 1, row: 0 }, TR: { col: 2, row: 0 },
+  ML: { col: 0, row: 1 }, MC: { col: 1, row: 1 }, MR: { col: 2, row: 1 },
+  BL: { col: 0, row: 2 }, BC: { col: 1, row: 2 }, BR: { col: 2, row: 2 },
+};
+
+function regionToRect(region, w, h, padding) {
+  padding = padding || 0;
+  const parts = region.split(':');
+  const s = GRID_COORDS[parts[0]];
+  const e = GRID_COORDS[parts[1] || parts[0]];
+  if (!s || !e) return { x: 0, y: 0, width: w, height: h };
+  const colS = Math.min(s.col, e.col), colE = Math.max(s.col, e.col);
+  const rowS = Math.min(s.row, e.row), rowE = Math.max(s.row, e.row);
+  const cw = (w - padding * 2) / 3, ch = (h - padding * 2) / 3;
+  return {
+    x: padding + colS * cw,
+    y: padding + rowS * ch,
+    width: (colE - colS + 1) * cw,
+    height: (rowE - rowS + 1) * ch,
+  };
+}
+
+function applyBackground(el, bg) {
+  if (typeof bg === 'string' && bg.startsWith('gradient:')) {
+    const colors = bg.replace('gradient:', '').split('-');
+    el.style.background = `linear-gradient(to bottom, ${colors.join(', ')})`;
+  } else {
+    el.style.backgroundColor = bg || '#FFFFFF';
+  }
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(String(str)));
+  return d.innerHTML;
+}
+
+// ============================================================
+// State
+// ============================================================
+let templateData = null;       // current template JSON
+let selectedIndex = -1;        // selected section index
+let loadedFileName = '';
+
+// ============================================================
+// DOM References
+// ============================================================
+const btnFile = document.getElementById('btnFile');
+const btnToggleJson = document.getElementById('btnToggleJson');
+const btnRender = document.getElementById('btnRender');
+const btnExport = document.getElementById('btnExport');
+const fileInput = document.getElementById('fileInput');
+const jsonPanel = document.getElementById('jsonPanel');
+const jsonInput = document.getElementById('jsonInput');
+const errorMsg = document.getElementById('errorMsg');
+const canvas = document.getElementById('canvas');
+const statusInfo = document.getElementById('statusInfo');
+const sectionList = document.getElementById('sectionList');
+const colorInputs = document.getElementById('colorInputs');
+const typoInputs = document.getElementById('typoInputs');
+const selectedPanel = document.getElementById('selectedPanel');
+
+let jsonPanelVisible = true;
+
+// ============================================================
+// Events
+// ============================================================
+btnFile.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', handleFileLoad);
+btnToggleJson.addEventListener('click', toggleJsonPanel);
+btnRender.addEventListener('click', render);
+btnExport.addEventListener('click', exportTemplate);
+
+document.addEventListener('keydown', (e) => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); render(); }
+});
+
+// Section editing inputs
+document.getElementById('selHeight').addEventListener('input', onSectionEdit);
+document.getElementById('selBgColor').addEventListener('input', onSectionBgEdit);
+document.getElementById('selPadTop').addEventListener('input', onSectionEdit);
+document.getElementById('selPadRight').addEventListener('input', onSectionEdit);
+document.getElementById('selPadBottom').addEventListener('input', onSectionEdit);
+document.getElementById('selPadLeft').addEventListener('input', onSectionEdit);
+document.getElementById('selSpacing').addEventListener('input', onSectionEdit);
+document.getElementById('btnMoveUp').addEventListener('click', () => moveSection(-1));
+document.getElementById('btnMoveDown').addEventListener('click', () => moveSection(1));
+document.getElementById('btnDelete').addEventListener('click', deleteSection);
+
+// ============================================================
+// File / JSON Panel
+// ============================================================
+function toggleJsonPanel() {
+  jsonPanelVisible = !jsonPanelVisible;
+  jsonPanel.classList.toggle('collapsed', !jsonPanelVisible);
+  btnToggleJson.textContent = jsonPanelVisible ? 'Hide JSON' : 'JSON input';
+}
+
+function handleFileLoad(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  loadedFileName = file.name;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    jsonInput.value = ev.target.result;
+    statusInfo.textContent = 'Loaded: ' + file.name;
+    render();
+  };
+  reader.readAsText(file);
+  fileInput.value = '';
+}
+
+function showError(msg) { errorMsg.textContent = msg; errorMsg.style.display = 'block'; }
+function clearError() { errorMsg.style.display = 'none'; }
+
+// ============================================================
+// Main Render
+// ============================================================
+function render() {
+  clearError();
+  const raw = jsonInput.value.trim();
+  if (!raw) { showError('JSON input is empty.'); return; }
+
+  let data;
+  try { data = JSON.parse(raw); } catch (e) { showError('JSON parse error: ' + e.message); return; }
+
+  if (!data.sections || !Array.isArray(data.sections)) {
+    showError('Invalid template: "sections" array not found.\nThis tool is for template JSON, not layout JSON.');
+    return;
+  }
+
+  templateData = data;
+  selectedIndex = -1;
+
+  renderCanvas();
+  renderSectionList();
+  renderGlobalPanel();
+  selectedPanel.style.display = 'none';
+
+  const sectionCount = data.sections.length;
+  statusInfo.textContent = (data.name || 'Untitled') + ' \u2014 ' + sectionCount + ' sections';
+
+  if (jsonPanelVisible) toggleJsonPanel();
+}
+
+// ============================================================
+// Canvas Render
+// ============================================================
+function renderCanvas() {
+  canvas.innerHTML = '';
+  const pageWidth = templateData.global_layout?.width || 860;
+  canvas.style.width = pageWidth + 'px';
+
+  for (let i = 0; i < templateData.sections.length; i++) {
+    const sec = templateData.sections[i];
+    const el = renderSection(sec, i, pageWidth);
+    canvas.appendChild(el);
+  }
+}
+
+function renderSection(sec, index, pageWidth) {
+  const composition = sec.composition || 'stack';
+
+  let div;
+  if (composition === 'composed') div = renderComposedSection(sec, pageWidth);
+  else if (composition === 'split') div = renderSplitSection(sec, pageWidth);
+  else div = renderStackSection(sec, pageWidth);
+
+  // Common wrapper attributes
+  div.classList.add('wf-section');
+  div.dataset.index = index;
+  if (index === selectedIndex) div.classList.add('selected');
+
+  // Section label
+  const label = document.createElement('div');
+  label.className = 'wf-section-label';
+  label.textContent = (sec.order || (index + 1)) + '. ' + (sec.id || sec.name || 'Section');
+  div.appendChild(label);
+
+  // Click to select
+  div.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectSection(index);
+  });
+
+  return div;
+}
+
+// --- Stack ---
+function renderStackSection(sec, pageWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-section--stack';
+
+  const layout = sec.layout || {};
+  applyBackground(div, layout.background || '#FFFFFF');
+
+  const h = layout.height || 'auto';
+  if (typeof h === 'number') div.style.minHeight = h + 'px';
+
+  const mode = layout.layoutMode || 'VERTICAL';
+  div.style.flexDirection = mode === 'HORIZONTAL' ? 'row' : 'column';
+  div.style.justifyContent = mapAlign(layout.primaryAxisAlign || 'CENTER');
+  div.style.alignItems = mapAlign(layout.counterAxisAlign || 'CENTER');
+  div.style.gap = (layout.itemSpacing ?? 16) + 'px';
+
+  const pad = layout.padding || {};
+  div.style.padding = (pad.top ?? 50) + 'px ' + (pad.right ?? 60) + 'px ' + (pad.bottom ?? 50) + 'px ' + (pad.left ?? 60) + 'px';
+
+  const contentWidth = pageWidth - (pad.left ?? 60) - (pad.right ?? 60);
+
+  const elements = sec.required_elements || [];
+  for (const el of elements) {
+    const node = renderWireframeElement(el, contentWidth);
+    if (node) div.appendChild(node);
+  }
+
+  return div;
+}
+
+// --- Composed ---
+function renderComposedSection(sec, pageWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-section--composed';
+
+  const layout = sec.layout || {};
+  applyBackground(div, layout.background || '#FFFFFF');
+
+  const w = pageWidth;
+  const h = layout.height || 450;
+  div.style.width = w + 'px';
+  div.style.height = h + 'px';
+  div.style.position = 'relative';
+
+  const padding = layout.padding
+    ? Math.min(layout.padding.left ?? 0, layout.padding.top ?? 0)
+    : 0;
+
+  const layers = (sec.layers || []).slice().sort((a, b) => (a.zIndex || 0) - (b.zIndex || 0));
+
+  for (const layer of layers) {
+    const rect = regionToRect(layer.region, w, h, padding);
+    const el = renderWireframeElement(layer.element, rect.width);
+    if (el) {
+      el.classList.add('wf-composed-layer');
+      el.style.position = 'absolute';
+      el.style.left = rect.x + 'px';
+      el.style.top = rect.y + 'px';
+      el.style.width = rect.width + 'px';
+      el.style.height = rect.height + 'px';
+      el.style.zIndex = layer.zIndex || 0;
+      div.appendChild(el);
+    }
+  }
+
+  return div;
+}
+
+// --- Split ---
+function renderSplitSection(sec, pageWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-section--split';
+
+  const layout = sec.layout || {};
+  const direction = sec.direction || 'horizontal';
+  if (direction === 'vertical') div.style.flexDirection = 'column';
+
+  applyBackground(div, layout.background || '#FFFFFF');
+
+  const h = layout.height || 350;
+  div.style.minHeight = h + 'px';
+
+  const ratio = sec.ratio || [1, 1];
+  const total = ratio[0] + ratio[1];
+  div.style.gap = (sec.gap || 0) + 'px';
+
+  const isHorizontal = direction === 'horizontal';
+  const panels = isHorizontal
+    ? [{ data: sec.left, r: ratio[0] }, { data: sec.right, r: ratio[1] }]
+    : [{ data: sec.top, r: ratio[0] }, { data: sec.bottom, r: ratio[1] }];
+
+  for (const p of panels) {
+    if (!p.data) continue;
+    const panel = document.createElement('div');
+    panel.className = 'wf-split-panel';
+    panel.style.flex = p.r;
+    panel.style.padding = '16px';
+    panel.style.gap = (p.data.itemSpacing ?? 12) + 'px';
+    if (p.data.valign) panel.setAttribute('data-valign', p.data.valign);
+
+    const contentWidth = isHorizontal
+      ? (p.r / total) * pageWidth - 32
+      : pageWidth - 32;
+
+    const elements = p.data.required_elements || p.data.children || [];
+    for (const child of elements) {
+      const el = renderWireframeElement(child, contentWidth);
+      if (el) panel.appendChild(el);
+    }
+    div.appendChild(panel);
+  }
+
+  return div;
+}
+
+// ============================================================
+// Wireframe Element Renderer
+// ============================================================
+function renderWireframeElement(node, maxWidth) {
+  if (!node || !node.type) return null;
+
+  const t = node.type.toUpperCase();
+
+  switch (t) {
+    case 'TEXT': return renderWfText(node, maxWidth);
+    case 'IMAGE':
+    case 'IMAGE_AREA': return renderWfImage(node, maxWidth);
+    case 'BUTTON': return renderWfButton(node);
+    case 'FRAME': return renderWfFrame(node, maxWidth);
+    default:
+      if (node.role) return renderWfText(node, maxWidth);
+      return null;
+  }
+}
+
+function renderWfText(node, maxWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-element wf-text';
+  div.style.width = Math.min(node.width || maxWidth, maxWidth) + 'px';
+
+  let html = '<div class="wf-role">[' + escapeHtml(node.name || 'TEXT') + ']</div>';
+  if (node.role) {
+    html += '<div class="wf-meta">' + escapeHtml(node.role) + '</div>';
+  }
+  if (node.fontSize) {
+    html += '<div class="wf-meta">' + node.fontSize + 'px / ' + (node.fontWeight || 400) + '</div>';
+  }
+  div.innerHTML = html;
+  return div;
+}
+
+function renderWfImage(node, maxWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-element wf-image';
+
+  const w = node.width || maxWidth || 740;
+  const h = node.height || 200;
+  div.style.width = Math.min(w, maxWidth) + 'px';
+  div.style.height = h + 'px';
+  div.style.maxWidth = '100%';
+
+  if (node.placeholderColor) div.style.backgroundColor = node.placeholderColor;
+
+  let html = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">';
+  html += '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>';
+  html += '<circle cx="12" cy="13" r="4"/></svg>';
+  html += '<div class="wf-role">[' + escapeHtml(node.name || 'IMAGE') + ']</div>';
+
+  if (node.role) {
+    html += '<div class="wf-role" style="font-size:10px;opacity:0.7">' + escapeHtml(node.role) + '</div>';
+  }
+
+  // AI prompt tooltip
+  if (node.ai_prompt) {
+    const prompt = node.ai_prompt;
+    let tipHtml = '';
+    if (typeof prompt === 'string') {
+      tipHtml = '<div class="pf"><strong>Prompt:</strong> ' + escapeHtml(prompt) + '</div>';
+    } else {
+      if (prompt.prompt) tipHtml += '<div class="pf"><strong>Prompt:</strong> ' + escapeHtml(prompt.prompt) + '</div>';
+      if (prompt.negative) tipHtml += '<div class="pf"><strong>Negative:</strong> ' + escapeHtml(prompt.negative) + '</div>';
+      if (prompt.style) tipHtml += '<div class="pf"><strong>Style:</strong> ' + escapeHtml(prompt.style) + '</div>';
+      if (prompt.aspect_ratio) tipHtml += '<div class="pf"><strong>Ratio:</strong> ' + escapeHtml(prompt.aspect_ratio) + '</div>';
+    }
+    html += '<div class="ai-prompt-tip">' + tipHtml + '</div>';
+  }
+
+  div.innerHTML = html;
+  return div;
+}
+
+function renderWfButton(node) {
+  const div = document.createElement('div');
+  div.className = 'wf-element wf-button';
+
+  let html = '<div class="wf-role">[' + escapeHtml(node.name || 'BUTTON') + ']</div>';
+  if (node.role) {
+    html += '<div style="font-size:9px;color:#999;margin-left:6px">' + escapeHtml(node.role) + '</div>';
+  }
+  div.innerHTML = html;
+  return div;
+}
+
+function renderWfFrame(node, maxWidth) {
+  const div = document.createElement('div');
+  div.className = 'wf-element wf-frame';
+  div.style.width = '100%';
+
+  let html = '<div class="wf-role">[FRAME: ' + escapeHtml(node.name || 'Frame') + ']</div>';
+  if (node.role) {
+    html += '<div style="font-size:9px;color:#9b59b6;opacity:0.7;text-align:center">' + escapeHtml(node.role) + '</div>';
+  }
+  if (node.columns) {
+    html += '<div style="font-size:9px;color:#666;text-align:center">' + node.columns + ' columns / ' + (node.layoutMode || 'HORIZONTAL') + '</div>';
+  }
+  div.innerHTML = html;
+
+  // Render children if present
+  if (node.children && Array.isArray(node.children)) {
+    for (const child of node.children) {
+      const childEl = renderWireframeElement(child, maxWidth);
+      if (childEl) div.appendChild(childEl);
+    }
+  }
+
+  return div;
+}
+
+// ============================================================
+// Section List (mini-map)
+// ============================================================
+function renderSectionList() {
+  sectionList.innerHTML = '';
+  if (!templateData) return;
+
+  for (let i = 0; i < templateData.sections.length; i++) {
+    const sec = templateData.sections[i];
+    const item = document.createElement('div');
+    item.className = 'section-list-item' + (i === selectedIndex ? ' active' : '');
+    item.dataset.index = i;
+
+    const comp = sec.composition || 'stack';
+    const compClass = 'comp-' + comp;
+
+    item.innerHTML =
+      '<span class="sl-order">' + (sec.order || (i + 1)) + '</span>' +
+      '<span class="sl-comp ' + compClass + '">' + comp + '</span>' +
+      '<span>' + escapeHtml(sec.id || sec.name || 'Section') + '</span>';
+
+    item.addEventListener('click', () => selectSection(i));
+    sectionList.appendChild(item);
+  }
+}
+
+// ============================================================
+// Global Settings Panel
+// ============================================================
+function renderGlobalPanel() {
+  renderColorPanel();
+  renderTypoPanel();
+}
+
+function renderColorPanel() {
+  colorInputs.innerHTML = '';
+  if (!templateData?.color_system) return;
+
+  const cs = templateData.color_system;
+  for (const key of Object.keys(cs)) {
+    const row = document.createElement('div');
+    row.className = 'panel-row';
+
+    const label = document.createElement('label');
+    label.textContent = key;
+
+    const colorEl = document.createElement('input');
+    colorEl.type = 'color';
+    colorEl.value = cs[key];
+    colorEl.dataset.colorKey = key;
+
+    const hex = document.createElement('span');
+    hex.className = 'color-hex';
+    hex.textContent = cs[key];
+
+    colorEl.addEventListener('input', () => {
+      cs[key] = colorEl.value;
+      hex.textContent = colorEl.value;
+      renderCanvas();
+    });
+
+    row.appendChild(label);
+    row.appendChild(colorEl);
+    row.appendChild(hex);
+    colorInputs.appendChild(row);
+  }
+}
+
+function renderTypoPanel() {
+  typoInputs.innerHTML = '';
+  if (!templateData?.typography) return;
+
+  const typo = templateData.typography;
+  for (const key of Object.keys(typo)) {
+    const val = typo[key];
+    const row = document.createElement('div');
+    row.className = 'typo-row';
+
+    const label = document.createElement('label');
+    label.textContent = key;
+
+    const sizeInput = document.createElement('input');
+    sizeInput.type = 'number';
+    sizeInput.value = val.fontSize || 16;
+    sizeInput.min = 8;
+    sizeInput.max = 120;
+    sizeInput.dataset.typoKey = key;
+
+    const info = document.createElement('span');
+    info.textContent = 'px / w' + (val.fontWeight || 400);
+
+    sizeInput.addEventListener('input', () => {
+      typo[key].fontSize = parseInt(sizeInput.value) || 16;
+    });
+
+    row.appendChild(label);
+    row.appendChild(sizeInput);
+    row.appendChild(info);
+    typoInputs.appendChild(row);
+  }
+}
+
+// ============================================================
+// Section Selection + Editing
+// ============================================================
+function selectSection(index) {
+  if (!templateData || index < 0 || index >= templateData.sections.length) return;
+
+  selectedIndex = index;
+  const sec = templateData.sections[index];
+  const layout = sec.layout || {};
+  const pad = layout.padding || {};
+
+  selectedPanel.style.display = 'block';
+  document.getElementById('selectedSectionName').textContent = sec.id || sec.name || 'Section';
+  document.getElementById('selTaxonomy').textContent = sec.taxonomy_id || '(custom)';
+  document.getElementById('selComposition').textContent = sec.composition || 'stack';
+  document.getElementById('selHeight').value = layout.height || '';
+  document.getElementById('selBgColor').value = normalizeColor(layout.background || '#FFFFFF');
+  document.getElementById('selBgHex').textContent = layout.background || '#FFFFFF';
+  document.getElementById('selPadTop').value = pad.top ?? 50;
+  document.getElementById('selPadRight').value = pad.right ?? 60;
+  document.getElementById('selPadBottom').value = pad.bottom ?? 50;
+  document.getElementById('selPadLeft').value = pad.left ?? 60;
+  document.getElementById('selSpacing').value = layout.itemSpacing ?? 16;
+
+  // Update canvas selection
+  document.querySelectorAll('.wf-section').forEach(el => el.classList.remove('selected'));
+  const target = document.querySelector('.wf-section[data-index="' + index + '"]');
+  if (target) {
+    target.classList.add('selected');
+    target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Update section list
+  document.querySelectorAll('.section-list-item').forEach(el => el.classList.remove('active'));
+  const listItem = document.querySelector('.section-list-item[data-index="' + index + '"]');
+  if (listItem) listItem.classList.add('active');
+}
+
+function onSectionEdit() {
+  if (!templateData || selectedIndex < 0) return;
+
+  const sec = templateData.sections[selectedIndex];
+  if (!sec.layout) sec.layout = {};
+  if (!sec.layout.padding) sec.layout.padding = {};
+
+  const h = parseInt(document.getElementById('selHeight').value);
+  if (h > 0) sec.layout.height = h;
+
+  sec.layout.padding.top = parseInt(document.getElementById('selPadTop').value) || 0;
+  sec.layout.padding.right = parseInt(document.getElementById('selPadRight').value) || 0;
+  sec.layout.padding.bottom = parseInt(document.getElementById('selPadBottom').value) || 0;
+  sec.layout.padding.left = parseInt(document.getElementById('selPadLeft').value) || 0;
+  sec.layout.itemSpacing = parseInt(document.getElementById('selSpacing').value) || 0;
+
+  renderCanvas();
+  selectSection(selectedIndex);
+}
+
+function onSectionBgEdit() {
+  if (!templateData || selectedIndex < 0) return;
+
+  const sec = templateData.sections[selectedIndex];
+  if (!sec.layout) sec.layout = {};
+
+  const color = document.getElementById('selBgColor').value;
+  sec.layout.background = color;
+  document.getElementById('selBgHex').textContent = color;
+
+  renderCanvas();
+  selectSection(selectedIndex);
+}
+
+function moveSection(dir) {
+  if (!templateData || selectedIndex < 0) return;
+  const newIdx = selectedIndex + dir;
+  if (newIdx < 0 || newIdx >= templateData.sections.length) return;
+
+  const sections = templateData.sections;
+  [sections[selectedIndex], sections[newIdx]] = [sections[newIdx], sections[selectedIndex]];
+
+  // Update order numbers
+  sections.forEach((s, i) => { s.order = i + 1; });
+
+  selectedIndex = newIdx;
+  renderCanvas();
+  renderSectionList();
+  selectSection(newIdx);
+}
+
+function deleteSection() {
+  if (!templateData || selectedIndex < 0) return;
+  if (!confirm('Delete section "' + (templateData.sections[selectedIndex].id || 'Section') + '"?')) return;
+
+  templateData.sections.splice(selectedIndex, 1);
+  templateData.sections.forEach((s, i) => { s.order = i + 1; });
+
+  selectedIndex = -1;
+  selectedPanel.style.display = 'none';
+  renderCanvas();
+  renderSectionList();
+  statusInfo.textContent = (templateData.name || 'Untitled') + ' \u2014 ' + templateData.sections.length + ' sections';
+}
+
+// ============================================================
+// Export
+// ============================================================
+function exportTemplate() {
+  if (!templateData) { showError('No template loaded.'); return; }
+
+  const json = JSON.stringify(templateData, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+
+  // Use original filename or generate one
+  let filename = loadedFileName || 'template.json';
+  if (!filename.endsWith('.json')) filename += '.json';
+  a.download = filename;
+
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  statusInfo.textContent = 'Exported: ' + filename;
+}
+
+// ============================================================
+// Utility
+// ============================================================
+function mapAlign(val) {
+  switch (val) {
+    case 'CENTER': return 'center';
+    case 'MIN':
+    case 'FLEX_START': return 'flex-start';
+    case 'MAX':
+    case 'FLEX_END': return 'flex-end';
+    case 'SPACE_BETWEEN': return 'space-between';
+    case 'SPACE_AROUND': return 'space-around';
+    default: return 'center';
+  }
+}
+
+function normalizeColor(color) {
+  if (!color || typeof color !== 'string') return '#FFFFFF';
+  if (color.startsWith('gradient:')) return '#888888';
+  // Ensure 7-char hex for color input
+  if (color.length === 4) {
+    return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
+  }
+  return color;
+}
+</script>
+</body>
+</html>

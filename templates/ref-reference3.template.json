@@ -1,0 +1,551 @@
+{
+  "type": "DETAIL_PAGE_TEMPLATE",
+  "version": "3.0",
+  "name": "화장품 수납 정리대 기반 템플릿",
+  "description": "내추럴 우드톤 가구/인테리어 상세페이지. 지그재그 split 패턴, 다크-라이트 교차 리듬, 따뜻한 베이지 팔레트. 기능 중심 어필, problem 카테고리 생략.",
+  "created": "2026-02-11",
+  "source": {
+    "type": "reference_analysis",
+    "based_on": "reference3.png (화장품 수납 정리대 상세페이지)",
+    "analysis_date": "2026-02-11"
+  },
+
+  "style_tags": ["내추럴", "우드톤", "따뜻한", "프리미엄", "가구/인테리어", "지그재그 레이아웃", "베이지 팔레트"],
+
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 740,
+    "default_padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+    "default_item_spacing": 20,
+    "default_content_alignment": "CENTER",
+    "font_family": "Inter"
+  },
+
+  "color_system": {
+    "brand_main": "#C8A87C",
+    "accent": "#8B6F4E",
+    "dark_1": "#1A1410",
+    "dark_2": "#2A2218",
+    "light_1": "#FFFFFF",
+    "light_2": "#F5F0EB",
+    "light_text": "#FFFFFF",
+    "dark_text": "#222222",
+    "sub_text": "#888888",
+    "muted_text": "#666666",
+    "image_placeholder": "#E0D5C8"
+  },
+
+  "typography": {
+    "main_copy": { "fontSize": 36, "fontWeight": 700 },
+    "section_title": { "fontSize": 28, "fontWeight": 700 },
+    "sub_title": { "fontSize": 22, "fontWeight": 500 },
+    "body": { "fontSize": 16, "fontWeight": 400 },
+    "small": { "fontSize": 14, "fontWeight": 400 },
+    "stats_number": { "fontSize": 48, "fontWeight": 700 }
+  },
+
+  "taxonomy_profile": {
+    "section_ids": ["Hook", "WhatIsThis", "FeaturesOverview", "FeatureDetail", "FeatureDetail", "StatsHighlight", "FeatureDetail", "Safety", "ColorOptions", "ProductSpec", "CTA"],
+    "category_distribution": {
+      "intro": 2,
+      "problem": 0,
+      "features": 5,
+      "trust": 2,
+      "conversion": 1
+    },
+    "feature_detail_count": 3,
+    "mapping_coverage": "91%",
+    "note": "가구/인테리어 카테고리 특화. problem 카테고리 생략, 기능 중심 어필. 1개 미분류 섹션(ColorOptions) 포함."
+  },
+
+  "sections": [
+    {
+      "order": 1,
+      "id": "Section_01_Hook",
+      "taxonomy_id": "Hook",
+      "name": "Hook (히어로 — 다크 우드 배경)",
+      "composition": "composed",
+      "layout": {
+        "height": 700,
+        "background": "#1A1410",
+        "padding": { "top": 60, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 20
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Hero_BG",
+            "role": "다크톤 우드 텍스처 배경",
+            "ai_prompt": {
+              "prompt": "Dark warm brown wood texture background, subtle grain pattern, professional [product] photography backdrop, 8k quality",
+              "negative": "text, watermark, objects, people, bright colors",
+              "style": "background_only",
+              "aspect_ratio": "4:5"
+            },
+            "placeholderColor": "#1A1410"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TL",
+          "element": {
+            "type": "TEXT",
+            "name": "Brand",
+            "role": "브랜드/카테고리 텍스트",
+            "fontSize": 14,
+            "fontWeight": 400,
+            "color": "#C8A87C"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TL:TR",
+          "element": {
+            "type": "TEXT",
+            "name": "Main_Copy",
+            "role": "메인 후킹 카피 (2줄 헤드라인)",
+            "fontSize": 36,
+            "fontWeight": 700,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TC:TR",
+          "element": {
+            "type": "TEXT",
+            "name": "Sub_Copy",
+            "role": "서브 카피 (핵심 혜택 한줄)",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "#CCCCCC"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Hero_Product",
+            "role": "메인 제품 이미지 (소품 배치된 전체 모습)",
+            "ai_prompt": {
+              "prompt": "[product] hero shot with items neatly arranged, warm studio lighting, beige and natural wood tones, professional product photography, 8k quality, clean composition",
+              "negative": "text, watermark, blurry, dark shadows, cluttered",
+              "style": "product_hero",
+              "aspect_ratio": "4:3"
+            },
+            "height": 450,
+            "placeholderColor": "#E0D5C8"
+          }
+        }
+      ]
+    },
+
+    {
+      "order": 2,
+      "id": "Section_02_WhatIsThis",
+      "taxonomy_id": "WhatIsThis",
+      "name": "WhatIsThis (제품 정의 + 라이프스타일)",
+      "composition": "stack",
+      "layout": {
+        "height": 650,
+        "background": "#F5F0EB",
+        "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Section_Label", "role": "섹션 소제목 (카테고리)", "fontSize": 14, "fontWeight": 400, "color": "#C8A87C" },
+        { "type": "TEXT", "name": "Main_Copy", "role": "제품 한줄 정의 카피", "fontSize": 28, "fontWeight": 700, "color": "#222222" },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Lifestyle_Image",
+          "role": "라이프스타일 제품 사진 (실제 사용 환경)",
+          "ai_prompt": {
+            "prompt": "[product] on a vanity desk in a bright modern room, items neatly arranged, warm natural light from window, lifestyle photography, 8k quality",
+            "negative": "text, watermark, blurry, messy, dark",
+            "style": "product_lifestyle",
+            "aspect_ratio": "16:9"
+          },
+          "height": 400,
+          "placeholderColor": "#E0D5C8"
+        },
+        { "type": "TEXT", "name": "Description", "role": "부가 설명 (제품 소개 2~3줄)", "fontSize": 16, "fontWeight": 400, "color": "#666666" }
+      ]
+    },
+
+    {
+      "order": 3,
+      "id": "Section_03_FeaturesOverview",
+      "taxonomy_id": "FeaturesOverview",
+      "name": "FeaturesOverview (핵심 기능 포인트 개요)",
+      "composition": "stack",
+      "layout": {
+        "height": 550,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 60, "right": 60 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목 (핵심 기능 소개)", "fontSize": 28, "fontWeight": 700, "color": "#222222" },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 카피", "fontSize": 16, "fontWeight": 400, "color": "#888888" },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Overview_Image",
+          "role": "제품 전체 모습 (기능 포인트 레이블 가능)",
+          "ai_prompt": {
+            "prompt": "[product] all compartments visible, slightly elevated angle, clean white background, professional product photography, 8k quality",
+            "negative": "text, watermark, blurry, dark, clutter",
+            "style": "product_detail",
+            "aspect_ratio": "4:3"
+          },
+          "height": 350,
+          "placeholderColor": "#E0D5C8"
+        }
+      ]
+    },
+
+    {
+      "order": 4,
+      "id": "Section_04_Feature1_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 1,
+      "name": "FeatureDetail #1 (좌 이미지 / 우 텍스트)",
+      "composition": "split",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "layout": {
+        "height": 450,
+        "background": "#F5F0EB",
+        "padding": { "top": 40, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 0
+      },
+      "left": {
+        "valign": "MC",
+        "required_elements": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature_Image",
+            "role": "기능 클로즈업 사진",
+            "ai_prompt": {
+              "prompt": "Close-up of [product] compartments with items neatly sorted, warm lighting, macro detail shot, beige tones, professional photography, 8k",
+              "negative": "text, watermark, blurry, wide angle",
+              "style": "product_detail",
+              "aspect_ratio": "1:1"
+            },
+            "height": 350,
+            "placeholderColor": "#E0D5C8"
+          }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "required_elements": [
+          { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 22, "fontWeight": 700, "color": "#222222" },
+          { "type": "TEXT", "name": "Feature_Desc", "role": "기능 상세 설명 (2~3줄)", "fontSize": 15, "fontWeight": 400, "color": "#666666" }
+        ]
+      }
+    },
+
+    {
+      "order": 5,
+      "id": "Section_05_Feature2_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 2,
+      "name": "FeatureDetail #2 (좌 텍스트 / 우 이미지 — 반전)",
+      "composition": "split",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "layout": {
+        "height": 450,
+        "background": "#FFFFFF",
+        "padding": { "top": 40, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 0
+      },
+      "left": {
+        "valign": "MC",
+        "required_elements": [
+          { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 22, "fontWeight": 700, "color": "#222222" },
+          { "type": "TEXT", "name": "Feature_Desc", "role": "기능 상세 설명 (2~3줄)", "fontSize": 15, "fontWeight": 400, "color": "#666666" }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "required_elements": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature_Image",
+            "role": "기능 클로즈업 사진",
+            "ai_prompt": {
+              "prompt": "[product] drawer detail showing organized items inside, warm natural lighting, detail shot, beige tones, professional photography, 8k",
+              "negative": "text, watermark, blurry, dark",
+              "style": "product_detail",
+              "aspect_ratio": "1:1"
+            },
+            "height": 350,
+            "placeholderColor": "#E0D5C8"
+          }
+        ]
+      }
+    },
+
+    {
+      "order": 6,
+      "id": "Section_06_StatsHighlight",
+      "taxonomy_id": "StatsHighlight",
+      "name": "StatsHighlight (핵심 수치 강조 — 다크)",
+      "composition": "stack",
+      "layout": {
+        "height": 300,
+        "background": "#2A2218",
+        "padding": { "top": 60, "bottom": 60, "left": 60, "right": 60 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Section_Title", "role": "섹션 제목", "fontSize": 22, "fontWeight": 700, "color": "#FFFFFF" },
+        {
+          "type": "FRAME",
+          "name": "Stats_Grid",
+          "role": "수치 3열 그리드 (숫자+단위+라벨 × 3)",
+          "layoutMode": "HORIZONTAL",
+          "columns": 3,
+          "items_template": {
+            "number": { "fontSize": 48, "fontWeight": 700, "color": "#C8A87C" },
+            "unit": { "fontSize": 20, "fontWeight": 400, "color": "#FFFFFF" },
+            "label": { "fontSize": 14, "fontWeight": 400, "color": "#888888" }
+          }
+        }
+      ]
+    },
+
+    {
+      "order": 7,
+      "id": "Section_07_Feature3_Detail",
+      "taxonomy_id": "FeatureDetail",
+      "feature_index": 3,
+      "name": "FeatureDetail #3 (좌 이미지 / 우 텍스트)",
+      "composition": "split",
+      "direction": "horizontal",
+      "ratio": [1, 1],
+      "layout": {
+        "height": 450,
+        "background": "#F5F0EB",
+        "padding": { "top": 40, "bottom": 40, "left": 60, "right": 60 },
+        "itemSpacing": 0
+      },
+      "left": {
+        "valign": "MC",
+        "required_elements": [
+          {
+            "type": "IMAGE_AREA",
+            "name": "Feature_Image",
+            "role": "추가 기능 클로즈업 사진",
+            "ai_prompt": {
+              "prompt": "[product] adjustable shelves and modular compartments detail, warm tone, product detail photography, 8k quality",
+              "negative": "text, watermark, blurry, dark",
+              "style": "product_detail",
+              "aspect_ratio": "1:1"
+            },
+            "height": 350,
+            "placeholderColor": "#E0D5C8"
+          }
+        ]
+      },
+      "right": {
+        "valign": "MC",
+        "required_elements": [
+          { "type": "TEXT", "name": "Feature_Title", "role": "기능 제목", "fontSize": 22, "fontWeight": 700, "color": "#222222" },
+          { "type": "TEXT", "name": "Feature_Desc", "role": "기능 상세 설명 (2~3줄)", "fontSize": 15, "fontWeight": 400, "color": "#666666" }
+        ]
+      }
+    },
+
+    {
+      "order": 8,
+      "id": "Section_08_Safety",
+      "taxonomy_id": "Safety",
+      "name": "Safety (소재/품질 안내)",
+      "composition": "stack",
+      "layout": {
+        "height": 400,
+        "background": "#FFFFFF",
+        "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목 (소재/품질)", "fontSize": 28, "fontWeight": 700, "color": "#222222" },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Material_Image",
+          "role": "소재 클로즈업 / 마감 디테일 이미지",
+          "ai_prompt": {
+            "prompt": "Natural wood grain texture close-up of [product], warm oak color, furniture surface detail, professional macro photography, 8k quality, clean and minimal",
+            "negative": "text, watermark, blurry, painted, artificial",
+            "style": "product_detail",
+            "aspect_ratio": "16:9"
+          },
+          "height": 200,
+          "placeholderColor": "#E0D5C8"
+        },
+        { "type": "TEXT", "name": "Point1_Title", "role": "품질 포인트 1 제목", "fontSize": 18, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Point1_Desc", "role": "품질 포인트 1 설명", "fontSize": 15, "fontWeight": 400, "color": "#666666" },
+        { "type": "TEXT", "name": "Point2_Title", "role": "품질 포인트 2 제목", "fontSize": 18, "fontWeight": 600, "color": "#222222" },
+        { "type": "TEXT", "name": "Point2_Desc", "role": "품질 포인트 2 설명", "fontSize": 15, "fontWeight": 400, "color": "#666666" }
+      ]
+    },
+
+    {
+      "order": 9,
+      "id": "Section_09_Custom_ColorOptions",
+      "taxonomy_id": null,
+      "custom": true,
+      "name": "ColorOptions (컬러/옵션 선택)",
+      "composition": "stack",
+      "layout": {
+        "height": 500,
+        "background": "#F5F0EB",
+        "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목 (컬러 옵션)", "fontSize": 28, "fontWeight": 700, "color": "#222222" },
+        { "type": "TEXT", "name": "Sub_Copy", "role": "서브 설명 (옵션 안내)", "fontSize": 15, "fontWeight": 400, "color": "#888888" },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Color_Options_Image",
+          "role": "컬러 옵션 비교 이미지 (2~3가지 색상 나열)",
+          "ai_prompt": {
+            "prompt": "Three [product] in different wood finishes side by side - light oak, natural walnut, dark mahogany, white background, product comparison shot, 8k quality",
+            "negative": "text, watermark, blurry, clutter",
+            "style": "product_flat",
+            "aspect_ratio": "16:9"
+          },
+          "height": 300,
+          "placeholderColor": "#E0D5C8"
+        }
+      ]
+    },
+
+    {
+      "order": 10,
+      "id": "Section_10_ProductSpec",
+      "taxonomy_id": "ProductSpec",
+      "name": "ProductSpec (제품 사양/치수)",
+      "composition": "stack",
+      "layout": {
+        "height": 500,
+        "background": "#FFFFFF",
+        "padding": { "top": 50, "bottom": 50, "left": 60, "right": 60 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "primaryAxisAlign": "CENTER",
+        "counterAxisAlign": "CENTER"
+      },
+      "required_elements": [
+        { "type": "TEXT", "name": "Main_Copy", "role": "섹션 제목 (제품 사양)", "fontSize": 28, "fontWeight": 700, "color": "#222222" },
+        {
+          "type": "IMAGE_AREA",
+          "name": "Spec_Diagram",
+          "role": "제품 치수 다이어그램 (정면/측면 치수 표시)",
+          "ai_prompt": {
+            "prompt": "Technical drawing of [product] with dimension lines and measurements, clean white background, architectural diagram style, minimal",
+            "negative": "text, watermark, blurry, realistic photo",
+            "style": "infographic",
+            "aspect_ratio": "4:3"
+          },
+          "height": 300,
+          "placeholderColor": "#E0D5C8"
+        },
+        { "type": "TEXT", "name": "Spec_Size", "role": "크기 정보 (가로 × 세로 × 높이)", "fontSize": 16, "fontWeight": 400, "color": "#222222" },
+        { "type": "TEXT", "name": "Spec_Material", "role": "소재/재질 정보", "fontSize": 16, "fontWeight": 400, "color": "#666666" },
+        { "type": "TEXT", "name": "Spec_Weight", "role": "무게 정보", "fontSize": 16, "fontWeight": 400, "color": "#666666" },
+        { "type": "TEXT", "name": "Spec_Etc", "role": "기타 스펙 (색상, 제조국 등)", "fontSize": 16, "fontWeight": 400, "color": "#666666" }
+      ]
+    },
+
+    {
+      "order": 11,
+      "id": "Section_11_CTA",
+      "taxonomy_id": "CTA",
+      "name": "CTA (최종 구매 유도 — 다크)",
+      "composition": "composed",
+      "layout": {
+        "height": 500,
+        "background": "#1A1410",
+        "padding": { "top": 0, "bottom": 0, "left": 0, "right": 0 },
+        "itemSpacing": 24
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "CTA_BG",
+            "role": "다크 감성 배경 이미지",
+            "ai_prompt": {
+              "prompt": "Elegant dark wooden desk setup with warm ambient lighting, [product] beautifully arranged, moody atmosphere, professional photography, 8k quality",
+              "negative": "text, watermark, blurry, bright, cluttered",
+              "style": "mood",
+              "aspect_ratio": "4:3"
+            },
+            "placeholderColor": "#1A1410"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "TL:TR",
+          "element": {
+            "type": "TEXT",
+            "name": "CTA_Copy",
+            "role": "구매 유도 카피 (Hook 메시지 반복 또는 감성 카피)",
+            "fontSize": 32,
+            "fontWeight": 700,
+            "color": "#FFFFFF"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "ML:MR",
+          "element": {
+            "type": "TEXT",
+            "name": "CTA_Sub",
+            "role": "서브 카피",
+            "fontSize": 16,
+            "fontWeight": 400,
+            "color": "#CCCCCC"
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BC",
+          "element": {
+            "type": "BUTTON",
+            "name": "CTA_Button",
+            "role": "구매 버튼",
+            "backgroundColor": "#C8A87C",
+            "color": "#FFFFFF",
+            "cornerRadius": 4
+          }
+        }
+      ]
+    }
+  ]
+}
