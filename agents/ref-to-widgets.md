@@ -11,15 +11,16 @@
 [Step 1] /analyze-ref
   → output/analysis-{name}.json
        ↓
-[Step 2] /extract-widgets
+[Step 2] /extract-widgets (프리뷰 생성)
   → widgets/_presets/preset--ref-{name}.json  (1개)
-  → widgets/{taxonomy_id}/{widget_id}.widget.html  (N개)
+  → output/widgets-preview--ref-{name}.html  (통합 프리뷰)
        ↓
 [Step 2.5] 유저 검수
-  → 위젯 목록 테이블 표시
+  → 브라우저에서 통합 프리뷰 확인
   → 유저 확인/수정
        ↓
-[Step 3] /register-widgets
+[Step 3] 분리 저장 + /register-widgets
+  → widgets/{taxonomy_id}/{widget_id}.widget.html  (N개)
   → widgets/_registry.json 업데이트
 ```
 
@@ -47,53 +48,60 @@
 - 분석 결과 요약 표시 (섹션 수, 매핑률, 미분류 섹션)
 - 미분류 섹션이 있으면 리포트 (`skills/unmapped-sections/`) 표시
 
-## Step 2: /extract-widgets
+## Step 2: /extract-widgets (프리뷰 생성)
 
 **스킬 파일**: `skills/extract-widgets.skill.md`
 
-분석 결과를 개별 HTML 위젯 파일로 분해합니다.
+분석 결과를 HTML 위젯으로 변환하되, **개별 파일이 아닌 통합 프리뷰 HTML**로 먼저 생성합니다.
 `templates/html-section-patterns.md`의 패턴을 참조하여 실제 HTML/CSS를 생성합니다.
 
 ### Input
 - `output/analysis-{name}.json`
 
-### Output
+### Output (이 단계에서는 프리뷰만)
 - 스타일 프리셋: `widgets/_presets/preset--ref-{name}.json`
-- 위젯 파일: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
-- 각 위젯 = `<!--WIDGET_META {...} -->` + `<section>` HTML
+- 통합 프리뷰: `output/widgets-preview--ref-{name}.html`
+  - 모든 위젯을 하나의 HTML에 순서대로 조합
+  - 각 위젯 상단에 라벨 (번호, Taxonomy, widget_id, composition, theme)
+  - 브라우저에서 바로 확인 가능
 
 ### 유저에게 표시
 ```
-=== ref-{name} 위젯 추출 완료 ===
+=== ref-{name} 위젯 프리뷰 생성 완료 ===
 
 프리셋: preset--ref-{name} ({style_tags})
 
 | # | Taxonomy | Widget ID | Composition | Theme |
 |---|----------|-----------|-------------|-------|
-| 1 | Hook | hook--ref-{name} | composed | dark |
+| 1 | Hook | hook--ref-{name} | stack | light |
 | 2 | WhatIsThis | whatisthis--ref-{name} | stack | light |
 | ... | ... | ... | ... | ... |
 
-총 {N}개 위젯 생성 (.widget.html)
+총 {N}개 위젯
+
+프리뷰 확인: output/widgets-preview--ref-{name}.html (브라우저에서 열기)
 ```
 
 ## Step 2.5: 유저 검수
 
-위젯 목록을 보여주고 유저 확인을 받습니다:
+**통합 프리뷰 HTML을 브라우저에서 열어** 한 화면에서 모든 위젯을 확인합니다:
 - 잘못된 taxonomy 매핑 수정
 - 불필요한 위젯 제거
+- 레이아웃/스타일 수정 요청
 - 커스텀 섹션 확인
-- 브라우저에서 개별 위젯 HTML 프리뷰 가능
 
-## Step 3: /register-widgets
+## Step 3: 분리 저장 + /register-widgets
 
+**유저 승인 후** 실행합니다.
+
+### 3-1. 분리 저장
+프리뷰에서 각 위젯의 `<!--WIDGET_META-->` + `<section>` 부분을 추출하여 개별 파일로 저장:
+- `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
+
+### 3-2. 레지스트리 등록
 **스킬 파일**: `skills/register-widgets.skill.md`
 
-생성된 위젯들을 레지스트리에 등록합니다.
-`.widget.html` 파일의 `<!--WIDGET_META -->` 주석에서 메타데이터를 파싱합니다.
-
-### Input
-- Step 2에서 생성된 위젯 파일 목록
+저장된 위젯들을 레지스트리에 등록합니다.
 
 ### Output
 - `widgets/_registry.json` 업데이트

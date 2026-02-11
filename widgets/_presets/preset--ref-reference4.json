@@ -1,0 +1,62 @@
+{
+  "type": "STYLE_PRESET",
+  "id": "preset--ref-reference4",
+  "name": "우드 수납 정리함 라이트톤",
+  "source_ref": "ref-reference4",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한",
+    "심플",
+    "라이프스타일"
+  ],
+  "global_layout": {
+    "width": 860,
+    "image_area_width": 760,
+    "default_padding": {
+      "top": 60,
+      "bottom": 60,
+      "left": 50,
+      "right": 50
+    },
+    "default_item_spacing": 24,
+    "default_content_alignment": "CENTER",
+    "font_family": "Pretendard"
+  },
+  "color_system": {
+    "brand_main": "#B8956A",
+    "accent": "#6B5344",
+    "dark_1": "#1E1814",
+    "dark_2": "#2A2218",
+    "light_1": "#FFFFFF",
+    "light_2": "#F7F3EE",
+    "light_3": "#EDE5DA",
+    "light_text": "#FFFFFF",
+    "dark_text": "#222222",
+    "sub_text": "#888888",
+    "muted_text": "#666666",
+    "image_placeholder": "#E8E0D4"
+  },
+  "typography": {
+    "main_copy": {
+      "fontSize": 36,
+      "fontWeight": 700
+    },
+    "section_title": {
+      "fontSize": 28,
+      "fontWeight": 700
+    },
+    "sub_title": {
+      "fontSize": 22,
+      "fontWeight": 500
+    },
+    "body": {
+      "fontSize": 16,
+      "fontWeight": 400
+    },
+    "small": {
+      "fontSize": 14,
+      "fontWeight": 400
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "type": "WIDGET_SELECTION",
+  "version": "1.0",
+  "product_name": "루미에어 스마트 수면등 (LumiAir Smart Sleep Lamp)",
+  "style_preset": null,
+  "brand_override": {
+    "brand_main": "#1F2A44",
+    "accent": "#FFB347",
+    "light_bg": "#F5F3EE"
+  },
+  "target_theme": "dark",
+  "selected_widgets": [
+    {
+      "order": 1,
+      "section_id": "Hook",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "다크 composed 히어로 필요 — 기존 light stack 부적합. 패턴에서 생성"
+    },
+    {
+      "order": 2,
+      "section_id": "WhatIsThis",
+      "widget_id": "whatisthis--ref-reference4",
+      "widget_file": "whatisthis/whatisthis--ref-reference4.widget.html",
+      "score": 0.35,
+      "score_breakdown": { "style_compat": 0.1, "composition_pref": 1.0, "source_cohesion": 0.0, "theme_match": 0.0 },
+      "reason": "stack 구조 활용, 다크 테마로 컬러 리매핑"
+    },
+    {
+      "order": 3,
+      "section_id": "PainPoint",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 PainPoint 위젯 없음. 패턴에서 composed 생성"
+    },
+    {
+      "order": 4,
+      "section_id": "Solution",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 Solution 위젯 없음. 패턴에서 stack 생성"
+    },
+    {
+      "order": 5,
+      "section_id": "FeaturesOverview",
+      "widget_id": "featuresoverview--ref-reference4",
+      "widget_file": "featuresoverview/featuresoverview--ref-reference4.widget.html",
+      "score": 0.35,
+      "reason": "stack 구조 활용, 다크 테마로 컬러 리매핑. 기능 수 6개로 확장"
+    },
+    {
+      "order": 6,
+      "section_id": "FeatureDetail",
+      "feature_index": 1,
+      "widget_id": "featuredetail--ref-reference4--split-rl",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.html",
+      "score": 0.35,
+      "reason": "split-rl 구조 활용 (홀수: 텍스트좌/이미지우), 다크 리매핑"
+    },
+    {
+      "order": 7,
+      "section_id": "FeatureDetail",
+      "feature_index": 2,
+      "widget_id": "featuredetail--ref-reference4--split-lr",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--split-lr.widget.html",
+      "score": 0.35,
+      "reason": "split-lr 구조 활용 (짝수: 이미지좌/텍스트우), 다크 리매핑"
+    },
+    {
+      "order": 8,
+      "section_id": "FeatureDetail",
+      "feature_index": 3,
+      "widget_id": "featuredetail--ref-reference4--split-rl",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.html",
+      "score": 0.35,
+      "reason": "split-rl 재사용 (홀수), 다크 리매핑"
+    },
+    {
+      "order": 9,
+      "section_id": "FeatureDetail",
+      "feature_index": 4,
+      "widget_id": "featuredetail--ref-reference4--split-lr",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--split-lr.widget.html",
+      "score": 0.35,
+      "reason": "split-lr 재사용 (짝수), 다크 리매핑"
+    },
+    {
+      "order": 10,
+      "section_id": "FeatureDetail",
+      "feature_index": 5,
+      "widget_id": "featuredetail--ref-reference4--split-rl",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.html",
+      "score": 0.35,
+      "reason": "split-rl 재사용 (홀수), 다크 리매핑"
+    },
+    {
+      "order": 11,
+      "section_id": "FeatureDetail",
+      "feature_index": 6,
+      "widget_id": "featuredetail--ref-reference4--composed",
+      "widget_file": "featuredetail/featuredetail--ref-reference4--composed.widget.html",
+      "score": 0.30,
+      "reason": "composed 라이프스타일 — 소재/디자인 기능에 적합, 다크 리매핑"
+    },
+    {
+      "order": 12,
+      "section_id": "Differentiator",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 Differentiator 위젯 없음. 패턴에서 stack 생성"
+    },
+    {
+      "order": 13,
+      "section_id": "Target",
+      "widget_id": "target--ref-reference4",
+      "widget_file": "target/target--ref-reference4.widget.html",
+      "score": 0.35,
+      "reason": "체크리스트 stack 구조 활용, 브랜드 그라디언트로 리매핑"
+    },
+    {
+      "order": 14,
+      "section_id": "Safety",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 Safety 위젯 없음. 패턴에서 stack 생성"
+    },
+    {
+      "order": 15,
+      "section_id": "Reviews",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 Reviews 위젯 없음. 패턴에서 stack 생성"
+    },
+    {
+      "order": 16,
+      "section_id": "ProductSpec",
+      "widget_id": "productspec--ref-reference4",
+      "widget_file": "productspec/productspec--ref-reference4.widget.html",
+      "score": 0.35,
+      "reason": "split 구조 활용, 다크 리매핑"
+    },
+    {
+      "order": 17,
+      "section_id": "FAQ",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "레지스트리에 FAQ 위젯 없음. 패턴에서 stack 생성"
+    },
+    {
+      "order": 18,
+      "section_id": "CTA",
+      "widget_id": "FALLBACK",
+      "widget_file": null,
+      "score": 0,
+      "reason": "다크 composed CTA 필요 — 기존 light stack 부적합. 패턴에서 생성"
+    }
+  ],
+  "fallback_sections": ["Hook", "PainPoint", "Solution", "Differentiator", "Safety", "Reviews", "FAQ", "CTA"],
+  "summary": {
+    "total_sections": 18,
+    "matched_from_registry": 10,
+    "generated_from_patterns": 8,
+    "note": "ref-reference4 위젯은 라이트/내추럴 테마로 다크/테크 제품과 스타일 불일치. 구조만 활용하고 컬러/테마를 전면 리매핑. 8개 섹션은 html-section-patterns.md 패턴으로 폴백 생성."
+  }
+}

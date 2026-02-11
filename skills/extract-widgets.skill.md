@@ -14,9 +14,21 @@
 - 레퍼런스 이름 (영문 소문자 + 하이픈, 예: `ref-apple-airpods`)
 
 ## Output
+
+### Step A: 프리뷰 (검수용)
 - **스타일 프리셋 1개**: `widgets/_presets/preset--ref-{name}.json`
+- **통합 프리뷰 HTML 1개**: `output/widgets-preview--ref-{name}.html`
+  - 모든 위젯을 하나의 HTML 파일에 순서대로 조합
+  - 각 위젯 상단에 라벨 표시 (`#번호 Taxonomy — widget_id` + composition/theme 배지)
+  - `html-base.html`의 Tailwind + 유틸리티 CSS 포함 → 브라우저에서 바로 확인 가능
+  - 프리셋의 색상을 CSS 변수(`:root`)에 적용
+
+### Step B: 분리 저장 (검수 승인 후)
 - **섹션 위젯 N개**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html`
 - 미매핑 섹션: `widgets/_custom/{widget_id}.widget.html`
+
+> **중요**: 위젯을 개별 폴더에 저장하기 **전에** 반드시 통합 프리뷰로 유저 검수를 받습니다.
+> 유저가 프리뷰를 확인하고 승인하면, 그때 개별 폴더로 분리 저장 + `/register-widgets` 실행.
 
 ## Processing
 
@@ -190,12 +202,54 @@
 | Comparison, Safety, Target, Reviews, ProductSpec, FAQ, Warranty | trust |
 | CTABanner, EventPromo, CTA | conversion |
 
-### 5. 저장 경로
+### 5. 통합 프리뷰 HTML 생성
+
+모든 위젯을 하나의 HTML 파일로 조합하여 검수용 프리뷰를 생성합니다.
+
+**파일**: `output/widgets-preview--ref-{name}.html`
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- html-base.html의 Tailwind + 유틸리티 CSS 포함 -->
+  <!-- 프리셋 색상을 :root CSS 변수에 적용 -->
+  <style>:root { --brand-main: {brand_main}; --accent: {accent}; }</style>
+</head>
+<body>
+  <div class="preview-header">프리뷰 헤더 (레퍼런스명, 위젯 수, 스타일 요약)</div>
+  <div class="page-canvas">
+    <!-- 위젯마다 반복 -->
+    <div class="widget-label">#1 Hook — hook--ref-{name} [stack] [light]</div>
+    <section>...</section>
+    <!-- ... -->
+  </div>
+</body>
+</html>
+```
+
+각 위젯 상단 라벨에 표시할 정보:
+- `#순번` + `Taxonomy` + `widget_id`
+- composition 배지 (색상 구분: stack=파랑, split=보라, composed=핑크)
+- theme 배지 (light=노랑, dark=회색)
+
+### 6. 유저 검수
+
+프리뷰 파일을 브라우저에서 확인하도록 안내:
+- 잘못된 taxonomy 매핑 수정
+- 불필요한 위젯 제거
+- 레이아웃/스타일 수정 요청
+
+### 7. 분리 저장 (검수 승인 후)
+
+유저 승인 후 개별 폴더로 분리 저장:
 
 | 조건 | 경로 |
 |---|---|
 | taxonomy_id 있음 | `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` |
 | taxonomy_id 없음 (커스텀) | `widgets/_custom/{widget_id}.widget.html` |
+
+각 위젯 파일은 프리뷰에서 해당 위젯의 `<!--WIDGET_META ... -->` + `<section>...</section>` 부분만 추출하여 저장합니다.
 
 ## Validation
 - [ ] 모든 위젯이 `<!--WIDGET_META`로 시작하는가?

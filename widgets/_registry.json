@@ -1,12 +1,112 @@
 {
   "type": "WIDGET_REGISTRY",
   "version": "2.0",
-  "total_widgets": 0,
+  "total_widgets": 10,
   "presets": [
     "preset--ref-reference3",
+    "preset--ref-reference4",
     "preset--ref-maru",
     "preset--ref-logitech-k120",
     "preset--default"
   ],
-  "widgets": {}
+  "widgets": {
+    "Hook": [
+      {
+        "widget_id": "hook--ref-reference4",
+        "file": "hook/hook--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "WhatIsThis": [
+      {
+        "widget_id": "whatisthis--ref-reference4",
+        "file": "whatisthis/whatisthis--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "SetContents": [
+      {
+        "widget_id": "setcontents--ref-reference4",
+        "file": "setcontents/setcontents--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "FeaturesOverview": [
+      {
+        "widget_id": "featuresoverview--ref-reference4",
+        "file": "featuresoverview/featuresoverview--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "FeatureDetail": [
+      {
+        "widget_id": "featuredetail--ref-reference4--split-rl",
+        "file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-right"
+      },
+      {
+        "widget_id": "featuredetail--ref-reference4--split-lr",
+        "file": "featuredetail/featuredetail--ref-reference4--split-lr.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left"
+      },
+      {
+        "widget_id": "featuredetail--ref-reference4--composed",
+        "file": "featuredetail/featuredetail--ref-reference4--composed.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "라이프스타일"],
+        "composition": "composed",
+        "theme": "light"
+      }
+    ],
+    "Target": [
+      {
+        "widget_id": "target--ref-reference4",
+        "file": "target/target--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ],
+    "ProductSpec": [
+      {
+        "widget_id": "productspec--ref-reference4",
+        "file": "productspec/productspec--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "심플"],
+        "composition": "split",
+        "theme": "light"
+      }
+    ],
+    "CTA": [
+      {
+        "widget_id": "cta--ref-reference4",
+        "file": "cta/cta--ref-reference4.widget.html",
+        "source_ref": "ref-reference4",
+        "style_tags": ["내추럴", "우드톤", "따뜻한"],
+        "composition": "stack",
+        "theme": "light"
+      }
+    ]
+  }
 }

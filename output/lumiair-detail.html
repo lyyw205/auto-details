@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=860">
+<title>루미에어 스마트 수면등 상세페이지</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Pretendard 한국어 폰트 -->
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<!-- Tailwind 인라인 설정 -->
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        pretendard: ['Pretendard', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      fontSize: {
+        'hero':    ['56px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'section': ['40px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'feature-num': ['72px', { lineHeight: '1.0', letterSpacing: '-0.04em', fontWeight: '700' }],
+        'sub':     ['28px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'question':['28px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'answer':  ['36px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'item':    ['24px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'body':    ['22px', { lineHeight: '1.6', fontWeight: '400' }],
+        'small':   ['20px', { lineHeight: '1.6', fontWeight: '400' }],
+        'caption': ['14px', { lineHeight: '1.5', fontWeight: '400' }],
+      },
+      colors: {
+        brand: 'var(--brand-main)',
+        accent: 'var(--accent)',
+        dark: {
+          1: '#111111',
+          2: '#1A1A1A',
+        },
+        sub: '#888888',
+        muted: '#666666',
+        placeholder: '#2A2A2A',
+      },
+      width: {
+        'canvas': '860px',
+        'content': '760px',
+      },
+    },
+  },
+}
+</script>
+
+<!-- 브랜드 컬러 CSS 변수 + 유틸리티 스타일 -->
+<style>
+  :root {
+    --brand-main: #1F2A44;
+    --accent: #FFB347;
+  }
+
+  /* 기본 리셋 */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 860px 고정 캔버스 */
+  .page-canvas {
+    width: 860px;
+    max-width: 860px;
+    min-width: 860px;
+    overflow: hidden;
+  }
+
+  /* --- 이미지 플레이스홀더 --- */
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #2A2A2A;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
+    pointer-events: none;
+  }
+  .img-placeholder svg {
+    opacity: 0.3;
+  }
+  .img-placeholder .img-label {
+    max-width: 80%;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+  .img-placeholder[data-ai-prompt]::after {
+    content: 'AI';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(79, 143, 247, 0.15);
+    color: rgba(79, 143, 247, 0.6);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* --- 글래스모피즘 카드 --- */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+  }
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+  }
+
+  /* --- 그라데이션 텍스트 --- */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, var(--brand-main), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- 텍스트 쉐도우 (히어로용) --- */
+  .text-shadow-hero {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3);
+  }
+  .text-shadow-subtle {
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* --- 섹션 배경 그라데이션 --- */
+  .bg-dark-gradient-1 {
+    background: linear-gradient(180deg, #111111 0%, #0D0D0D 100%);
+  }
+  .bg-dark-gradient-2 {
+    background: linear-gradient(180deg, #1A1A1A 0%, #141414 100%);
+  }
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, var(--brand-main) 0%, color-mix(in srgb, var(--brand-main), black 20%) 100%);
+  }
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent), black 15%) 100%);
+  }
+  .bg-dark-brand-glow {
+    background: linear-gradient(180deg, #111111 0%, #111111 60%, color-mix(in srgb, var(--brand-main), transparent 92%) 100%);
+  }
+  .bg-radial-glow {
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--brand-main), transparent 85%) 0%, transparent 70%);
+  }
+
+  /* --- 장식 분리선 --- */
+  .divider-gradient {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    width: 100%;
+  }
+  .divider-brand {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--brand-main), transparent);
+    width: 60%;
+    margin: 0 auto;
+  }
+  .divider-dot {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .divider-dot::before,
+  .divider-dot::after,
+  .divider-dot span {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* --- 브랜드 액센트 보더 --- */
+  .border-brand-left {
+    border-left: 3px solid var(--brand-main);
+    padding-left: 16px;
+  }
+  .border-brand-bottom {
+    border-bottom: 2px solid var(--brand-main);
+    padding-bottom: 8px;
+  }
+
+  /* --- 9-Grid 포지셔닝 (composed 레이아웃) --- */
+  .composed-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .composed-layer {
+    position: absolute;
+  }
+  /* 9-grid 기본 위치 */
+  .pos-tl { top: 0; left: 0; }
+  .pos-tc { top: 0; left: 33.33%; }
+  .pos-tr { top: 0; right: 0; }
+  .pos-ml { top: 33.33%; left: 0; }
+  .pos-mc { top: 33.33%; left: 33.33%; }
+  .pos-mr { top: 33.33%; right: 0; }
+  .pos-bl { bottom: 0; left: 0; }
+  .pos-bc { bottom: 0; left: 33.33%; }
+  .pos-br { bottom: 0; right: 0; }
+  /* 가로 전체 스팬 */
+  .pos-tl-tr { top: 0; left: 0; right: 0; }
+  .pos-ml-mr { top: 33.33%; left: 0; right: 0; }
+  .pos-bl-br { bottom: 0; left: 0; right: 0; }
+  /* 세로 전체 스팬 */
+  .pos-tl-bl { top: 0; bottom: 0; left: 0; }
+  .pos-tr-br { top: 0; bottom: 0; right: 0; }
+  /* 전체 */
+  .pos-tl-br { inset: 0; }
+
+  /* --- 번호 배지 --- */
+  .num-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-main);
+  }
+
+  /* --- 체크 아이콘 --- */
+  .check-item::before {
+    content: '\2713';
+    color: var(--brand-main);
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  /* --- 히어로 오버레이 --- */
+  .hero-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+  }
+  .hero-overlay-top {
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+  }
+
+  /* --- 섹션 공통 패딩 --- */
+  .section-padding {
+    padding: 80px 50px;
+  }
+  .section-padding-lg {
+    padding: 100px 50px;
+  }
+
+  /* --- 콘텐츠 너비 제한 --- */
+  .content-narrow {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-canvas">
+
+  <!-- ===== SECTION 1: Hook (composed) ===== -->
+  <section class="composed-section relative h-[1200px]" id="section-hook">
+    <!-- 배경 이미지 -->
+    <div class="composed-layer inset-0">
+      <div class="img-placeholder w-full h-full"
+           data-ai-prompt="LumiAir Smart Sleep Lamp hero shot, warm amber glow emanating from elegant fabric lamp on bedside table, dark bedroom atmosphere, dramatic lighting, cinematic mood, 8k"
+           data-ai-style="product_hero"
+           data-ai-ratio="3:4">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 수면등 히어로 이미지 - 침실 무드 조명</span>
+      </div>
+    </div>
+    <!-- 하단 그라데이션 오버레이 -->
+    <div class="composed-layer inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+    <!-- 상단 브랜드명 -->
+    <div class="composed-layer top-0 left-0 right-0 px-[50px] pt-[60px]">
+      <p class="text-small tracking-[0.2em] uppercase" style="color: var(--accent);">LUMIAIR</p>
+    </div>
+    <!-- 하단 메인 카피 -->
+    <div class="composed-layer bottom-0 left-0 right-0 px-[50px] pb-[80px] flex flex-col gap-4">
+      <h1 class="text-hero text-white text-shadow-hero tracking-tight">
+        당신의 밤을 바꾸는<br>단 하나의 빛
+      </h1>
+      <p class="text-sub text-white/80 text-shadow-subtle">AI가 설계한 수면 조명, 루미에어 스마트 수면등</p>
+      <div class="flex flex-col gap-1 mt-2">
+        <p class="text-small text-white/50">블루라이트 95% 차단 | AI 수면 알고리즘</p>
+        <p class="text-small text-white/50">20단계 밝기 조절 | 스마트 기상 시뮬레이션</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: WhatIsThis (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-dark-gradient-2" id="section-whatisthis">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <p class="text-question" style="color: var(--accent);">루미에어, 정확히 어떤 제품인가요?</p>
+      <h2 class="text-item text-white font-bold">한마디로, 루미에어는<br>수면 과학을 담은 스마트 조명입니다</h2>
+      <div class="img-placeholder w-[760px] h-[300px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp product overview, clean studio shot showing compact fabric lamp design with soft amber glow, white background, premium product photography, 8k"
+           data-ai-style="product_hero"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 제품 전체 모습</span>
+      </div>
+      <p class="text-body text-white/70">단순한 무드등이 아닙니다.<br>수면 과학 기반 AI 알고리즘이 당신의 수면 패턴을 분석하고,<br>최적의 조명 환경을 자동으로 만들어주는 스마트 수면등입니다.</p>
+      <div class="glass-card p-8 w-full flex flex-col gap-4">
+        <p class="text-body text-white/90 font-semibold">이렇게 사용하세요</p>
+        <div class="flex flex-col gap-3">
+          <p class="text-body text-white/70"><span class="text-body font-bold mr-2" style="color: var(--accent);">1.</span>침대 옆에 루미에어를 놓고, 앱과 연결하세요</p>
+          <p class="text-body text-white/70"><span class="text-body font-bold mr-2" style="color: var(--accent);">2.</span>취침 루틴을 설정하면, AI가 자동으로 조명을 조절합니다</p>
+          <p class="text-body text-white/70"><span class="text-body font-bold mr-2" style="color: var(--accent);">3.</span>아침엔 자연 일출처럼 서서히 밝아져 상쾌한 기상을 도와줍니다</p>
+        </div>
+        <p class="text-body font-semibold mt-2" style="color: var(--accent);">놓기만 하면, 밤이 달라집니다</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: PainPoint (composed) ===== -->
+  <section class="composed-section relative h-[1000px]" id="section-painpoint">
+    <div class="composed-layer inset-0">
+      <div class="img-placeholder w-full h-full"
+           data-ai-prompt="Person lying awake in bed at night, tossing and turning, unable to sleep, dark moody bedroom, blue phone screen glowing, insomnia concept, cinematic lighting, 8k"
+           data-ai-style="mood"
+           data-ai-ratio="3:4">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">잠 못 이루는 밤 - 불면 상황 이미지</span>
+      </div>
+    </div>
+    <div class="composed-layer inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30"></div>
+    <div class="composed-layer bottom-0 left-0 right-0 px-[50px] pb-[80px] flex flex-col items-center gap-6 text-center">
+      <h2 class="text-answer text-white text-shadow-hero font-bold">혹시 이런 밤을 보내고 계신가요?</h2>
+      <p class="text-body text-white/60">아래 항목 중 하나라도 해당된다면, 루미에어가 필요합니다</p>
+      <div class="flex flex-col gap-3 w-full max-w-[600px]">
+        <p class="check-item text-body text-white/80">자려고 누우면 오히려 눈이 말똥말똥해진다</p>
+        <p class="check-item text-body text-white/80">스마트폰 블루라이트 때문에 잠들기가 더 어려워졌다</p>
+        <p class="check-item text-body text-white/80">알람 소리에 깜짝 놀라 기분 나쁘게 하루를 시작한다</p>
+        <p class="check-item text-body text-white/80">자고 일어나도 개운하지 않고, 항상 피곤하다</p>
+        <p class="check-item text-body text-white/80">수면제 없이는 잠들기 힘든 날이 점점 늘어난다</p>
+      </div>
+      <p class="text-body font-semibold mt-4" style="color: var(--accent);">문제는 '빛'이었습니다. 그리고 해답도 '빛'입니다.</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: Solution (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-brand-gradient" id="section-solution">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white text-shadow-subtle">루미에어가 해결합니다</h2>
+      <div class="img-placeholder w-[760px] h-[350px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp in use on bedside table, person peacefully sleeping in background, warm amber soft glow filling the room, serene bedroom atmosphere, 8k"
+           data-ai-style="product_lifestyle"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 사용 중 평화로운 수면 모습</span>
+      </div>
+      <div class="w-full grid grid-cols-3 gap-4">
+        <div class="glass-card p-6 flex flex-col items-center gap-3 text-center">
+          <h3 class="text-item text-white">수면 유도</h3>
+          <p class="text-body text-white/60">AI가 멜라토닌 분비를 돕는 최적의 조명 파장을 자동 조절합니다</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col items-center gap-3 text-center">
+          <h3 class="text-item text-white">상쾌한 기상</h3>
+          <p class="text-body text-white/60">자연 일출을 모사한 스마트 기상 모드로 부드럽게 깨워줍니다</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col items-center gap-3 text-center">
+          <h3 class="text-item text-white">눈 건강 보호</h3>
+          <p class="text-body text-white/60">블루라이트 95% 차단으로 취침 전 눈의 피로를 최소화합니다</p>
+        </div>
+      </div>
+      <p class="text-body text-white font-semibold mt-4">잠드는 순간부터 깨어나는 순간까지, 루미에어가 함께합니다</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: FeaturesOverview (stack) ===== -->
+  <section class="flex flex-col items-center section-padding-lg bg-dark-gradient-1" id="section-featuresoverview">
+    <div class="content-narrow flex flex-col items-center gap-10 text-center">
+      <div class="flex flex-col items-center gap-3">
+        <h2 class="text-section text-white">루미에어의 핵심 기능</h2>
+        <p class="text-body text-white/50">6가지 핵심 기능으로 완벽한 수면 환경을 만듭니다</p>
+      </div>
+      <div class="img-placeholder w-[760px] h-[350px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp feature overview, annotated product diagram showing AI algorithm, sunrise mode, blue light filter, app control, touch control, premium fabric material, clean infographic layout, 8k"
+           data-ai-style="infographic"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 6가지 핵심 기능 개요 인포그래픽</span>
+      </div>
+      <div class="w-full grid grid-cols-2 gap-4">
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">01</span>
+          <p class="text-item text-white">AI 수면 조명 알고리즘</p>
+        </div>
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">02</span>
+          <p class="text-item text-white">스마트 기상 모드</p>
+        </div>
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">03</span>
+          <p class="text-item text-white">블루라이트 95% 차단</p>
+        </div>
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">04</span>
+          <p class="text-item text-white">앱 연동 + 루틴 자동화</p>
+        </div>
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">05</span>
+          <p class="text-item text-white">20단계 밝기 + 터치 컨트롤</p>
+        </div>
+        <div class="glass-card p-5 flex items-center gap-4 text-left">
+          <span class="num-badge shrink-0">06</span>
+          <p class="text-item text-white">고급 패브릭 소재 디자인</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: FeatureDetail 1 — AI 수면 조명 (split: text-L image-R) ===== -->
+  <section class="grid grid-cols-2 min-h-[1000px] bg-dark-gradient-2" id="section-feature1-detail">
+    <div class="flex flex-col justify-center px-[50px] py-[60px] gap-6">
+      <p class="text-feature-num text-gradient-brand tracking-tight">01</p>
+      <p class="text-question" style="color: var(--accent);">Q. AI 수면 조명이 왜 필요한가요?</p>
+      <h2 class="text-answer text-white">수면 패턴을 분석해<br>빛을 자동으로 맞춰줍니다</h2>
+      <div class="divider-gradient my-2"></div>
+      <h3 class="text-item text-white">AI 알고리즘의 혜택</h3>
+      <div class="flex flex-col gap-3">
+        <p class="check-item text-body text-white/70">수면 과학 기반 파장 조절로 멜라토닌 분비를 자연스럽게 유도</p>
+        <p class="check-item text-body text-white/70">매일 사용할수록 사용자 수면 패턴에 최적화</p>
+        <p class="check-item text-body text-white/70">취침 시간에 맞춰 자동으로 조명 톤과 밝기를 변경</p>
+      </div>
+      <p class="text-body font-semibold mt-2" style="color: var(--accent);">3주 사용 후 평균 수면 시간 42분 증가*</p>
+    </div>
+    <div class="flex items-center justify-center p-8 bg-dark-brand-glow">
+      <div class="img-placeholder w-full h-[400px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp AI algorithm visualization, warm amber light waves emanating from lamp, data pattern overlay showing sleep analysis, futuristic yet cozy, macro closeup, 8k"
+           data-ai-style="product_detail"
+           data-ai-ratio="4:3">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">AI 수면 조명 알고리즘 시각화</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 7: FeatureDetail 2 — 스마트 기상 모드 (split: image-L text-R) ===== -->
+  <section class="grid grid-cols-2 min-h-[1000px] bg-dark-gradient-1" id="section-feature2-detail">
+    <div class="flex items-center justify-center p-8 bg-dark-brand-glow">
+      <div class="img-placeholder w-full h-[400px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp sunrise simulation mode, gradual warm golden light filling a serene bedroom at dawn, person stretching and waking up naturally, peaceful morning atmosphere, 8k"
+           data-ai-style="product_lifestyle"
+           data-ai-ratio="4:3">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">스마트 기상 모드 - 자연 일출 시뮬레이션</span>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center px-[50px] py-[60px] gap-6">
+      <p class="text-feature-num text-gradient-brand tracking-tight">02</p>
+      <p class="text-question" style="color: var(--accent);">Q. 알람 없이 어떻게 일어나나요?</p>
+      <h2 class="text-answer text-white">자연 일출처럼<br>서서히 깨워줍니다</h2>
+      <div class="divider-gradient my-2"></div>
+      <h3 class="text-item text-white">스마트 기상의 혜택</h3>
+      <div class="flex flex-col gap-3">
+        <p class="check-item text-body text-white/70">기상 30분 전부터 서서히 밝아지는 일출 시뮬레이션</p>
+        <p class="check-item text-body text-white/70">코르티솔 분비를 자연스럽게 유도해 개운한 기상</p>
+        <p class="check-item text-body text-white/70">급격한 알람 소리 없이 부드럽고 상쾌한 아침</p>
+      </div>
+      <p class="text-body font-semibold mt-2" style="color: var(--accent);">사용자 87%가 "아침이 달라졌다"고 응답*</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 8: FeatureDetail 3 — 블루라이트 최소화 (split: text-L image-R) ===== -->
+  <section class="grid grid-cols-2 min-h-[1000px] bg-dark-gradient-2" id="section-feature3-detail">
+    <div class="flex flex-col justify-center px-[50px] py-[60px] gap-6">
+      <p class="text-feature-num text-gradient-brand tracking-tight">03</p>
+      <p class="text-question" style="color: var(--accent);">Q. 블루라이트가 왜 문제인가요?</p>
+      <h2 class="text-answer text-white">블루라이트 95% 차단,<br>눈과 수면을 동시에 보호</h2>
+      <div class="divider-gradient my-2"></div>
+      <h3 class="text-item text-white">블루라이트 차단 효과</h3>
+      <div class="flex flex-col gap-3">
+        <p class="check-item text-body text-white/70">취침 전 블루라이트 노출은 멜라토닌 분비를 최대 58% 억제</p>
+        <p class="check-item text-body text-white/70">루미에어는 유해 파장(380~500nm)을 95% 차단</p>
+        <p class="check-item text-body text-white/70">장시간 사용해도 눈의 피로감이 현저히 감소</p>
+      </div>
+      <p class="text-body font-semibold mt-2" style="color: var(--accent);">일반 조명 대비 눈 피로도 73% 감소*</p>
+    </div>
+    <div class="flex items-center justify-center p-8 bg-dark-brand-glow">
+      <div class="img-placeholder w-full h-[400px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp blue light filtering technology visualization, warm amber light spectrum vs harmful blue light comparison, scientific diagram style, clean modern infographic, 8k"
+           data-ai-style="infographic"
+           data-ai-ratio="4:3">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">블루라이트 차단 기술 시각화</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 9: FeatureDetail 4 — 앱 + 루틴 (split: image-L text-R) ===== -->
+  <section class="grid grid-cols-2 min-h-[1000px] bg-dark-gradient-1" id="section-feature4-detail">
+    <div class="flex items-center justify-center p-8 bg-dark-brand-glow">
+      <div class="img-placeholder w-full h-[400px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp companion app on smartphone screen, sleep data dashboard with graphs showing sleep quality improvement, bedside lamp glowing in background, modern UI design, 8k"
+           data-ai-style="product_detail"
+           data-ai-ratio="4:3">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 전용 앱 화면 - 수면 데이터 대시보드</span>
+      </div>
+    </div>
+    <div class="flex flex-col justify-center px-[50px] py-[60px] gap-6">
+      <p class="text-feature-num text-gradient-brand tracking-tight">04</p>
+      <p class="text-question" style="color: var(--accent);">Q. 앱으로 뭘 할 수 있나요?</p>
+      <h2 class="text-answer text-white">수면 루틴 설정부터<br>데이터 분석까지 한 번에</h2>
+      <div class="divider-gradient my-2"></div>
+      <h3 class="text-item text-white">스마트 앱 기능</h3>
+      <div class="flex flex-col gap-3">
+        <p class="check-item text-body text-white/70">취침 루틴 자동화: 시간 설정만 하면 조명이 알아서 조절</p>
+        <p class="check-item text-body text-white/70">수면 품질 리포트: 매일 수면 데이터를 시각화하여 제공</p>
+        <p class="check-item text-body text-white/70">원격 제어: 침대 밖에서도 조명 켜기/끄기/밝기 조절 가능</p>
+      </div>
+      <p class="text-body font-semibold mt-2" style="color: var(--accent);">iOS / Android 무료 앱 지원</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 10: FeatureDetail 5 — 밝기 + 터치 (split: text-L image-R) ===== -->
+  <section class="grid grid-cols-2 min-h-[1000px] bg-dark-gradient-2" id="section-feature5-detail">
+    <div class="flex flex-col justify-center px-[50px] py-[60px] gap-6">
+      <p class="text-feature-num text-gradient-brand tracking-tight">05</p>
+      <p class="text-question" style="color: var(--accent);">Q. 밝기 조절은 얼마나 세밀한가요?</p>
+      <h2 class="text-answer text-white">20단계 밝기 조절,<br>손끝 하나로 제어</h2>
+      <div class="divider-gradient my-2"></div>
+      <h3 class="text-item text-white">터치 컨트롤의 편리함</h3>
+      <div class="flex flex-col gap-3">
+        <p class="check-item text-body text-white/70">20단계 미세 밝기 조절로 어떤 환경에도 최적 밝기</p>
+        <p class="check-item text-body text-white/70">상단 터치 한 번으로 직관적인 ON/OFF 및 밝기 변경</p>
+        <p class="check-item text-body text-white/70">타이머 자동 소등 기능으로 잠들어도 안심</p>
+      </div>
+      <p class="text-body font-semibold mt-2" style="color: var(--accent);">15분 / 30분 / 60분 자동 소등 타이머</p>
+    </div>
+    <div class="flex items-center justify-center p-8 bg-dark-brand-glow">
+      <div class="img-placeholder w-full h-[400px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp touch control close-up, hand gently touching the top of the fabric lamp, soft amber glow responding to touch, elegant interaction moment, macro photography, 8k"
+           data-ai-style="product_detail"
+           data-ai-ratio="4:3">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">터치 컨트롤 클로즈업 - 직관적 조작</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 11: FeatureDetail 6 — 패브릭 소재 + 디자인 (composed) ===== -->
+  <section class="composed-section relative h-[1200px]" id="section-feature6-detail">
+    <div class="composed-layer inset-0">
+      <div class="img-placeholder w-full h-full"
+           data-ai-prompt="LumiAir Smart Sleep Lamp in beautiful modern bedroom interior, premium fabric material texture visible, warm ambient lighting, minimalist Scandinavian design setting, lifestyle photography, 8k"
+           data-ai-style="product_lifestyle"
+           data-ai-ratio="3:4">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">프리미엄 패브릭 소재 - 인테리어 라이프스타일</span>
+      </div>
+    </div>
+    <div class="composed-layer inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+    <!-- 상단 기능 번호 -->
+    <div class="composed-layer top-0 left-0 right-0 px-[50px] pt-[60px]">
+      <p class="text-feature-num text-gradient-brand tracking-tight">06</p>
+    </div>
+    <!-- 하단 텍스트 -->
+    <div class="composed-layer bottom-0 left-0 right-0 px-[50px] pb-[80px] flex flex-col gap-4">
+      <h2 class="text-answer text-white text-shadow-hero font-bold">
+        어디에 놓아도 어울리는<br>프리미엄 디자인
+      </h2>
+      <p class="text-body text-white/80 text-shadow-subtle">
+        고급 패브릭 소재와 컴팩트한 실루엣으로<br>어떤 인테리어에도 자연스럽게 조화됩니다.<br>조명이 아닌 오브제처럼, 공간을 완성하는 디자인.
+      </p>
+      <div class="flex gap-4 mt-2">
+        <div class="glass-card px-6 py-3 text-center">
+          <p class="text-small text-white/90 font-semibold">프리미엄 패브릭</p>
+        </div>
+        <div class="glass-card px-6 py-3 text-center">
+          <p class="text-small text-white/90 font-semibold">컴팩트 사이즈</p>
+        </div>
+        <div class="glass-card px-6 py-3 text-center">
+          <p class="text-small text-white/90 font-semibold">미니멀 디자인</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 12: Differentiator (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-accent-gradient" id="section-differentiator">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <span class="text-small font-bold px-4 py-2 rounded-full bg-black/20 text-white">업계 최초</span>
+      <h2 class="text-section text-white text-shadow-subtle">수면 과학 기반 AI 조명 알고리즘</h2>
+      <p class="text-body text-white/70">단순히 빛을 내는 조명이 아닌, 수면 과학 데이터를 기반으로<br>사용자 패턴에 맞춤 자동 조절하는 유일한 수면등입니다</p>
+      <div class="img-placeholder w-[760px] h-[300px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp AI algorithm comparison infographic, split view showing generic lamp vs LumiAir smart features, data visualization, before and after sleep quality chart, clean design, 8k"
+           data-ai-style="comparison"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">일반 조명 vs 루미에어 AI 조명 비교</span>
+      </div>
+      <div class="w-full grid grid-cols-2 gap-6">
+        <div class="glass-card p-6 text-center">
+          <h3 class="text-item text-white/70 mb-3">일반 수면등</h3>
+          <p class="text-body text-white/50">단순 밝기 조절만 가능<br>고정된 색온도<br>사용자 패턴 미반영<br>수동 ON/OFF</p>
+        </div>
+        <div class="glass-card-strong p-6 text-center" style="border-color: var(--brand-main);">
+          <h3 class="text-item text-white mb-3">루미에어</h3>
+          <p class="text-body text-white/80">AI 기반 자동 조절<br>수면 과학 기반 파장 최적화<br>사용자 패턴 학습 및 맞춤<br>조명 + 수면 관리 올인원</p>
+        </div>
+      </div>
+      <p class="text-body text-white font-semibold mt-2">조명을 넘어 수면 관리 솔루션, 그것이 루미에어입니다</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 13: Target (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-brand-gradient" id="section-target">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white text-shadow-subtle">이런 분들께 추천합니다</h2>
+      <div class="img-placeholder w-[760px] h-[300px] rounded-xl"
+           data-ai-prompt="Diverse group of people in different life scenarios using LumiAir Smart Sleep Lamp, cozy bedrooms, peaceful sleep moments, warm amber lighting, lifestyle collage, 8k"
+           data-ai-style="product_lifestyle"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">다양한 사용자 라이프스타일 이미지</span>
+      </div>
+      <div class="w-full flex flex-col gap-3 max-w-[600px]">
+        <p class="check-item text-body text-white/90">잠들기까지 30분 이상 걸리는 분</p>
+        <p class="check-item text-body text-white/90">아침마다 알람에 스트레스 받는 직장인</p>
+        <p class="check-item text-body text-white/90">스마트폰 사용으로 수면 질이 떨어진 분</p>
+        <p class="check-item text-body text-white/90">수면 건강에 관심 많은 웰빙 라이프스타일러</p>
+        <p class="check-item text-body text-white/90">인테리어와 기능성을 모두 원하는 분</p>
+        <p class="check-item text-body text-white/90">소중한 사람에게 건강한 선물을 하고 싶은 분</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 14: Safety (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-dark-gradient-2" id="section-safety">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white">안전하게, 꼼꼼하게 만들었습니다</h2>
+      <div class="img-placeholder w-[760px] h-[300px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp safety certifications display, KC certification badge, quality assurance symbols, low power LED icon, noise-free design icon, clean professional layout, 8k"
+           data-ai-style="infographic"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">안전 인증 및 품질 보증 마크</span>
+      </div>
+      <div class="w-full grid grid-cols-2 gap-4">
+        <div class="glass-card p-5 flex flex-col gap-2 text-center">
+          <h3 class="text-body font-semibold" style="color: var(--accent);">KC 안전 인증</h3>
+          <p class="text-body text-white/60">국가 공인 안전 인증을 획득한<br>검증된 제품입니다</p>
+        </div>
+        <div class="glass-card p-5 flex flex-col gap-2 text-center">
+          <h3 class="text-body font-semibold" style="color: var(--accent);">무소음 설계</h3>
+          <p class="text-body text-white/60">수면을 방해하는 소음 ZERO,<br>조용한 밤을 보장합니다</p>
+        </div>
+        <div class="glass-card p-5 flex flex-col gap-2 text-center">
+          <h3 class="text-body font-semibold" style="color: var(--accent);">저전력 LED</h3>
+          <p class="text-body text-white/60">고효율 저전력 LED로<br>전기세 걱정 없이 매일 사용 가능</p>
+        </div>
+        <div class="glass-card p-5 flex flex-col gap-2 text-center">
+          <h3 class="text-body font-semibold" style="color: var(--accent);">과열 방지 설계</h3>
+          <p class="text-body text-white/60">자동 온도 제어 시스템으로<br>장시간 사용해도 안전합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 15: Reviews (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-dark-gradient-1" id="section-reviews">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white">잠이 달라졌습니다</h2>
+      <p class="text-body text-white/50">루미에어를 먼저 경험한 분들의 실제 후기</p>
+      <div class="w-full flex flex-col gap-4">
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <span class="text-small font-semibold" style="color: var(--accent);">만성 불면 30대 직장인</span>
+          <h3 class="text-body text-white font-semibold">"진짜 잠드는 시간이 줄었어요"</h3>
+          <p class="text-body text-white/60">원래 1시간은 뒤척였는데, 루미에어 쓰고 나서<br>20분 안에 잠들게 됐어요. AI가 자동으로 맞춰주니까<br>신경 쓸 것도 없고, 정말 편합니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <span class="text-small font-semibold" style="color: var(--accent);">아침형 인간 도전 중인 대학생</span>
+          <h3 class="text-body text-white font-semibold">"알람 소리 없이 자연스럽게 일어나요"</h3>
+          <p class="text-body text-white/60">스마트 기상 모드가 진짜 신세계예요.<br>서서히 밝아지는 빛 때문에 자연스럽게 눈이 떠져요.<br>알람 스트레스가 사라졌습니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <span class="text-small font-semibold" style="color: var(--accent);">인테리어에 진심인 신혼부부</span>
+          <h3 class="text-body text-white font-semibold">"디자인도 기능도 다 잡았어요"</h3>
+          <p class="text-body text-white/60">패브릭 소재라 침실 분위기에 딱 맞고,<br>앱으로 부부 각자 루틴을 설정할 수 있어서 좋아요.<br>선물로도 최고입니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <span class="text-small font-semibold" style="color: var(--accent);">눈 건강 걱정되는 40대 개발자</span>
+          <h3 class="text-body text-white font-semibold">"밤에 눈이 훨씬 편해졌어요"</h3>
+          <p class="text-body text-white/60">하루 종일 모니터 보다가 잠자리에서도 스마트폰 보는데,<br>루미에어 켜 놓으면 블루라이트 걱정 없이 눈이 편합니다.<br>독서등으로도 완벽해요.</p>
+        </div>
+      </div>
+      <p class="text-small text-muted mt-2">구매자 만족도 94.7% (2025년 1~12월 자체 조사 기준)</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 16: ProductSpec (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-dark-gradient-2" id="section-productspec">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white">제품 사양</h2>
+      <div class="img-placeholder w-[760px] h-[350px] rounded-xl"
+           data-ai-prompt="LumiAir Smart Sleep Lamp technical dimensions diagram, product blueprint style, showing height width depth measurements, component breakdown, clean minimal technical drawing, 8k"
+           data-ai-style="infographic"
+           data-ai-ratio="16:9">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 제품 치수 및 기술 도면</span>
+      </div>
+      <div class="w-full flex flex-col gap-6 text-left">
+        <div>
+          <h3 class="text-item mb-3" style="color: var(--accent);">기본 사양</h3>
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">제품명</span>
+              <span class="text-body text-white">루미에어 스마트 수면등</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">크기</span>
+              <span class="text-body text-white">120 x 120 x 185mm</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">무게</span>
+              <span class="text-body text-white">380g</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">소재</span>
+              <span class="text-body text-white">프리미엄 패브릭 + ABS</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">색상</span>
+              <span class="text-body text-white">웜 그레이 / 내추럴 베이지</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-item mb-3" style="color: var(--accent);">조명 사양</h3>
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">광원</span>
+              <span class="text-body text-white">저전력 LED (수명 40,000시간)</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">밝기 조절</span>
+              <span class="text-body text-white">20단계</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">색온도</span>
+              <span class="text-body text-white">1800K ~ 3000K (웜톤)</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">블루라이트 차단</span>
+              <span class="text-body text-white">95%</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-item mb-3" style="color: var(--accent);">스마트 기능</h3>
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">연결 방식</span>
+              <span class="text-body text-white">Bluetooth 5.0 / Wi-Fi</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">앱 지원</span>
+              <span class="text-body text-white">iOS 14+ / Android 10+</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">조작 방식</span>
+              <span class="text-body text-white">터치 컨트롤 + 앱 원격</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">타이머</span>
+              <span class="text-body text-white">15분 / 30분 / 60분 자동 소등</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-item mb-3" style="color: var(--accent);">인증 및 기타</h3>
+          <div class="flex flex-col gap-2">
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">인증</span>
+              <span class="text-body text-white">KC 인증</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">전원</span>
+              <span class="text-body text-white">USB-C (5V/2A)</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">소비 전력</span>
+              <span class="text-body text-white">최대 8W</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-white/5">
+              <span class="text-body text-white/60">제조국</span>
+              <span class="text-body text-white">대한민국</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-body text-white/40 text-center mt-2">A/S 문의: 1588-LUMI | cs@lumiair.kr</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 17: FAQ (stack) ===== -->
+  <section class="flex flex-col items-center section-padding bg-dark-gradient-1" id="section-faq">
+    <div class="content-narrow flex flex-col items-center gap-8 text-center">
+      <h2 class="text-section text-white">자주 묻는 질문</h2>
+      <div class="w-full flex flex-col gap-3">
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <h3 class="text-body text-white font-semibold">Q. AI 수면 알고리즘은 어떻게 작동하나요?</h3>
+          <p class="text-body text-white/60">A. 루미에어 앱과 연동하여 사용자의 취침/기상 시간, 수면 패턴을 분석합니다.<br>이 데이터를 바탕으로 멜라토닌 분비에 최적화된 파장과 밝기를<br>자동으로 조절하며, 사용할수록 더 정밀하게 맞춤 조절됩니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <h3 class="text-body text-white font-semibold">Q. 앱 없이도 사용할 수 있나요?</h3>
+          <p class="text-body text-white/60">A. 네, 터치 컨트롤만으로도 ON/OFF, 밝기 조절, 타이머 설정이 가능합니다.<br>다만 AI 수면 분석, 루틴 자동화, 수면 데이터 확인 등<br>스마트 기능을 활용하려면 앱 연동을 권장합니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <h3 class="text-body text-white font-semibold">Q. 아이 방에서도 사용할 수 있나요?</h3>
+          <p class="text-body text-white/60">A. 물론입니다. 블루라이트 95% 차단, 무소음 설계, 과열 방지 기능으로<br>아이 방에서도 안심하고 사용하실 수 있습니다.<br>KC 인증을 받은 안전한 제품입니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <h3 class="text-body text-white font-semibold">Q. 스마트 기상 모드는 어떤 원리인가요?</h3>
+          <p class="text-body text-white/60">A. 설정한 기상 시간 30분 전부터 조명이 서서히 밝아지며<br>자연 일출 환경을 재현합니다. 이를 통해 코르티솔 분비가 자연스럽게 유도되어<br>알람 없이도 개운하게 기상할 수 있습니다.</p>
+        </div>
+        <div class="glass-card p-6 flex flex-col gap-3 text-center">
+          <h3 class="text-body text-white font-semibold">Q. 전기세가 많이 나오지 않나요?</h3>
+          <p class="text-body text-white/60">A. 최대 소비 전력이 8W에 불과한 초저전력 LED를 사용합니다.<br>매일 8시간씩 사용해도 월 전기세는 약 500원 미만으로,<br>부담 없이 매일 사용하실 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 18: CTA (composed) ===== -->
+  <section class="composed-section relative h-[800px]" id="section-cta">
+    <div class="composed-layer inset-0">
+      <div class="img-placeholder w-full h-full"
+           data-ai-prompt="LumiAir Smart Sleep Lamp emotional hero shot, lamp glowing warm amber on bedside table, dreamy peaceful bedroom at night, stars visible through window, cinematic premium atmosphere, 8k"
+           data-ai-style="mood"
+           data-ai-ratio="16:9">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span class="img-label">루미에어 감성 히어로 - 평화로운 밤</span>
+      </div>
+    </div>
+    <div class="composed-layer inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+    <div class="composed-layer inset-0 bg-radial-glow opacity-30"></div>
+    <div class="composed-layer bottom-0 left-0 right-0 px-[50px] pb-[80px] flex flex-col items-center gap-6 text-center">
+      <h2 class="text-[48px] font-bold text-white text-shadow-hero tracking-tight leading-tight">
+        오늘 밤부터<br>달라지는 잠
+      </h2>
+      <p class="text-sub" style="color: var(--accent);">루미에어 스마트 수면등</p>
+      <div class="glass-card px-8 py-4 flex flex-col items-center gap-2">
+        <p class="text-body text-white/50">정상가 ₩159,000</p>
+        <p class="text-answer text-white font-bold">₩119,000</p>
+      </div>
+      <button class="px-12 py-5 rounded-full text-[18px] font-bold text-white shadow-lg shadow-black/30" style="background: linear-gradient(135deg, var(--brand-main), var(--accent));">
+        지금 구매하기
+      </button>
+      <p class="text-small text-white/40">무료배송 | 30일 환불보장 | 1년 무상 A/S</p>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+{
+  "type": "REFERENCE_ANALYSIS",
+  "version": "1.0",
+  "reference": "reference4.png",
+  "analysis_date": "2026-02-11",
+  "description": "우드 화장품 수납 정리함 상세페이지. 내추럴 우드톤, 밝은 크림/베이지 배경 위주, 제품 사진 중심 구성. 다단 수납함의 구조와 활용도를 보여주는 상세페이지.",
+
+  "global_analysis": {
+    "estimated_width": 860,
+    "color_palette": {
+      "primary": "#B8956A",
+      "secondary": "#6B5344",
+      "background_colors": ["#F7F3EE", "#FFFFFF", "#EDE5DA", "#1E1814"],
+      "text_primary": "#222222",
+      "text_secondary": "#888888"
+    },
+    "typography_scale": {
+      "largest_heading": "36px",
+      "section_heading": "28px",
+      "sub_heading": "22px",
+      "body_text": "16px",
+      "small_text": "13px"
+    },
+    "visual_rhythm": "크림/베이지 → 화이트 → 크림/베이지 교차. 히어로만 다크, 나머지 라이트톤 위주",
+    "overall_style": "내추럴, 우드톤, 따뜻한, 심플, 제품사진 중심",
+    "content_alignment": "CENTER",
+    "style_tags": ["내추럴", "우드톤", "따뜻한", "심플", "라이프스타일"],
+    "theme": "light"
+  },
+
+  "sections": [
+    {
+      "order": 1,
+      "detected_purpose": "메인 히어로 — 제품 정리함을 아이소메트릭 앵글로 보여주며 제품명과 핵심 카피 전달. 상단 텍스트 + 대형 제품 사진 구성",
+      "taxonomy_mapping": {
+        "section_id": "Hook",
+        "confidence": 0.95,
+        "mapping_reason": "큰 메인 카피 + 대형 제품 히어로 이미지 + 첫 섹션 위치. keywords(후킹, 히어로, 메인 카피) 및 visual_cues(큰 텍스트 중심, 전체 화면 이미지) 일치"
+      },
+      "layout": {
+        "estimated_height": 750,
+        "background": "linear-gradient(180deg, #F7F3EE 0%, #EDE5DA 100%)",
+        "padding": { "top": 60, "bottom": 40, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "상단 텍스트(브랜드명 + 메인 카피 + 서브 카피) → 하단 제품 이미지 수직 나열. 요소 간 겹침 없음"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "브랜드/카테고리 라벨",
+          "estimated_fontSize": "14px",
+          "estimated_fontWeight": "400",
+          "color": "#B8956A"
+        },
+        {
+          "type": "TEXT",
+          "role": "메인 카피 (제품 핵심 가치)",
+          "estimated_fontSize": "36px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "서브 카피 (부가 설명)",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#888888"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "메인 히어로 제품 이미지 — 수납함 아이소메트릭 뷰, 화장품 담긴 상태",
+          "estimated_size": "760x500",
+          "ai_prompt": {
+            "prompt": "Wooden multi-tier cosmetics organizer box shown from isometric angle, filled with skincare bottles, makeup brushes, and cosmetic items, natural warm lighting, clean cream background, product photography, 8k quality",
+            "negative": "text, watermark, logo, dark background, cluttered, blurry",
+            "style": "product_hero",
+            "aspect_ratio": "3:2"
+          }
+        }
+      ],
+      "visual_notes": "라이트톤 히어로 — 크림/베이지 그라디언트 배경 위 깔끔한 제품 사진. 다크 히어로가 아닌 밝은 톤"
+    },
+    {
+      "order": 2,
+      "detected_purpose": "제품 소개 — 정리함이 무엇인지, 핵심 컨셉을 간결하게 전달. 정면/다른 앵글 제품 이미지와 함께 소개",
+      "taxonomy_mapping": {
+        "section_id": "WhatIsThis",
+        "confidence": 0.85,
+        "mapping_reason": "제품 정체성 정의, 핵심 컨셉 소개. keywords(제품 소개, 정의) 및 visual_cues(제품 이미지 중심, 간결한 텍스트) 매칭"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 텍스트 → 설명 텍스트 → 제품 정면 이미지 수직 나열"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "섹션 제목 (제품 정의)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "한줄 소개 / 컨셉 설명",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#888888"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "제품 정면 뷰 또는 다른 앵글 이미지",
+          "estimated_size": "760x450",
+          "ai_prompt": {
+            "prompt": "Wooden cosmetics organizer box front view, empty shelves visible, clean natural wood grain, minimalist product photography, warm soft lighting, white background, 8k quality",
+            "negative": "text, watermark, logo, cluttered items, dark, blurry",
+            "style": "product_hero",
+            "aspect_ratio": "16:9"
+          }
+        }
+      ],
+      "visual_notes": "화이트 배경으로 첫 섹션과 톤 교차. 깔끔한 제품 사진 중심"
+    },
+    {
+      "order": 3,
+      "detected_purpose": "구성품 안내 — 세트에 포함된 구성품(본체, 선반, 파티션 등)을 보여주고 각 항목 설명",
+      "taxonomy_mapping": {
+        "section_id": "SetContents",
+        "confidence": 0.85,
+        "mapping_reason": "구성품 나열 이미지 + 아이템별 설명. keywords(구성품, 세트, 포함) 및 visual_cues(구성품 나열 이미지, 아이템별 설명) 매칭"
+      },
+      "layout": {
+        "estimated_height": 700,
+        "background": "#F7F3EE",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 → 전체 구성품 이미지 → 개별 구성품 설명 리스트 수직 나열"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "섹션 제목 (구성품 안내)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "구성품 전체 플랫레이 이미지 — 본체 + 분리형 파티션 + 선반 등",
+          "estimated_size": "760x400",
+          "ai_prompt": {
+            "prompt": "Wooden organizer components laid out flat, main body, removable shelves, dividers, accessories, top-down flat lay photography, cream background, natural lighting, 8k quality",
+            "negative": "text, watermark, assembled product, dark background, blurry",
+            "style": "product_flat",
+            "aspect_ratio": "16:9"
+          }
+        },
+        {
+          "type": "TEXT",
+          "role": "구성품 1 제목 + 설명",
+          "estimated_fontSize": "22px",
+          "estimated_fontWeight": "600",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "구성품 2 제목 + 설명",
+          "estimated_fontSize": "22px",
+          "estimated_fontWeight": "600",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "구성품 3 제목 + 설명",
+          "estimated_fontSize": "22px",
+          "estimated_fontWeight": "600",
+          "color": "#222222"
+        }
+      ],
+      "visual_notes": "크림 배경으로 톤 교차. 구성품 분해 이미지로 세트 내용물 시각적 전달"
+    },
+    {
+      "order": 4,
+      "detected_purpose": "핵심 기능 개요 — 정리함의 주요 특징(다단 수납, 조립식, 소재 등)을 번호 매기기로 한눈에 보여줌",
+      "taxonomy_mapping": {
+        "section_id": "FeaturesOverview",
+        "confidence": 0.85,
+        "mapping_reason": "핵심 기능 나열, 번호 매기기 형식. keywords(기능, 특징, 핵심, 한눈에) 및 visual_cues(번호 매기기, 기능 리스트) 매칭"
+      },
+      "layout": {
+        "estimated_height": 650,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 → 제품 이미지 → 기능 번호 리스트 수직 나열"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "섹션 제목",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "서브 카피",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#888888"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "제품 전체 이미지 + 기능 포인트 표시",
+          "estimated_size": "760x400",
+          "ai_prompt": {
+            "prompt": "Wooden multi-tier cosmetics organizer, slightly angled view showing all compartments and shelves, clean white background, product photography, soft shadows, 8k quality",
+            "negative": "text, watermark, annotations, cluttered, dark, blurry",
+            "style": "product_hero",
+            "aspect_ratio": "16:9"
+          }
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 1~4 번호 + 제목 리스트",
+          "estimated_fontSize": "22px",
+          "estimated_fontWeight": "600",
+          "color": "#222222"
+        }
+      ],
+      "visual_notes": "화이트 배경, 깔끔한 기능 리스트. 제품 이미지와 텍스트 리스트 조합"
+    },
+    {
+      "order": 5,
+      "detected_purpose": "기능 상세 1 — 다단 수납 구조 / 넉넉한 수납 공간. 여러 층의 수납 공간을 보여주며 다양한 화장품을 정리할 수 있음을 강조",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.9,
+        "feature_index": 1,
+        "mapping_reason": "개별 기능 상세 설명 + 기능 이미지. keywords(기능 상세, 혜택, 장점) 및 visual_cues(기능 이미지, 혜택 나열) 매칭"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#F7F3EE",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "split",
+        "reason": "좌측 텍스트(기능 설명 + 혜택) / 우측 제품 클로즈업 이미지 수평 분할"
+      },
+      "split_detail": {
+        "direction": "horizontal",
+        "ratio": [1, 1],
+        "left_content": "기능 번호 + 제목 + 설명 텍스트 + 혜택 리스트",
+        "right_content": "수납 공간 클로즈업 제품 이미지"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "기능 번호 (01)",
+          "estimated_fontSize": "48px",
+          "estimated_fontWeight": "700",
+          "color": "#B8956A"
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 제목 (다단 수납)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 설명",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#666666"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "다단 수납 구조 클로즈업 — 화장품이 정리된 각 칸",
+          "estimated_size": "380x400",
+          "ai_prompt": {
+            "prompt": "Close-up of wooden organizer shelves filled with skincare bottles and cosmetics, each compartment neatly organized, warm natural lighting, detail product photography, 8k quality",
+            "negative": "text, watermark, full product view, dark, blurry, messy",
+            "style": "product_detail",
+            "aspect_ratio": "1:1"
+          }
+        }
+      ],
+      "visual_notes": "크림 배경, split 레이아웃으로 텍스트와 이미지 좌우 배치"
+    },
+    {
+      "order": 6,
+      "detected_purpose": "기능 상세 2 — 천연 원목 소재 / 프리미엄 마감. 원목 소재의 질감과 마감 품질을 클로즈업으로 강조",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.9,
+        "feature_index": 2,
+        "mapping_reason": "소재/마감 기능 상세 + 클로즈업 이미지. 두 번째 기능 상세 반복"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "split",
+        "reason": "좌측 제품 소재 이미지 / 우측 텍스트(소재 설명 + 혜택) — 이전 섹션과 좌우 반전"
+      },
+      "split_detail": {
+        "direction": "horizontal",
+        "ratio": [1, 1],
+        "left_content": "원목 소재 클로즈업 이미지",
+        "right_content": "기능 번호 + 소재 설명 + 혜택 텍스트"
+      },
+      "elements": [
+        {
+          "type": "IMAGE_AREA",
+          "role": "원목 소재 표면 클로즈업 — 나무결 질감, 마감 디테일",
+          "estimated_size": "380x400",
+          "ai_prompt": {
+            "prompt": "Close-up of natural wood grain surface, bamboo or oak texture, smooth polished finish, warm lighting highlighting wood patterns, macro detail photography, 8k quality",
+            "negative": "text, watermark, full product, dark, artificial, plastic",
+            "style": "product_detail",
+            "aspect_ratio": "1:1"
+          }
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 번호 (02)",
+          "estimated_fontSize": "48px",
+          "estimated_fontWeight": "700",
+          "color": "#B8956A"
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 제목 (천연 원목 소재)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "소재 상세 설명 + 혜택",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#666666"
+        }
+      ],
+      "visual_notes": "화이트 배경, 이전 섹션과 좌우 반전 split으로 시각적 리듬 변화"
+    },
+    {
+      "order": 7,
+      "detected_purpose": "기능 상세 3 — 조립식 / 모듈형 구조. 분리-조립 가능한 구조로 청소와 커스터마이징 용이함을 강조",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.85,
+        "feature_index": 3,
+        "mapping_reason": "세 번째 기능 상세 (조립/모듈) + 이미지. keywords(기능 상세, 장점) 매칭"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#F7F3EE",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "split",
+        "reason": "좌측 텍스트 / 우측 조립 과정 이미지"
+      },
+      "split_detail": {
+        "direction": "horizontal",
+        "ratio": [1, 1],
+        "left_content": "기능 번호 + 조립식 설명 + 혜택",
+        "right_content": "분리/조립 과정 이미지"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "기능 번호 (03)",
+          "estimated_fontSize": "48px",
+          "estimated_fontWeight": "700",
+          "color": "#B8956A"
+        },
+        {
+          "type": "TEXT",
+          "role": "기능 제목 (조립식 구조)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "조립/분리 설명 + 혜택",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#666666"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "조립 과정 또는 분리된 상태 이미지",
+          "estimated_size": "380x400",
+          "ai_prompt": {
+            "prompt": "Wooden organizer being assembled, showing modular stackable layers separated, hands-free exploded view of components, warm natural lighting, clean background, 8k quality",
+            "negative": "text, watermark, fully assembled, dark, blurry, cluttered",
+            "style": "product_detail",
+            "aspect_ratio": "1:1"
+          }
+        }
+      ],
+      "visual_notes": "크림 배경, split 레이아웃 반복 — 좌 텍스트 / 우 이미지"
+    },
+    {
+      "order": 8,
+      "detected_purpose": "라이프스타일 활용 — 실제 화장대/데스크 위에 놓인 제품 사용 장면. 인테리어 조화와 실용성 전달",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.75,
+        "feature_index": 4,
+        "mapping_reason": "활용 장면을 통한 기능 전달. 라이프스타일 이미지 + 텍스트 설명. FeatureDetail의 확장된 형태"
+      },
+      "layout": {
+        "estimated_height": 550,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "composed",
+        "reason": "라이프스타일 배경 이미지 위에 텍스트 오버레이 또는 이미지 전체 + 하단 텍스트"
+      },
+      "layers": [
+        {
+          "zIndex": 0,
+          "region": "TL:BR",
+          "element": {
+            "type": "IMAGE_AREA",
+            "name": "Lifestyle_BG",
+            "role": "화장대 위 제품 사용 장면 전체 이미지",
+            "ai_prompt": {
+              "prompt": "Wooden cosmetics organizer on a minimalist vanity table in a bright bedroom, natural daylight from window, cozy interior, warm wood tones matching furniture, lifestyle product photography, 8k quality",
+              "negative": "text, watermark, dark room, cluttered, artificial lighting, blurry",
+              "style": "product_lifestyle",
+              "aspect_ratio": "16:9"
+            }
+          }
+        },
+        {
+          "zIndex": 1,
+          "region": "BL:BR",
+          "element": {
+            "type": "TEXT",
+            "name": "Lifestyle_Copy",
+            "role": "활용 설명 카피 (인테리어 조화, 실용성)",
+            "estimated_fontSize": "22px",
+            "estimated_fontWeight": "600",
+            "color": "#FFFFFF"
+          }
+        }
+      ],
+      "elements": [
+        {
+          "type": "IMAGE_AREA",
+          "role": "라이프스타일 이미지 — 화장대 위 정리함 사용 장면",
+          "estimated_size": "760x450",
+          "ai_prompt": {
+            "prompt": "Wooden cosmetics organizer on a minimalist vanity table in a bright bedroom, natural daylight from window, cozy interior, warm wood tones matching furniture, lifestyle product photography, 8k quality",
+            "negative": "text, watermark, dark room, cluttered, artificial lighting, blurry",
+            "style": "product_lifestyle",
+            "aspect_ratio": "16:9"
+          }
+        },
+        {
+          "type": "TEXT",
+          "role": "활용/라이프스타일 카피",
+          "estimated_fontSize": "22px",
+          "estimated_fontWeight": "600",
+          "color": "#222222"
+        }
+      ],
+      "visual_notes": "라이프스타일 사진으로 실제 사용 환경 전달. 인테리어 소품 느낌"
+    },
+    {
+      "order": 9,
+      "detected_purpose": "추천 대상 — 이런 분들께 추천합니다. 타겟 고객 유형을 체크리스트 형태로 나열",
+      "taxonomy_mapping": {
+        "section_id": "Target",
+        "confidence": 0.8,
+        "mapping_reason": "추천 대상 체크리스트. keywords(추천, 이런 분, 대상, 적합) 및 visual_cues(체크리스트, 브랜드 컬러 배경) 매칭"
+      },
+      "layout": {
+        "estimated_height": 450,
+        "background": "#F7F3EE",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 → 체크리스트 텍스트 수직 나열"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "섹션 제목 (이런 분께 추천해요)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "추천 대상 1~5 체크리스트",
+          "estimated_fontSize": "18px",
+          "estimated_fontWeight": "400",
+          "color": "#444444"
+        }
+      ],
+      "visual_notes": "크림 배경, 체크리스트 형태의 텍스트 중심 섹션"
+    },
+    {
+      "order": 10,
+      "detected_purpose": "제품 스펙 — 크기, 무게, 소재, 색상 등 상세 사양 정보 + 치수 이미지",
+      "taxonomy_mapping": {
+        "section_id": "ProductSpec",
+        "confidence": 0.9,
+        "mapping_reason": "스펙 테이블 + 치수 이미지. keywords(스펙, 사양, 크기, 무게, 재질) 및 visual_cues(스펙 테이블, 제품 치수 이미지) 명확 매칭"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "split",
+        "reason": "좌측 제품 치수 이미지 / 우측 스펙 텍스트 테이블"
+      },
+      "split_detail": {
+        "direction": "horizontal",
+        "ratio": [1, 1],
+        "left_content": "제품 치수 표시 이미지 (가로×세로×높이)",
+        "right_content": "스펙 테이블 (크기, 무게, 소재, 색상 등)"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "섹션 제목 (제품 사양)",
+          "estimated_fontSize": "28px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "제품 치수 표시 이미지",
+          "estimated_size": "380x350",
+          "ai_prompt": {
+            "prompt": "Wooden organizer with dimension lines and measurements shown, technical product diagram, clean white background, minimalist style, 8k quality",
+            "negative": "text, watermark, lifestyle, cluttered, dark, realistic photo",
+            "style": "infographic",
+            "aspect_ratio": "1:1"
+          }
+        },
+        {
+          "type": "TEXT",
+          "role": "스펙 항목들 (크기, 무게, 소재, 색상)",
+          "estimated_fontSize": "16px",
+          "estimated_fontWeight": "400",
+          "color": "#444444"
+        }
+      ],
+      "visual_notes": "화이트 배경, split 레이아웃으로 치수 이미지와 스펙 테이블 나란히 배치"
+    },
+    {
+      "order": 11,
+      "detected_purpose": "최종 구매 유도 — 감성 이미지 + 핵심 카피 반복으로 구매 전환. 제품의 가치를 마지막으로 상기",
+      "taxonomy_mapping": {
+        "section_id": "CTA",
+        "confidence": 0.9,
+        "mapping_reason": "마지막 섹션, 감성 이미지 + 액션 유도 카피. keywords(구매, CTA, 지금) 및 visual_cues(감성 이미지, 액션 유도 카피) 매칭"
+      },
+      "layout": {
+        "estimated_height": 500,
+        "background": "linear-gradient(180deg, #EDE5DA 0%, #F7F3EE 100%)",
+        "padding": { "top": 60, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "감성 카피 → 제품 이미지 → 가격/CTA 수직 나열"
+      },
+      "elements": [
+        {
+          "type": "TEXT",
+          "role": "액션 유도 카피 (메인 카피 반복)",
+          "estimated_fontSize": "32px",
+          "estimated_fontWeight": "700",
+          "color": "#222222"
+        },
+        {
+          "type": "TEXT",
+          "role": "서브 카피 (핵심 가치 요약)",
+          "estimated_fontSize": "18px",
+          "estimated_fontWeight": "400",
+          "color": "#B8956A"
+        },
+        {
+          "type": "IMAGE_AREA",
+          "role": "감성 제품 이미지 — 따뜻한 톤의 마무리 컷",
+          "estimated_size": "760x350",
+          "ai_prompt": {
+            "prompt": "Wooden cosmetics organizer beautifully arranged with items, warm golden hour lighting, cozy atmosphere, soft bokeh background, premium lifestyle photography, 8k quality",
+            "negative": "text, watermark, harsh lighting, dark, cold tones, blurry",
+            "style": "product_lifestyle",
+            "aspect_ratio": "2:1"
+          }
+        },
+        {
+          "type": "BUTTON",
+          "role": "구매 버튼",
+          "color": "#B8956A",
+          "estimated_size": "300x56"
+        }
+      ],
+      "visual_notes": "크림/베이지 그라디언트 배경으로 따뜻하게 마무리. 감성 이미지 + CTA"
+    }
+  ],
+
+  "pattern_summary": {
+    "total_sections": 11,
+    "section_flow": ["Hook", "WhatIsThis", "SetContents", "FeaturesOverview", "FeatureDetail", "FeatureDetail", "FeatureDetail", "FeatureDetail", "Target", "ProductSpec", "CTA"],
+    "background_pattern": "크림/베이지 → 화이트 → 크림/베이지 교차 반복. 히어로도 라이트톤",
+    "category_distribution": {
+      "intro": 3,
+      "problem": 0,
+      "features": 5,
+      "trust": 2,
+      "conversion": 1
+    },
+    "mapping_stats": {
+      "total": 11,
+      "mapped": 11,
+      "unmapped": 0,
+      "coverage": "100%"
+    },
+    "feature_detail_count": 4,
+    "unique_patterns": [
+      "전체 라이트톤 — 다크 섹션 없이 크림/화이트 교차",
+      "split 레이아웃 다용 — FeatureDetail이 모두 좌우 분할 구조",
+      "FeatureDetail 좌우 반전 교차 — split-lr/split-rl 패턴 반복",
+      "problem 카테고리 없음 — 페인포인트 없이 바로 기능 소개로 진입",
+      "내추럴/심플 스타일 — 글래스모피즘 없이 깔끔한 제품 사진 중심"
+    ]
+  }
+}
