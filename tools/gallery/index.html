@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>위젯 갤러리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #1a1a1a;
+    --bg-3: #222222;
+    --border: #2a2a2a;
+    --border-hover: #444;
+    --text-1: #f0f0f0;
+    --text-2: #aaa;
+    --text-3: #666;
+    --accent: #7c6ff7;
+    --accent-dim: rgba(124,111,247,0.15);
+    --danger: #e74c3c;
+    --danger-dim: rgba(231,76,60,0.15);
+    --sidebar-w: 240px;
+    --toolbar-h: 56px;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans KR', system-ui, sans-serif;
+    background: var(--bg-0);
+    color: var(--text-1);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Toolbar ── */
+  .toolbar {
+    height: var(--toolbar-h);
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+    flex-shrink: 0;
+    z-index: 10;
+  }
+  .toolbar-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .toolbar-spacer { flex: 1; }
+  .toolbar select {
+    background: var(--bg-2);
+    color: var(--text-1);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+  .toolbar select:hover { border-color: var(--border-hover); }
+  .toolbar select:focus { border-color: var(--accent); }
+  .view-toggle, .mode-toggle {
+    display: flex;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .view-toggle button, .mode-toggle button {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .view-toggle button.active, .mode-toggle button.active {
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+  .view-toggle button:hover:not(.active), .mode-toggle button:hover:not(.active) { color: var(--text-2); }
+  .filter-count {
+    font-size: 12px;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+
+  /* ── Layout ── */
+  .layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    background: var(--bg-1);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .sidebar-item {
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.1s;
+    user-select: none;
+  }
+  .sidebar-item:hover { background: var(--bg-2); }
+  .sidebar-item.active { background: var(--accent-dim); color: var(--accent); }
+  .sidebar-item.all-view {
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    padding: 12px 16px;
+  }
+
+  .category-header {
+    padding: 10px 16px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    user-select: none;
+  }
+  .category-header:hover { color: var(--text-2); }
+  .category-header .arrow {
+    font-size: 9px;
+    transition: transform 0.15s;
+  }
+  .category-header.collapsed .arrow { transform: rotate(-90deg); }
+  .category-header .cat-count {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--text-3);
+    font-weight: 500;
+  }
+
+  .section-item {
+    padding: 6px 16px 6px 28px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.1s;
+    user-select: none;
+  }
+  .section-item:hover { background: var(--bg-2); }
+  .section-item.active { background: var(--accent-dim); color: var(--accent); }
+  .section-item.empty {
+    color: var(--text-3);
+    cursor: default;
+    opacity: 0.5;
+  }
+  .section-item.empty:hover { background: transparent; }
+  .section-item .badge {
+    margin-left: auto;
+    background: var(--bg-3);
+    color: var(--text-3);
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    min-width: 18px;
+    text-align: center;
+  }
+  .section-item.active .badge {
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.6;
+  }
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .main::-webkit-scrollbar { width: 6px; }
+  .main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* ── Grid view ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(327px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── List view ── */
+  .grid.list-view {
+    grid-template-columns: 1fr;
+  }
+  .grid.list-view .card {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+  .grid.list-view .card-preview { flex-shrink: 0; }
+  .grid.list-view .card-meta {
+    flex: 1;
+    border-top: none;
+    padding-top: 12px;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .card-preview {
+    width: 327px;
+    height: 228px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-3);
+  }
+  .card-preview iframe {
+    width: 860px;
+    height: 600px;
+    transform: scale(0.38);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+  }
+
+  .card-meta {
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+  }
+  .card-id {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 12px;
+    color: var(--text-2);
+    margin-bottom: 8px;
+    word-break: break-all;
+  }
+  .card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .badge-pill {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .badge-composition {
+    background: rgba(59,130,246,0.15);
+    color: #60a5fa;
+  }
+  .badge-theme-dark {
+    background: rgba(255,255,255,0.08);
+    color: #ccc;
+  }
+  .badge-theme-light {
+    background: rgba(255,220,100,0.15);
+    color: #e0c050;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .tag-chip {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--bg-3);
+    color: var(--text-3);
+  }
+  .card-source {
+    font-size: 10px;
+    color: var(--text-3);
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: var(--text-3);
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 100;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 1100px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-title {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .modal-close:hover { background: var(--bg-2); color: var(--text-1); }
+
+  .modal-body {
+    display: flex;
+    gap: 0;
+  }
+  .modal-preview {
+    flex: 1;
+    min-width: 0;
+    background: var(--bg-0);
+    overflow: hidden;
+    position: relative;
+  }
+  .modal-preview iframe {
+    width: 860px;
+    border: none;
+    display: block;
+    transform-origin: top left;
+  }
+  .modal-info {
+    width: 280px;
+    min-width: 280px;
+    border-left: 1px solid var(--border);
+    padding: 16px;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  .modal-info h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+    margin: 12px 0 6px;
+  }
+  .modal-info h4:first-child { margin-top: 0; }
+  .modal-info p, .modal-info .meta-val {
+    font-size: 13px;
+    color: var(--text-2);
+    word-break: break-all;
+    line-height: 1.5;
+  }
+  .modal-info .meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* ── Modal action buttons ── */
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .btn-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    color: var(--text-2);
+    transition: all 0.15s;
+  }
+  .btn-action:hover {
+    border-color: var(--border-hover);
+    color: var(--text-1);
+  }
+  .btn-action.copied {
+    border-color: #4ade80;
+    color: #4ade80;
+  }
+  .btn-delete {
+    border-color: rgba(231,76,60,0.3);
+    color: var(--danger);
+    background: var(--danger-dim);
+  }
+  .btn-delete:hover {
+    border-color: var(--danger);
+    background: rgba(231,76,60,0.25);
+    color: #ff6b5e;
+  }
+
+  /* ── File path display ── */
+  .file-path-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .file-path-row .meta-val {
+    flex: 1;
+    min-width: 0;
+  }
+  .btn-copy-sm {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .btn-copy-sm:hover { color: var(--text-1); background: var(--bg-3); }
+  .btn-copy-sm.copied { color: #4ade80; }
+
+  /* ── Confirm dialog ── */
+  .confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .confirm-overlay.open { display: flex; }
+  .confirm-dialog {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  .confirm-dialog h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .confirm-dialog p {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+    line-height: 1.5;
+    word-break: break-all;
+  }
+  .confirm-dialog .confirm-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  .confirm-dialog button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+  .confirm-dialog .btn-cancel {
+    background: var(--bg-2);
+    color: var(--text-2);
+  }
+  .confirm-dialog .btn-cancel:hover {
+    background: var(--bg-3);
+    color: var(--text-1);
+  }
+  .confirm-dialog .btn-confirm-delete {
+    background: var(--danger);
+    color: white;
+    border-color: var(--danger);
+  }
+  .confirm-dialog .btn-confirm-delete:hover {
+    background: #c0392b;
+  }
+</style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <div class="toolbar-title">위젯 갤러리</div>
+  <div class="toolbar-spacer"></div>
+  <div class="mode-toggle">
+    <button id="btnDemo" class="active">Demo</button>
+    <button id="btnRaw">Raw</button>
+  </div>
+  <select id="presetSelect">
+    <option value="">프리셋: 원본 색상</option>
+  </select>
+  <div class="view-toggle">
+    <button id="btnGrid" class="active" title="그리드">&#9638;</button>
+    <button id="btnList" title="리스트">&#9776;</button>
+  </div>
+  <span class="filter-count" id="filterCount"></span>
+</div>
+
+<!-- Layout -->
+<div class="layout">
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar"></div>
+
+  <!-- Main -->
+  <div class="main" id="main">
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle"></span>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-preview" id="modalPreview"></div>
+      <div class="modal-info" id="modalInfo"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Dialog -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-dialog">
+    <h3>위젯 삭제</h3>
+    <p id="confirmMessage"></p>
+    <div class="confirm-buttons">
+      <button class="btn-cancel" id="confirmCancel">취소</button>
+      <button class="btn-confirm-delete" id="confirmDelete">삭제</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // ── State ──
+  let registry = null;
+  let presets = [];
+  let taxonomy = null;
+  let allWidgets = []; // flat list
+  let currentFilter = null; // null = all, string = taxonomy_id
+  let currentPreset = null; // null = original, preset object
+  let viewMode = 'grid';
+  let previewMode = 'demo'; // 'demo' or 'raw'
+
+  const CATEGORY_ORDER = ['intro', 'problem', 'features', 'trust', 'conversion'];
+
+  // ── Data fetching ──
+  async function fetchAll() {
+    const [reg, pre, tax] = await Promise.all([
+      fetch('/api/registry').then(r => r.json()),
+      fetch('/api/presets').then(r => r.json()),
+      fetch('/api/taxonomy').then(r => r.json()),
+    ]);
+    registry = reg;
+    presets = pre;
+    taxonomy = tax;
+    rebuildWidgetList();
+  }
+
+  function rebuildWidgetList() {
+    allWidgets = [];
+    for (const [taxonomyId, widgets] of Object.entries(registry.widgets)) {
+      const section = taxonomy.sections.find(s => s.id === taxonomyId);
+      const category = section ? section.category : '_custom';
+      for (const w of widgets) {
+        allWidgets.push({ ...w, taxonomy_id: taxonomyId, category });
+      }
+    }
+  }
+
+  // ── Sidebar ──
+  function buildSidebar() {
+    const sb = document.getElementById('sidebar');
+
+    // Count widgets per taxonomy
+    const countMap = {};
+    for (const w of allWidgets) countMap[w.taxonomy_id] = (countMap[w.taxonomy_id] || 0) + 1;
+
+    // "전체 보기"
+    let html = `<div class="sidebar-item all-view${currentFilter === null ? ' active' : ''}" data-filter="">전체 보기</div>`;
+
+    // Categories
+    for (const catId of CATEGORY_ORDER) {
+      const cat = taxonomy.categories[catId];
+      const sections = taxonomy.sections.filter(s => s.category === catId);
+      const catCount = sections.reduce((sum, s) => sum + (countMap[s.id] || 0), 0);
+
+      html += `<div class="category-header" data-cat="${catId}">
+        <span class="arrow">&#9660;</span> ${cat.name} <span class="cat-count">${catCount}</span>
+      </div>`;
+      html += `<div class="category-sections" data-cat="${catId}">`;
+      for (const s of sections) {
+        const c = countMap[s.id] || 0;
+        const isEmpty = c === 0;
+        const isActive = currentFilter === s.id;
+        html += `<div class="section-item${isEmpty ? ' empty' : ''}${isActive ? ' active' : ''}" data-filter="${s.id}" ${isEmpty ? '' : ''}>
+          ${s.name} <span class="badge">${c}</span>
+        </div>`;
+      }
+      html += `</div>`;
+    }
+
+    // Footer
+    const totalSections = taxonomy.sections.length;
+    const filledSections = new Set(allWidgets.map(w => w.taxonomy_id)).size;
+    html += `<div class="sidebar-footer">${allWidgets.length} widgets &middot; ${presets.length} presets &middot; ${filledSections}/${totalSections} sections</div>`;
+
+    sb.innerHTML = html;
+
+    // Events
+    sb.querySelector('.all-view').addEventListener('click', () => { currentFilter = null; render(); });
+
+    sb.querySelectorAll('.category-header').forEach(el => {
+      el.addEventListener('click', () => {
+        el.classList.toggle('collapsed');
+        const sec = sb.querySelector(`.category-sections[data-cat="${el.dataset.cat}"]`);
+        sec.style.display = el.classList.contains('collapsed') ? 'none' : '';
+      });
+    });
+
+    sb.querySelectorAll('.section-item:not(.empty)').forEach(el => {
+      el.addEventListener('click', () => {
+        currentFilter = el.dataset.filter;
+        render();
+      });
+    });
+  }
+
+  // ── Preset select ──
+  function buildPresetSelect() {
+    const sel = document.getElementById('presetSelect');
+    for (const p of presets) {
+      const opt = document.createElement('option');
+      opt.value = p.id;
+      opt.textContent = `${p.name} (${p.source_ref})`;
+      sel.appendChild(opt);
+    }
+    sel.addEventListener('change', () => {
+      currentPreset = presets.find(p => p.id === sel.value) || null;
+      renderGrid();
+    });
+  }
+
+  // ── Build iframe URL ──
+  function iframeUrl(widgetId) {
+    let url = `/api/widget-preview/${encodeURIComponent(widgetId)}`;
+    const params = new URLSearchParams();
+
+    // Add mode parameter
+    params.set('mode', previewMode);
+
+    // Add color params from preset
+    if (currentPreset && currentPreset.color_system) {
+      const cs = currentPreset.color_system;
+      if (cs.brand_main) params.set('brand_main', cs.brand_main.replace('#', ''));
+      if (cs.accent) params.set('accent', cs.accent.replace('#', ''));
+    }
+
+    return url + '?' + params.toString();
+  }
+
+  // ── Grid ──
+  function renderGrid() {
+    const grid = document.getElementById('grid');
+    const filtered = currentFilter
+      ? allWidgets.filter(w => w.taxonomy_id === currentFilter)
+      : allWidgets;
+
+    document.getElementById('filterCount').textContent = `${filtered.length}개 위젯`;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="empty-state"><div>이 카테고리에 위젯이 없습니다</div></div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map(w => `
+      <div class="card" data-id="${w.widget_id}">
+        <div class="card-preview">
+          <iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe>
+        </div>
+        <div class="card-meta">
+          <div class="card-id">${w.widget_id}</div>
+          <div class="card-badges">
+            <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
+            <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
+          </div>
+          <div class="card-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+          <div class="card-source">${w.source_ref || ''}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // Card click -> modal
+    grid.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.id));
+    });
+  }
+
+  // ── View toggle ──
+  function setupViewToggle() {
+    const btnGrid = document.getElementById('btnGrid');
+    const btnList = document.getElementById('btnList');
+    const grid = document.getElementById('grid');
+
+    btnGrid.addEventListener('click', () => {
+      viewMode = 'grid';
+      btnGrid.classList.add('active');
+      btnList.classList.remove('active');
+      grid.classList.remove('list-view');
+    });
+    btnList.addEventListener('click', () => {
+      viewMode = 'list';
+      btnList.classList.add('active');
+      btnGrid.classList.remove('active');
+      grid.classList.add('list-view');
+    });
+  }
+
+  // ── Demo/Raw mode toggle ──
+  function setupModeToggle() {
+    const btnDemo = document.getElementById('btnDemo');
+    const btnRaw = document.getElementById('btnRaw');
+
+    btnDemo.addEventListener('click', () => {
+      if (previewMode === 'demo') return;
+      previewMode = 'demo';
+      btnDemo.classList.add('active');
+      btnRaw.classList.remove('active');
+      renderGrid();
+      // Update modal iframe if open
+      refreshModalPreview();
+    });
+
+    btnRaw.addEventListener('click', () => {
+      if (previewMode === 'raw') return;
+      previewMode = 'raw';
+      btnRaw.classList.add('active');
+      btnDemo.classList.remove('active');
+      renderGrid();
+      // Update modal iframe if open
+      refreshModalPreview();
+    });
+  }
+
+  // ── Refresh modal preview when mode changes ──
+  let currentModalWidgetId = null;
+
+  function fitIframe(iframe, container) {
+    try {
+      const contentH = iframe.contentDocument.documentElement.scrollHeight;
+      iframe.style.height = contentH + 'px';
+      const containerW = container.clientWidth;
+      const maxH = window.innerHeight * 0.75;
+      const scaleW = containerW / 860;
+      const scaleH = maxH / contentH;
+      const scale = Math.min(scaleW, scaleH, 1);
+      iframe.style.transform = `scale(${scale})`;
+      container.style.height = Math.ceil(contentH * scale) + 'px';
+    } catch (_) {
+      iframe.style.height = '600px';
+      iframe.style.transform = 'scale(0.85)';
+      container.style.height = '510px';
+    }
+  }
+
+  function refreshModalPreview() {
+    if (!currentModalWidgetId) return;
+    const previewEl = document.getElementById('modalPreview');
+    const iframe = previewEl.querySelector('iframe');
+    if (iframe) {
+      iframe.src = iframeUrl(currentModalWidgetId);
+      iframe.onload = () => fitIframe(iframe, previewEl);
+    }
+  }
+
+  // ── Copy to clipboard ──
+  function copyToClipboard(text, buttonEl) {
+    navigator.clipboard.writeText(text).then(() => {
+      buttonEl.classList.add('copied');
+      const original = buttonEl.textContent;
+      buttonEl.textContent = buttonEl.classList.contains('btn-action') ? '복사됨!' : '✓';
+      setTimeout(() => {
+        buttonEl.classList.remove('copied');
+        buttonEl.textContent = original;
+      }, 1500);
+    });
+  }
+
+  // ── Delete widget ──
+  let pendingDeleteId = null;
+
+  function showDeleteConfirm(widgetId) {
+    pendingDeleteId = widgetId;
+    document.getElementById('confirmMessage').textContent = `"${widgetId}" 위젯을 삭제하시겠습니까?\n파일과 레지스트리에서 모두 제거됩니다.`;
+    document.getElementById('confirmOverlay').classList.add('open');
+  }
+
+  function hideDeleteConfirm() {
+    pendingDeleteId = null;
+    document.getElementById('confirmOverlay').classList.remove('open');
+  }
+
+  async function executeDelete() {
+    if (!pendingDeleteId) return;
+    const widgetId = pendingDeleteId;
+    hideDeleteConfirm();
+
+    try {
+      const resp = await fetch(`/api/widget/${encodeURIComponent(widgetId)}`, { method: 'DELETE' });
+      if (!resp.ok) {
+        const msg = await resp.text();
+        alert(`삭제 실패: ${msg}`);
+        return;
+      }
+
+      // Refresh data and UI
+      await fetchAll();
+      closeModal();
+      render();
+    } catch (err) {
+      alert(`삭제 중 오류: ${err.message}`);
+    }
+  }
+
+  document.getElementById('confirmCancel').addEventListener('click', hideDeleteConfirm);
+  document.getElementById('confirmDelete').addEventListener('click', executeDelete);
+  document.getElementById('confirmOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('confirmOverlay')) hideDeleteConfirm();
+  });
+
+  // ── Modal ──
+  function openModal(widgetId) {
+    const w = allWidgets.find(x => x.widget_id === widgetId);
+    if (!w) return;
+
+    currentModalWidgetId = widgetId;
+    const filePath = `widgets/${w.file}`;
+
+    document.getElementById('modalTitle').textContent = w.widget_id;
+    const previewEl = document.getElementById('modalPreview');
+    previewEl.innerHTML = '';
+    const iframe = document.createElement('iframe');
+    iframe.src = iframeUrl(widgetId);
+    iframe.onload = () => fitIframe(iframe, previewEl);
+    previewEl.appendChild(iframe);
+
+    const info = document.getElementById('modalInfo');
+    info.innerHTML = `
+      <h4>Widget ID</h4>
+      <p class="meta-val">${w.widget_id}</p>
+      <h4>Taxonomy</h4>
+      <p class="meta-val">${w.taxonomy_id} (${w.category})</p>
+      <h4>File</h4>
+      <div class="file-path-row">
+        <p class="meta-val">${filePath}</p>
+        <button class="btn-copy-sm" id="btnCopyPath" title="경로 복사">&#128203;</button>
+      </div>
+      <h4>Composition</h4>
+      <p class="meta-val">${w.composition || 'stack'}</p>
+      <h4>Theme</h4>
+      <p class="meta-val">${w.theme || 'dark'}</p>
+      ${w.variant ? `<h4>Variant</h4><p class="meta-val">${w.variant}</p>` : ''}
+      <h4>Source Ref</h4>
+      <p class="meta-val">${w.source_ref || '-'}</p>
+      <h4>Style Tags</h4>
+      <div class="meta-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+      <div class="modal-actions">
+        <button class="btn-action" id="btnCopyFilePath">&#128203; 파일 경로 복사</button>
+        <button class="btn-action btn-delete" id="btnDeleteWidget">&#128465; 위젯 삭제</button>
+      </div>
+    `;
+
+    // Bind action buttons
+    document.getElementById('btnCopyPath').addEventListener('click', (e) => {
+      e.stopPropagation();
+      copyToClipboard(filePath, e.currentTarget);
+    });
+    document.getElementById('btnCopyFilePath').addEventListener('click', () => {
+      copyToClipboard(filePath, document.getElementById('btnCopyFilePath'));
+    });
+    document.getElementById('btnDeleteWidget').addEventListener('click', () => {
+      showDeleteConfirm(widgetId);
+    });
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    currentModalWidgetId = null;
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.getElementById('modalPreview').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('confirmOverlay').classList.contains('open')) {
+        hideDeleteConfirm();
+      } else {
+        closeModal();
+      }
+    }
+  });
+
+  // ── Render ──
+  function render() {
+    buildSidebar();
+    renderGrid();
+  }
+
+  // ── Init ──
+  async function init() {
+    await fetchAll();
+    buildPresetSelect();
+    setupViewToggle();
+    setupModeToggle();
+    render();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

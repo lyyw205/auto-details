@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=860">
+<title>Design System Style Guide</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Pretendard 한국어 폰트 -->
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<!-- Tailwind 인라인 설정 (html-base.html과 동일) -->
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        pretendard: ['Pretendard', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      fontSize: {
+        'hero':    ['56px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'section': ['40px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'feature-num': ['72px', { lineHeight: '1.0', letterSpacing: '-0.04em', fontWeight: '700' }],
+        'sub':     ['28px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'question':['28px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'answer':  ['36px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'item':    ['24px', { lineHeight: '1.4', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'body':    ['22px', { lineHeight: '1.6', fontWeight: '400' }],
+        'small':   ['20px', { lineHeight: '1.6', fontWeight: '400' }],
+        'caption': ['14px', { lineHeight: '1.5', fontWeight: '400' }],
+      },
+      colors: {
+        brand: 'var(--brand-main)',
+        accent: 'var(--accent)',
+        dark: {
+          1: '#111111',
+          2: '#1A1A1A',
+        },
+        sub: '#888888',
+        muted: '#666666',
+        placeholder: '#2A2A2A',
+      },
+      width: {
+        'canvas': '860px',
+        'content': '760px',
+      },
+    },
+  },
+}
+</script>
+
+<!-- 브랜드 컬러 CSS 변수 + 유틸리티 스타일 (html-base.html과 동일) -->
+<style>
+  :root {
+    --brand-main: #4F8FF7;
+    --accent: #60A5FA;
+  }
+
+  /* 기본 리셋 */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* 860px 고정 캔버스 */
+  .page-canvas {
+    width: 860px;
+    max-width: 860px;
+    min-width: 860px;
+    overflow: hidden;
+  }
+
+  /* --- 이미지 플레이스홀더 --- */
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #2A2A2A;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .img-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
+    pointer-events: none;
+  }
+  .img-placeholder svg {
+    opacity: 0.3;
+  }
+  .img-placeholder .img-label {
+    max-width: 80%;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+  .img-placeholder[data-ai-prompt]::after {
+    content: 'AI';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(79, 143, 247, 0.15);
+    color: rgba(79, 143, 247, 0.6);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* --- 실제 이미지 --- */
+  .real-image {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* --- 글래스모피즘 카드 --- */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+  }
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+  }
+
+  /* --- 그라데이션 텍스트 --- */
+  .text-gradient-brand {
+    background: linear-gradient(135deg, var(--brand-main), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- 텍스트 쉐도우 (히어로용) --- */
+  .text-shadow-hero {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3);
+  }
+  .text-shadow-subtle {
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  /* --- 섹션 배경 그라데이션 --- */
+  .bg-dark-gradient-1 {
+    background: linear-gradient(180deg, #111111 0%, #0D0D0D 100%);
+  }
+  .bg-dark-gradient-2 {
+    background: linear-gradient(180deg, #1A1A1A 0%, #141414 100%);
+  }
+  .bg-brand-gradient {
+    background: linear-gradient(135deg, var(--brand-main) 0%, color-mix(in srgb, var(--brand-main), black 20%) 100%);
+  }
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent), black 15%) 100%);
+  }
+  .bg-dark-brand-glow {
+    background: linear-gradient(180deg, #111111 0%, #111111 60%, color-mix(in srgb, var(--brand-main), transparent 92%) 100%);
+  }
+  .bg-radial-glow {
+    background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--brand-main), transparent 85%) 0%, transparent 70%);
+  }
+
+  /* --- 장식 분리선 --- */
+  .divider-gradient {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    width: 100%;
+  }
+  .divider-brand {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--brand-main), transparent);
+    width: 60%;
+    margin: 0 auto;
+  }
+  .divider-dot {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .divider-dot::before,
+  .divider-dot::after,
+  .divider-dot span {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* --- 브랜드 액센트 보더 --- */
+  .border-brand-left {
+    border-left: 3px solid var(--brand-main);
+    padding-left: 16px;
+  }
+  .border-brand-bottom {
+    border-bottom: 2px solid var(--brand-main);
+    padding-bottom: 8px;
+  }
+
+  /* --- 9-Grid 포지셔닝 (composed 레이아웃) --- */
+  .composed-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .composed-layer {
+    position: absolute;
+  }
+  /* 9-grid 기본 위치 */
+  .pos-tl { top: 0; left: 0; }
+  .pos-tc { top: 0; left: 33.33%; }
+  .pos-tr { top: 0; right: 0; }
+  .pos-ml { top: 33.33%; left: 0; }
+  .pos-mc { top: 33.33%; left: 33.33%; }
+  .pos-mr { top: 33.33%; right: 0; }
+  .pos-bl { bottom: 0; left: 0; }
+  .pos-bc { bottom: 0; left: 33.33%; }
+  .pos-br { bottom: 0; right: 0; }
+  /* 가로 전체 스팬 */
+  .pos-tl-tr { top: 0; left: 0; right: 0; }
+  .pos-ml-mr { top: 33.33%; left: 0; right: 0; }
+  .pos-bl-br { bottom: 0; left: 0; right: 0; }
+  /* 세로 전체 스팬 */
+  .pos-tl-bl { top: 0; bottom: 0; left: 0; }
+  .pos-tr-br { top: 0; bottom: 0; right: 0; }
+  /* 전체 */
+  .pos-tl-br { inset: 0; }
+
+  /* --- 번호 배지 --- */
+  .num-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand-main);
+  }
+
+  /* --- 체크 아이콘 --- */
+  .check-item::before {
+    content: '✓';
+    color: var(--brand-main);
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  /* --- 히어로 오버레이 --- */
+  .hero-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+  }
+  .hero-overlay-top {
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 100%);
+  }
+
+  /* --- 섹션 공통 패딩 --- */
+  .section-padding {
+    padding: 80px 50px;
+  }
+  .section-padding-lg {
+    padding: 100px 50px;
+  }
+
+  /* --- 콘텐츠 너비 제한 --- */
+  .content-narrow {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== Style Guide 전용 스타일 ===== */
+  .sg-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .sg-nav a {
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .sg-nav a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .sg-section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .sg-section-desc {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  .sg-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    white-space: nowrap;
+  }
+  .sg-row {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .sg-row .sg-label {
+    min-width: 160px;
+    flex-shrink: 0;
+  }
+  .sg-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 0;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .sg-swatch-label {
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  .sg-box {
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .sg-wireframe {
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-canvas">
+
+  <!-- ========== Navigation ========== -->
+  <nav class="sg-nav">
+    <div class="flex items-center justify-between px-[50px] py-3">
+      <span style="font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.02em;">Style Guide</span>
+      <div class="flex items-center gap-1">
+        <a href="#typography">Typography</a>
+        <a href="#colors">Colors</a>
+        <a href="#backgrounds">Backgrounds</a>
+        <a href="#cards">Cards</a>
+        <a href="#images">Images</a>
+        <a href="#layouts">Layouts</a>
+        <a href="#decorative">Decorative</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== 1. Typography Scale ========== -->
+  <section id="typography" class="section-padding bg-dark-gradient-1">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Typography Scale</h2>
+      <p class="sg-section-desc">Tailwind fontSize 확장 토큰. Pretendard 폰트 기반.</p>
+
+      <!-- text-hero -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-hero<br><span style="color:#444">56px / 700</span></span>
+        <p class="text-hero text-white tracking-tight">히어로 타이틀</p>
+      </div>
+
+      <!-- text-feature-num -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-feature-num<br><span style="color:#444">72px / 700</span></span>
+        <p class="text-feature-num text-white tracking-tight">01</p>
+      </div>
+
+      <!-- text-section -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-section<br><span style="color:#444">40px / 700</span></span>
+        <p class="text-section text-white">섹션 타이틀</p>
+      </div>
+
+      <!-- text-answer -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-answer<br><span style="color:#444">36px / 700</span></span>
+        <p class="text-answer text-white">답변 텍스트</p>
+      </div>
+
+      <!-- text-sub -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-sub<br><span style="color:#444">28px / 500</span></span>
+        <p class="text-sub text-white">서브 타이틀 텍스트</p>
+      </div>
+
+      <!-- text-question -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-question<br><span style="color:#444">28px / 600</span></span>
+        <p class="text-question text-white">Q. 질문 텍스트?</p>
+      </div>
+
+      <!-- text-item -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-item<br><span style="color:#444">24px / 600</span></span>
+        <p class="text-item text-white">아이템 제목 텍스트</p>
+      </div>
+
+      <!-- text-body -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-body<br><span style="color:#444">22px / 400</span></span>
+        <p class="text-body text-white">본문 텍스트 — 기본 읽기용</p>
+      </div>
+
+      <!-- text-small -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-small<br><span style="color:#444">20px / 400</span></span>
+        <p class="text-small text-white">작은 텍스트 — 보조 정보</p>
+      </div>
+
+      <!-- text-caption -->
+      <div class="sg-row" style="align-items: center;">
+        <span class="sg-label">text-caption<br><span style="color:#444">14px / 400</span></span>
+        <p class="text-caption text-white">캡션 텍스트 — 주석, 라벨</p>
+      </div>
+
+      <!-- Gradient variants -->
+      <div style="margin-top: 48px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Gradient Text Variants</h3>
+
+        <div class="sg-row" style="align-items: center;">
+          <span class="sg-label">text-gradient-brand</span>
+          <p class="text-section text-gradient-brand tracking-tight">브랜드 그라데이션</p>
+        </div>
+
+        <div class="sg-row" style="align-items: center;">
+          <span class="sg-label">text-gradient-white</span>
+          <p class="text-section text-gradient-white tracking-tight">화이트 그라데이션</p>
+        </div>
+
+        <div class="sg-row" style="align-items: center;">
+          <span class="sg-label">text-feature-num<br>+ text-gradient-brand</span>
+          <p class="text-feature-num text-gradient-brand tracking-tight">03</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 2. Color System ========== -->
+  <section id="colors" class="section-padding bg-dark-gradient-2">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Color System</h2>
+      <p class="sg-section-desc">CSS 변수 + Tailwind colors 확장 토큰.</p>
+
+      <!-- Color Swatches -->
+      <div class="flex flex-wrap gap-6 mb-12">
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #4F8FF7;"></div>
+          <div class="sg-swatch-label"><span style="color:#4F8FF7">brand</span><br><span style="color:#555">#4F8FF7</span><br><span style="color:#444">--brand-main</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #60A5FA;"></div>
+          <div class="sg-swatch-label"><span style="color:#60A5FA">accent</span><br><span style="color:#555">#60A5FA</span><br><span style="color:#444">--accent</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #111111;"></div>
+          <div class="sg-swatch-label"><span style="color:#888">dark-1</span><br><span style="color:#555">#111111</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #1A1A1A;"></div>
+          <div class="sg-swatch-label"><span style="color:#888">dark-2</span><br><span style="color:#555">#1A1A1A</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #888888;"></div>
+          <div class="sg-swatch-label"><span style="color:#888">sub</span><br><span style="color:#555">#888888</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #666666;"></div>
+          <div class="sg-swatch-label"><span style="color:#888">muted</span><br><span style="color:#555">#666666</span></div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="sg-swatch" style="background: #2A2A2A;"></div>
+          <div class="sg-swatch-label"><span style="color:#888">placeholder</span><br><span style="color:#555">#2A2A2A</span></div>
+        </div>
+      </div>
+
+      <!-- Text Color Examples -->
+      <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Text Colors</h3>
+      <div class="flex flex-col gap-3">
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-white</span>
+          <span class="text-body text-white">흰색 텍스트 (기본)</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-white/80</span>
+          <span class="text-body text-white/80">80% 불투명도</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-white/60</span>
+          <span class="text-body text-white/60">60% 불투명도</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-white/50</span>
+          <span class="text-body text-white/50">50% 불투명도</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-sub (#888)</span>
+          <span class="text-body text-sub">서브 텍스트 컬러</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">text-muted (#666)</span>
+          <span class="text-body text-muted">뮤트 텍스트 컬러</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">color: var(--brand-main)</span>
+          <span class="text-body" style="color: var(--brand-main);">브랜드 컬러 텍스트</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="sg-label" style="min-width:180px">color: var(--accent)</span>
+          <span class="text-body" style="color: var(--accent);">액센트 컬러 텍스트</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 3. Background Gradients ========== -->
+  <section id="backgrounds" class="section-padding" style="background:#0D0D0D;">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Background Gradients</h2>
+      <p class="sg-section-desc">섹션 배경용 그라데이션 클래스. 인접 섹션 간 톤 교차 사용.</p>
+
+      <div class="flex flex-col gap-6">
+        <!-- bg-dark-gradient-1 -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-dark-gradient-1</span>
+          <div class="sg-box bg-dark-gradient-1" style="height: 120px; width: 100%;">
+            <span class="sg-label" style="color:#555">#111111 → #0D0D0D</span>
+          </div>
+        </div>
+
+        <!-- bg-dark-gradient-2 -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-dark-gradient-2</span>
+          <div class="sg-box bg-dark-gradient-2" style="height: 120px; width: 100%;">
+            <span class="sg-label" style="color:#555">#1A1A1A → #141414</span>
+          </div>
+        </div>
+
+        <!-- bg-brand-gradient -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-brand-gradient</span>
+          <div class="sg-box bg-brand-gradient" style="height: 120px; width: 100%;">
+            <span class="sg-label" style="color:rgba(255,255,255,0.7)">brand → brand+black 20%</span>
+          </div>
+        </div>
+
+        <!-- bg-accent-gradient -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-accent-gradient</span>
+          <div class="sg-box bg-accent-gradient" style="height: 120px; width: 100%;">
+            <span class="sg-label" style="color:rgba(255,255,255,0.7)">accent → accent+black 15%</span>
+          </div>
+        </div>
+
+        <!-- bg-dark-brand-glow -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-dark-brand-glow</span>
+          <div class="sg-box bg-dark-brand-glow" style="height: 160px; width: 100%;">
+            <span class="sg-label" style="color:#555">dark → brand glow (bottom)</span>
+          </div>
+        </div>
+
+        <!-- bg-radial-glow -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">bg-radial-glow</span>
+          <div class="sg-box" style="height: 160px; width: 100%; background: #111111; position: relative; overflow: hidden;">
+            <div class="bg-radial-glow" style="position:absolute; inset:0;"></div>
+            <span class="sg-label" style="color:#555; position:relative; z-index:1;">radial brand glow (top center)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 4. Cards & Surfaces ========== -->
+  <section id="cards" class="section-padding bg-dark-gradient-1">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Cards &amp; Surfaces</h2>
+      <p class="sg-section-desc">글래스모피즘 카드 + 브랜드 보더 변형.</p>
+
+      <div class="flex flex-col gap-8">
+        <!-- glass-card -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">glass-card</span>
+          <div class="glass-card p-8">
+            <h3 class="text-item text-white mb-3">Glass Card</h3>
+            <p class="text-body text-white/60">rgba(255, 255, 255, 0.05) + blur(12px)<br>border: 1px solid rgba(255, 255, 255, 0.08)<br>border-radius: 16px</p>
+          </div>
+        </div>
+
+        <!-- glass-card-strong -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">glass-card-strong</span>
+          <div class="glass-card-strong p-8">
+            <h3 class="text-item text-white mb-3">Glass Card Strong</h3>
+            <p class="text-body text-white/60">rgba(255, 255, 255, 0.08) + blur(16px)<br>border: 1px solid rgba(255, 255, 255, 0.12)<br>border-radius: 20px</p>
+          </div>
+        </div>
+
+        <!-- glass-card + border-brand-left -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">glass-card + border-brand-left</span>
+          <div class="glass-card border-brand-left p-8">
+            <h3 class="text-item text-white mb-3">Left Brand Border</h3>
+            <p class="text-body text-white/60">3px solid var(--brand-main) 좌측 보더</p>
+          </div>
+        </div>
+
+        <!-- glass-card + border-brand-bottom -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">glass-card + border-brand-bottom</span>
+          <div class="glass-card border-brand-bottom p-8">
+            <h3 class="text-item text-white mb-3">Bottom Brand Border</h3>
+            <p class="text-body text-white/60">2px solid var(--brand-main) 하단 보더</p>
+          </div>
+        </div>
+
+        <!-- glass-card-strong with brand border override -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">glass-card-strong + style="border-color: var(--brand-main)"</span>
+          <div class="glass-card-strong p-8" style="border-color: var(--brand-main);">
+            <h3 class="text-item text-white mb-3">Brand Border Full</h3>
+            <p class="text-body text-white/60">전체 보더를 브랜드 컬러로 오버라이드</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 5. Image Placeholders ========== -->
+  <section id="images" class="section-padding bg-dark-gradient-2">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Image Placeholders</h2>
+      <p class="sg-section-desc">img-placeholder + data-ai-* 속성. AI 배지 자동 표시.</p>
+
+      <div class="flex flex-col gap-8">
+        <!-- 760x500 with AI prompt -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">760 x 500 — data-ai-prompt (AI 배지 표시)</span>
+          <div class="img-placeholder w-[760px] h-[500px] rounded-lg"
+               data-ai-prompt="Professional product photography, studio lighting, 8k"
+               data-ai-style="product_hero"
+               data-ai-ratio="4:3">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span class="img-label">메인 제품 이미지 — 정면 스튜디오 촬영</span>
+          </div>
+        </div>
+
+        <!-- 760x300 with AI prompt -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">760 x 300 — data-ai-prompt (wide)</span>
+          <div class="img-placeholder w-[760px] h-[300px] rounded-xl"
+               data-ai-prompt="Product overview, clean composition, wide angle"
+               data-ai-style="product_hero">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span class="img-label">와이드 제품 이미지</span>
+          </div>
+        </div>
+
+        <!-- 400x400 square -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">400 x 400 — 정사각형</span>
+          <div class="img-placeholder rounded-xl" style="width:400px; height:400px;"
+               data-ai-prompt="Product detail, square crop, macro">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span class="img-label">정사각형 이미지</span>
+          </div>
+        </div>
+
+        <!-- Full width (no AI badge) -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">Full width — data-ai-prompt 없음 (AI 배지 없음)</span>
+          <div class="img-placeholder w-full h-[200px]">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span class="img-label">전체 너비 이미지 (AI 프롬프트 없음)</span>
+          </div>
+        </div>
+
+        <!-- real-image note -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:12px;">real-image — 실제 이미지 대체 시 사용하는 클래스</span>
+          <div style="width:760px; height:120px; border-radius:12px; background: repeating-linear-gradient(45deg, #2A2A2A, #2A2A2A 10px, #333 10px, #333 20px); display:flex; align-items:center; justify-content:center;">
+            <span class="sg-label" style="color:#666;">&lt;img class="real-image" src="..." /&gt;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 6. Layout Compositions ========== -->
+  <section id="layouts" class="section-padding bg-dark-gradient-1">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Layout Compositions</h2>
+      <p class="sg-section-desc">3가지 기본 레이아웃: stack / split / composed.</p>
+
+      <!-- Stack Layout -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 8px;">Stack Layout</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">flex flex-col items-center + content-narrow + section-padding</p>
+
+        <div class="bg-dark-gradient-2" style="border-radius:16px; overflow:hidden;">
+          <div class="flex flex-col items-center section-padding">
+            <div class="content-narrow flex flex-col items-center gap-6 text-center">
+              <div class="sg-wireframe" style="width:200px; height:32px;">label</div>
+              <div class="sg-wireframe" style="width:400px; height:48px;">heading</div>
+              <div class="sg-wireframe" style="width:100%; height:24px;">description</div>
+              <div class="sg-wireframe" style="width:760px; height:200px;">image / card</div>
+              <div class="flex gap-4 w-full">
+                <div class="sg-wireframe" style="flex:1; height:100px;">card</div>
+                <div class="sg-wireframe" style="flex:1; height:100px;">card</div>
+                <div class="sg-wireframe" style="flex:1; height:100px;">card</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Split Layout -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 8px;">Split Layout</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">grid grid-cols-2 min-h-[500px]. 비율 변형: grid-cols-[3fr_2fr], grid-cols-[2fr_3fr]</p>
+
+        <!-- 1:1 split -->
+        <div style="margin-bottom:24px;">
+          <span class="sg-label" style="display:block; margin-bottom:8px;">grid-cols-2 (1:1)</span>
+          <div class="grid grid-cols-2 bg-dark-gradient-2" style="min-height:300px; border-radius:16px; overflow:hidden;">
+            <div class="flex flex-col justify-center px-[50px] py-[40px] gap-4">
+              <div class="sg-wireframe" style="width:120px; height:24px;">label</div>
+              <div class="sg-wireframe" style="width:100%; height:48px;">heading</div>
+              <div class="sg-wireframe" style="width:100%; height:60px;">body text</div>
+              <div class="sg-wireframe" style="width:160px; height:40px;">CTA</div>
+            </div>
+            <div class="flex items-center justify-center p-8">
+              <div class="sg-wireframe" style="width:100%; height:220px;">image</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3:2 split -->
+        <div style="margin-bottom:24px;">
+          <span class="sg-label" style="display:block; margin-bottom:8px;">grid-cols-[3fr_2fr] (3:2)</span>
+          <div class="grid bg-dark-gradient-2" style="grid-template-columns: 3fr 2fr; min-height:250px; border-radius:16px; overflow:hidden;">
+            <div class="flex flex-col justify-center px-[50px] py-[40px] gap-4">
+              <div class="sg-wireframe" style="width:100%; height:48px;">wider text area</div>
+              <div class="sg-wireframe" style="width:80%; height:40px;">content</div>
+            </div>
+            <div class="flex items-center justify-center p-8">
+              <div class="sg-wireframe" style="width:100%; height:180px;">image</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reversed split -->
+        <div>
+          <span class="sg-label" style="display:block; margin-bottom:8px;">grid-cols-2 reversed (image left, text right)</span>
+          <div class="grid grid-cols-2 bg-dark-gradient-2" style="min-height:250px; border-radius:16px; overflow:hidden;">
+            <div class="flex items-center justify-center p-8">
+              <div class="sg-wireframe" style="width:100%; height:180px;">image</div>
+            </div>
+            <div class="flex flex-col justify-center px-[50px] py-[40px] gap-4">
+              <div class="sg-wireframe" style="width:100%; height:48px;">heading</div>
+              <div class="sg-wireframe" style="width:100%; height:60px;">body text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Composed Layout -->
+      <div>
+        <h3 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 8px;">Composed Layout (9-Grid)</h3>
+        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">composed-section + composed-layer. 절대 위치 레이어로 자유 배치.</p>
+
+        <!-- 9-grid reference -->
+        <div style="margin-bottom:24px;">
+          <span class="sg-label" style="display:block; margin-bottom:8px;">9-Grid Position Map</span>
+          <div style="display:grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap:4px; height:300px; border-radius:16px; overflow:hidden;">
+            <div class="sg-wireframe" style="font-size:12px;">pos-tl</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-tc</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-tr</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-ml</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-mc</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-mr</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-bl</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-bc</div>
+            <div class="sg-wireframe" style="font-size:12px;">pos-br</div>
+          </div>
+        </div>
+
+        <!-- Live composed demo -->
+        <span class="sg-label" style="display:block; margin-bottom:8px;">Composed Demo: Background + Overlay + Text</span>
+        <div class="composed-section relative bg-dark-gradient-1" style="height: 400px; border-radius:16px; overflow:hidden;">
+          <!-- Layer 0: Background -->
+          <div class="composed-layer inset-0">
+            <div class="img-placeholder w-full h-full"
+                 data-ai-prompt="Dramatic product shot, dark background, cinematic lighting">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="img-label">Layer 0: Background Image</span>
+            </div>
+          </div>
+          <!-- Layer 1: Gradient overlay -->
+          <div class="composed-layer inset-0 hero-overlay"></div>
+          <!-- Layer 2: Text content -->
+          <div class="composed-layer bottom-0 left-0 right-0 p-[50px] flex flex-col gap-3">
+            <p class="text-small tracking-[0.2em] uppercase" style="color: var(--brand-main);">Layer 2: Text</p>
+            <h2 class="text-hero text-white text-shadow-hero tracking-tight">Composed Hero</h2>
+            <p class="text-sub text-white/70 text-shadow-subtle">Overlay + text layers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gradient"></div>
+
+  <!-- ========== 7. Decorative Elements ========== -->
+  <section id="decorative" class="section-padding bg-dark-gradient-2">
+    <div class="content-narrow">
+      <h2 class="sg-section-title">Decorative Elements</h2>
+      <p class="sg-section-desc">분리선, 배지, 체크리스트, 버튼, 텍스트 효과, 오버레이.</p>
+
+      <!-- Dividers -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Dividers</h3>
+        <div class="flex flex-col gap-8">
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">divider-gradient</span>
+            <div class="divider-gradient"></div>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">divider-brand</span>
+            <div class="divider-brand"></div>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">divider-dot</span>
+            <div class="divider-dot"><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Number Badges -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Number Badges</h3>
+        <span class="sg-label" style="display:block; margin-bottom:12px;">num-badge</span>
+        <div class="flex gap-4">
+          <span class="num-badge">01</span>
+          <span class="num-badge">02</span>
+          <span class="num-badge">03</span>
+          <span class="num-badge">04</span>
+          <span class="num-badge">05</span>
+          <span class="num-badge">06</span>
+        </div>
+      </div>
+
+      <!-- Check Items -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Check Items</h3>
+        <span class="sg-label" style="display:block; margin-bottom:12px;">check-item</span>
+        <div class="flex flex-col gap-3">
+          <p class="check-item text-body text-white/80">체크 아이템 첫 번째 항목</p>
+          <p class="check-item text-body text-white/80">체크 아이템 두 번째 항목</p>
+          <p class="check-item text-body text-white/80">체크 아이템 세 번째 항목</p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Buttons</h3>
+        <div class="flex flex-col gap-6">
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">Brand gradient button (primary)</span>
+            <button class="px-12 py-5 rounded-full text-[18px] font-bold text-white shadow-lg shadow-black/30" style="background: linear-gradient(135deg, var(--brand-main), var(--accent));">
+              지금 구매하기
+            </button>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">Brand solid button</span>
+            <button class="px-6 py-3 rounded-full text-small font-bold text-white" style="background: var(--brand-main);">
+              신청하기
+            </button>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">Outline button (secondary)</span>
+            <button class="px-5 py-3 rounded-full text-small font-semibold border border-white/20 text-white/80 bg-transparent">
+              자세히 보기
+            </button>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:12px;">Tip badge / tag</span>
+            <span class="text-small font-bold px-3 py-1 rounded-full" style="background: color-mix(in srgb, var(--brand-main), transparent 85%); color: var(--brand-main);">TIP 1</span>
+            <span class="text-small font-bold px-4 py-2 rounded-full bg-black/20 text-white" style="margin-left:12px;">국내 최초</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Shadows -->
+      <div style="margin-bottom: 56px;">
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Text Shadows</h3>
+        <div class="flex flex-col gap-6">
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:8px;">text-shadow-hero</span>
+            <p class="text-section text-white text-shadow-hero">히어로 텍스트 쉐도우</p>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:8px;">text-shadow-subtle</span>
+            <p class="text-section text-white text-shadow-subtle">서틀 텍스트 쉐도우</p>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:8px;">(no shadow — comparison)</span>
+            <p class="text-section text-white">쉐도우 없음 비교</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Overlays -->
+      <div>
+        <h3 style="font-size: 18px; font-weight: 600; color: #888; margin-bottom: 24px;">Hero Overlays</h3>
+        <div class="flex flex-col gap-6">
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:8px;">hero-overlay (bottom fade)</span>
+            <div style="position:relative; height:200px; border-radius:16px; overflow:hidden;">
+              <div class="img-placeholder" style="width:100%; height:100%;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <span class="img-label">Background</span>
+              </div>
+              <div class="hero-overlay" style="position:absolute; inset:0;"></div>
+              <p class="text-body text-white font-semibold" style="position:absolute; bottom:16px; left:24px;">hero-overlay</p>
+            </div>
+          </div>
+          <div>
+            <span class="sg-label" style="display:block; margin-bottom:8px;">hero-overlay-top (top fade)</span>
+            <div style="position:relative; height:200px; border-radius:16px; overflow:hidden;">
+              <div class="img-placeholder" style="width:100%; height:100%;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <span class="img-label">Background</span>
+              </div>
+              <div class="hero-overlay-top" style="position:absolute; inset:0;"></div>
+              <p class="text-body text-white font-semibold" style="position:absolute; top:16px; left:24px;">hero-overlay-top</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="flex items-center justify-center py-12" style="background: #0a0a0a;">
+    <p class="text-caption text-muted">Style Guide — html-base.html design tokens reference</p>
+  </section>
+
+</div>
+
+</body>
+</html>
