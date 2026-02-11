@@ -174,6 +174,41 @@ Spec_Highlight: 관련 스펙 수치 강조 (선택)
 4. **레거시 템플릿**: `templates/detail-page-structure.json` (v2.0, 하위 호환)
 5. **핵심 기능**: 기본 템플릿 사용 시 6가지 핵심 기능을 개별 섹션으로 상세 설명
 6. **레퍼런스 기반**: 레퍼런스 이미지 제공 시 섹션 수와 구조는 레퍼런스를 따름
+7. **v2 HTML 파이프라인**: 시각 효과가 필요한 경우 `/product-to-html` 에이전트 사용
+
+---
+
+## v2 HTML/CSS 파이프라인
+
+### 개요
+v1(JSON → Figma 플러그인) 파이프라인과 **병행**하는 v2 파이프라인.
+HTML/CSS를 직접 생성하여 그라데이션, 글래스모피즘, 텍스트 섀도우 등 시각 효과를 포함합니다.
+
+### 파이프라인 비교
+```
+[v1] 제품정보 → plan-sections → match-template → generate-page(JSON) → validate-layout → Figma Plugin
+[v2] 제품정보 → plan-sections → match-template → generate-html(HTML/CSS) → 브라우저 프리뷰 → html.to.design → Figma
+                ↑ 재사용 ↑                          ↑ 새로 구현 ↑
+```
+
+### v2 전용 파일
+| 파일 | 용도 |
+|------|------|
+| `templates/html-base.html` | HTML 골격 + Tailwind config + 유틸리티 CSS |
+| `templates/html-section-patterns.md` | 섹션별 HTML/CSS 패턴 라이브러리 (20+) |
+| `skills/generate-html.skill.md` | HTML/CSS 상세페이지 생성 스킬 |
+| `agents/product-to-html.md` | v2 에이전트 오케스트레이터 |
+
+### v2 시각 효과
+- 섹션 배경: 항상 subtle gradient (단색 금지)
+- 카드: glassmorphism (`glass-card`, `glass-card-strong`)
+- 타이포: `tracking-tight`, `text-shadow-hero`
+- 섹션 전환: 장식 분리선, 배경 교차
+- 브랜드 컬러: accent border, 그라데이션 텍스트, 글로우 효과
+
+### v2 프리뷰 방법
+1. `output/{product}-detail.html`을 브라우저에서 열기
+2. Figma 변환: html.to.design 플러그인 사용
 
 ---
 
@@ -183,7 +218,8 @@ Spec_Highlight: 관련 스펙 수치 강조 (선택)
 figma-detail-page-agent/
 ├── agents/                 # 에이전트 오케스트레이터
 │   ├── ref-to-template.md     # Agent 1: 레퍼런스 → 템플릿
-│   └── product-to-page.md     # Agent 2: 제품 → 상세페이지
+│   ├── product-to-page.md     # Agent 2: 제품 → 상세페이지 (v1 JSON)
+│   └── product-to-html.md     # Agent 3: 제품 → 상세페이지 (v2 HTML/CSS)
 ├── skills/                 # 스킬 시스템
 │   ├── section-taxonomy.json  # 섹션 분류 체계 (마스터 데이터)
 │   ├── unmapped-sections/     # 미분류 섹션 리포트 저장소
@@ -192,12 +228,15 @@ figma-detail-page-agent/
 │   ├── register-template.skill.md # 레지스트리 등록
 │   ├── plan-sections.skill.md     # 섹션 플랜 설계
 │   ├── match-template.skill.md    # 템플릿 매칭/추천
-│   ├── generate-page.skill.md     # 레이아웃 JSON 생성
-│   └── validate-layout.skill.md   # 구조 검증
+│   ├── generate-page.skill.md     # 레이아웃 JSON 생성 (v1)
+│   ├── generate-html.skill.md     # HTML/CSS 생성 (v2)
+│   └── validate-layout.skill.md   # 구조 검증 (v1용)
 ├── templates/              # 상세페이지 템플릿 (v3.0)
 │   ├── _registry.json      # 템플릿 레지스트리 (목록 관리)
 │   ├── default-24section.template.json  # 기본 24섹션 템플릿 (v3.0)
-│   └── detail-page-structure.json       # 레거시 템플릿 (v2.0)
+│   ├── detail-page-structure.json       # 레거시 템플릿 (v2.0)
+│   ├── html-base.html       # v2 HTML 골격 + Tailwind config
+│   └── html-section-patterns.md  # v2 섹션별 HTML 패턴 라이브러리
 ├── prompts/                # deprecated (참조용 보존)
 ├── references/             # 레퍼런스 이미지 저장소
 ├── 크래프트볼트/            # 크래프트볼트 상세페이지 결과물 (기준)
@@ -221,7 +260,8 @@ figma-detail-page-agent/
 | 에이전트 | 파일 | 용도 | 스킬 체인 |
 |---------|------|------|----------|
 | `/ref-to-template` | `agents/ref-to-template.md` | 레퍼런스 → 템플릿 | analyze-ref → generate-template → **template-editor 검수** → register-template |
-| `/product-to-page` | `agents/product-to-page.md` | 제품 → 상세페이지 | plan-sections → match-template → generate-page → validate-layout |
+| `/product-to-page` | `agents/product-to-page.md` | 제품 → 상세페이지 (v1) | plan-sections → match-template → generate-page → validate-layout |
+| `/product-to-html` | `agents/product-to-html.md` | 제품 → 상세페이지 (v2) | plan-sections → match-template → **generate-html** |
 
 ### 스킬 (개별 단계)
 
@@ -233,6 +273,8 @@ figma-detail-page-agent/
 | `/plan-sections` | `skills/plan-sections.skill.md` | 제품 정보 | `output/{product}-section-plan.json` |
 | `/match-template` | `skills/match-template.skill.md` | section plan | `output/{product}-template-match.json` |
 | `/generate-page` | `skills/generate-page.skill.md` | template + plan | `output/{product}-layout.json` |
+| `/generate-html` | `skills/generate-html.skill.md` | template + plan | `output/{product}-detail.html` |
+| `/generate-figma-make-prompt` | `skills/generate-figma-make-prompt.skill.md` | detail HTML | `output/{product}-figma-make-prompt.md` |
 | `/validate-layout` | `skills/validate-layout.skill.md` | layout JSON | `output/{product}-validation.json` |
 
 ### Taxonomy 슬라이싱
@@ -250,9 +292,14 @@ figma-detail-page-agent/
 /ref-to-template → (analyze-ref → generate-template → [유저 검수: template-editor] → register-template)
 ```
 
-#### 새 상세페이지 생성 시
+#### 새 상세페이지 생성 시 (v1 — JSON)
 ```
 /product-to-page → (plan-sections → [유저 확인] → match-template → [유저 선택] → generate-page → validate-layout)
+```
+
+#### 새 상세페이지 생성 시 (v2 — HTML/CSS, 시각 효과 포함)
+```
+/product-to-html → (plan-sections → [유저 확인] → match-template → [유저 선택] → generate-html)
 ```
 
 #### 개별 스킬 직접 실행

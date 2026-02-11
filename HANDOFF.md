@@ -1,38 +1,37 @@
 # HANDOFF
 
-## Current [1770774733]
-- **Task**: 템플릿 에디터 구현 + reference3 전체 파이프라인 테스트 + 상세페이지 생성
+## Current [1770784084]
+- **Task**: v2 HTML/CSS 파이프라인 구축 + Figma Make 프롬프트 생성 스킬
 - **Completed**:
-  - `tools/template-editor.html` 신규 생성 — 템플릿 와이어프레임 프리뷰어/에디터 (stack/composed/split 렌더링, 섹션 편집, 글로벌 설정, export)
-  - `agents/ref-to-template.md` 업데이트 — Step 2.5 시각적 검수 단계 추가
-  - `CLAUDE.md` 업데이트 — template-editor 참조, 워크플로우 반영
-  - `/ref-to-template` 전체 플로우 실행 (reference3.png):
-    - Step 1: `output/analysis-reference3.json` (11섹션, 91% 매핑, 1 미분류 ColorOptions)
-    - Step 2: `templates/ref-reference3.template.json` (v3.0, 내추럴 우드톤 11섹션)
-    - Step 3: `templates/_registry.json` 업데이트 (4개 템플릿)
-    - 미분류 리포트: `skills/unmapped-sections/unmapped-reference3.json`
-  - `/product-to-page` 실행 — 클린에어 스마트 공기청정기 A1:
-    - ref-reference3 템플릿 기반, 블루 브랜드 컬러(#2E7DF7) 적용
-    - `output/cleanair-a1-layout.json` (11섹션, composed/split/stack 혼합)
+  - `templates/html-base.html` 신규 — Tailwind CDN + Pretendard 폰트 + 인라인 config + 유틸리티 CSS (glass-card, text-gradient, bg-gradient, 9-grid, 장식 분리선, 이미지 플레이스홀더)
+  - `templates/html-section-patterns.md` 신규 — 22개 섹션 HTML/CSS 스니펫 라이브러리 (composition별 매핑, 시각 효과 요약)
+  - `skills/generate-html.skill.md` 신규 — HTML/CSS 상세페이지 생성 스킬 (Distilled Aesthetics 가이드라인, html.to.design 호환, 인라인 검증)
+  - `agents/product-to-html.md` 신규 — v2 에이전트 오케스트레이터 (plan-sections/match-template 재사용 + generate-html)
+  - `skills/generate-figma-make-prompt.skill.md` 신규 — HTML → Figma Make 프롬프트 변환 스킬
+  - `output/cleanair-a1-detail.html` — 클린에어 A1 v2 HTML 상세페이지 (11섹션, 15/15 검증 PASS)
+  - `output/cleanair-a1-figma-make-prompt.md` — Figma Make 입력용 최종 프롬프트 (11섹션 + 12개 이미지 AI 프롬프트)
+  - `CLAUDE.md` 업데이트 — v2 파이프라인 섹션, 스킬/에이전트 테이블, 폴더 구조, 워크플로우 반영
 - **Next Steps**:
-  - preview.html에서 cleanair-a1-layout.json 미리보기 검증
-  - Figma 플러그인으로 실제 적용 테스트
-  - template-editor 사용성 개선 (사용자 피드백 반영)
-  - taxonomy에 ColorOptions 섹션 정식 추가 검토
+  - Figma Make에 프롬프트 + 제품 이미지 입력 → 결과 비교
+  - html.to.design으로 cleanair-a1-detail.html → Figma 변환 테스트
+  - generate-figma-make-prompt 스킬의 product-to-html 에이전트 통합 (Step 4 추가)
+  - 다른 제품으로 v2 파이프라인 E2E 테스트
 - **Blockers**: None
 - **Related Files**:
-  - `tools/template-editor.html` (신규 — 템플릿 에디터)
-  - `templates/ref-reference3.template.json` (신규 — 우드톤 11섹션 템플릿)
-  - `output/cleanair-a1-layout.json` (ref-reference3 기반 공기청정기 레이아웃)
-  - `output/analysis-reference3.json` (reference3 분석 결과)
-  - `templates/_registry.json` (4개 템플릿 등록)
+  - `templates/html-base.html` (v2 HTML 골격)
+  - `templates/html-section-patterns.md` (v2 섹션 패턴 라이브러리)
+  - `skills/generate-html.skill.md` (v2 핵심 스킬)
+  - `skills/generate-figma-make-prompt.skill.md` (Figma Make 프롬프트 생성)
+  - `agents/product-to-html.md` (v2 에이전트)
+  - `output/cleanair-a1-detail.html` (검증 완료 HTML)
+  - `output/cleanair-a1-figma-make-prompt.md` (Figma Make 프롬프트)
 
-## Past 1 [1770770852]
+## Past 1 [1770774733]
+- **Task**: 템플릿 에디터 구현 + reference3 전체 파이프라인 테스트 + 클린에어 A1 상세페이지 생성
+- **Completed**: template-editor.html 신규, ref-to-template 플로우 (reference3 → 11섹션 템플릿), product-to-page 실행 (cleanair-a1-layout.json)
+- **Note**: v1 JSON 파이프라인 완성. ref-reference3 기반 11섹션, 블루 브랜드(#2E7DF7)
+
+## Past 2 [1770770852]
 - **Task**: 에이전트/스킬 아키텍처 리팩토링 — 4개 모놀리식 프롬프트 → 2 에이전트 + 7 스킬 모듈화
 - **Completed**: REFACTOR-PLAN.md 수립, 기존 프롬프트 4개 분석, skills 7개 + agents 2개 구조 설계
-- **Note**: 리팩토링 플랜만 수립, 구현은 다음 세션에서 진행 (REFACTOR-PLAN.md 참조)
-
-## Past 2 [1770711710]
-- **Task**: 공간 레이아웃 분석 + AI 이미지 프롬프트 생성 시스템 구현
-- **Completed**: 9-Grid 시스템, composition 3타입, ai_prompt 생성, Figma 플러그인 + preview.html 업데이트, MARU 레퍼런스 분석, taxonomy v1.1
-- **Note**: composition + ai_prompt 시스템 완성. MARU 7섹션 57% 매핑, 미분류 3개 taxonomy 편입 완료.
+- **Note**: 리팩토링 플랜만 수립, 구현은 다음 세션에서 진행
