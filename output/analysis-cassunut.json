@@ -1,0 +1,407 @@
+{
+  "reference": "ref-cassunut",
+  "source_image": "references/ref-cassunut.png",
+  "analysis_date": "2026-02-12",
+
+  "global_analysis": {
+    "estimated_width": 860,
+    "color_palette": {
+      "primary": "#C19A4C",
+      "secondary": "#E8C547",
+      "background_colors": ["#FFFFFF", "#FFF9ED", "#FBF5E8"],
+      "text_primary": "#2D2D2D",
+      "text_secondary": "#888888"
+    },
+    "typography_scale": {
+      "largest_heading": 40,
+      "section_heading": 32,
+      "sub_heading": 24,
+      "body_text": 18,
+      "small_text": 14
+    },
+    "visual_rhythm": "화이트 → 크림 → 화이트 교차, 골드 강조 섹션 삽입",
+    "overall_style": "클린, 라이트, 내추럴, 식품 특화",
+    "content_alignment": "CENTER",
+    "style_tags": ["내추럴", "따뜻한", "라이트톤", "식품", "클린"],
+    "theme": "light"
+  },
+
+  "sections": [
+    {
+      "order": 1,
+      "detected_purpose": "ORIGINUT 브랜드명과 프리미엄 캐슈넛 메인 카피, 제품 패키지 이미지로 시선 사로잡기",
+      "taxonomy_mapping": {
+        "section_id": "Hook",
+        "confidence": 0.9,
+        "mapping_reason": "브랜드명 + 메인 카피 + 제품 히어로 이미지 구조, 첫인상 전달 목적"
+      },
+      "layout": {
+        "estimated_height": 900,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "브랜드 로고 → 메인 카피 → 제품 이미지 순 수직 나열, 요소 겹침 없음"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "브랜드 로고/이름", "estimated_fontSize": 14, "color": "#C19A4C" },
+        { "type": "TEXT", "role": "메인 카피 (프리미엄 캐슈넛)", "estimated_fontSize": 40, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "TEXT", "role": "서브 카피 (최상급 캐슈넷)", "estimated_fontSize": 24, "color": "#C19A4C" },
+        { "type": "IMAGE_AREA", "role": "제품 패키지 이미지 2개", "estimated_size": "760x400",
+          "ai_prompt": { "prompt": "[product] packaging bags, premium cashew nuts, studio photography, white background, 8k", "negative": "text, watermark, blurry", "style": "product_hero", "aspect_ratio": "16:9" }
+        },
+        { "type": "TEXT", "role": "포인트 안내 (ORIGINUT's Point)", "estimated_fontSize": 18, "color": "#C19A4C" }
+      ],
+      "visual_notes": "하단에 화살표와 ORIGINUT's Point 텍스트로 다음 섹션으로 유도"
+    },
+    {
+      "order": 2,
+      "detected_purpose": "ORIGINUT의 핵심 포인트 2~3가지를 아이콘/이미지와 함께 개요 형태로 소개",
+      "taxonomy_mapping": {
+        "section_id": "FeaturesOverview",
+        "confidence": 0.8,
+        "mapping_reason": "핵심 기능 요약 나열, 아이콘+텍스트 조합, 개요 형태"
+      },
+      "layout": {
+        "estimated_height": 500,
+        "background": "#FFF9ED",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "베트남 농장 소싱 텍스트 → 특징 포인트 나열 수직 배치"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "섹션 설명", "estimated_fontSize": 18, "color": "#888888" },
+        { "type": "TEXT", "role": "핵심 포인트 제목", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "캐슈넛 원산지 이미지", "estimated_size": "760x300",
+          "ai_prompt": { "prompt": "Vietnamese cashew nut farm, premium raw cashews, natural sunlight, agricultural", "negative": "text, watermark", "style": "product_lifestyle", "aspect_ratio": "4:3" }
+        }
+      ],
+      "visual_notes": "크림색 배경으로 따뜻한 느낌, 베트남 현지 농장 스토리"
+    },
+    {
+      "order": 3,
+      "detected_purpose": "Part.1 - 건조 방식의 차별점을 Q&A 형식으로 상세 설명",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.9,
+        "feature_index": 1,
+        "mapping_reason": "Part.1 넘버링, 기능 상세 Q&A 형식, 클로즈업 이미지"
+      },
+      "layout": {
+        "estimated_height": 700,
+        "background": "#FFFFFF",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "Part 번호 → 질문 → 이미지 → 설명 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "파트 번호 (Part.1)", "estimated_fontSize": 14, "color": "#C19A4C" },
+        { "type": "TEXT", "role": "기능 질문", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "캐슈넛 클로즈업", "estimated_size": "760x400",
+          "ai_prompt": { "prompt": "[product] single cashew nut close-up, macro photography, warm lighting, golden tone", "negative": "text, watermark, blurry", "style": "product_detail", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "기능 설명 텍스트", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "화이트 배경에 큰 제품 이미지 중심"
+    },
+    {
+      "order": 4,
+      "detected_purpose": "Part.2 - 맛/풍미 차별점 상세 설명",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.9,
+        "feature_index": 2,
+        "mapping_reason": "Part.2 넘버링, 동일 구조 반복"
+      },
+      "layout": {
+        "estimated_height": 700,
+        "background": "#FFF9ED",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "Part 번호 → 질문 → 이미지 → 설명 수직 나열 (Part.1과 동일 구조)"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "파트 번호 (Part.2)", "estimated_fontSize": 14, "color": "#C19A4C" },
+        { "type": "TEXT", "role": "기능 질문", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "캐슈넛 맛 이미지", "estimated_size": "760x400",
+          "ai_prompt": { "prompt": "[product] roasted cashew nuts in bowl, warm atmosphere, appetizing food photography", "negative": "text, watermark", "style": "product_lifestyle", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "기능 설명 텍스트", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "크림 배경으로 교차, Part.1과 같은 레이아웃"
+    },
+    {
+      "order": 5,
+      "detected_purpose": "Part.3 - 큰 사이즈 캐슈넛 강조",
+      "taxonomy_mapping": {
+        "section_id": "FeatureDetail",
+        "confidence": 0.9,
+        "feature_index": 3,
+        "mapping_reason": "Part.3 넘버링, 사이즈 강조 기능 상세"
+      },
+      "layout": {
+        "estimated_height": 700,
+        "background": "#FFFFFF",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "번호 → 텍스트 → 대량 캐슈넛 이미지 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "파트 번호 (Part.3)", "estimated_fontSize": 14, "color": "#C19A4C" },
+        { "type": "TEXT", "role": "사이즈 강조 텍스트", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "대량 캐슈넛 이미지", "estimated_size": "760x400",
+          "ai_prompt": { "prompt": "Large premium cashew nuts spread on surface, size comparison, top-down view, natural lighting", "negative": "text, watermark", "style": "product_flat", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "사이즈 설명", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "화이트 배경, 캐슈넛을 넓게 펼쳐 사이즈 시각화"
+    },
+    {
+      "order": 6,
+      "detected_purpose": "큰따옴표와 노란 강조로 '모든 캐슈넛이 같다?' → '아닙니다'로 차별화 선언",
+      "taxonomy_mapping": {
+        "section_id": "Differentiator",
+        "confidence": 0.85,
+        "mapping_reason": "차별화 선언, 질문+답변 형식, 강조 배경색, 경쟁 제품과 구분 의도"
+      },
+      "layout": {
+        "estimated_height": 400,
+        "background": "#FBF0D0",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 16,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "큰따옴표 → 질문 → 답변 텍스트 수직 정렬"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "큰따옴표 장식", "estimated_fontSize": 72, "color": "#E8C547" },
+        { "type": "TEXT", "role": "차별화 질문", "estimated_fontSize": 32, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "TEXT", "role": "강한 부정 답변 (아닙니다)", "estimated_fontSize": 40, "estimated_fontWeight": 700, "color": "#C19A4C" }
+      ],
+      "visual_notes": "노란빛 배경에 큰따옴표 장식, 텍스트 중심 임팩트 섹션"
+    },
+    {
+      "order": 7,
+      "detected_purpose": "캐슈넛 품질의 핵심 기술적 차이를 설명 (건조 방식, 신선도 등)",
+      "taxonomy_mapping": {
+        "section_id": "WhyCore",
+        "confidence": 0.7,
+        "mapping_reason": "핵심 기술/품질 차이 설명, 비교 인포그래픽 포함"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FFFFFF",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "설명 텍스트 블록들 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "품질 설명 제목", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "TEXT", "role": "품질 설명 본문 (여러 단락)", "estimated_fontSize": 18, "color": "#666666" },
+        { "type": "TEXT", "role": "핵심 포인트 강조", "estimated_fontSize": 20, "estimated_fontWeight": 600, "color": "#C19A4C" }
+      ],
+      "visual_notes": "텍스트 중심, 품질 차이의 과학적/기술적 근거 나열"
+    },
+    {
+      "order": 8,
+      "detected_purpose": "바삭하고 건강한 건과류 맛을 감성적으로 전달",
+      "taxonomy_mapping": {
+        "section_id": "Solution",
+        "confidence": 0.7,
+        "mapping_reason": "페인포인트(품질 낮은 캐슈넛) 해결책으로 바삭하고 건강한 제품 제시"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FFF9ED",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "감성 카피 → 제품 이미지 → 설명 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "해결 선언 카피", "estimated_fontSize": 32, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "캐슈넛 감성 이미지", "estimated_size": "760x350",
+          "ai_prompt": { "prompt": "Hands holding fresh roasted cashew nuts, warm natural lighting, lifestyle food photography", "negative": "text, watermark", "style": "product_lifestyle", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "맛/건강 혜택 설명", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "크림 배경, 따뜻한 감성 이미지 중심"
+    },
+    {
+      "order": 9,
+      "detected_purpose": "품질 인증, 위생 관리, 신선도 보장 등 안전/신뢰 정보",
+      "taxonomy_mapping": {
+        "section_id": "Safety",
+        "confidence": 0.8,
+        "mapping_reason": "품질 인증, 위생 관리 정보, 신뢰 구축 목적"
+      },
+      "layout": {
+        "estimated_height": 500,
+        "background": "#FFFFFF",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "인증 제목 → 인증 이미지 → 포인트 리스트 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "안전/품질 섹션 제목", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "품질 관리 이미지", "estimated_size": "760x300",
+          "ai_prompt": { "prompt": "Food quality certification badges, HACCP label, clean factory, food safety", "negative": "text, watermark", "style": "infographic", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "안전 포인트 나열", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "화이트 배경, 인증 마크 강조"
+    },
+    {
+      "order": 10,
+      "detected_purpose": "패키지 구성품 안내 (캐슈넛 + 포함 식품류)",
+      "taxonomy_mapping": {
+        "section_id": "SetContents",
+        "confidence": 0.8,
+        "mapping_reason": "구성품 나열 이미지, 아이템별 설명"
+      },
+      "layout": {
+        "estimated_height": 500,
+        "background": "#FFF9ED",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 20,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 → 구성품 이미지 그리드 → 설명 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "구성품 섹션 제목", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "IMAGE_AREA", "role": "구성품 전체 이미지", "estimated_size": "760x300",
+          "ai_prompt": { "prompt": "[product] package contents flat lay, all items arranged neatly, white background, top-down view", "negative": "text, watermark", "style": "product_flat", "aspect_ratio": "4:3" }
+        },
+        { "type": "TEXT", "role": "구성품 설명", "estimated_fontSize": 18, "color": "#666666" }
+      ],
+      "visual_notes": "크림 배경, 구성품 아이템 나열"
+    },
+    {
+      "order": 11,
+      "detected_purpose": "제품 상세 사양 정보 (원산지, 중량, 성분 등)",
+      "taxonomy_mapping": {
+        "section_id": "ProductSpec",
+        "confidence": 0.9,
+        "mapping_reason": "스펙 테이블, 제품 상세 정보 나열"
+      },
+      "layout": {
+        "estimated_height": 400,
+        "background": "#FFFFFF",
+        "padding": { "top": 60, "bottom": 60, "left": 50, "right": 50 },
+        "itemSpacing": 12,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "제목 → 스펙 테이블 수직 나열"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "제품 사양 제목", "estimated_fontSize": 28, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "TEXT", "role": "스펙 테이블 (항목: 값 형식)", "estimated_fontSize": 16, "color": "#666666" }
+      ],
+      "visual_notes": "깔끔한 테이블 레이아웃, 보더 구분선"
+    },
+    {
+      "order": 12,
+      "detected_purpose": "풍부한 단질의 건강 캐슈넛 - 최종 구매 유도",
+      "taxonomy_mapping": {
+        "section_id": "CTA",
+        "confidence": 0.85,
+        "mapping_reason": "마지막 섹션, 제품 감성 이미지 + 구매 유도 카피"
+      },
+      "layout": {
+        "estimated_height": 600,
+        "background": "#FBF5E8",
+        "padding": { "top": 80, "bottom": 80, "left": 50, "right": 50 },
+        "itemSpacing": 24,
+        "layoutMode": "VERTICAL",
+        "contentAlignment": "CENTER"
+      },
+      "composition": {
+        "type": "stack",
+        "reason": "감성 카피 → 제품 이미지 → 구매 버튼 수직 나열 (라이트 테마로 오버레이 없이 스택)"
+      },
+      "elements": [
+        { "type": "TEXT", "role": "최종 액션 유도 카피", "estimated_fontSize": 36, "estimated_fontWeight": 700, "color": "#2D2D2D" },
+        { "type": "TEXT", "role": "서브 카피", "estimated_fontSize": 22, "color": "#C19A4C" },
+        { "type": "IMAGE_AREA", "role": "제품 감성 이미지", "estimated_size": "760x350",
+          "ai_prompt": { "prompt": "[product] premium cashew nuts, golden warm lighting, appetizing, cinematic food photography", "negative": "text, watermark", "style": "product_lifestyle", "aspect_ratio": "16:9" }
+        },
+        { "type": "BUTTON", "role": "구매 버튼", "text": "지금 구매하기" }
+      ],
+      "visual_notes": "크림 배경에 따뜻한 톤, 스택 레이아웃 CTA"
+    }
+  ],
+
+  "pattern_summary": {
+    "total_sections": 12,
+    "section_flow": ["Hook", "FeaturesOverview", "FeatureDetail", "FeatureDetail", "FeatureDetail", "Differentiator", "WhyCore", "Solution", "Safety", "SetContents", "ProductSpec", "CTA"],
+    "background_pattern": "화이트(#FFFFFF) ↔ 크림(#FFF9ED) 교차, 골드 강조(#FBF0D0) 1회 삽입",
+    "category_distribution": {
+      "intro": 1,
+      "features": 5,
+      "problem": 2,
+      "trust": 3,
+      "conversion": 1
+    },
+    "mapping_stats": {
+      "total": 12,
+      "mapped": 12,
+      "unmapped": 0,
+      "coverage": "100%"
+    },
+    "feature_detail_count": 3,
+    "unique_patterns": [
+      "Part.N 넘버링 시스템으로 기능 순차 소개",
+      "노란 큰따옴표 강조 차별화 섹션",
+      "전체 라이트 테마 (다크 배경 없음)",
+      "화이트 ↔ 크림 배경 교차 리듬"
+    ]
+  }
+}

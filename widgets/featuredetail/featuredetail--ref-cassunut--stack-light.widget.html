@@ -1,0 +1,55 @@
+<!--WIDGET_META
+{
+  "widget_id": "featuredetail--ref-cassunut--stack-light",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "style_tags": ["내추럴", "따뜻한", "라이트톤"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "copywriting_guide": "Part.N 넘버링으로 기능을 순차적으로 소개, Q&A 형식으로 이해하기 쉽게 전달",
+  "sample_data": {
+    "texts": {
+      "Part.[N]": "Part.1",
+      "[기능 질문 형식 제목]": "왜 캐슈넛의 크기가 중요할까요?",
+      "[기능 설명 본문 텍스트]": "캐슈넛은 크기에 따라 W180, W240, W320 등급으로 나뉩니다.",
+      "[두 번째 줄 설명]": "저희는 가장 인기 있는 W320 등급만 사용합니다.",
+      "[핵심 혜택 강조]": "한 알 한 알 균일한 크기, 완벽한 식감"
+    },
+    "images": [
+      {
+        "label": "기능 상세 이미지",
+        "src": "https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=760&fit=crop&q=80",
+        "alt": "캐슈넛 상세 이미지"
+      }
+    ]
+  }
+}
+-->
+<section id="featuredetail" class="flex flex-col items-center gap-6 section-padding" style="background: #FFFFFF;">
+  <div class="content-narrow flex flex-col items-center gap-8 text-center">
+    <p class="text-[14px] tracking-[0.15em] uppercase font-bold" style="color: #C19A4C;">Part.[N]</p>
+    <h2 class="text-[28px] font-bold leading-tight" style="color: #2D2D2D;">
+      [기능 질문 형식 제목]
+    </h2>
+    <div class="img-placeholder w-[760px] h-[420px] rounded-xl" style="background: #E8E8E8;"
+         data-ai-prompt="[product] feature detail, close-up photography, warm natural lighting, 8k quality"
+         data-ai-style="product_detail"
+         data-ai-ratio="4:3">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">기능 상세 이미지</span>
+    </div>
+    <div class="flex flex-col gap-3 max-w-[650px]">
+      <p class="text-[18px] leading-relaxed" style="color: #666666;">
+        [기능 설명 본문 텍스트]<br>[두 번째 줄 설명]
+      </p>
+      <p class="text-[18px] font-semibold mt-2" style="color: #C19A4C;">[핵심 혜택 강조]</p>
+    </div>
+  </div>
+</section>

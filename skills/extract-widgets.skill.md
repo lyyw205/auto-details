@@ -16,20 +16,17 @@
 
 ## Output
 
-### Step A: 프리뷰 (검수용)
-- **스타일 프리셋 1개**: `widgets/_presets/preset--ref-{name}.json`
-- **통합 프리뷰 HTML 1개**: `output/widgets-preview--ref-{name}.html`
-  - 모든 위젯을 하나의 HTML 파일에 순서대로 조합
-  - 각 위젯 상단에 라벨 표시 (`#번호 Taxonomy — widget_id` + composition/theme 배지)
-  - `html-base.html`의 Tailwind + 유틸리티 CSS 포함 → 브라우저에서 바로 확인 가능
-  - 프리셋의 색상을 CSS 변수(`:root`)에 적용
+한 번에 모두 생성합니다 (프리뷰 → 개별 파일 → 레지스트리 등록까지 자동 실행):
 
-### Step B: 분리 저장 (검수 승인 후)
-- **섹션 위젯 N개**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html`
-- 미매핑 섹션: `widgets/_custom/{widget_id}.widget.html`
-
-> **중요**: 위젯을 개별 폴더에 저장하기 **전에** 반드시 통합 프리뷰로 유저 검수를 받습니다.
-> 유저가 프리뷰를 확인하고 승인하면, 그때 개별 폴더로 분리 저장 + `/register-widgets` 실행.
+1. **스타일 프리셋 1개**: `widgets/_presets/preset--ref-{name}.json`
+2. **통합 프리뷰 HTML 1개** (참고용): `output/widgets-preview--ref-{name}.html`
+   - 모든 위젯을 하나의 HTML 파일에 순서대로 조합
+   - 각 위젯 상단에 라벨 표시 (`#번호 Taxonomy — widget_id` + composition/theme 배지)
+   - `html-base.html`의 Tailwind + 유틸리티 CSS 포함 → 브라우저에서 바로 확인 가능
+   - 프리셋의 색상을 CSS 변수(`:root`)에 적용
+3. **섹션 위젯 N개**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html`
+   - 미매핑 섹션: `widgets/_custom/{widget_id}.widget.html`
+4. **레지스트리 등록**: `/register-widgets` 자동 실행 → `widgets/_registry.json` 업데이트 (status: "new")
 
 ## Processing
 
@@ -102,7 +99,20 @@
     "source_ref": "ref-{name}",
     "extracted_date": "YYYY-MM-DD"
   },
-  "copywriting_guide": "taxonomy 또는 분석에서 추출한 카피라이팅 가이드"
+  "copywriting_guide": "taxonomy 또는 분석에서 추출한 카피라이팅 가이드",
+  "sample_data": {
+    "texts": {
+      "[브랜드명]": "샘플 브랜드명",
+      "[메인 카피]": "샘플 메인 카피"
+    },
+    "images": [
+      {
+        "label": "img-label 텍스트와 정확히 일치",
+        "src": "https://images.unsplash.com/photo-xxx?w=760&fit=crop&q=80",
+        "alt": "이미지 설명"
+      }
+    ]
+  }
 }
 -->
 <section id="{taxonomy_id_lower}" class="..." style="...">
@@ -187,6 +197,46 @@
 - **`data-ai-ratio`**: `4:3`, `16:9`, `1:1`, `3:4`
 - 배경색: 다크 배경 → `#2A2A2A`, 밝은 배경 → `#E8E8E8`
 
+#### 2-4. sample_data 생성 (Demo 모드용)
+
+각 위젯의 WIDGET_META에 `sample_data`를 포함하여 갤러리 Demo 모드에서 실제 제품처럼 보이게 합니다.
+
+##### 규칙
+
+1. **`texts`**: HTML 본문의 모든 `[placeholder]`를 키로, 레퍼런스 제품에 맞는 샘플 텍스트를 값으로 매핑
+   - 레퍼런스 이미지에서 읽히는 실제 텍스트가 있으면 그것을 사용
+   - 읽히지 않으면 제품 카테고리에 맞는 그럴듯한 텍스트를 생성
+   - **placeholder 고유성 필수**: 동일 텍스트가 여러 곳에 반복되면 고유하게 넘버링
+     - BAD: `[설명]` × 3 (모두 같은 텍스트로 치환됨)
+     - GOOD: `[혜택 1 설명]`, `[혜택 2 설명]`, `[혜택 3 설명]`
+
+2. **`images`**: `img-placeholder` 안의 `<span class="img-label">` 텍스트를 `label`로, Unsplash URL을 `src`로 매핑
+   - URL 형식: `https://images.unsplash.com/photo-{id}?w=760&fit=crop&q=80`
+   - 제품 카테고리에 맞는 이미지 선택 (식품→음식 사진, 가구→인테리어 등)
+   - `label`은 HTML의 `<span class="img-label">` 텍스트와 **정확히 일치**해야 함
+
+3. **서버 치환 로직**: `applyDemoMode()`가 `texts`는 `split().join()`, `images`는 `img-placeholder` div를 `<img>` 태그로 교체
+
+##### 예시
+
+```json
+"sample_data": {
+  "texts": {
+    "[브랜드명]": "ORIGINUT",
+    "[메인 카피]": "자연이 키운 고소함",
+    "[혜택 1]": "고소한 풍미",
+    "[혜택 1 설명]": "저온 로스팅으로 살린 깊은 맛"
+  },
+  "images": [
+    {
+      "label": "메인 제품 패키지 이미지",
+      "src": "https://images.unsplash.com/photo-1509721434272-b79147e0e708?w=760&fit=crop&q=80",
+      "alt": "프리미엄 캐슈넛 패키지"
+    }
+  ]
+}
+```
+
 ### 3. theme 판별
 
 배경색의 밝기로 판별:
@@ -205,7 +255,7 @@
 
 ### 5. 통합 프리뷰 HTML 생성
 
-모든 위젯을 하나의 HTML 파일로 조합하여 검수용 프리뷰를 생성합니다.
+모든 위젯을 하나의 HTML 파일로 조합하여 참고용 프리뷰를 생성합니다.
 
 **파일**: `output/widgets-preview--ref-{name}.html`
 
@@ -234,23 +284,21 @@
 - composition 배지 (색상 구분: stack=파랑, split=보라, composed=핑크)
 - theme 배지 (light=노랑, dark=회색)
 
-### 6. 유저 검수
+### 6. 개별 위젯 파일 저장
 
-프리뷰 파일을 브라우저에서 확인하도록 안내:
-- 잘못된 taxonomy 매핑 수정
-- 불필요한 위젯 제거
-- 레이아웃/스타일 수정 요청
-
-### 7. 분리 저장 (검수 승인 후)
-
-유저 승인 후 개별 폴더로 분리 저장:
+프리뷰 HTML 생성과 동시에 개별 폴더로 저장합니다:
 
 | 조건 | 경로 |
 |---|---|
 | taxonomy_id 있음 | `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` |
 | taxonomy_id 없음 (커스텀) | `widgets/_custom/{widget_id}.widget.html` |
 
-각 위젯 파일은 프리뷰에서 해당 위젯의 `<!--WIDGET_META ... -->` + `<section>...</section>` 부분만 추출하여 저장합니다.
+각 위젯 파일은 `<!--WIDGET_META ... -->` + `<section>...</section>` 부분만 포함합니다.
+
+### 7. 레지스트리 등록
+
+개별 파일 저장 후 자동으로 `/register-widgets`를 실행합니다.
+등록 시 모든 위젯은 `status: "new"`로 등록됩니다.
 
 ## Validation
 - [ ] 모든 위젯이 `<!--WIDGET_META`로 시작하는가?
@@ -266,3 +314,9 @@
 - [ ] widget_id가 전체에서 유니크한가?
 - [ ] `composed` 섹션에 `hero-overlay` + `text-shadow-hero` 적용되었는가?
 - [ ] 카드 요소에 `glass-card` 클래스가 적용되었는가?
+- [ ] 개별 위젯 파일이 올바른 경로에 저장되었는가?
+- [ ] 레지스트리에 `status: "new"`로 등록되었는가?
+- [ ] 모든 위젯 WIDGET_META에 `sample_data`가 포함되어 있는가?
+- [ ] `sample_data.texts`의 키가 HTML 본문의 placeholder와 일치하는가?
+- [ ] `sample_data.images`의 `label`이 HTML의 `img-label` 텍스트와 정확히 일치하는가?
+- [ ] 동일 placeholder가 여러 곳에 쓰이지 않는가? (고유 넘버링 확인)

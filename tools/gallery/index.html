@@ -554,6 +554,567 @@
   .confirm-dialog .btn-confirm-delete:hover {
     background: #c0392b;
   }
+
+  /* ── NEW badge (sidebar + cards) ── */
+  .sidebar-item.new-tab {
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    padding: 12px 16px;
+  }
+  .new-count-badge {
+    margin-left: auto;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 8px;
+    min-width: 18px;
+    text-align: center;
+  }
+  .badge-new {
+    background: rgba(231,76,60,0.2);
+    color: #e74c3c;
+    font-size: 9px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Bulk review toolbar ── */
+  .bulk-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .bulk-toolbar-text {
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .btn-bulk {
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--accent);
+    background: var(--accent-dim);
+    color: var(--accent);
+    transition: all 0.15s;
+  }
+  .btn-bulk:hover {
+    background: rgba(124,111,247,0.3);
+  }
+
+  /* ── New widget card actions ── */
+  .card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .card-actions button {
+    flex: 1;
+    padding: 6px 0;
+    border-radius: 5px;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+  .btn-review {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-color: rgba(124,111,247,0.3);
+  }
+  .btn-review:hover {
+    background: rgba(124,111,247,0.3);
+    border-color: var(--accent);
+  }
+  .btn-card-delete {
+    background: var(--danger-dim);
+    color: var(--danger);
+    border-color: rgba(231,76,60,0.3);
+  }
+  .btn-card-delete:hover {
+    background: rgba(231,76,60,0.25);
+    border-color: var(--danger);
+  }
+
+  /* ── Duplicate comparison card ── */
+  .dup-card {
+    grid-column: 1 / -1;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .dup-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(231,76,60,0.06);
+  }
+  .dup-card-header-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+  }
+  .dup-similarity {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--danger);
+    background: var(--danger-dim);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .dup-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .dup-side {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .dup-side:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .dup-side-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .dup-preview {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-3);
+    border-radius: 6px;
+  }
+  .dup-preview iframe {
+    width: 860px;
+    height: 600px;
+    transform: scale(0.35);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+  }
+  .dup-meta {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 11px;
+    color: var(--text-2);
+    word-break: break-all;
+  }
+  .btn-keep {
+    padding: 7px 0;
+    border-radius: 5px;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(74,222,128,0.3);
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+    transition: all 0.15s;
+    width: 100%;
+  }
+  .btn-keep:hover {
+    background: rgba(74,222,128,0.2);
+    border-color: #4ade80;
+  }
+
+  /* ── Unmapped sections ── */
+  .sidebar-item.unmapped-tab {
+    border-bottom: 1px solid var(--border);
+    font-weight: 600;
+    padding: 12px 16px;
+  }
+  .unmapped-count-badge {
+    margin-left: auto;
+    background: #e67e22;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 8px;
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .unmapped-card {
+    grid-column: 1 / -1;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .unmapped-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(230,126,34,0.06);
+  }
+  .unmapped-card-header-id {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+  .unmapped-confidence {
+    font-size: 12px;
+    font-weight: 700;
+    color: #e67e22;
+    background: rgba(230,126,34,0.15);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .unmapped-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .unmapped-row {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .unmapped-label {
+    color: var(--text-3);
+    min-width: 70px;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  .unmapped-value {
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .unmapped-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .unmapped-tag {
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--bg-3);
+    color: var(--text-3);
+  }
+  .unmapped-card-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .btn-approve {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(74,222,128,0.3);
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+    transition: all 0.15s;
+  }
+  .btn-approve:hover {
+    background: rgba(74,222,128,0.2);
+    border-color: #4ade80;
+  }
+  .btn-reassign {
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid rgba(230,126,34,0.3);
+    background: rgba(230,126,34,0.1);
+    color: #e67e22;
+    transition: all 0.15s;
+  }
+  .btn-reassign:hover {
+    background: rgba(230,126,34,0.2);
+    border-color: #e67e22;
+  }
+
+  /* ── Reassign modal ── */
+  .reassign-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .reassign-overlay.open { display: flex; }
+  .reassign-dialog {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 480px;
+    width: 90%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .reassign-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .reassign-dialog-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .reassign-dialog-header .modal-close {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .reassign-dialog-header .modal-close:hover { background: var(--bg-2); color: var(--text-1); }
+  .reassign-dialog-desc {
+    padding: 12px 20px;
+    font-size: 13px;
+    color: var(--text-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .reassign-dialog-body {
+    padding: 12px 20px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .reassign-cat-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+    padding: 10px 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .reassign-cat-header .recommended {
+    font-size: 10px;
+    color: #e67e22;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .reassign-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+  .reassign-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background: var(--bg-2);
+    color: var(--text-2);
+    transition: all 0.15s;
+  }
+  .reassign-option:hover {
+    border-color: var(--border-hover);
+    color: var(--text-1);
+  }
+  .reassign-option.selected {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+    color: var(--accent);
+  }
+  .reassign-option input[type="radio"] { display: none; }
+  .reassign-dialog-footer {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 12px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .reassign-dialog-footer button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+  .reassign-btn-cancel {
+    background: var(--bg-2);
+    color: var(--text-2);
+  }
+  .reassign-btn-cancel:hover { background: var(--bg-3); color: var(--text-1); }
+  .reassign-btn-submit {
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-color: rgba(124,111,247,0.3);
+  }
+  .reassign-btn-submit:hover { background: rgba(124,111,247,0.3); border-color: var(--accent); }
+  .reassign-btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── Dup Compare Modal ── */
+  .dup-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px 20px;
+    overflow-y: auto;
+  }
+  .dup-modal-overlay.open { display: flex; }
+  .dup-modal {
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    max-width: 1200px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .dup-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(231,76,60,0.06);
+  }
+  .dup-modal-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .dup-modal-header h3 { font-size: 15px; font-weight: 700; }
+  .dup-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .dup-modal-side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+  .dup-modal-side:first-child {
+    border-right: 1px solid var(--border);
+  }
+  .dup-modal-side-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .dup-modal-preview {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-3);
+    border-radius: 8px;
+  }
+  .dup-modal-preview iframe {
+    width: 860px;
+    height: 600px;
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+  }
+  .dup-modal-meta {
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 12px;
+    color: var(--text-2);
+    word-break: break-all;
+  }
+  .dup-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .dup-modal-actions {
+    display: flex;
+    gap: 8px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .dup-modal-actions button {
+    flex: 1;
+    min-width: 120px;
+    padding: 9px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-keep-one {
+    border: 1px solid rgba(74,222,128,0.3);
+    background: rgba(74,222,128,0.1);
+    color: #4ade80;
+  }
+  .btn-keep-one:hover {
+    background: rgba(74,222,128,0.2);
+    border-color: #4ade80;
+  }
+  .btn-keep-both {
+    border: 1px solid rgba(124,111,247,0.3);
+    background: rgba(124,111,247,0.1);
+    color: var(--accent);
+  }
+  .btn-keep-both:hover {
+    background: rgba(124,111,247,0.25);
+    border-color: var(--accent);
+  }
+  .btn-delete-both {
+    border: 1px solid rgba(231,76,60,0.3);
+    background: rgba(231,76,60,0.1);
+    color: var(--danger);
+  }
+  .btn-delete-both:hover {
+    background: rgba(231,76,60,0.25);
+    border-color: var(--danger);
+  }
 </style>
 </head>
 <body>
@@ -613,6 +1174,37 @@
   </div>
 </div>
 
+<!-- Dup Compare Modal -->
+<div class="dup-modal-overlay" id="dupModalOverlay">
+  <div class="dup-modal">
+    <div class="dup-modal-header">
+      <div class="dup-modal-header-left">
+        <h3>중복 위젯 비교</h3>
+        <span class="dup-similarity" id="dupModalScore"></span>
+      </div>
+      <button class="modal-close" id="dupModalClose">&times;</button>
+    </div>
+    <div class="dup-modal-body" id="dupModalBody"></div>
+    <div class="dup-modal-actions" id="dupModalActions"></div>
+  </div>
+</div>
+
+<!-- Reassign Modal -->
+<div class="reassign-overlay" id="reassignOverlay">
+  <div class="reassign-dialog">
+    <div class="reassign-dialog-header">
+      <h3>기존 섹션에 배정</h3>
+      <button class="modal-close" id="reassignClose">&times;</button>
+    </div>
+    <div class="reassign-dialog-desc" id="reassignDesc"></div>
+    <div class="reassign-dialog-body" id="reassignBody"></div>
+    <div class="reassign-dialog-footer">
+      <button class="reassign-btn-cancel" id="reassignCancel">취소</button>
+      <button class="reassign-btn-submit" id="reassignSubmit" disabled>배정</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function() {
   // ── State ──
@@ -620,7 +1212,9 @@
   let presets = [];
   let taxonomy = null;
   let allWidgets = []; // flat list
-  let currentFilter = null; // null = all, string = taxonomy_id
+  let newWidgets = []; // widgets with status:"new"
+  let unmappedSections = []; // pending unmapped sections
+  let currentFilter = null; // null = all, '__new__' = new widgets, '__unmapped__' = unmapped, string = taxonomy_id
   let currentPreset = null; // null = original, preset object
   let viewMode = 'grid';
   let previewMode = 'demo'; // 'demo' or 'raw'
@@ -629,14 +1223,18 @@
 
   // ── Data fetching ──
   async function fetchAll() {
-    const [reg, pre, tax] = await Promise.all([
+    const [reg, pre, tax, nw, um] = await Promise.all([
       fetch('/api/registry').then(r => r.json()),
       fetch('/api/presets').then(r => r.json()),
       fetch('/api/taxonomy').then(r => r.json()),
+      fetch('/api/widgets/new').then(r => r.json()),
+      fetch('/api/unmapped').then(r => r.json()),
     ]);
     registry = reg;
     presets = pre;
     taxonomy = tax;
+    newWidgets = nw.widgets || [];
+    unmappedSections = um.sections || [];
     rebuildWidgetList();
   }
 
@@ -661,6 +1259,18 @@
 
     // "전체 보기"
     let html = `<div class="sidebar-item all-view${currentFilter === null ? ' active' : ''}" data-filter="">전체 보기</div>`;
+
+    // "새로 추가" tab
+    const newCount = newWidgets.length;
+    if (newCount > 0) {
+      html += `<div class="sidebar-item new-tab${currentFilter === '__new__' ? ' active' : ''}" data-filter="__new__">새로 추가 <span class="new-count-badge">${newCount}</span></div>`;
+    }
+
+    // "미분류 섹션" tab
+    const unmappedCount = unmappedSections.length;
+    if (unmappedCount > 0) {
+      html += `<div class="sidebar-item unmapped-tab${currentFilter === '__unmapped__' ? ' active' : ''}" data-filter="__unmapped__">미분류 섹션 <span class="unmapped-count-badge">${unmappedCount}</span></div>`;
+    }
 
     // Categories
     for (const catId of CATEGORY_ORDER) {
@@ -692,6 +1302,16 @@
 
     // Events
     sb.querySelector('.all-view').addEventListener('click', () => { currentFilter = null; render(); });
+
+    const newTab = sb.querySelector('.new-tab');
+    if (newTab) {
+      newTab.addEventListener('click', () => { currentFilter = '__new__'; render(); });
+    }
+
+    const unmappedTab = sb.querySelector('.unmapped-tab');
+    if (unmappedTab) {
+      unmappedTab.addEventListener('click', () => { currentFilter = '__unmapped__'; render(); });
+    }
 
     sb.querySelectorAll('.category-header').forEach(el => {
       el.addEventListener('click', () => {
@@ -742,8 +1362,430 @@
     return url + '?' + params.toString();
   }
 
+  // ── New widget actions ──
+  async function reviewWidget(widgetId) {
+    await fetch(`/api/widget/${encodeURIComponent(widgetId)}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 'reviewed' }),
+    });
+    await fetchAll();
+    render();
+  }
+
+  async function deleteNewWidget(widgetId) {
+    await fetch(`/api/widget/${encodeURIComponent(widgetId)}`, { method: 'DELETE' });
+    await fetchAll();
+    render();
+  }
+
+  async function bulkReviewAll() {
+    await fetch('/api/widgets/bulk-review', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'review_all' }),
+    });
+    await fetchAll();
+    render();
+  }
+
+  async function resolveDuplicate(keepId, deleteId) {
+    await fetch('/api/widgets/resolve-duplicate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keep: keepId, delete: deleteId }),
+    });
+    closeDupModal();
+    await fetchAll();
+    render();
+  }
+
+  async function keepBothWidgets(widgetA, widgetB) {
+    await fetch('/api/widgets/keep-both', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ widget_a: widgetA, widget_b: widgetB }),
+    });
+    closeDupModal();
+    await fetchAll();
+    render();
+  }
+
+  async function deleteBothWidgets(widgetA, widgetB) {
+    await fetch('/api/widgets/delete-both', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ widget_a: widgetA, widget_b: widgetB }),
+    });
+    closeDupModal();
+    await fetchAll();
+    render();
+  }
+
+  // ── Dup Compare Modal ──
+  let currentDupPair = null; // { newWidget, existingWidget }
+
+  function openDupModal(newW, existingW, score) {
+    currentDupPair = { newWidget: newW, existingWidget: existingW };
+    const scorePct = Math.round((score || 0) * 100);
+    document.getElementById('dupModalScore').textContent = `유사도: ${scorePct}%`;
+
+    const body = document.getElementById('dupModalBody');
+    body.innerHTML = `
+      <div class="dup-modal-side">
+        <span class="dup-modal-side-label">기존 위젯</span>
+        <div class="dup-modal-preview" id="dupPreviewLeft"></div>
+        <div class="dup-modal-meta">${existingW.widget_id}</div>
+        <div class="card-badges">
+          <span class="badge-pill badge-composition">${existingW.composition || 'stack'}</span>
+          <span class="badge-pill badge-theme-${existingW.theme || 'dark'}">${existingW.theme || 'dark'}</span>
+        </div>
+        <div class="dup-modal-tags">${(existingW.style_tags || []).map(t => '<span class="tag-chip">' + t + '</span>').join('')}</div>
+        <div class="card-source">${existingW.source_ref || ''}</div>
+      </div>
+      <div class="dup-modal-side">
+        <span class="dup-modal-side-label">새 위젯 <span class="badge-new">NEW</span></span>
+        <div class="dup-modal-preview" id="dupPreviewRight"></div>
+        <div class="dup-modal-meta">${newW.widget_id}</div>
+        <div class="card-badges">
+          <span class="badge-pill badge-composition">${newW.composition || 'stack'}</span>
+          <span class="badge-pill badge-theme-${newW.theme || 'dark'}">${newW.theme || 'dark'}</span>
+        </div>
+        <div class="dup-modal-tags">${(newW.style_tags || []).map(t => '<span class="tag-chip">' + t + '</span>').join('')}</div>
+        <div class="card-source">${newW.source_ref || ''}</div>
+      </div>
+    `;
+
+    // Create iframes
+    for (const [containerId, widgetId] of [['dupPreviewLeft', existingW.widget_id], ['dupPreviewRight', newW.widget_id]]) {
+      const container = document.getElementById(containerId);
+      const iframe = document.createElement('iframe');
+      iframe.src = iframeUrl(widgetId);
+      iframe.loading = 'lazy';
+      iframe.onload = () => {
+        try {
+          const contentH = iframe.contentDocument.documentElement.scrollHeight;
+          iframe.style.height = contentH + 'px';
+          const containerW = container.clientWidth;
+          const scale = Math.min(containerW / 860, 1);
+          iframe.style.transform = 'scale(' + scale + ')';
+          container.style.height = Math.ceil(contentH * scale) + 'px';
+        } catch (_) {
+          iframe.style.height = '600px';
+          iframe.style.transform = 'scale(0.55)';
+          container.style.height = '330px';
+        }
+      };
+      container.appendChild(iframe);
+    }
+
+    // Actions
+    const actions = document.getElementById('dupModalActions');
+    actions.innerHTML = `
+      <button class="btn-keep-one" id="dupKeepExisting">기존 유지</button>
+      <button class="btn-keep-one" id="dupKeepNew">새 위젯 유지</button>
+      <button class="btn-keep-both" id="dupKeepBoth">둘 다 유지</button>
+      <button class="btn-delete-both" id="dupDeleteBoth">둘 다 삭제</button>
+    `;
+
+    document.getElementById('dupKeepExisting').addEventListener('click', () =>
+      resolveDuplicate(existingW.widget_id, newW.widget_id));
+    document.getElementById('dupKeepNew').addEventListener('click', () =>
+      resolveDuplicate(newW.widget_id, existingW.widget_id));
+    document.getElementById('dupKeepBoth').addEventListener('click', () =>
+      keepBothWidgets(existingW.widget_id, newW.widget_id));
+    document.getElementById('dupDeleteBoth').addEventListener('click', () =>
+      deleteBothWidgets(existingW.widget_id, newW.widget_id));
+
+    document.getElementById('dupModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDupModal() {
+    currentDupPair = null;
+    document.getElementById('dupModalOverlay').classList.remove('open');
+    document.getElementById('dupModalBody').innerHTML = '';
+    document.getElementById('dupModalActions').innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('dupModalClose').addEventListener('click', closeDupModal);
+  document.getElementById('dupModalOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('dupModalOverlay')) closeDupModal();
+  });
+
+  // ── Unmapped section actions ──
+  async function approveUnmapped(reportFile, suggestedId) {
+    await fetch('/api/unmapped/approve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ report_file: reportFile, suggested_id: suggestedId }),
+    });
+    await fetchAll();
+    // If no more unmapped sections, switch back to all view
+    if (unmappedSections.length === 0) currentFilter = null;
+    render();
+  }
+
+  let pendingReassign = null; // { report_file, suggested_id, suggested_category }
+
+  function openReassignModal(reportFile, suggestedId, suggestedCategory) {
+    pendingReassign = { report_file: reportFile, suggested_id: suggestedId, suggested_category: suggestedCategory };
+    document.getElementById('reassignDesc').textContent =
+      `"${suggestedId}"를 배정할 기존 섹션을 선택하세요:`;
+
+    // Build category-grouped radio options
+    let html = '';
+    for (const catId of CATEGORY_ORDER) {
+      const cat = taxonomy.categories[catId];
+      const sections = taxonomy.sections.filter(s => s.category === catId);
+      if (sections.length === 0) continue;
+      const isRecommended = catId === suggestedCategory;
+      html += `<div class="reassign-cat-header">${cat.name} (${catId})${isRecommended ? ' <span class="recommended">← 권장</span>' : ''}</div>`;
+      html += `<div class="reassign-options">`;
+      for (const s of sections) {
+        html += `<label class="reassign-option">
+          <input type="radio" name="reassign_to" value="${s.id}">
+          ${s.id}
+        </label>`;
+      }
+      html += `</div>`;
+    }
+
+    document.getElementById('reassignBody').innerHTML = html;
+    document.getElementById('reassignSubmit').disabled = true;
+
+    // Bind radio selection
+    document.getElementById('reassignBody').querySelectorAll('.reassign-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.getElementById('reassignBody').querySelectorAll('.reassign-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        opt.querySelector('input').checked = true;
+        document.getElementById('reassignSubmit').disabled = false;
+      });
+    });
+
+    document.getElementById('reassignOverlay').classList.add('open');
+  }
+
+  function closeReassignModal() {
+    pendingReassign = null;
+    document.getElementById('reassignOverlay').classList.remove('open');
+  }
+
+  async function submitReassign() {
+    if (!pendingReassign) return;
+    const selected = document.querySelector('input[name="reassign_to"]:checked');
+    if (!selected) return;
+
+    await fetch('/api/unmapped/reject', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        report_file: pendingReassign.report_file,
+        suggested_id: pendingReassign.suggested_id,
+        assign_to: selected.value,
+      }),
+    });
+
+    closeReassignModal();
+    await fetchAll();
+    if (unmappedSections.length === 0) currentFilter = null;
+    render();
+  }
+
+  document.getElementById('reassignClose').addEventListener('click', closeReassignModal);
+  document.getElementById('reassignCancel').addEventListener('click', closeReassignModal);
+  document.getElementById('reassignSubmit').addEventListener('click', submitReassign);
+  document.getElementById('reassignOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('reassignOverlay')) closeReassignModal();
+  });
+
+  // ── Render unmapped sections grid ──
+  function renderUnmappedGrid() {
+    const grid = document.getElementById('grid');
+    document.getElementById('filterCount').textContent = `${unmappedSections.length}개 미분류 섹션`;
+
+    if (unmappedSections.length === 0) {
+      grid.innerHTML = `<div class="empty-state"><div>미분류 섹션이 없습니다</div></div>`;
+      return;
+    }
+
+    let html = '';
+    for (const s of unmappedSections) {
+      const confPct = Math.round((s.confidence || 0) * 100);
+      html += `<div class="unmapped-card">
+        <div class="unmapped-card-header">
+          <span class="unmapped-card-header-id">${s.suggested_id}</span>
+          <span class="unmapped-confidence">confidence ${confPct}%</span>
+        </div>
+        <div class="unmapped-card-body">
+          <div class="unmapped-row">
+            <span class="unmapped-label">카테고리</span>
+            <span class="unmapped-value">${s.suggested_category || '-'}</span>
+          </div>
+          <div class="unmapped-row">
+            <span class="unmapped-label">제안명</span>
+            <span class="unmapped-value">${s.suggested_name || s.suggested_id}</span>
+          </div>
+          <div class="unmapped-row">
+            <span class="unmapped-label">설명</span>
+            <span class="unmapped-value">${s.description || '-'}</span>
+          </div>
+          ${s.suggested_keywords && s.suggested_keywords.length > 0 ? `<div class="unmapped-row">
+            <span class="unmapped-label">키워드</span>
+            <span class="unmapped-value"><span class="unmapped-tags">${s.suggested_keywords.map(k => `<span class="unmapped-tag">${k}</span>`).join('')}</span></span>
+          </div>` : ''}
+          ${s.suggested_visual_cues && s.suggested_visual_cues.length > 0 ? `<div class="unmapped-row">
+            <span class="unmapped-label">시각단서</span>
+            <span class="unmapped-value"><span class="unmapped-tags">${s.suggested_visual_cues.map(v => `<span class="unmapped-tag">${v}</span>`).join('')}</span></span>
+          </div>` : ''}
+          <div class="unmapped-row">
+            <span class="unmapped-label">출처</span>
+            <span class="unmapped-value">${s.reference || '-'}${s.position != null ? ` (#${s.position})` : ''}</span>
+          </div>
+        </div>
+        <div class="unmapped-card-actions">
+          <button class="btn-approve" data-report="${s.report_file}" data-id="${s.suggested_id}">새 섹션으로 승인</button>
+          <button class="btn-reassign" data-report="${s.report_file}" data-id="${s.suggested_id}" data-cat="${s.suggested_category || 'features'}">기존 섹션에 배정</button>
+        </div>
+      </div>`;
+    }
+
+    grid.innerHTML = html;
+
+    // Bind events
+    grid.querySelectorAll('.btn-approve').forEach(btn => {
+      btn.addEventListener('click', () => approveUnmapped(btn.dataset.report, btn.dataset.id));
+    });
+    grid.querySelectorAll('.btn-reassign').forEach(btn => {
+      btn.addEventListener('click', () => openReassignModal(btn.dataset.report, btn.dataset.id, btn.dataset.cat));
+    });
+  }
+
+  // ── Render new widgets grid ──
+  function renderNewWidgetsGrid() {
+    const grid = document.getElementById('grid');
+    document.getElementById('filterCount').textContent = `${newWidgets.length}개 새 위젯`;
+
+    if (newWidgets.length === 0) {
+      grid.innerHTML = `<div class="empty-state"><div>새로 추가된 위젯이 없습니다</div></div>`;
+      return;
+    }
+
+    const nonDup = newWidgets.filter(w => !w.duplicate_of);
+    const dups = newWidgets.filter(w => w.duplicate_of);
+
+    let html = '';
+
+    // Bulk toolbar
+    if (nonDup.length > 0) {
+      html += `<div class="bulk-toolbar" style="grid-column:1/-1;">
+        <span class="bulk-toolbar-text">새 위젯 ${newWidgets.length}개${dups.length > 0 ? ` (중복 후보 ${dups.length}개)` : ''}</span>
+        <button class="btn-bulk" id="btnBulkReview">전체 보관 (${nonDup.length})</button>
+      </div>`;
+    }
+
+    // Duplicate comparison cards (clickable → opens modal)
+    for (const w of dups) {
+      const dw = w.duplicate_widget;
+      const score = Math.round((w.similarity_score || 0) * 100);
+      html += `<div class="dup-card" data-dup-new="${w.widget_id}" data-dup-existing="${w.duplicate_of}" data-dup-score="${w.similarity_score || 0}" style="cursor:pointer;">
+        <div class="dup-card-header">
+          <span class="dup-card-header-title">중복 후보 — 클릭하여 비교</span>
+          <span class="dup-similarity">유사도: ${score}%</span>
+        </div>
+        <div class="dup-card-body">
+          <div class="dup-side">
+            <span class="dup-side-label">기존 위젯</span>
+            <div class="dup-preview"><iframe src="${iframeUrl(w.duplicate_of)}" loading="lazy"></iframe></div>
+            <div class="dup-meta">${w.duplicate_of}</div>
+            <div class="card-badges">
+              <span class="badge-pill badge-composition">${dw ? (dw.composition || 'stack') : '?'}</span>
+              <span class="badge-pill badge-theme-${dw ? (dw.theme || 'dark') : 'dark'}">${dw ? (dw.theme || 'dark') : '?'}</span>
+            </div>
+            <div class="card-tags">${dw ? (dw.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('') : ''}</div>
+          </div>
+          <div class="dup-side">
+            <span class="dup-side-label">새 위젯</span>
+            <div class="dup-preview"><iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe></div>
+            <div class="dup-meta">${w.widget_id}</div>
+            <div class="card-badges">
+              <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
+              <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
+            </div>
+            <div class="card-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    // Non-duplicate new widget cards
+    for (const w of nonDup) {
+      html += `
+        <div class="card" data-id="${w.widget_id}">
+          <div class="card-preview">
+            <iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe>
+          </div>
+          <div class="card-meta">
+            <div class="card-id">${w.widget_id} <span class="badge-new">NEW</span></div>
+            <div class="card-badges">
+              <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
+              <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
+            </div>
+            <div class="card-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+            <div class="card-actions">
+              <button class="btn-review" data-review="${w.widget_id}">보관</button>
+              <button class="btn-card-delete" data-del="${w.widget_id}">삭제</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    grid.innerHTML = html;
+
+    // Bind events
+    const bulkBtn = document.getElementById('btnBulkReview');
+    if (bulkBtn) bulkBtn.addEventListener('click', bulkReviewAll);
+
+    grid.querySelectorAll('.btn-review[data-review]').forEach(btn => {
+      btn.addEventListener('click', (e) => { e.stopPropagation(); reviewWidget(btn.dataset.review); });
+    });
+    grid.querySelectorAll('.btn-card-delete[data-del]').forEach(btn => {
+      btn.addEventListener('click', (e) => { e.stopPropagation(); deleteNewWidget(btn.dataset.del); });
+    });
+    // Dup card click -> dup compare modal
+    grid.querySelectorAll('.dup-card[data-dup-new]').forEach(card => {
+      card.addEventListener('click', () => {
+        const newId = card.dataset.dupNew;
+        const existId = card.dataset.dupExisting;
+        const score = parseFloat(card.dataset.dupScore) || 0;
+        const newW = dups.find(d => d.widget_id === newId);
+        const existW = newW && newW.duplicate_widget ? newW.duplicate_widget : { widget_id: existId };
+        if (newW) openDupModal(newW, existW, score);
+      });
+    });
+
+    // Card click -> modal (non-dup cards)
+    grid.querySelectorAll('.card[data-id]').forEach(card => {
+      card.addEventListener('click', () => openModal(card.dataset.id));
+    });
+  }
+
   // ── Grid ──
   function renderGrid() {
+    // Handle "새로 추가" tab
+    if (currentFilter === '__new__') {
+      renderNewWidgetsGrid();
+      return;
+    }
+
+    // Handle "미분류 섹션" tab
+    if (currentFilter === '__unmapped__') {
+      renderUnmappedGrid();
+      return;
+    }
+
     const grid = document.getElementById('grid');
     const filtered = currentFilter
       ? allWidgets.filter(w => w.taxonomy_id === currentFilter)
@@ -756,13 +1798,16 @@
       return;
     }
 
+    // Check which widget IDs are "new"
+    const newIdSet = new Set(newWidgets.map(w => w.widget_id));
+
     grid.innerHTML = filtered.map(w => `
       <div class="card" data-id="${w.widget_id}">
         <div class="card-preview">
           <iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe>
         </div>
         <div class="card-meta">
-          <div class="card-id">${w.widget_id}</div>
+          <div class="card-id">${w.widget_id}${newIdSet.has(w.widget_id) ? ' <span class="badge-new">NEW</span>' : ''}</div>
           <div class="card-badges">
             <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
             <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
@@ -847,12 +1892,39 @@
   }
 
   function refreshModalPreview() {
-    if (!currentModalWidgetId) return;
-    const previewEl = document.getElementById('modalPreview');
-    const iframe = previewEl.querySelector('iframe');
-    if (iframe) {
-      iframe.src = iframeUrl(currentModalWidgetId);
-      iframe.onload = () => fitIframe(iframe, previewEl);
+    // Single widget modal
+    if (currentModalWidgetId) {
+      const previewEl = document.getElementById('modalPreview');
+      const iframe = previewEl.querySelector('iframe');
+      if (iframe) {
+        iframe.src = iframeUrl(currentModalWidgetId);
+        iframe.onload = () => fitIframe(iframe, previewEl);
+      }
+    }
+    // Dup compare modal
+    if (currentDupPair) {
+      const pairs = [
+        ['dupPreviewLeft', currentDupPair.existingWidget.widget_id],
+        ['dupPreviewRight', currentDupPair.newWidget.widget_id],
+      ];
+      for (const [containerId, widgetId] of pairs) {
+        const container = document.getElementById(containerId);
+        if (!container) continue;
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+          iframe.src = iframeUrl(widgetId);
+          iframe.onload = () => {
+            try {
+              const contentH = iframe.contentDocument.documentElement.scrollHeight;
+              iframe.style.height = contentH + 'px';
+              const containerW = container.clientWidth;
+              const scale = Math.min(containerW / 860, 1);
+              iframe.style.transform = 'scale(' + scale + ')';
+              container.style.height = Math.ceil(contentH * scale) + 'px';
+            } catch (_) {}
+          };
+        }
+      }
     }
   }
 
@@ -982,8 +2054,12 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (document.getElementById('confirmOverlay').classList.contains('open')) {
+      if (document.getElementById('reassignOverlay').classList.contains('open')) {
+        closeReassignModal();
+      } else if (document.getElementById('confirmOverlay').classList.contains('open')) {
         hideDeleteConfirm();
+      } else if (document.getElementById('dupModalOverlay').classList.contains('open')) {
+        closeDupModal();
       } else {
         closeModal();
       }

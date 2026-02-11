@@ -1,0 +1,57 @@
+<!--WIDGET_META
+{
+  "widget_id": "cta--ref-cassunut",
+  "taxonomy_id": "CTA",
+  "category": "conversion",
+  "style_tags": ["내추럴", "따뜻한", "라이트톤"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "copywriting_guide": "Hook 카피를 상기시키며 따뜻한 톤으로 마무리, 구매 버튼으로 전환 유도",
+  "sample_data": {
+    "texts": {
+      "[최종 액션 유도 카피]": "오늘, 건강한 고소함을 선물하세요",
+      "[메인 카피 반복]": "자연이 키운 고소함, ORIGINUT",
+      "[가격 정보]": "시그니처 세트 특별가",
+      "[가격]": "₩39,800",
+      "[무료배송 · 교환/환불 보장]": "무료배송 · 100% 만족 보장 · 신선도 보증"
+    },
+    "images": [
+      {
+        "label": "제품 감성 이미지",
+        "src": "https://images.unsplash.com/photo-1509721434272-b79147e0e708?w=760&fit=crop&q=80",
+        "alt": "프리미엄 캐슈넛"
+      }
+    ]
+  }
+}
+-->
+<section id="cta" class="flex flex-col items-center gap-6 section-padding" style="background: #FBF5E8;">
+  <div class="content-narrow flex flex-col items-center gap-8 text-center">
+    <h2 class="text-[36px] font-bold leading-tight tracking-tight" style="color: #2D2D2D;">
+      [최종 액션 유도 카피]
+    </h2>
+    <p class="text-[22px] font-medium" style="color: #C19A4C;">[메인 카피 반복]</p>
+    <div class="img-placeholder w-[760px] h-[350px] rounded-xl" style="background: #E8E8E8;"
+         data-ai-prompt="[product] premium quality, golden warm lighting, appetizing, cinematic food photography"
+         data-ai-style="product_lifestyle"
+         data-ai-ratio="16:9">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">제품 감성 이미지</span>
+    </div>
+    <div class="p-6 rounded-2xl flex flex-col items-center gap-2" style="background: #FFFFFF; border: 1px solid #E8E8E8;">
+      <p class="text-[16px]" style="color: #888888;">[가격 정보]</p>
+      <p class="text-[32px] font-bold" style="color: #2D2D2D;">[가격]</p>
+    </div>
+    <button class="px-12 py-5 rounded-full text-[18px] font-bold text-white shadow-lg" style="background: linear-gradient(135deg, #C19A4C, #E8C547);">
+      지금 구매하기
+    </button>
+    <p class="text-[14px]" style="color: #AAAAAA;">[무료배송 · 교환/환불 보장]</p>
+  </div>
+</section>

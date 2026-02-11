@@ -29,7 +29,9 @@
   "source_ref": "WIDGET_META의 provenance.source_ref",
   "style_tags": "WIDGET_META의 style_tags",
   "composition": "WIDGET_META의 composition",
-  "theme": "WIDGET_META의 theme"
+  "theme": "WIDGET_META의 theme",
+  "status": "new",
+  "added_date": "ISO 8601 형식 현재 시각"
 }
 ```
 
@@ -62,8 +64,38 @@ FeatureDetail 위젯 추가 필드:
 
 ### 3. 중복 처리
 
+#### 3-1. 동일 ID 중복
 - 동일 `widget_id`가 이미 존재하면 **덮어쓰기** (최신 분석 결과 우선)
 - 덮어쓸 때 유저에게 알림
+
+#### 3-2. 유사도 기반 중복 감지
+
+같은 `taxonomy_id` 그룹 내 기존 위젯(status가 없거나 "reviewed"인 위젯)과 비교하여 중복 후보를 표시합니다.
+
+**유사도 공식:**
+```
+유사도 = (style_tags Jaccard × 0.5) + (composition 일치 × 0.3) + (theme 일치 × 0.2)
+```
+
+- **Jaccard** = 교집합 / 합집합 (style_tags 기준)
+- **일치** = 같으면 1.0, 다르면 0.0
+- **임계값**: 0.7 이상이면 중복 후보로 표시
+
+여러 기존 위젯이 임계값을 초과하면 **최고 점수** 위젯을 `duplicate_of`에 기록합니다.
+
+**중복 후보 표시 필드:**
+```json
+{
+  "widget_id": "hook--ref-newref",
+  "status": "new",
+  "added_date": "2026-02-12T14:30:00.000Z",
+  "duplicate_of": "hook--ref-reference4",
+  "similarity_score": 0.85
+}
+```
+
+- `duplicate_of`: 유사한 기존 위젯의 widget_id
+- `similarity_score`: 0.0~1.0 (임계값 0.7 이상일 때만 기록)
 
 ### 4. 프리셋 등록
 
@@ -74,6 +106,7 @@ FeatureDetail 위젯 추가 필드:
 - 유저에게 등록 요약 표시:
   - 신규 위젯 수
   - 덮어쓴 위젯 수
+  - 중복 후보 수
   - taxonomy_id별 현재 위젯 수
   - 총 위젯 수
 
@@ -83,3 +116,6 @@ FeatureDetail 위젯 추가 필드:
 - [ ] 모든 `file` 경로의 파일이 실제 존재하는가?
 - [ ] 중복 `widget_id`가 같은 taxonomy_id 그룹 내에 없는가?
 - [ ] 각 `file` 경로가 `.widget.html` 확장자인가?
+- [ ] 새 위젯에 `status: "new"` 필드가 있는가?
+- [ ] 새 위젯에 `added_date` (ISO 8601) 필드가 있는가?
+- [ ] 유사도 0.7 이상인 위젯에 `duplicate_of`, `similarity_score` 필드가 있는가?

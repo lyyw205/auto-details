@@ -11,18 +11,14 @@
 [Step 1] /analyze-ref
   → output/analysis-{name}.json
        ↓
-[Step 2] /extract-widgets (프리뷰 생성)
-  → widgets/_presets/preset--ref-{name}.json  (1개)
-  → output/widgets-preview--ref-{name}.html  (통합 프리뷰)
-       ↓
-[Step 2.5] 유저 검수
-  → 브라우저에서 통합 프리뷰 확인
-  → 유저 확인/수정
-       ↓
-[Step 3] 분리 저장 + /register-widgets
-  → widgets/{taxonomy_id}/{widget_id}.widget.html  (N개)
-  → widgets/_registry.json 업데이트
+[Step 2] /extract-widgets + /register-widgets (자동 실행)
+  → widgets/_presets/preset--ref-{name}.json  (프리셋 1개)
+  → output/widgets-preview--ref-{name}.html  (통합 프리뷰, 참고용)
+  → widgets/{taxonomy_id}/{widget_id}.widget.html  (위젯 N개)
+  → widgets/_registry.json 업데이트 (status: "new")
 ```
+
+> **사후 검수**: 추출 완료 후 갤러리(`http://localhost:3333`)의 "새로 추가" 탭에서 위젯을 검수합니다.
 
 ## 실행 조건
 - 입력: 레퍼런스 이미지 (1장 이상) + 레퍼런스 이름
@@ -48,26 +44,25 @@
 - 분석 결과 요약 표시 (섹션 수, 매핑률, 미분류 섹션)
 - 미분류 섹션이 있으면 리포트 (`skills/unmapped-sections/`) 표시
 
-## Step 2: /extract-widgets (프리뷰 생성)
+## Step 2: /extract-widgets + /register-widgets
 
-**스킬 파일**: `skills/extract-widgets.skill.md`
+**스킬 파일**: `skills/extract-widgets.skill.md`, `skills/register-widgets.skill.md`
 
-분석 결과를 HTML 위젯으로 변환하되, **개별 파일이 아닌 통합 프리뷰 HTML**로 먼저 생성합니다.
+분석 결과를 HTML 위젯으로 변환하고, 개별 파일로 저장한 뒤 레지스트리에 등록합니다.
 `templates/html-section-patterns.md`의 패턴을 참조하여 실제 HTML/CSS를 생성합니다.
 
 ### Input
 - `output/analysis-{name}.json`
 
-### Output (이 단계에서는 프리뷰만)
-- 스타일 프리셋: `widgets/_presets/preset--ref-{name}.json`
-- 통합 프리뷰: `output/widgets-preview--ref-{name}.html`
-  - 모든 위젯을 하나의 HTML에 순서대로 조합
-  - 각 위젯 상단에 라벨 (번호, Taxonomy, widget_id, composition, theme)
-  - 브라우저에서 바로 확인 가능
+### Output (모두 한 번에 생성)
+1. **스타일 프리셋**: `widgets/_presets/preset--ref-{name}.json`
+2. **통합 프리뷰** (참고용): `output/widgets-preview--ref-{name}.html`
+3. **개별 위젯 파일**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
+4. **레지스트리 업데이트**: `widgets/_registry.json` — 각 위젯이 `status: "new"`로 등록
 
 ### 유저에게 표시
 ```
-=== ref-{name} 위젯 프리뷰 생성 완료 ===
+=== ref-{name} 위젯 추출 + 등록 완료 ===
 
 프리셋: preset--ref-{name} ({style_tags})
 
@@ -77,35 +72,21 @@
 | 2 | WhatIsThis | whatisthis--ref-{name} | stack | light |
 | ... | ... | ... | ... | ... |
 
-총 {N}개 위젯
+총 {N}개 위젯 등록 (status: new)
 
 프리뷰 확인: output/widgets-preview--ref-{name}.html (브라우저에서 열기)
 ```
 
-## Step 2.5: 유저 검수
+## 사후 검수 (갤러리)
 
-**통합 프리뷰 HTML을 브라우저에서 열어** 한 화면에서 모든 위젯을 확인합니다:
-- 잘못된 taxonomy 매핑 수정
-- 불필요한 위젯 제거
-- 레이아웃/스타일 수정 요청
-- 커스텀 섹션 확인
+추출 완료 후 갤러리 웹(`http://localhost:3333`)에서 사후 검수합니다:
 
-## Step 3: 분리 저장 + /register-widgets
+1. **"새로 추가" 탭** 클릭 → 새로 등록된 위젯 목록 확인
+2. **일반 위젯**: "보관" 또는 "삭제" 선택
+3. **중복 후보**: 기존 위젯과 나란히 비교 → "이 위젯 유지" 클릭
+4. **전체 보관**: 중복이 없는 위젯을 일괄 보관
 
-**유저 승인 후** 실행합니다.
-
-### 3-1. 분리 저장
-프리뷰에서 각 위젯의 `<!--WIDGET_META-->` + `<section>` 부분을 추출하여 개별 파일로 저장:
-- `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
-
-### 3-2. 레지스트리 등록
-**스킬 파일**: `skills/register-widgets.skill.md`
-
-저장된 위젯들을 레지스트리에 등록합니다.
-
-### Output
-- `widgets/_registry.json` 업데이트
-- 등록 요약 (신규/갱신 수, 현재 총 위젯 수)
+검수 완료된 위젯은 `status: "reviewed"`로 변경되어 라이브러리에 포함됩니다.
 
 ## 완료 메시지
 ```
@@ -116,5 +97,6 @@
 프리셋: preset--ref-{name}
 현재 총 위젯: {total}개
 
-이제 /product-to-html로 이 위젯들을 사용할 수 있습니다.
+갤러리에서 검수하세요: http://localhost:3333 → "새로 추가" 탭
+이후 /product-to-html로 이 위젯들을 사용할 수 있습니다.
 ```
