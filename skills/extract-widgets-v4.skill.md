@@ -2,16 +2,17 @@
 
 ## Purpose
 `/analyze-ref-v3` 출력(v3 analysis JSON)을 **와이어프레임 스타일 HTML 위젯 파일**과 **스타일 프리셋**으로 분해합니다.
-**핵심: auto-layout(flexbox/grid)으로 구조적 와이어프레임**을 생성하여 Figma Make 워크플로우에 최적화합니다.
+**핵심: 좌표 기반 와이어프레임** — 분석 JSON의 bounds 좌표에 요소를 직접 배치 (position: absolute). 레이아웃 추론 불필요.
 
-## 핵심 원칙: 구조적 와이어프레임
+## 핵심 원칙: 좌표 기반 와이어프레임
 
-위젯은 레퍼런스 섹션의 **레이아웃 구조 추상화**입니다.
-- **auto-layout** (flexbox/grid) 사용, absolute positioning **금지**
+위젯은 레퍼런스 섹션의 **좌표 충실 재현**입니다.
+- **bounds 기반 절대배치** — 분석 JSON의 bounds 좌표를 `position: absolute`로 직접 매핑
 - **모든 요소에 한글 레이블** ("텍스트 박스 2줄", "이미지 영역")
 - **무채색** — 회색/흰색만 (#E8E8E8, #F5F5F5, #FFFFFF, #E0E0E0, #D0D0D0, #CCCCCC)
 - **860px 캔버스** 유지, Tailwind CDN 미사용 (자체 `.wf-*` CSS 클래스)
 - 레퍼런스에 없는 요소를 추가하지 않습니다
+- **레이아웃 추론 불필요** — grid, split, alternating 등의 분류 없이 좌표로 모든 레이아웃 표현
 
 ## Context
 - 입력: `output/analysis-v3-{name}.json` (analyze-ref-v3 출력, version: "3.0", mode: "trace")
@@ -79,26 +80,9 @@
 }
 ```
 
-### 2. 레이아웃 추론 로직 (v3 그룹 → 와이어프레임 매핑)
+### 2. 좌표 기반 요소 렌더링
 
-v3 분석의 그룹 role과 요소 타입을 와이어프레임 레이아웃으로 변환합니다.
-
-#### 그룹 Role → 와이어프레임 레이아웃
-
-| v3 Group Role / layout.type | 와이어프레임 레이아웃 | CSS 클래스 |
-|---------------|---------------------|------------|
-| `header-text-group` | 수직 스택, 중앙 정렬 | `.wf-content` |
-| `alternating-list` / `alternating` | 수직 나열, 각 아이템 `.wf-split--lr`/`--rl` 교대 | `.wf-alternating` 컨테이너 |
-| `vertical-list` / `stack` | 수직 나열, 중앙 정렬 | `.wf-stack` |
-| `horizontal-list` / `row` | 수평 나열 | `.wf-row` |
-| `grid-row` / `grid` (columns=2, rows=2) | 2x2 그리드 | `.wf-grid-2x2` |
-| `grid-row` × 2 (같은 자식 수) | NxM 그리드 | `.wf-grid-2x2` |
-| `grid-row` (2 children) | 2열 그리드 | `.wf-grid-2` |
-| `grid-row` (3 children) | 3열 그리드 | `.wf-grid-3` |
-| `split-left` + `split-right` | 2분할 | `.wf-split` |
-| `feature-card` | 카드 컨테이너 | `.wf-card` |
-| `icon-text-pair` | 가로 행 | `.wf-row` |
-| `overlay-content` | 수직 스택 + 설명 | `.wf-content` |
+v3 분석의 bounds 좌표를 `position: absolute` 스타일로 직접 변환합니다. 레이아웃 추론이나 CSS 클래스 매핑 없이, JSON 좌표가 곧 HTML 스타일입니다.
 
 #### 요소 타입 → 와이어프레임 렌더링
 
@@ -123,6 +107,13 @@ lineCount = Math.ceil(bounds.h / (fontSize × 1.4))
 clamp(lineCount, 1, 4)
 ```
 
+#### 렌더링 순서 (z-order)
+
+```
+1. section.z_order가 있으면 → 해당 순서로 렌더 (뒤→앞)
+2. 없으면 → decorations 먼저, 그 다음 elements (y좌표 순)
+```
+
 ### 3. 섹션별 와이어프레임 HTML 생성
 
 #### 3-1. widget_id 네이밍 규칙
@@ -131,26 +122,35 @@ clamp(lineCount, 1, 4)
 {taxonomy_id_lower}--ref-{name}--v4
 ```
 
-- FeatureDetail은 변형 구분 추가: `--v4-split-lr`, `--v4-split-rl`, `--v4-stack-light`, `--v4-stack-dark`
+- FeatureDetail은 변형 구분 추가: `--v4-stack-light`, `--v4-stack-dark` 등
 - 커스텀 섹션: `{section_name_lower}--ref-{name}--v4`
 
 #### 3-2. 섹션 컨테이너
 
 ```html
-<section class="wf-section">
+<section class="wf-section" style="height: {section.bounds.height}px;">
   <span class="wf-section-label">{Taxonomy} #{order}</span>
-  <!-- 와이어프레임 콘텐츠 -->
+
+  <!-- 모든 요소는 bounds 좌표로 절대 배치 -->
+  <div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; ...">
+    ...
+  </div>
 </section>
 ```
+
+**핵심**: 섹션의 `height`는 분석 JSON의 `bounds.height` 값을 inline style로 설정합니다.
 
 #### 3-3. 요소별 HTML 패턴
 
 ##### TEXT_BOX
 
 ```html
-<div class="wf-text wf-text--{size}">
-  [placeholder 텍스트]
-  <div class="wf-text--label">텍스트 박스 {N}줄{크기 설명}</div>
+<div style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px;
+            display: flex; align-items: center; justify-content: center;">
+  <div class="wf-text wf-text--{size}" style="width: 100%; height: 100%;">
+    [placeholder 텍스트]
+    <div class="wf-text--label">텍스트 박스 {N}줄{크기 설명}</div>
+  </div>
 </div>
 ```
 
@@ -162,7 +162,8 @@ clamp(lineCount, 1, 4)
 ##### IMAGE
 
 ```html
-<div class="wf-image img-placeholder" style="height:{h}px;"
+<div class="wf-image img-placeholder"
+     style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px;"
      data-ai-prompt="{ai_prompt.prompt}"
      data-ai-style="{ai_prompt.style}"
      data-ai-ratio="{ai_prompt.aspect_ratio}">
@@ -174,210 +175,130 @@ clamp(lineCount, 1, 4)
 </div>
 ```
 
-- `height`: 비율 기반 계산. 예: 16:9 → `width * 9/16`, 4:3 → `width * 3/4`
-- 정확한 높이를 알 수 없으면 v3 bounds 비율로 추정
 - `data-ai-*` 속성 유지 (generate-figma-make-prompt-v2에서 사용)
 - **듀얼 클래스** `wf-image img-placeholder` — 기존 `applyDemoMode()` regex 호환
 
 ##### BUTTON
 
 ```html
-<button class="wf-button">[버튼 텍스트]</button>
+<button class="wf-button"
+        style="position: absolute; left: {x}px; top: {y}px;">
+  [버튼 텍스트]
+</button>
 ```
 
-##### BADGE
+##### BADGE (decoration)
 
 ```html
-<span class="wf-badge">{content_hint}</span>
+<span class="wf-badge"
+      style="position: absolute; left: {x}px; top: {y}px;">
+  {content_hint}
+</span>
 ```
 
-##### CARD
+##### CARD (자식 포함)
 
 ```html
-<div class="wf-card">
-  <!-- 자식 요소들 재귀적으로 렌더 -->
+<div class="wf-card"
+     style="position: absolute; left: {x}px; top: {y}px; width: {w}px; height: {h}px;">
+  <!-- 자식은 CARD 좌상단 기준 상대 좌표 -->
+  <div class="wf-image img-placeholder"
+       style="position: absolute; left: {child_x - card_x}px; top: {child_y - card_y}px;
+              width: {child_w}px; height: {child_h}px;">
+    ...
+  </div>
+  <div style="position: absolute; left: {txt_x - card_x}px; top: {txt_y - card_y}px;
+              width: {txt_w}px; height: {txt_h}px;
+              display: flex; align-items: center; justify-content: center;">
+    <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+      ...
+    </div>
+  </div>
 </div>
 ```
+
+**CARD 자식 좌표 규칙**: CARD의 children 요소는 섹션 좌표(section-relative)로 기록되어 있으므로, HTML 변환 시 `child_coord - card_coord`로 카드 내부 상대 좌표를 계산합니다.
 
 ##### ICON (→ 작은 배지로 변환)
 
 ```html
-<span class="wf-badge" style="font-size:11px; padding:4px 8px;">{의미 텍스트}</span>
+<span class="wf-badge"
+      style="position: absolute; left: {x}px; top: {y}px; font-size:11px; padding:4px 8px;">
+  {의미 텍스트}
+</span>
 ```
 
 ##### SHAPE, GRADIENT_OVERLAY, LINE, DOT, DOT_GROUP → 생략
 
 장식 요소는 와이어프레임에서 생략합니다. 구조적 의미가 있는 BADGE만 렌더링합니다.
 
-#### 3-4. 그룹 구조 → 레이아웃 조립
-
-섹션의 groups 배열을 분석하여 레이아웃을 조립합니다.
-
-**Step 1: 그룹 계층 파악**
-
-```
-섹션 루트
-├── header-text-group → .wf-content 안에 텍스트 블록 나열
-├── alternating-list (g2) → .wf-alternating 컨테이너
-│   ├── 아이템 1 (lr) → .wf-split.wf-split--lr
-│   ├── 아이템 2 (rl) → .wf-split.wf-split--rl
-│   └── ...
-└── grid-row (g3) + grid-row (g4) → .wf-grid-2x2 (그리드 합치기)
-```
-
-**Step 2: 레이아웃 그룹 처리 규칙**
-
-그룹의 `role`과 `layout` 필드에 따라 와이어프레임을 생성합니다:
-
-**alternating-list (지그재그)**:
-`layout.item_direction_pattern` 배열에 따라 각 아이템을 `.wf-split--lr` 또는 `.wf-split--rl`로 교대 배치합니다.
-```html
-<div class="wf-alternating">
-  <!-- lr: 이미지 왼쪽, 텍스트 오른쪽 -->
-  <div class="wf-split wf-split--lr">
-    <div class="wf-card">
-      <div class="wf-image img-placeholder">...</div>
-    </div>
-    <div class="wf-stack">
-      <span class="wf-badge">①</span>
-      <div class="wf-text wf-text--body">[설명]</div>
-    </div>
-  </div>
-  <!-- rl: 텍스트 왼쪽, 이미지 오른쪽 (DOM 순서 반전) -->
-  <div class="wf-split wf-split--rl">
-    <div class="wf-stack">
-      <span class="wf-badge">②</span>
-      <div class="wf-text wf-text--body">[설명]</div>
-    </div>
-    <div class="wf-card">
-      <div class="wf-image img-placeholder">...</div>
-    </div>
-  </div>
-</div>
-```
-
-**grid-row 합치기**:
-연속된 `grid-row` 그룹(같은 자식 수)은 하나의 그리드로 합칩니다:
-- 2개 row × 2 children = `.wf-grid-2x2`
-- 1개 row × 2 children = `.wf-grid-2`
-- 1개 row × 3 children = `.wf-grid-3`
-
-**Step 3: CARD 자식 렌더링**
-
-CARD 타입 요소의 `children` 배열에 있는 요소 ID를 찾아 재귀적으로 렌더합니다:
-```html
-<div class="wf-card">
-  <div class="wf-image img-placeholder" style="height:160px;">...</div>
-  <div class="wf-text wf-text--body">[설명]<div class="wf-text--label">텍스트 박스 1줄</div></div>
-</div>
-```
-
-**Step 4: 남은 요소 처리**
-
-그룹에 속하지 않은 요소(decorations 중 BADGE 타입)는 적절한 위치에 배치:
-- 섹션 최상단 배지 → `.wf-section` 내 첫 번째 자식 (align-self: flex-start)
-- 섹션 하단 배지 → `.wf-row`로 묶어 하단 배치
-- 카드 사이 배지 → 해당 카드 위에 오버레이 또는 인접 배치
-
-#### 3-5. 전체 조립 예시: FeatureDetail
+#### 3-4. 전체 조립 예시: FeatureDetail
 
 분석 데이터:
-- d1: BADGE "Point 03" (좌상단)
-- g1: header-text-group [e1: 서브헤딩, e2: 메인 헤딩]
-- g2: grid-row [e3: CARD, e4: CARD]
-- g3: grid-row [e5: CARD, e6: CARD]
-- d2~d5: BADGE (넘버 서클, 카드 중앙에 오버레이)
+- section bounds: `{ "y": 0, "height": 1000 }`
+- d1: BADGE "Point 03" bounds `{ x:15, y:15 }`
+- g1: header-text-group [e1: 서브헤딩 `{x:100, y:80, w:660, h:25}`, e2: 메인 헤딩 `{x:180, y:115, w:500, h:45}`]
+- g2: grid-row [e3: CARD `{x:20, y:190, w:400, h:340}`, e4: CARD `{x:440, y:190, w:400, h:340}`]
+- g3: grid-row [e5: CARD `{x:20, y:560, w:400, h:340}`, e6: CARD `{x:440, y:560, w:400, h:340}`]
+- d2~d5: BADGE (넘버 서클)
 
 생성되는 와이어프레임:
 
 ```html
-<section class="wf-section">
+<section class="wf-section" style="height: 1000px;">
   <span class="wf-section-label">FeatureDetail #3</span>
 
-  <!-- 배지 (좌상단 정렬) -->
-  <div style="align-self: flex-start;">
-    <span class="wf-badge">Point 03</span>
+  <!-- d1: Point 03 배지 -->
+  <span class="wf-badge"
+        style="position: absolute; left: 15px; top: 15px;">
+    Point 03
+  </span>
+
+  <!-- e1: 서브 헤딩 -->
+  <div style="position: absolute; left: 100px; top: 80px; width: 660px; height: 25px;
+              display: flex; align-items: center; justify-content: center;">
+    <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+      [포인트 서브 헤딩]
+      <div class="wf-text--label">텍스트 박스 1줄</div>
+    </div>
   </div>
 
-  <!-- 헤더 텍스트 그룹 -->
-  <div class="wf-content">
-    <div class="wf-text wf-text--small">
-      [포인트 서브 헤딩]
-      <div class="wf-text--label">텍스트 박스 1줄 (작은글)</div>
-    </div>
-    <div class="wf-text wf-text--heading">
+  <!-- e2: 메인 헤딩 -->
+  <div style="position: absolute; left: 180px; top: 115px; width: 500px; height: 45px;
+              display: flex; align-items: center; justify-content: center;">
+    <div class="wf-text wf-text--heading" style="width: 100%; height: 100%;">
       [포인트 메인 헤딩]
       <div class="wf-text--label">텍스트 박스 1줄 (제목)</div>
     </div>
   </div>
 
-  <!-- 2x2 카드 그리드 -->
-  <div class="wf-grid-2x2">
-    <div class="wf-card">
-      <div class="wf-image img-placeholder" style="height:160px;"
-           data-ai-prompt="Vietnamese cashew..."
-           data-ai-style="product_lifestyle"
-           data-ai-ratio="16:9">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span class="img-label">프로세스 1 이미지</span>
-      </div>
-      <div class="wf-text wf-text--body">
+  <!-- e3: 프로세스 카드 1 -->
+  <div class="wf-card"
+       style="position: absolute; left: 20px; top: 190px; width: 400px; height: 340px;">
+    <div class="wf-image img-placeholder"
+         style="position: absolute; left: 10px; top: 10px; width: 380px; height: 230px;"
+         data-ai-prompt="..." data-ai-style="product_lifestyle" data-ai-ratio="16:9">
+      <svg>...</svg>
+      <span class="img-label">프로세스 1 이미지</span>
+    </div>
+    <div style="position: absolute; left: 10px; top: 250px; width: 380px; height: 25px;
+                display: flex; align-items: center; justify-content: center;">
+      <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
         [프로세스 1 설명]
         <div class="wf-text--label">텍스트 박스 1줄</div>
       </div>
     </div>
-    <div class="wf-card">
-      <div class="wf-image img-placeholder" style="height:160px;"
-           data-ai-prompt="Roasted cashew nuts..."
-           data-ai-style="product_detail"
-           data-ai-ratio="16:9">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span class="img-label">프로세스 2 이미지</span>
-      </div>
-      <div class="wf-text wf-text--body">
-        [프로세스 2 설명]
-        <div class="wf-text--label">텍스트 박스 1줄</div>
-      </div>
-    </div>
-    <div class="wf-card">
-      <div class="wf-image img-placeholder" style="height:160px;"
-           data-ai-prompt="Clean food manufacturing..."
-           data-ai-style="infographic"
-           data-ai-ratio="16:9">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span class="img-label">프로세스 3 이미지</span>
-      </div>
-      <div class="wf-text wf-text--body">
-        [프로세스 3 설명]
-        <div class="wf-text--label">텍스트 박스 1줄</div>
-      </div>
-    </div>
-    <div class="wf-card">
-      <div class="wf-image img-placeholder" style="height:160px;"
-           data-ai-prompt="Sealed food package..."
-           data-ai-style="product_detail"
-           data-ai-ratio="16:9">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span class="img-label">프로세스 4 이미지</span>
-      </div>
-      <div class="wf-text wf-text--body">
-        [프로세스 4 설명]
-        <div class="wf-text--label">텍스트 박스 1줄</div>
-      </div>
-    </div>
   </div>
+
+  <!-- e4: 프로세스 카드 2 (같은 패턴, x: 440) -->
+  <!-- e5: 프로세스 카드 3 (y: 560) -->
+  <!-- e6: 프로세스 카드 4 (x: 440, y: 560) -->
+
+  <!-- d2~d5: 넘버 서클 배지 -->
+  <span class="wf-badge" style="position: absolute; left: 200px; top: 435px;">①</span>
+  <span class="wf-badge" style="position: absolute; left: 620px; top: 435px;">②</span>
+  <span class="wf-badge" style="position: absolute; left: 200px; top: 805px;">③</span>
+  <span class="wf-badge" style="position: absolute; left: 620px; top: 805px;">④</span>
 </section>
 ```
 
@@ -394,11 +315,10 @@ CARD 타입 요소의 `children` 배열에 있는 요소 ID를 찾아 재귀적�
   "composition": "wireframe",
   "analysis_version": "3.0",
   "wireframe_info": {
-    "layout_type": "stack | split | composed",
-    "sub_layouts": [
-      { "type": "header-text-group", "elements": ["badge", "text-small", "text-heading"] },
-      { "type": "grid-2x2", "card_template": ["image", "text-body"] }
-    ]
+    "rendering_mode": "bounds-based",
+    "section_height": 1000,
+    "element_count": 8,
+    "decoration_count": 5
   },
   "figma_make_hints": {
     "section_description": "포인트 넘버링 배지 + 2x2 카드 그리드 (이미지+캡션)",
@@ -441,10 +361,12 @@ CARD 타입 요소의 `children` 배열에 있는 요소 ID를 찾아 재귀적�
 | 필드 | 용도 |
 |------|------|
 | `composition` | 항상 `"wireframe"` (v4 전용 값) |
-| `wireframe_info` | 와이어프레임 레이아웃 구조 메타데이터 |
-| `wireframe_info.layout_type` | 전체 레이아웃: `stack` (수직 나열), `split` (좌우 분할), `composed` (복합) |
-| `wireframe_info.sub_layouts` | 내부 구조 배열 — 각 그룹의 타입과 포함 요소 |
-| `figma_make_hints` | Figma Make 프롬프트 생성용 힌트 |
+| `wireframe_info` | 와이어프레임 렌더링 메타데이터 |
+| `wireframe_info.rendering_mode` | 항상 `"bounds-based"` |
+| `wireframe_info.section_height` | 섹션 높이 (px) |
+| `wireframe_info.element_count` | 콘텐츠 요소 수 |
+| `wireframe_info.decoration_count` | 장식 요소 수 |
+| `figma_make_hints` | Figma Make 프롬프트 생성용 힌트 (텍스트 메타데이터) |
 | `figma_make_hints.section_description` | 섹션 한줄 설명 (한글) |
 | `figma_make_hints.layout_structure` | 레이아웃 구조 요약 (화살표 표기) |
 | `figma_make_hints.key_elements` | 핵심 요소 목록 (역할, 위치, 크기) |
@@ -515,7 +437,7 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
 <body>
   <div class="preview-header" style="width:860px; padding:24px; background:#222; color:white; text-align:center;">
     <h1 style="font-size:20px; margin:0 0 8px;">ref-{name} — v4 Wireframe Preview</h1>
-    <p style="font-size:13px; color:#888; margin:0;">{widget_count}개 위젯 · {style_tags} · <span style="color:#6C63FF; font-weight:700;">v4 wireframe mode</span></p>
+    <p style="font-size:13px; color:#888; margin:0;">{widget_count}개 위젯 · {style_tags} · <span style="color:#6C63FF; font-weight:700;">v4 wireframe mode (bounds-based)</span></p>
   </div>
 
   <div class="page-canvas">
@@ -525,7 +447,7 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
       <span class="badge badge-wireframe">v4 wireframe</span>
       <span class="badge badge-{theme}">{theme}</span>
     </div>
-    <section class="wf-section">...</section>
+    <section class="wf-section" style="height: {section_height}px;">...</section>
     <!-- ... -->
   </div>
 </body>
@@ -539,7 +461,7 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
 | taxonomy_id 있음 | `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` |
 | taxonomy_id 없음 (커스텀) | `widgets/_custom/{widget_id}.widget.html` |
 
-각 위젯 파일은 `<!--WIDGET_META ... -->` + `<section class="wf-section">...</section>` 부분만 포함합니다.
+각 위젯 파일은 `<!--WIDGET_META ... -->` + `<section class="wf-section" style="height: ...">...</section>` 부분만 포함합니다.
 
 ### 9. 레지스트리 등록
 
@@ -575,13 +497,13 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
 
 프리셋: preset--ref-{name} ({style_tags})
 
-| # | Taxonomy | Widget ID | Layout | Theme |
-|---|----------|-----------|--------|-------|
-| 1 | FeatureDetail | featuredetail--ref-{name}--v4-stack-light | stack (2x2 grid) | light |
-| 2 | Differentiator | differentiator--ref-{name}--v4 | stack | light |
+| # | Taxonomy | Widget ID | Theme | Height |
+|---|----------|-----------|-------|--------|
+| 1 | FeatureDetail | featuredetail--ref-{name}--v4-stack-light | light | 1000px |
+| 2 | Differentiator | differentiator--ref-{name}--v4 | light | 950px |
 | ... | ... | ... | ... | ... |
 
-총 {N}개 위젯 등록 (status: new, composition: wireframe)
+총 {N}개 위젯 등록 (status: new, composition: wireframe, rendering: bounds-based)
 
 프리뷰 확인: output/widgets-preview--ref-{name}--v4.html (브라우저에서 열기)
 갤러리 검수: http://localhost:3333 → "새로 추가" 탭
@@ -594,12 +516,13 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
 - [ ] WIDGET_META 내 JSON이 유효한가?
 - [ ] 메타데이터에 `widget_id`, `taxonomy_id`, `category`, `composition: "wireframe"`, `theme` 있는가?
 - [ ] 메타데이터에 `analysis_version: "3.0"` 있는가?
-- [ ] 메타데이터에 `wireframe_info` (layout_type, sub_layouts) 있는가?
+- [ ] 메타데이터에 `wireframe_info` (rendering_mode: "bounds-based", section_height, element_count, decoration_count) 있는가?
 - [ ] 메타데이터에 `figma_make_hints` (section_description, layout_structure, key_elements, ai_images) 있는가?
 - [ ] 메타데이터 JSON 뒤에 `-->` 닫힘 태그가 있는가?
-- [ ] `<section class="wf-section">`이 루트 요소인가?
-- [ ] absolute positioning이 **사용되지 않았는가** (position: absolute 금지)?
-- [ ] 모든 레이아웃이 `.wf-*` 클래스로만 구성되었는가?
+- [ ] `<section class="wf-section" style="height: ...px;">`이 루트 요소인가?
+- [ ] 모든 요소가 `position: absolute`로 배치되었는가?
+- [ ] 요소 좌표가 분석 JSON의 bounds와 일치하는가?
+- [ ] CARD 자식 요소의 좌표가 카드 기준 상대 좌표인가?
 - [ ] 모든 텍스트 블록에 `.wf-text--label` 라벨이 있는가?
 - [ ] 모든 이미지에 `wf-image img-placeholder` 듀얼 클래스가 있는가?
 - [ ] 이미지에 `data-ai-prompt`, `data-ai-style`, `data-ai-ratio` 속성이 있는가?
@@ -617,3 +540,4 @@ v3 분석의 `background.theme` 값을 직접 사용합니다.
 - [ ] SHAPE, GRADIENT_OVERLAY, LINE, DOT 등 장식 요소가 생략되었는가?
 - [ ] 무채색만 사용되었는가? (브랜드 컬러 없음)
 - [ ] 프리뷰 HTML에 `[v4 wireframe]` 배지가 표시되는가?
+- [ ] `.wf-grid-*`, `.wf-split`, `.wf-alternating` 등 제거된 CSS 클래스가 사용되지 않았는가?

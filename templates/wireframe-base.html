@@ -32,20 +32,14 @@
      .wf-* 와이어프레임 클래스
      ====================== */
 
-  /* --- 섹션 컨테이너 --- */
+  /* --- 섹션 컨테이너 (bounds 기반 절대배치) --- */
   .wf-section {
     width: 860px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 60px 50px;
-    background: #F5F5F5;
     position: relative;
+    background: #F5F5F5;
     border-bottom: 1px solid #E0E0E0;
-  }
-  .wf-section:nth-child(even) {
-    background: #FFFFFF;
+    overflow: hidden;
+    /* height는 inline style로 섹션별 설정 */
   }
 
   /* --- 섹션 라벨 (좌상단) --- */
@@ -61,16 +55,6 @@
     border-radius: 4px;
     letter-spacing: 0.02em;
     z-index: 10;
-  }
-
-  /* --- 콘텐츠 영역 (760px) --- */
-  .wf-content {
-    width: 760px;
-    max-width: 760px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
   }
 
   /* --- 텍스트 블록 --- */
@@ -174,90 +158,13 @@
     cursor: default;
   }
 
-  /* --- 카드 --- */
+  /* --- 카드 (bounds 기반 절대배치 컨테이너) --- */
   .wf-card {
     background: #FFFFFF;
     border: 1px solid #E0E0E0;
     border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px;
+    position: relative;
     overflow: hidden;
-  }
-
-  /* --- 그리드 레이아웃 --- */
-  .wf-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    width: 100%;
-  }
-  .wf-grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    width: 100%;
-  }
-  .wf-grid-2x2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 16px;
-    width: 100%;
-  }
-
-  /* --- 지그재그/교차 리스트 --- */
-  .wf-alternating {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-  }
-
-  /* --- 2분할 (Split) 레이아웃 --- */
-  .wf-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    width: 100%;
-    align-items: center;
-  }
-  .wf-split--lr {
-    /* 이미지 왼쪽, 텍스트 오른쪽 (기본) */
-  }
-  .wf-split--rl {
-    /* 텍스트 왼쪽, 이미지 오른쪽 (DOM 순서로 제어) */
-  }
-
-  /* --- 장식 요소 --- */
-  .wf-decoration {
-    border: 1px dashed #CCCCCC;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #BBBBBB;
-    font-size: 11px;
-    padding: 4px 8px;
-  }
-
-  /* --- 수평 배치 행 --- */
-  .wf-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  /* --- 수직 스택 --- */
-  .wf-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
   }
 
   /* --- img-placeholder 호환 (데모모드) --- */
@@ -282,6 +189,21 @@
     color: #999999;
     text-align: center;
     padding: 0 8px;
+  }
+
+  /* --- 레퍼런스 이미지 오버레이 (선택적) --- */
+  .wf-reference-bg {
+    position: absolute;
+    left: 0; top: 0;
+    width: 860px;
+    opacity: 0;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .wf-reference-bg.visible {
+    opacity: 0.15;
   }
 </style>
 </head>

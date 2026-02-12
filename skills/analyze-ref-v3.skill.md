@@ -334,9 +334,6 @@ BADGE:
 | `overlay-content` | 오버레이 텍스트 묶음 |
 | `checklist` | 체크 아이템 리스트 |
 | `review-card` | 리뷰 카드 내부 |
-| `alternating-list` | 아이템이 좌-우 교차 배치되는 리스트 |
-| `vertical-list` | 아이템이 순수 수직 나열 |
-| `horizontal-list` | 아이템이 순수 수평 나열 |
 
 그룹 형식:
 ```json
@@ -347,104 +344,6 @@ BADGE:
   "children": ["e1", "e2", "e3"]
 }
 ```
-
-#### 그룹 `layout` 필드 (선택적)
-
-그룹의 레이아웃 의도가 단순한 그루핑 이상일 때, `layout` 객체를 추가하여 배치 방식을 명시합니다.
-**특히 grid, alternating, split 등 복합 레이아웃은 반드시 `layout`을 포함해야 합니다.**
-
-```json
-{
-  "layout": {
-    "type": "grid | stack | row | alternating | split",
-    "direction": "horizontal | vertical",
-    "alignment": "start | center | end | stretch",
-    "gap": 20,
-
-    "columns": 2,
-    "rows": 2,
-
-    "item_direction_pattern": ["lr", "rl"],
-    "item_width_ratio": 0.95,
-
-    "ratio": "50:50 | 60:40 | 70:30"
-  }
-}
-```
-
-| `layout.type` | 설명 | 전용 필드 |
-|----------------|------|-----------|
-| `grid` | N×M 격자 배열 | `columns`, `rows` |
-| `stack` | 수직 나열 | `alignment` |
-| `row` | 수평 나열 | `alignment` |
-| `alternating` | 좌-우 교차 배치 | `item_direction_pattern`, `item_width_ratio` |
-| `split` | 좌우 분할 | `ratio` |
-
-**예시 — alternating (지그재그)**:
-```json
-{
-  "group_id": "g2",
-  "role": "alternating-list",
-  "bounds": { "x": 20, "y": 190, "w": 820, "h": 700 },
-  "children": ["e3", "e4", "e5", "e6"],
-  "layout": {
-    "type": "alternating",
-    "direction": "vertical",
-    "item_direction_pattern": ["lr", "rl", "lr", "rl"],
-    "gap": 30,
-    "item_width_ratio": 0.95
-  }
-}
-```
-
-**예시 — grid (2×2 격자)**:
-```json
-{
-  "group_id": "g2",
-  "role": "grid-row",
-  "bounds": { "x": 50, "y": 400, "w": 760, "h": 400 },
-  "children": ["e3", "e4", "e5", "e6"],
-  "layout": {
-    "type": "grid",
-    "columns": 2,
-    "rows": 2,
-    "gap": 16
-  }
-}
-```
-
-#### 레이아웃 판별 가이드
-
-**Grid vs Alternating vs Stack 구별 규칙:**
-
-```
-Grid (격자):
-- 같은 Y 좌표(±30px)에 2개+ 아이템 존재
-- 아이템들의 상단이 수평으로 정렬됨
-- 예: [A][B] / [C][D] → 4개가 2×2 배열
-
-Alternating (지그재그):
-- 각 아이템이 서로 다른 Y 좌표에 위치
-- X 좌표가 좌-우-좌-우 교대
-- 아이템이 겹치지 않고 수직으로 나열
-- 예: [A___] / [___B] / [C___] / [___D]
-
-Stack (수직 나열):
-- 모든 아이템이 비슷한 X 좌표 (중앙 정렬)
-- Y 좌표만 증가
-- 예: [A] / [B] / [C] / [D] (모두 중앙)
-```
-
-**판별 알고리즘** (분석 시 적용):
-```
-1. 그룹 내 아이템들의 bounds.y 값을 수집
-2. 같은 y (±30px 오차) 아이템이 2개+ → grid (columns = 한 행 아이템 수)
-3. y가 모두 다르고, x가 교대 → alternating-list
-4. y가 모두 다르고, x가 비슷 → vertical-list
-5. y가 비슷하고 x가 증가 → horizontal-list
-```
-
-> **v2와 차이**: v2의 `alignment`, `gap`, `direction` 개별 필드 대신, `layout` 객체로 통합하여 레이아웃 의도를 명시합니다. 단순 그루핑만 필요한 그룹(header-text-group 등)은 `layout` 없이 기존처럼 사용합니다.
 
 **반복 패턴 토큰 절약**:
 동일 구조가 반복되면 `pattern`으로 표현합니다.
@@ -666,12 +565,11 @@ Stack (수직 나열):
 **v2 대비 제거된 필드:**
 - `sections[].composition` — trace 모드에서는 모든 요소가 absolute positioning이므로 composition 분류 불필요
 - `sections[].v1_compat` — v1 호환 블록 불필요
-- `groups[].alignment`, `groups[].gap`, `groups[].direction` — `layout` 객체로 통합
+- `groups[].alignment`, `groups[].gap`, `groups[].direction`
 
 **v2 대비 추가된 필드:**
 - `mode: "trace"` — 최상위
 - `sections[].z_order` — 요소 겹침 시 렌더링 순서 (겹침 없으면 생략)
-- `groups[].layout` — 그룹 레이아웃 의도 (type, direction, alignment, gap 등, 복합 레이아웃 시 필수)
 
 ---
 
@@ -721,7 +619,6 @@ Stack (수직 나열):
 - [ ] **v3 신규**: `version: "3.0"`, `mode: "trace"` 최상위 필드가 있는가?
 - [ ] **v3 신규**: `composition` 블록이 **없는가**? (제거 확인)
 - [ ] **v3 신규**: `v1_compat` 블록이 **없는가**? (제거 확인)
-- [ ] **v3 신규**: groups에 구 `alignment`, `gap`, `direction` 개별 필드가 **없는가**? (layout 객체로 통합)
-- [ ] **v3 신규**: 복합 레이아웃(grid, alternating, split) 그룹에 `layout` 객체가 있는가?
+- [ ] **v3 신규**: groups에 구 `alignment`, `gap`, `direction` 개별 필드가 **없는가**?
 - [ ] **v3 신규**: 요소 겹침 시 `z_order` 배열이 있는가?
 - [ ] **v3 신규**: 요소 겹침이 없는 섹션에서 `z_order`가 생략되었는가?

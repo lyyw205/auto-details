@@ -8,20 +8,18 @@
   "composition": "wireframe",
   "analysis_version": "3.0",
   "wireframe_info": {
-    "layout_type": "stack",
-    "sub_layouts": [
-      { "type": "header-text-group", "elements": ["badge", "text-small", "text-heading"] },
-      { "type": "alternating", "item_count": 4, "item_direction_pattern": ["lr", "rl", "lr", "rl"], "card_template": ["image", "badge", "text-body"] }
-    ]
+    "rendering_mode": "bounds-based",
+    "section_height": 1000,
+    "element_count": 8,
+    "decoration_count": 5
   },
   "figma_make_hints": {
-    "section_description": "포인트 넘버링 배지 + 서브/메인 헤딩 + 좌-우 교차(지그재그) 프로세스 카드 4개",
-    "layout_structure": "badge(top-left) → sub-heading(center) → main-heading(center) → alternating split cards (lr→rl→lr→rl)",
+    "section_description": "포인트 넘버링 배지 + 2x2 카드 그리드 (이미지+캡션)",
+    "layout_structure": "badge(top-left) → heading(center) → 2x2 card grid",
     "key_elements": [
       { "role": "badge", "label": "Point 03", "position": "top-left" },
-      { "role": "sub-heading", "lines": 1, "alignment": "center" },
-      { "role": "heading", "lines": 1, "alignment": "center" },
-      { "role": "alternating-cards", "count": 4, "pattern": "lr-rl-lr-rl", "card_content": "image(16:9) + number badge + caption(1 line)" }
+      { "role": "heading", "lines": 2, "alignment": "center" },
+      { "role": "card-grid", "columns": 2, "rows": 2, "card_content": "image + caption" }
     ],
     "ai_images": [
       { "role": "프로세스 1 이미지", "prompt": "Vietnamese cashew nut farm, workers sorting raw cashew nuts in open field, natural sunlight, agricultural harvest", "style": "product_lifestyle", "ratio": "16:9" },
@@ -35,7 +33,7 @@
     "extracted_date": "2026-02-12",
     "analysis_version": "3.0"
   },
-  "copywriting_guide": "포인트 넘버링으로 품질 관리 프로세스의 신뢰감 전달. 각 단계를 이미지+캡션 카드로 좌-우 교차 배치하여 시각적 리듬감 부여.",
+  "copywriting_guide": "포인트 넘버링으로 품질 관리 프로세스의 신뢰감 전달. 2x2 카드 그리드로 4단계 프로세스를 시각적으로 정돈하여 배치.",
   "sample_data": {
     "texts": {
       "[포인트 서브 헤딩]": "꼼꼼한 생산관리로 완성한",
@@ -54,115 +52,128 @@
   }
 }
 -->
-<section class="wf-section">
+<section class="wf-section" style="height: 1000px;">
   <span class="wf-section-label">FeatureDetail #3</span>
 
-  <div style="align-self: flex-start;">
-    <span class="wf-badge">Point 03</span>
+  <!-- d1: Point 03 배지 -->
+  <span class="wf-badge"
+        style="position: absolute; left: 15px; top: 15px;">
+    Point 03
+  </span>
+
+  <!-- e1: 서브 헤딩 -->
+  <div style="position: absolute; left: 100px; top: 80px; width: 660px; height: 25px;
+              display: flex; align-items: center; justify-content: center;">
+    <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+      [포인트 서브 헤딩]
+      <div class="wf-text--label">텍스트 박스 1줄</div>
+    </div>
   </div>
 
-  <div class="wf-content">
-    <div class="wf-text wf-text--small">
-      [포인트 서브 헤딩]
-      <div class="wf-text--label">텍스트 박스 1줄 (작은글)</div>
-    </div>
-    <div class="wf-text wf-text--heading">
+  <!-- e2: 메인 헤딩 -->
+  <div style="position: absolute; left: 180px; top: 115px; width: 500px; height: 45px;
+              display: flex; align-items: center; justify-content: center;">
+    <div class="wf-text wf-text--heading" style="width: 100%; height: 100%;">
       [포인트 메인 헤딩]
       <div class="wf-text--label">텍스트 박스 1줄 (제목)</div>
     </div>
   </div>
 
-  <div class="wf-alternating">
-    <!-- 아이템 1: lr (이미지 좌, 텍스트 우) -->
-    <div class="wf-split wf-split--lr">
-      <div class="wf-card">
-        <div class="wf-image img-placeholder" style="height:160px;"
-             data-ai-prompt="Vietnamese cashew nut farm, workers sorting raw cashew nuts in open field, natural sunlight, agricultural harvest"
-             data-ai-style="product_lifestyle"
-             data-ai-ratio="16:9">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-          <span class="img-label">프로세스 1 이미지</span>
-        </div>
-      </div>
-      <div class="wf-stack">
-        <span class="wf-badge">①</span>
-        <div class="wf-text wf-text--body">
-          [프로세스 1 설명]
-          <div class="wf-text--label">텍스트 박스 1줄</div>
-        </div>
-      </div>
+  <!-- e3: 프로세스 카드 1 -->
+  <div class="wf-card"
+       style="position: absolute; left: 20px; top: 190px; width: 400px; height: 340px;">
+    <div class="wf-image img-placeholder"
+         style="position: absolute; left: 10px; top: 10px; width: 380px; height: 230px;"
+         data-ai-prompt="Vietnamese cashew nut farm, workers sorting raw cashew nuts in open field, natural sunlight, agricultural harvest"
+         data-ai-style="product_lifestyle"
+         data-ai-ratio="16:9">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">프로세스 1 이미지</span>
     </div>
-
-    <!-- 아이템 2: rl (텍스트 좌, 이미지 우) -->
-    <div class="wf-split wf-split--rl">
-      <div class="wf-stack">
-        <span class="wf-badge">②</span>
-        <div class="wf-text wf-text--body">
-          [프로세스 2 설명]
-          <div class="wf-text--label">텍스트 박스 1줄</div>
-        </div>
-      </div>
-      <div class="wf-card">
-        <div class="wf-image img-placeholder" style="height:160px;"
-             data-ai-prompt="Roasted cashew nuts on ceramic plate, warm golden tones, close-up food photography, appetizing texture"
-             data-ai-style="product_detail"
-             data-ai-ratio="16:9">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-          <span class="img-label">프로세스 2 이미지</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아이템 3: lr (이미지 좌, 텍스트 우) -->
-    <div class="wf-split wf-split--lr">
-      <div class="wf-card">
-        <div class="wf-image img-placeholder" style="height:160px;"
-             data-ai-prompt="Clean food manufacturing facility interior, HACCP certified factory, stainless steel equipment, hygienic processing"
-             data-ai-style="infographic"
-             data-ai-ratio="16:9">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-          <span class="img-label">프로세스 3 이미지</span>
-        </div>
-      </div>
-      <div class="wf-stack">
-        <span class="wf-badge">③</span>
-        <div class="wf-text wf-text--body">
-          [프로세스 3 설명]
-          <div class="wf-text--label">텍스트 박스 1줄</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 아이템 4: rl (텍스트 좌, 이미지 우) -->
-    <div class="wf-split wf-split--rl">
-      <div class="wf-stack">
-        <span class="wf-badge">④</span>
-        <div class="wf-text wf-text--body">
-          [프로세스 4 설명]
-          <div class="wf-text--label">텍스트 박스 1줄</div>
-        </div>
-      </div>
-      <div class="wf-card">
-        <div class="wf-image img-placeholder" style="height:160px;"
-             data-ai-prompt="Sealed food package, quality inspection of cashew nut bag, freshness testing, clean product photography"
-             data-ai-style="product_detail"
-             data-ai-ratio="16:9">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
-          <span class="img-label">프로세스 4 이미지</span>
-        </div>
+    <div style="position: absolute; left: 10px; top: 250px; width: 380px; height: 25px;
+                display: flex; align-items: center; justify-content: center;">
+      <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+        [프로세스 1 설명]
+        <div class="wf-text--label">텍스트 박스 1줄</div>
       </div>
     </div>
   </div>
+
+  <!-- e4: 프로세스 카드 2 -->
+  <div class="wf-card"
+       style="position: absolute; left: 440px; top: 190px; width: 400px; height: 340px;">
+    <div class="wf-image img-placeholder"
+         style="position: absolute; left: 10px; top: 10px; width: 380px; height: 230px;"
+         data-ai-prompt="Roasted cashew nuts on ceramic plate, warm golden tones, close-up food photography, appetizing texture"
+         data-ai-style="product_detail"
+         data-ai-ratio="16:9">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">프로세스 2 이미지</span>
+    </div>
+    <div style="position: absolute; left: 10px; top: 250px; width: 380px; height: 25px;
+                display: flex; align-items: center; justify-content: center;">
+      <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+        [프로세스 2 설명]
+        <div class="wf-text--label">텍스트 박스 1줄</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- e5: 프로세스 카드 3 -->
+  <div class="wf-card"
+       style="position: absolute; left: 20px; top: 560px; width: 400px; height: 340px;">
+    <div class="wf-image img-placeholder"
+         style="position: absolute; left: 10px; top: 10px; width: 380px; height: 230px;"
+         data-ai-prompt="Clean food manufacturing facility interior, HACCP certified factory, stainless steel equipment, hygienic processing"
+         data-ai-style="infographic"
+         data-ai-ratio="16:9">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">프로세스 3 이미지</span>
+    </div>
+    <div style="position: absolute; left: 10px; top: 250px; width: 380px; height: 25px;
+                display: flex; align-items: center; justify-content: center;">
+      <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+        [프로세스 3 설명]
+        <div class="wf-text--label">텍스트 박스 1줄</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- e6: 프로세스 카드 4 -->
+  <div class="wf-card"
+       style="position: absolute; left: 440px; top: 560px; width: 400px; height: 340px;">
+    <div class="wf-image img-placeholder"
+         style="position: absolute; left: 10px; top: 10px; width: 380px; height: 230px;"
+         data-ai-prompt="Sealed food package, quality inspection of cashew nut bag, freshness testing, clean product photography"
+         data-ai-style="product_detail"
+         data-ai-ratio="16:9">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">프로세스 4 이미지</span>
+    </div>
+    <div style="position: absolute; left: 10px; top: 250px; width: 380px; height: 25px;
+                display: flex; align-items: center; justify-content: center;">
+      <div class="wf-text wf-text--body" style="width: 100%; height: 100%;">
+        [프로세스 4 설명]
+        <div class="wf-text--label">텍스트 박스 1줄</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- d2~d5: 넘버 서클 배지 -->
+  <span class="wf-badge" style="position: absolute; left: 200px; top: 435px;">①</span>
+  <span class="wf-badge" style="position: absolute; left: 620px; top: 435px;">②</span>
+  <span class="wf-badge" style="position: absolute; left: 200px; top: 805px;">③</span>
+  <span class="wf-badge" style="position: absolute; left: 620px; top: 805px;">④</span>
 </section>
