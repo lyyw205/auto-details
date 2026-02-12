@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=860">
+<title>Widget Preview — ref-test-sample v4 wireframe</title>
+
+<!-- Pretendard 한국어 폰트 -->
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  /* === Reset === */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* === 860px 캔버스 === */
+  .page-canvas {
+    width: 860px;
+    max-width: 860px;
+    min-width: 860px;
+    overflow: hidden;
+  }
+
+  /* ======================
+     .wf-* 와이어프레임 클래스
+     ====================== */
+
+  .wf-section {
+    width: 860px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 60px 50px;
+    background: #F5F5F5;
+    position: relative;
+    border-bottom: 1px solid #E0E0E0;
+  }
+  .wf-section:nth-child(even) {
+    background: #FFFFFF;
+  }
+
+  .wf-section-label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #333333;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    z-index: 10;
+  }
+
+  .wf-content {
+    width: 760px;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .wf-text {
+    background: #E8E8E8;
+    border-radius: 6px;
+    padding: 12px 20px;
+    width: 100%;
+    position: relative;
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .wf-text--heading {
+    min-height: 56px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #444444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wf-text--body {
+    min-height: 44px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wf-text--small {
+    min-height: 32px;
+    font-size: 12px;
+    color: #888888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wf-text--label {
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    font-size: 10px;
+    color: #AAAAAA;
+    font-weight: 400;
+  }
+
+  .wf-image {
+    background: #E0E0E0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #999999;
+    font-size: 13px;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .wf-image svg { opacity: 0.4; }
+  .wf-image .img-label {
+    font-size: 11px;
+    color: #999999;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .wf-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #D0D0D0;
+    color: #555555;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+
+  .wf-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #CCCCCC;
+    color: #555555;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: default;
+  }
+
+  .wf-card {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  .wf-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+  .wf-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+  .wf-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* --- 지그재그/교차 리스트 --- */
+  .wf-alternating {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  .wf-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    align-items: center;
+  }
+  .wf-split--lr {
+    /* 이미지 왼쪽, 텍스트 오른쪽 (기본) */
+  }
+  .wf-split--rl {
+    /* 텍스트 왼쪽, 이미지 오른쪽 (DOM 순서로 제어) */
+  }
+
+  .wf-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .wf-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #E0E0E0;
+    color: #999999;
+    font-size: 13px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .img-placeholder svg { opacity: 0.4; }
+  .img-placeholder .img-label {
+    font-size: 11px;
+    color: #999999;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  /* === 프리뷰 전용 === */
+  .widget-label {
+    background: #333;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 860px;
+  }
+  .widget-label .badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-wireframe { background: #6C63FF; color: white; }
+  .badge-light { background: #ffd43b; color: #333; }
+  .badge-dark { background: #555; color: #ccc; }
+</style>
+</head>
+<body>
+  <div class="preview-header" style="width:860px; padding:24px; background:#222; color:white; text-align:center;">
+    <h1 style="font-size:20px; margin:0 0 8px;">ref-test-sample — v4 Wireframe Preview</h1>
+    <p style="font-size:13px; color:#888; margin:0;">2개 위젯 · 내추럴, 클린, 식품 · <span style="color:#6C63FF; font-weight:700;">v4 wireframe mode</span></p>
+  </div>
+
+  <div class="page-canvas">
+
+    <!-- Widget #1: FeatureDetail -->
+    <div class="widget-label">
+      #1 FeatureDetail — featuredetail--ref-test-sample--v4-stack-light
+      <span class="badge badge-wireframe">v4 wireframe</span>
+      <span class="badge badge-light">light</span>
+    </div>
+
+    <section class="wf-section">
+      <span class="wf-section-label">FeatureDetail #3</span>
+
+      <div style="align-self: flex-start;">
+        <span class="wf-badge">Point 03</span>
+      </div>
+
+      <div class="wf-content">
+        <div class="wf-text wf-text--small">
+          [포인트 서브 헤딩]
+          <div class="wf-text--label">텍스트 박스 1줄 (작은글)</div>
+        </div>
+        <div class="wf-text wf-text--heading">
+          [포인트 메인 헤딩]
+          <div class="wf-text--label">텍스트 박스 1줄 (제목)</div>
+        </div>
+      </div>
+
+      <div class="wf-alternating">
+        <!-- 아이템 1: lr (이미지 좌, 텍스트 우) -->
+        <div class="wf-split wf-split--lr">
+          <div class="wf-card">
+            <div class="wf-image img-placeholder" style="height:160px;"
+                 data-ai-prompt="Vietnamese cashew nut farm, workers sorting raw cashew nuts in open field, natural sunlight, agricultural harvest"
+                 data-ai-style="product_lifestyle"
+                 data-ai-ratio="16:9">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="img-label">프로세스 1 이미지</span>
+            </div>
+          </div>
+          <div class="wf-stack">
+            <span class="wf-badge">①</span>
+            <div class="wf-text wf-text--body">
+              [프로세스 1 설명]
+              <div class="wf-text--label">텍스트 박스 1줄</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 아이템 2: rl (텍스트 좌, 이미지 우) -->
+        <div class="wf-split wf-split--rl">
+          <div class="wf-stack">
+            <span class="wf-badge">②</span>
+            <div class="wf-text wf-text--body">
+              [프로세스 2 설명]
+              <div class="wf-text--label">텍스트 박스 1줄</div>
+            </div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-image img-placeholder" style="height:160px;"
+                 data-ai-prompt="Roasted cashew nuts on ceramic plate, warm golden tones, close-up food photography, appetizing texture"
+                 data-ai-style="product_detail"
+                 data-ai-ratio="16:9">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="img-label">프로세스 2 이미지</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 아이템 3: lr (이미지 좌, 텍스트 우) -->
+        <div class="wf-split wf-split--lr">
+          <div class="wf-card">
+            <div class="wf-image img-placeholder" style="height:160px;"
+                 data-ai-prompt="Clean food manufacturing facility interior, HACCP certified factory, stainless steel equipment, hygienic processing"
+                 data-ai-style="infographic"
+                 data-ai-ratio="16:9">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="img-label">프로세스 3 이미지</span>
+            </div>
+          </div>
+          <div class="wf-stack">
+            <span class="wf-badge">③</span>
+            <div class="wf-text wf-text--body">
+              [프로세스 3 설명]
+              <div class="wf-text--label">텍스트 박스 1줄</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 아이템 4: rl (텍스트 좌, 이미지 우) -->
+        <div class="wf-split wf-split--rl">
+          <div class="wf-stack">
+            <span class="wf-badge">④</span>
+            <div class="wf-text wf-text--body">
+              [프로세스 4 설명]
+              <div class="wf-text--label">텍스트 박스 1줄</div>
+            </div>
+          </div>
+          <div class="wf-card">
+            <div class="wf-image img-placeholder" style="height:160px;"
+                 data-ai-prompt="Sealed food package, quality inspection of cashew nut bag, freshness testing, clean product photography"
+                 data-ai-style="product_detail"
+                 data-ai-ratio="16:9">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span class="img-label">프로세스 4 이미지</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Widget #2: Differentiator -->
+    <div class="widget-label">
+      #2 Differentiator — differentiator--ref-test-sample--v4
+      <span class="badge badge-wireframe">v4 wireframe</span>
+      <span class="badge badge-light">light</span>
+    </div>
+
+    <section class="wf-section">
+      <span class="wf-section-label">Differentiator</span>
+
+      <div class="wf-content">
+        <div class="wf-text wf-text--heading">
+          [차별화 메인 헤딩]
+          <div class="wf-text--label">텍스트 박스 1줄 (제목)</div>
+        </div>
+        <div class="wf-text wf-text--body">
+          [차별화 설명]
+          <div class="wf-text--label">텍스트 박스 2줄</div>
+        </div>
+      </div>
+
+      <div class="wf-image img-placeholder" style="height:400px; width:100%;"
+           data-ai-prompt="Roasted cashew nut product package bag with loose cashew nuts scattered around, clean white background, premium food product photography"
+           data-ai-style="product_hero"
+           data-ai-ratio="4:3">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+        <span class="img-label">제품 패키지 이미지</span>
+      </div>
+
+      <div class="wf-row">
+        <span class="wf-badge">NO 향료</span>
+        <span class="wf-badge">NO 보존료</span>
+        <span class="wf-badge">NO 색소</span>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

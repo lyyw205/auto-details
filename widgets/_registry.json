@@ -1,13 +1,14 @@
 {
   "type": "WIDGET_REGISTRY",
   "version": "2.0",
-  "total_widgets": 20,
+  "total_widgets": 23,
   "presets": [
     "preset--ref-reference3",
     "preset--ref-reference4",
     "preset--ref-maru",
     "preset--ref-logitech-k120",
     "preset--ref-cassunut",
+    "preset--ref-test-sample",
     "preset--default"
   ],
   "widgets": {
@@ -39,6 +40,21 @@
         "added_date": "2026-02-12T00:00:00.000Z",
         "duplicate_of": "hook--ref-reference4",
         "similarity_score": 0.75
+      },
+      {
+        "widget_id": "hook--ref-cassunut--v2",
+        "file": "hook/hook--ref-cassunut--v2.widget.html",
+        "source_ref": "ref-cassunut",
+        "style_tags": [
+          "내추럴",
+          "따뜻한",
+          "라이트톤"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "reviewed",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "2.0"
       }
     ],
     "WhatIsThis": [
@@ -57,18 +73,6 @@
     ],
     "SetContents": [
       {
-        "widget_id": "setcontents--ref-reference4",
-        "file": "setcontents/setcontents--ref-reference4.widget.html",
-        "source_ref": "ref-reference4",
-        "style_tags": [
-          "내추럴",
-          "우드톤",
-          "따뜻한"
-        ],
-        "composition": "stack",
-        "theme": "light"
-      },
-      {
         "widget_id": "setcontents--ref-cassunut",
         "file": "setcontents/setcontents--ref-cassunut.widget.html",
         "source_ref": "ref-cassunut",
@@ -79,10 +83,8 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "duplicate_of": "setcontents--ref-reference4",
-        "similarity_score": 0.75
+        "status": "reviewed",
+        "added_date": "2026-02-12T00:00:00.000Z"
       }
     ],
     "FeaturesOverview": [
@@ -96,23 +98,8 @@
           "따뜻한"
         ],
         "composition": "stack",
-        "theme": "light"
-      },
-      {
-        "widget_id": "featuresoverview--ref-cassunut",
-        "file": "featuresoverview/featuresoverview--ref-cassunut.widget.html",
-        "source_ref": "ref-cassunut",
-        "style_tags": [
-          "내추럴",
-          "따뜻한",
-          "라이트톤"
-        ],
-        "composition": "stack",
         "theme": "light",
-        "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "duplicate_of": "featuresoverview--ref-reference4",
-        "similarity_score": 0.75
+        "status": "reviewed"
       }
     ],
     "FeatureDetail": [
@@ -165,8 +152,53 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
+        "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z"
+      },
+      {
+        "widget_id": "featuredetail--ref-cassunut--v2--stack-light",
+        "file": "featuredetail/featuredetail--ref-cassunut--v2--stack-light.widget.html",
+        "source_ref": "ref-cassunut",
+        "style_tags": [
+          "내추럴",
+          "따뜻한",
+          "라이트톤"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "reviewed",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "2.0"
+      },
+      {
+        "widget_id": "featuredetail--ref-test-sample--v3-stack-light",
+        "file": "featuredetail/featuredetail--ref-test-sample--v3-stack-light.widget.html",
+        "source_ref": "ref-test-sample",
+        "style_tags": [
+          "내추럴",
+          "클린",
+          "식품"
+        ],
+        "composition": "trace",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "3.0"
+      },
+      {
+        "widget_id": "featuredetail--ref-test-sample--v4-stack-light",
+        "file": "featuredetail/featuredetail--ref-test-sample--v4-stack-light.widget.html",
+        "source_ref": "ref-test-sample",
+        "style_tags": [
+          "내추럴",
+          "클린",
+          "식품"
+        ],
+        "composition": "wireframe",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "3.0"
       }
     ],
     "Target": [
@@ -207,26 +239,12 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
+        "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z"
-      }
-    ],
-    "CTA": [
-      {
-        "widget_id": "cta--ref-reference4",
-        "file": "cta/cta--ref-reference4.widget.html",
-        "source_ref": "ref-reference4",
-        "style_tags": [
-          "내추럴",
-          "우드톤",
-          "따뜻한"
-        ],
-        "composition": "stack",
-        "theme": "light"
       },
       {
-        "widget_id": "cta--ref-cassunut",
-        "file": "cta/cta--ref-cassunut.widget.html",
+        "widget_id": "productspec--ref-cassunut--v2",
+        "file": "productspec/productspec--ref-cassunut--v2.widget.html",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -235,10 +253,9 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
+        "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z",
-        "duplicate_of": "cta--ref-reference4",
-        "similarity_score": 0.75
+        "analysis_version": "2.0"
       }
     ],
     "Differentiator": [
@@ -253,8 +270,53 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
+        "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z"
+      },
+      {
+        "widget_id": "differentiator--ref-cassunut--v2",
+        "file": "differentiator/differentiator--ref-cassunut--v2.widget.html",
+        "source_ref": "ref-cassunut",
+        "style_tags": [
+          "내추럴",
+          "따뜻한",
+          "라이트톤"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "reviewed",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "2.0"
+      },
+      {
+        "widget_id": "differentiator--ref-test-sample--v3",
+        "file": "differentiator/differentiator--ref-test-sample--v3.widget.html",
+        "source_ref": "ref-test-sample",
+        "style_tags": [
+          "내추럴",
+          "클린",
+          "식품"
+        ],
+        "composition": "trace",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "3.0"
+      },
+      {
+        "widget_id": "differentiator--ref-test-sample--v4",
+        "file": "differentiator/differentiator--ref-test-sample--v4.widget.html",
+        "source_ref": "ref-test-sample",
+        "style_tags": [
+          "내추럴",
+          "클린",
+          "식품"
+        ],
+        "composition": "wireframe",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "3.0"
       }
     ],
     "WhyCore": [
@@ -269,14 +331,12 @@
         ],
         "composition": "stack",
         "theme": "light",
-        "status": "new",
+        "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z"
-      }
-    ],
-    "Solution": [
+      },
       {
-        "widget_id": "solution--ref-cassunut",
-        "file": "solution/solution--ref-cassunut.widget.html",
+        "widget_id": "whycore--ref-cassunut--v2",
+        "file": "whycore/whycore--ref-cassunut--v2.widget.html",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -286,23 +346,8 @@
         "composition": "stack",
         "theme": "light",
         "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z"
-      }
-    ],
-    "Safety": [
-      {
-        "widget_id": "safety--ref-cassunut",
-        "file": "safety/safety--ref-cassunut.widget.html",
-        "source_ref": "ref-cassunut",
-        "style_tags": [
-          "내추럴",
-          "따뜻한",
-          "라이트톤"
-        ],
-        "composition": "stack",
-        "theme": "light",
-        "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z"
+        "added_date": "2026-02-12T00:00:00.000Z",
+        "analysis_version": "2.0"
       }
     ]
   }

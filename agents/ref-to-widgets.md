@@ -100,3 +100,44 @@
 갤러리에서 검수하세요: http://localhost:3333 → "새로 추가" 탭
 이후 /product-to-html로 이 위젯들을 사용할 수 있습니다.
 ```
+
+---
+
+## v4 와이어프레임 모드
+
+v4 모드를 사용하면 Figma Make에 최적화된 **와이어프레임 HTML 위젯**을 생성합니다.
+
+### v4 파이프라인
+
+```
+레퍼런스 이미지
+       ↓
+[Step 1] /analyze-ref-v3 (변경 없음)
+  → output/analysis-v3-{name}.json
+       ↓
+[Step 2] /extract-widgets-v4 + /register-widgets (자동 실행)
+  → widgets/_presets/preset--ref-{name}.json  (프리셋 1개)
+  → output/widgets-preview--ref-{name}--v4.html  (와이어프레임 프리뷰)
+  → widgets/{taxonomy_id}/{widget_id}--v4.widget.html  (와이어프레임 위젯 N개)
+  → widgets/_registry.json 업데이트 (status: "new", composition: "wireframe")
+       ↓
+[Step 3] (선택) /generate-figma-make-prompt-v2
+  → output/{name}-figma-make-prompt.md  (Figma Make 프롬프트)
+```
+
+### v4 특징
+- **auto-layout** (flexbox/grid) 사용, absolute positioning 금지
+- **무채색** 와이어프레임 — 회색/흰색만 사용
+- **한글 라벨** — 모든 요소에 역할 라벨 표시
+- **Figma Make 힌트** — WIDGET_META에 `figma_make_hints` 블록 포함
+- **`.wf-*` CSS 클래스** — `templates/wireframe-base.html` 전용 CSS 시스템
+
+### 스킬 파일
+- 분석: `skills/analyze-ref-v3.skill.md`
+- 추출: `skills/extract-widgets-v4.skill.md`
+- 프롬프트: `skills/generate-figma-make-prompt-v2.skill.md`
+
+### 호환성
+- v2/v3 위젯과 동일 레퍼런스에서 공존 가능
+- 갤러리 서버가 `composition: "wireframe"` 감지 시 자동으로 wireframe-base.html 사용
+- 기존 데모 모드(`applyDemoMode`) 호환 (듀얼 클래스 `wf-image img-placeholder`)

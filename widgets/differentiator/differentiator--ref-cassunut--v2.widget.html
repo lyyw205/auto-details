@@ -1,0 +1,46 @@
+<!--WIDGET_META
+{
+  "widget_id": "differentiator--ref-cassunut--v2",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "style_tags": ["내추럴", "따뜻한", "라이트톤"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12",
+    "analysis_version": "2.0"
+  },
+  "copywriting_guide": "큰따옴표 장식으로 임팩트 있는 차별화 선언, 질문→강한 부정 답변 구조",
+  "sample_data": {
+    "texts": {
+      "[차별화 질문]": "모든 캐슈넛이 같다고요?",
+      "[강한 답변]": "아닙니다.",
+      "[차별화 부연]": "원료, 건조, 로스팅까지\n모든 과정이 맛을 결정합니다"
+    },
+    "images": []
+  }
+}
+-->
+<section id="differentiator" class="flex flex-col items-center py-[80px] px-[50px] relative overflow-hidden" style="background: #FBF0D0;">
+  <!-- v2: SHAPE 장식 — 큰따옴표 좌상단 -->
+  <div class="absolute" style="top: 60px; left: 130px; width: 60px; height: 60px; opacity: 0.4;">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="#E8C547">
+      <path d="M10 40V25C10 17 15 12 25 10V18C20 19 17 22 17 27H25V40H10ZM35 40V25C35 17 40 12 50 10V18C45 19 42 22 42 27H50V40H35Z"/>
+    </svg>
+  </div>
+  <!-- v2: SHAPE 장식 — 큰따옴표 우하단 -->
+  <div class="absolute" style="bottom: 60px; right: 130px; width: 60px; height: 60px; opacity: 0.4; transform: rotate(180deg);">
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="#E8C547">
+      <path d="M10 40V25C10 17 15 12 25 10V18C20 19 17 22 17 27H25V40H10ZM35 40V25C35 17 40 12 50 10V18C45 19 42 22 42 27H50V40H35Z"/>
+    </svg>
+  </div>
+  <div class="content-narrow flex flex-col items-center gap-[20px] text-center relative z-10">
+    <!-- 차별화 질문 -->
+    <h2 class="text-[32px] font-bold leading-tight" style="color: #2D2D2D;">[차별화 질문]</h2>
+    <!-- 강한 부정 답변 -->
+    <p class="text-[40px] font-bold" style="color: #C19A4C;">[강한 답변]</p>
+    <!-- 부연 설명 -->
+    <p class="text-[16px] leading-relaxed" style="color: #666666;">[차별화 부연]</p>
+  </div>
+</section>

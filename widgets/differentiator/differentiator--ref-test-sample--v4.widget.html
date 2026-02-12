@@ -1,0 +1,78 @@
+<!--WIDGET_META
+{
+  "widget_id": "differentiator--ref-test-sample--v4",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "style_tags": ["내추럴", "클린", "식품"],
+  "theme": "light",
+  "composition": "wireframe",
+  "analysis_version": "3.0",
+  "wireframe_info": {
+    "layout_type": "stack",
+    "sub_layouts": [
+      { "type": "header-text-group", "elements": ["text-heading", "text-body"] },
+      { "type": "hero-image", "elements": ["image"] },
+      { "type": "badge-row", "elements": ["badge", "badge", "badge"] }
+    ]
+  },
+  "figma_make_hints": {
+    "section_description": "메인 헤딩 + 본문 설명 + 대형 제품 이미지 + 클린 성분 배지 3개 가로 나열",
+    "layout_structure": "heading(center) → body-text(center) → hero-image(full-width) → badge-row(3 badges)",
+    "key_elements": [
+      { "role": "heading", "lines": 1, "alignment": "center" },
+      { "role": "body-text", "lines": 2, "alignment": "center" },
+      { "role": "image", "ratio": "4:3", "position": "center", "size": "full-width" },
+      { "role": "badge-row", "count": 3, "labels": ["NO 향료", "NO 보존료", "NO 색소"] }
+    ],
+    "ai_images": [
+      { "role": "제품 패키지 이미지", "prompt": "Roasted cashew nut product package bag with loose cashew nuts scattered around, clean white background, premium food product photography", "style": "product_hero", "ratio": "4:3" }
+    ]
+  },
+  "provenance": {
+    "source_ref": "ref-test-sample",
+    "extracted_date": "2026-02-12",
+    "analysis_version": "3.0"
+  },
+  "copywriting_guide": "맛과 풍미를 강조하는 제목 + 클린 성분(NO 향료/보존료/색소) 차별화 포인트",
+  "sample_data": {
+    "texts": {
+      "[차별화 메인 헤딩]": "바삭하고 진한 견과 풍미",
+      "[차별화 설명]": "소량씩 소금만으로 간을 한 가벼운 로스팅 방식으로,\n과하지 않고 깔끔한 맛과 풍미를 즐길 수 있습니다."
+    },
+    "images": [
+      { "label": "제품 패키지 이미지", "src": "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=760&fit=crop&q=80", "alt": "제품 패키지 + 캐슈넛 이미지" }
+    ]
+  }
+}
+-->
+<section class="wf-section">
+  <span class="wf-section-label">Differentiator</span>
+
+  <div class="wf-content">
+    <div class="wf-text wf-text--heading">
+      [차별화 메인 헤딩]
+      <div class="wf-text--label">텍스트 박스 1줄 (제목)</div>
+    </div>
+    <div class="wf-text wf-text--body">
+      [차별화 설명]
+      <div class="wf-text--label">텍스트 박스 2줄</div>
+    </div>
+  </div>
+
+  <div class="wf-image img-placeholder" style="height:400px; width:100%;"
+       data-ai-prompt="Roasted cashew nut product package bag with loose cashew nuts scattered around, clean white background, premium food product photography"
+       data-ai-style="product_hero"
+       data-ai-ratio="4:3">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+      <circle cx="12" cy="13" r="4"/>
+    </svg>
+    <span class="img-label">제품 패키지 이미지</span>
+  </div>
+
+  <div class="wf-row">
+    <span class="wf-badge">NO 향료</span>
+    <span class="wf-badge">NO 보존료</span>
+    <span class="wf-badge">NO 색소</span>
+  </div>
+</section>

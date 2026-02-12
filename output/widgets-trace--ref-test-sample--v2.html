@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=860">
+<title>ref-test-sample v2 TRACE — Layer Mapping Demo</title>
+
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  :root {
+    --brand-main: #3D5A80;
+    --accent: #D4A76A;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ===== 컨트롤 패널 ===== */
+  .control-panel {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    background: rgba(0,0,0,0.9);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13px;
+    color: #ccc;
+    backdrop-filter: blur(12px);
+    min-width: 220px;
+  }
+  .control-panel h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .control-row label {
+    flex: 1;
+  }
+  .control-row input[type="range"] {
+    width: 80px;
+    accent-color: #3D5A80;
+  }
+  .control-row input[type="checkbox"] {
+    accent-color: #3D5A80;
+    width: 16px;
+    height: 16px;
+  }
+  .badge-trace {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(239,68,68,0.15);
+    color: #ef4444;
+  }
+
+  /* ===== 캔버스 ===== */
+  .page-canvas {
+    width: 860px;
+    max-width: 860px;
+    min-width: 860px;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  /* ===== 헤더 ===== */
+  .demo-header {
+    background: #111;
+    padding: 24px 32px;
+    border-bottom: 2px solid #3D5A80;
+  }
+
+  /* ===== 섹션 컨테이너 (absolute positioning) ===== */
+  .trace-section {
+    position: relative;
+    width: 860px;
+    overflow: hidden;
+  }
+
+  /* 레퍼런스 이미지 배경 레이어 */
+  .ref-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: 860px auto;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+
+  /* HTML 레이어 */
+  .html-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  /* 개별 요소 (absolute) */
+  .trace-el {
+    position: absolute;
+    transition: outline 0.15s, box-shadow 0.15s;
+  }
+  .trace-el:hover {
+    outline: 2px solid rgba(61,90,128,0.5);
+    outline-offset: 2px;
+    z-index: 10;
+  }
+
+  /* 바운딩 박스 표시 (디버그) */
+  .show-bounds .trace-el {
+    outline: 1px dashed rgba(61,90,128,0.3);
+    outline-offset: 0;
+  }
+  .show-bounds .trace-el::after {
+    content: attr(data-id);
+    position: absolute;
+    top: -16px;
+    left: 0;
+    font-size: 9px;
+    color: #3D5A80;
+    background: rgba(0,0,0,0.7);
+    padding: 1px 4px;
+    border-radius: 2px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  /* ===== 이미지 플레이스홀더 ===== */
+  .img-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #ddd;
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .img-placeholder svg { opacity: 0.4; }
+
+  /* 섹션 라벨 바 */
+  .section-label-bar {
+    background: #1a1a1a;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-family: monospace;
+    position: relative;
+    z-index: 5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 컨트롤 패널 ===== -->
+<div class="control-panel">
+  <h3>Layer Mapping Controls <span class="badge-trace">TRACE</span></h3>
+  <div class="control-row">
+    <label>레퍼런스 이미지</label>
+    <input type="range" id="refOpacity" min="0" max="100" value="0">
+    <span id="refOpacityVal" style="width:32px;text-align:right;">0%</span>
+  </div>
+  <div class="control-row">
+    <label>HTML 레이어</label>
+    <input type="range" id="htmlOpacity" min="0" max="100" value="100">
+    <span id="htmlOpacityVal" style="width:32px;text-align:right;">100%</span>
+  </div>
+  <div class="control-row">
+    <label>바운딩 박스 표시</label>
+    <input type="checkbox" id="showBounds">
+  </div>
+  <div style="font-size:11px;color:#666;margin-top:4px;line-height:1.4;">
+    레퍼런스 슬라이더를 올리면<br>원본 위에 HTML이 겹쳐 보입니다
+  </div>
+</div>
+
+<!-- ===== 페이지 캔버스 ===== -->
+<div class="page-canvas" id="pageCanvas">
+
+  <!-- 데모 헤더 -->
+  <div class="demo-header">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <h1 style="font-size:20px;color:#fff;font-weight:700;">ref-test-sample — v2 TRACE Mode</h1>
+        <p style="font-size:14px;color:#888;margin:4px 0 0;">2 sections · bounds-based absolute positioning · layer mapping</p>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div style="width:24px;height:24px;border-radius:6px;background:#3D5A80;"></div>
+        <span style="color:#aaa;font-size:12px;">#3D5A80</span>
+        <div style="width:24px;height:24px;border-radius:6px;background:#D4A76A;"></div>
+        <span style="color:#aaa;font-size:12px;">#D4A76A</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:6px;margin-top:12px;">
+      <span style="background:rgba(61,90,128,0.15);color:#3D5A80;padding:4px 12px;border-radius:9999px;font-size:12px;">내추럴</span>
+      <span style="background:rgba(61,90,128,0.15);color:#3D5A80;padding:4px 12px;border-radius:9999px;font-size:12px;">클린</span>
+      <span style="background:rgba(61,90,128,0.15);color:#3D5A80;padding:4px 12px;border-radius:9999px;font-size:12px;">식품</span>
+      <span style="background:rgba(239,68,68,0.15);color:#ef4444;padding:4px 12px;border-radius:9999px;font-size:12px;font-weight:700;">TRACE MODE</span>
+    </div>
+  </div>
+
+  <!-- ========== SECTION #1: FeatureDetail (Point 03) ========== -->
+  <div class="section-label-bar">
+    <span style="color:#fff;font-weight:700;">#1 FeatureDetail (Point 03)</span>
+    <span style="color:#888;">—</span>
+    <span style="color:#aaa;">bounds: y=0, h=600</span>
+    <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;">TRACE</span>
+  </div>
+  <div class="trace-section" style="height: 600px;">
+    <!-- 레퍼런스 이미지 배경 -->
+    <div class="ref-bg" style="background-image: url('../references/test-sample.png'); background-position: 0 0;"></div>
+
+    <!-- HTML 레이어 — 배경 -->
+    <div class="html-layer" style="background: #F5EFE6;">
+
+      <!-- d1: Point 03 배지 — bounds: x=50, y=5, w=80, h=30 -->
+      <div class="trace-el" data-id="d1-badge" style="left:50px; top:5px; width:80px; height:30px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#3D5A80;color:#fff;border-radius:8px;font-size:13px;font-weight:600;">Point 03</span>
+      </div>
+
+      <!-- e2: 서브 헤딩 — bounds: x=230, y=40, w=400, h=20 -->
+      <div class="trace-el" data-id="e2-sub" style="left:230px; top:40px; width:400px; height:20px; display:flex;align-items:center;justify-content:center;">
+        <p style="font-size:16px;font-weight:400;color:#888888;text-align:center;margin:0;line-height:1;">꼼꼼한 성산관리로 완성한</p>
+      </div>
+
+      <!-- e3: 메인 헤딩 — bounds: x=180, y=65, w=500, h=40 -->
+      <div class="trace-el" data-id="e3-main" style="left:180px; top:65px; width:500px; height:40px; display:flex;align-items:center;justify-content:center;">
+        <h2 style="font-size:28px;font-weight:700;color:#2D2D2D;text-align:center;margin:0;line-height:1.2;">안심 먹거리 캐슈넛</h2>
+      </div>
+
+      <!-- e4: 카드 1 컨테이너 — bounds: x=50, y=150, w=370, h=200 -->
+      <div class="trace-el" data-id="e4-card1" style="left:50px; top:150px; width:370px; height:200px; background:#FFFFFF; border-radius:12px; overflow:hidden;">
+        <!-- e4_img: 농장 이미지 — bounds: x=60, y=155, w=350, h=130 (section-relative) -->
+        <div class="img-placeholder" style="position:absolute;left:10px;top:5px;width:350px;height:130px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span style="font-size:11px;">베트남 농장 이미지</span>
+        </div>
+        <!-- e4_txt — bounds: x=60, y=305 → card-relative: bottom area -->
+        <p style="position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;font-weight:400;color:#2D2D2D;">베트남 현지 농장<br>선별 수매</p>
+      </div>
+
+      <!-- d2: 넘버 서클 ① — bounds: x=210, y=270, w=30, h=30 -->
+      <div class="trace-el" data-id="d2-num1" style="left:210px; top:270px; width:30px; height:30px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#3D5A80;color:#fff;border-radius:50%;font-size:14px;font-weight:700;">1</span>
+      </div>
+
+      <!-- e5: 카드 2 컨테이너 — bounds: x=440, y=150, w=370, h=200 -->
+      <div class="trace-el" data-id="e5-card2" style="left:440px; top:150px; width:370px; height:200px; background:#FFFFFF; border-radius:12px; overflow:hidden;">
+        <div class="img-placeholder" style="position:absolute;left:10px;top:5px;width:350px;height:130px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span style="font-size:11px;">로스팅 가공 이미지</span>
+        </div>
+        <p style="position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;font-weight:400;color:#2D2D2D;">수입전문 TESTA<br>로스팅 가공</p>
+      </div>
+
+      <!-- d3: 넘버 서클 ② — bounds: x=600, y=270, w=30, h=30 -->
+      <div class="trace-el" data-id="d3-num2" style="left:600px; top:270px; width:30px; height:30px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#3D5A80;color:#fff;border-radius:50%;font-size:14px;font-weight:700;">2</span>
+      </div>
+
+      <!-- e6: 카드 3 컨테이너 — bounds: x=50, y=370, w=370, h=200 -->
+      <div class="trace-el" data-id="e6-card3" style="left:50px; top:370px; width:370px; height:200px; background:#FFFFFF; border-radius:12px; overflow:hidden;">
+        <div class="img-placeholder" style="position:absolute;left:10px;top:5px;width:350px;height:130px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span style="font-size:11px;">제조 시설 이미지</span>
+        </div>
+        <p style="position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;font-weight:400;color:#2D2D2D;">국내 인증시설에서<br>제조 및 포장</p>
+      </div>
+
+      <!-- d4: 넘버 서클 ③ — bounds: x=210, y=490, w=30, h=30 -->
+      <div class="trace-el" data-id="d4-num3" style="left:210px; top:490px; width:30px; height:30px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#3D5A80;color:#fff;border-radius:50%;font-size:14px;font-weight:700;">3</span>
+      </div>
+
+      <!-- e7: 카드 4 컨테이너 — bounds: x=440, y=370, w=370, h=200 -->
+      <div class="trace-el" data-id="e7-card4" style="left:440px; top:370px; width:370px; height:200px; background:#FFFFFF; border-radius:12px; overflow:hidden;">
+        <div class="img-placeholder" style="position:absolute;left:10px;top:5px;width:350px;height:130px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span style="font-size:11px;">실링 포장 이미지</span>
+        </div>
+        <p style="position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:14px;font-weight:400;color:#2D2D2D;">신선도 실링 포장</p>
+      </div>
+
+      <!-- d5: 넘버 서클 ④ — bounds: x=600, y=490, w=30, h=30 -->
+      <div class="trace-el" data-id="d5-num4" style="left:600px; top:490px; width:30px; height:30px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#3D5A80;color:#fff;border-radius:50%;font-size:14px;font-weight:700;">4</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========== SECTION #2: Differentiator ========== -->
+  <div class="section-label-bar">
+    <span style="color:#fff;font-weight:700;">#2 Differentiator</span>
+    <span style="color:#888;">—</span>
+    <span style="color:#aaa;">bounds: y=600, h=480</span>
+    <span style="background:#ef4444;color:#fff;padding:2px 8px;border-radius:9999px;font-size:11px;">TRACE</span>
+  </div>
+  <div class="trace-section" style="height: 480px;">
+    <!-- 레퍼런스 이미지 배경 (offset for section 2) -->
+    <div class="ref-bg" style="background-image: url('../references/test-sample.png'); background-position: 0 -600px;"></div>
+
+    <!-- HTML 레이어 — 배경 -->
+    <div class="html-layer" style="background: #FFFFFF;">
+
+      <!-- e8: 메인 헤딩 — bounds: x=180, y=30, w=500, h=40 -->
+      <div class="trace-el" data-id="e8-main" style="left:180px; top:30px; width:500px; height:40px; display:flex;align-items:center;justify-content:center;">
+        <h2 style="font-size:28px;font-weight:700;color:#2D2D2D;text-align:center;margin:0;line-height:1.2;">바삭하고 진한 견과 풍미</h2>
+      </div>
+
+      <!-- e9: 설명 본문 — bounds: x=130, y=80, w=600, h=50 -->
+      <div class="trace-el" data-id="e9-desc" style="left:130px; top:80px; width:600px; height:50px; display:flex;align-items:flex-start;justify-content:center;">
+        <p style="font-size:15px;font-weight:400;color:#888888;text-align:center;margin:0;line-height:1.6;">소량씩 소금만으로 간을 한 가벼운 로스팅 방식으로,<br>과하지 않고 깔끔한 맛과 풍미를 즐길 수 있습니다.</p>
+      </div>
+
+      <!-- e10: 제품 이미지 — bounds: x=100, y=150, w=660, h=230 -->
+      <div class="trace-el" data-id="e10-img" style="left:100px; top:150px; width:660px; height:230px;">
+        <div class="img-placeholder" style="width:100%;height:100%;border-radius:0;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>660×230 · 제품 패키지 + 캐슈넛</span>
+        </div>
+      </div>
+
+      <!-- d8: NO 방부제 — bounds: x=195, y=400, w=130, h=36 -->
+      <div class="trace-el" data-id="d8-badge" style="left:195px; top:400px; width:130px; height:36px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:rgba(61,90,128,0.08);color:#3D5A80;border-radius:9999px;font-size:13px;font-weight:600;">NO 방부제</span>
+      </div>
+
+      <!-- d9: NO 보존료 — bounds: x=365, y=400, w=130, h=36 -->
+      <div class="trace-el" data-id="d9-badge" style="left:365px; top:400px; width:130px; height:36px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:rgba(61,90,128,0.08);color:#3D5A80;border-radius:9999px;font-size:13px;font-weight:600;">NO 보존료</span>
+      </div>
+
+      <!-- d10: NO 색소 — bounds: x=535, y=400, w=130, h=36 -->
+      <div class="trace-el" data-id="d10-badge" style="left:535px; top:400px; width:130px; height:36px;">
+        <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:rgba(61,90,128,0.08);color:#3D5A80;border-radius:9999px;font-size:13px;font-weight:600;">NO 색소</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 컨트롤 JS ===== -->
+<script>
+  const refSlider = document.getElementById('refOpacity');
+  const htmlSlider = document.getElementById('htmlOpacity');
+  const boundsCheck = document.getElementById('showBounds');
+  const refVal = document.getElementById('refOpacityVal');
+  const htmlVal = document.getElementById('htmlOpacityVal');
+
+  const refBgs = document.querySelectorAll('.ref-bg');
+  const htmlLayers = document.querySelectorAll('.html-layer');
+  const canvas = document.getElementById('pageCanvas');
+
+  refSlider.addEventListener('input', () => {
+    const v = refSlider.value / 100;
+    refBgs.forEach(el => el.style.opacity = v);
+    refVal.textContent = refSlider.value + '%';
+  });
+
+  htmlSlider.addEventListener('input', () => {
+    const v = htmlSlider.value / 100;
+    htmlLayers.forEach(el => el.style.opacity = v);
+    htmlVal.textContent = htmlSlider.value + '%';
+  });
+
+  boundsCheck.addEventListener('change', () => {
+    canvas.classList.toggle('show-bounds', boundsCheck.checked);
+  });
+</script>
+
+</body>
+</html>

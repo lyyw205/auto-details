@@ -182,8 +182,10 @@ function handleWidgetPreview(res, widgetId, query) {
       widgetHtml = applyDemoMode(widgetHtml, meta);
     }
 
-    // Read html-base.html
-    const baseHtml = fs.readFileSync(path.join(ROOT, 'templates/html-base.html'), 'utf-8');
+    // Read base HTML — wireframe widgets use wireframe-base.html
+    const isWireframe = meta && meta.composition === 'wireframe';
+    const baseTemplate = isWireframe ? 'templates/wireframe-base.html' : 'templates/html-base.html';
+    const baseHtml = fs.readFileSync(path.join(ROOT, baseTemplate), 'utf-8');
 
     // Determine colors: query params > preset > defaults
     let brandMain = '#FF6B00';
@@ -206,11 +208,16 @@ function handleWidgetPreview(res, widgetId, query) {
     if (query.accent) accent = '#' + query.accent.replace(/^#/, '');
 
     // Assemble
-    const html = baseHtml
+    let html = baseHtml
       .replace('{{SECTIONS}}', widgetHtml)
-      .replace('{{BRAND_MAIN}}', brandMain)
-      .replace('{{ACCENT}}', accent)
-      .replace('{{PRODUCT_NAME}}', '위젯 미리보기');
+      .replace('{{PRODUCT_NAME}}', isWireframe ? '와이어프레임 미리보기' : '위젯 미리보기');
+
+    // Wireframe template has no color variables; only apply to standard template
+    if (!isWireframe) {
+      html = html
+        .replace('{{BRAND_MAIN}}', brandMain)
+        .replace('{{ACCENT}}', accent);
+    }
 
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end(html);

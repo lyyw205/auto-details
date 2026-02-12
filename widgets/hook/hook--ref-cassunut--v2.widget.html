@@ -1,0 +1,68 @@
+<!--WIDGET_META
+{
+  "widget_id": "hook--ref-cassunut--v2",
+  "taxonomy_id": "Hook",
+  "category": "intro",
+  "style_tags": ["내추럴", "따뜻한", "라이트톤"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12",
+    "analysis_version": "2.0"
+  },
+  "copywriting_guide": "프리미엄 식품의 품질과 산지를 강조하는 메인 카피로 시선 사로잡기",
+  "sample_data": {
+    "texts": {
+      "[브랜드명]": "ORIGINUT",
+      "[메인 카피]": "건조 캐슈넛의 새로운 기준",
+      "[서브 메인 카피]": "프리미엄 캐슈넛 ORIGINUT",
+      "[서브 카피]": "최상급 원료로 만든 프리미엄 캐슈넛",
+      "[포인트 라벨]": "ORIGINUT's Point"
+    },
+    "images": [
+      {
+        "label": "메인 제품 패키지 이미지",
+        "src": "https://images.unsplash.com/photo-1509721434272-b79147e0e708?w=760&fit=crop&q=80",
+        "alt": "프리미엄 캐슈넛 패키지"
+      }
+    ]
+  }
+}
+-->
+<section id="hook" class="flex flex-col items-center py-[60px] px-[50px]" style="background: #FFFFFF;">
+  <div class="content-narrow flex flex-col items-center gap-[16px] text-center">
+    <!-- 브랜드 로고 -->
+    <div class="flex items-center gap-2">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C19A4C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+    </div>
+    <!-- 카테고리 라벨 -->
+    <p class="text-[14px]" style="color: #888888;">[메인 카피]</p>
+    <!-- 구분선 -->
+    <div class="w-[200px] h-px mx-auto" style="background: linear-gradient(90deg, transparent, #E8E8E8, transparent); opacity: 0.5;"></div>
+    <!-- 메인 카피 -->
+    <h1 class="text-[40px] font-bold leading-tight tracking-tight" style="color: #2D2D2D;">
+      [서브 메인 카피]
+    </h1>
+    <!-- 서브 카피 -->
+    <p class="text-[18px]" style="color: #C19A4C;">[서브 카피]</p>
+    <!-- 제품 이미지 -->
+    <div class="img-placeholder w-[760px] h-[470px] rounded-xl mt-4" style="background: #E8E8E8;"
+         data-ai-prompt="[product] packaging bags, two premium cashew nut packages, studio photography, white background, 8k quality"
+         data-ai-style="product_hero"
+         data-ai-ratio="16:9">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+      <span class="img-label">메인 제품 패키지 이미지</span>
+    </div>
+    <!-- 포인트 안내 + 화살표 -->
+    <div class="flex flex-col items-center gap-[8px] mt-6">
+      <p class="text-[14px] font-medium" style="color: #C19A4C;">[포인트 라벨]</p>
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C19A4C" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>

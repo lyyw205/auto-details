@@ -251,19 +251,18 @@
   }
 
   .card-preview {
-    width: 327px;
-    height: 228px;
+    width: 100%;
+    height: 400px;
     overflow: hidden;
     position: relative;
     background: var(--bg-3);
   }
   .card-preview iframe {
     width: 860px;
-    height: 600px;
-    transform: scale(0.38);
-    transform-origin: top left;
     border: none;
     pointer-events: none;
+    transform-origin: top center;
+    margin-left: calc(50% - 430px);
   }
 
   .card-meta {
@@ -342,7 +341,7 @@
     align-items: flex-start;
     justify-content: center;
     padding: 40px 20px;
-    overflow-y: auto;
+    overflow: hidden;
   }
   .modal-overlay.open { display: flex; }
 
@@ -350,10 +349,13 @@
     background: var(--bg-1);
     border: 1px solid var(--border);
     border-radius: 12px;
-    max-width: 1100px;
-    width: 100%;
+    width: 85vw;
+    height: 85vh;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
   }
   .modal-header {
     display: flex;
@@ -381,19 +383,26 @@
   .modal-body {
     display: flex;
     gap: 0;
+    flex: 1;
+    min-height: 0;
   }
   .modal-preview {
     flex: 1;
     min-width: 0;
     background: var(--bg-0);
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
   }
+  .modal-preview::-webkit-scrollbar { width: 6px; }
+  .modal-preview::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   .modal-preview iframe {
     width: 860px;
     border: none;
     display: block;
-    transform-origin: top left;
+    transform: scale(0.5);
+    transform-origin: top center;
+    margin-left: calc(50% - 430px);
   }
   .modal-info {
     width: 280px;
@@ -401,7 +410,6 @@
     border-left: 1px solid var(--border);
     padding: 16px;
     overflow-y: auto;
-    max-height: 80vh;
   }
   .modal-info h4 {
     font-size: 11px;
@@ -700,7 +708,7 @@
   }
   .dup-preview {
     width: 100%;
-    height: 200px;
+    height: 350px;
     overflow: hidden;
     position: relative;
     background: var(--bg-3);
@@ -708,11 +716,10 @@
   }
   .dup-preview iframe {
     width: 860px;
-    height: 600px;
-    transform: scale(0.35);
-    transform-origin: top left;
     border: none;
     pointer-events: none;
+    transform-origin: top center;
+    margin-left: calc(50% - 430px);
   }
   .dup-meta {
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
@@ -996,20 +1003,22 @@
     background: rgba(0,0,0,0.8);
     z-index: 100;
     display: none;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 30px 20px;
-    overflow-y: auto;
+    overflow: hidden;
   }
   .dup-modal-overlay.open { display: flex; }
   .dup-modal {
     background: var(--bg-1);
     border: 1px solid var(--border);
     border-radius: 12px;
-    max-width: 1200px;
-    width: 100%;
+    width: 85vw;
+    height: 85vh;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
   }
   .dup-modal-header {
     display: flex;
@@ -1028,7 +1037,12 @@
   .dup-modal-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
   }
+  .dup-modal-body::-webkit-scrollbar { width: 6px; }
+  .dup-modal-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
   .dup-modal-side {
     display: flex;
     flex-direction: column;
@@ -1054,10 +1068,10 @@
   }
   .dup-modal-preview iframe {
     width: 860px;
-    height: 600px;
-    transform-origin: top left;
     border: none;
     pointer-events: none;
+    transform-origin: top center;
+    margin-left: calc(50% - 430px);
   }
   .dup-modal-meta {
     font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
@@ -1127,8 +1141,8 @@
     <button id="btnDemo" class="active">Demo</button>
     <button id="btnRaw">Raw</button>
   </div>
-  <select id="presetSelect">
-    <option value="">프리셋: 원본 색상</option>
+  <select id="refSelect">
+    <option value="">레퍼런스: 전체</option>
   </select>
   <div class="view-toggle">
     <button id="btnGrid" class="active" title="그리드">&#9638;</button>
@@ -1215,7 +1229,7 @@
   let newWidgets = []; // widgets with status:"new"
   let unmappedSections = []; // pending unmapped sections
   let currentFilter = null; // null = all, '__new__' = new widgets, '__unmapped__' = unmapped, string = taxonomy_id
-  let currentPreset = null; // null = original, preset object
+  let currentRef = null; // null = all, string = source_ref
   let viewMode = 'grid';
   let previewMode = 'demo'; // 'demo' or 'raw'
 
@@ -1257,19 +1271,19 @@
     const countMap = {};
     for (const w of allWidgets) countMap[w.taxonomy_id] = (countMap[w.taxonomy_id] || 0) + 1;
 
-    // "전체 보기"
-    let html = `<div class="sidebar-item all-view${currentFilter === null ? ' active' : ''}" data-filter="">전체 보기</div>`;
+    // "All"
+    let html = `<div class="sidebar-item all-view${currentFilter === null ? ' active' : ''}" data-filter="">All</div>`;
 
-    // "새로 추가" tab
+    // "New" tab
     const newCount = newWidgets.length;
     if (newCount > 0) {
-      html += `<div class="sidebar-item new-tab${currentFilter === '__new__' ? ' active' : ''}" data-filter="__new__">새로 추가 <span class="new-count-badge">${newCount}</span></div>`;
+      html += `<div class="sidebar-item new-tab${currentFilter === '__new__' ? ' active' : ''}" data-filter="__new__">New <span class="new-count-badge">${newCount}</span></div>`;
     }
 
-    // "미분류 섹션" tab
+    // "Unmapped" tab
     const unmappedCount = unmappedSections.length;
     if (unmappedCount > 0) {
-      html += `<div class="sidebar-item unmapped-tab${currentFilter === '__unmapped__' ? ' active' : ''}" data-filter="__unmapped__">미분류 섹션 <span class="unmapped-count-badge">${unmappedCount}</span></div>`;
+      html += `<div class="sidebar-item unmapped-tab${currentFilter === '__unmapped__' ? ' active' : ''}" data-filter="__unmapped__">Unmapped <span class="unmapped-count-badge">${unmappedCount}</span></div>`;
     }
 
     // Categories
@@ -1279,7 +1293,7 @@
       const catCount = sections.reduce((sum, s) => sum + (countMap[s.id] || 0), 0);
 
       html += `<div class="category-header" data-cat="${catId}">
-        <span class="arrow">&#9660;</span> ${cat.name} <span class="cat-count">${catCount}</span>
+        <span class="arrow">&#9660;</span> ${catId} <span class="cat-count">${catCount}</span>
       </div>`;
       html += `<div class="category-sections" data-cat="${catId}">`;
       for (const s of sections) {
@@ -1287,7 +1301,7 @@
         const isEmpty = c === 0;
         const isActive = currentFilter === s.id;
         html += `<div class="section-item${isEmpty ? ' empty' : ''}${isActive ? ' active' : ''}" data-filter="${s.id}" ${isEmpty ? '' : ''}>
-          ${s.name} <span class="badge">${c}</span>
+          ${s.id} <span class="badge">${c}</span>
         </div>`;
       }
       html += `</div>`;
@@ -1329,17 +1343,19 @@
     });
   }
 
-  // ── Preset select ──
-  function buildPresetSelect() {
-    const sel = document.getElementById('presetSelect');
-    for (const p of presets) {
+  // ── Reference select ──
+  function buildRefSelect() {
+    const sel = document.getElementById('refSelect');
+    const refs = [...new Set(allWidgets.map(w => w.source_ref).filter(Boolean))].sort();
+    for (const ref of refs) {
+      const count = allWidgets.filter(w => w.source_ref === ref).length;
       const opt = document.createElement('option');
-      opt.value = p.id;
-      opt.textContent = `${p.name} (${p.source_ref})`;
+      opt.value = ref;
+      opt.textContent = `${ref} (${count})`;
       sel.appendChild(opt);
     }
     sel.addEventListener('change', () => {
-      currentPreset = presets.find(p => p.id === sel.value) || null;
+      currentRef = sel.value || null;
       renderGrid();
     });
   }
@@ -1352,9 +1368,10 @@
     // Add mode parameter
     params.set('mode', previewMode);
 
-    // Add color params from preset
-    if (currentPreset && currentPreset.color_system) {
-      const cs = currentPreset.color_system;
+    // Color params from preset (if ref selected, use matching preset)
+    const preset = currentRef ? presets.find(p => p.source_ref === currentRef) : null;
+    if (preset && preset.color_system) {
+      const cs = preset.color_system;
       if (cs.brand_main) params.set('brand_main', cs.brand_main.replace('#', ''));
       if (cs.accent) params.set('accent', cs.accent.replace('#', ''));
     }
@@ -1433,26 +1450,12 @@
     const body = document.getElementById('dupModalBody');
     body.innerHTML = `
       <div class="dup-modal-side">
-        <span class="dup-modal-side-label">기존 위젯</span>
+        <span class="dup-modal-side-label">기존 위젯 · ${existingW.source_ref || ''}</span>
         <div class="dup-modal-preview" id="dupPreviewLeft"></div>
-        <div class="dup-modal-meta">${existingW.widget_id}</div>
-        <div class="card-badges">
-          <span class="badge-pill badge-composition">${existingW.composition || 'stack'}</span>
-          <span class="badge-pill badge-theme-${existingW.theme || 'dark'}">${existingW.theme || 'dark'}</span>
-        </div>
-        <div class="dup-modal-tags">${(existingW.style_tags || []).map(t => '<span class="tag-chip">' + t + '</span>').join('')}</div>
-        <div class="card-source">${existingW.source_ref || ''}</div>
       </div>
       <div class="dup-modal-side">
-        <span class="dup-modal-side-label">새 위젯 <span class="badge-new">NEW</span></span>
+        <span class="dup-modal-side-label">새 위젯 · ${newW.source_ref || ''}</span>
         <div class="dup-modal-preview" id="dupPreviewRight"></div>
-        <div class="dup-modal-meta">${newW.widget_id}</div>
-        <div class="card-badges">
-          <span class="badge-pill badge-composition">${newW.composition || 'stack'}</span>
-          <span class="badge-pill badge-theme-${newW.theme || 'dark'}">${newW.theme || 'dark'}</span>
-        </div>
-        <div class="dup-modal-tags">${(newW.style_tags || []).map(t => '<span class="tag-chip">' + t + '</span>').join('')}</div>
-        <div class="card-source">${newW.source_ref || ''}</div>
       </div>
     `;
 
@@ -1462,20 +1465,8 @@
       const iframe = document.createElement('iframe');
       iframe.src = iframeUrl(widgetId);
       iframe.loading = 'lazy';
-      iframe.onload = () => {
-        try {
-          const contentH = iframe.contentDocument.documentElement.scrollHeight;
-          iframe.style.height = contentH + 'px';
-          const containerW = container.clientWidth;
-          const scale = Math.min(containerW / 860, 1);
-          iframe.style.transform = 'scale(' + scale + ')';
-          container.style.height = Math.ceil(contentH * scale) + 'px';
-        } catch (_) {
-          iframe.style.height = '600px';
-          iframe.style.transform = 'scale(0.55)';
-          container.style.height = '330px';
-        }
-      };
+      iframe.scrolling = 'no';
+      iframe.onload = () => fitCardIframe(iframe);
       container.appendChild(iframe);
     }
 
@@ -1697,24 +1688,12 @@
         </div>
         <div class="dup-card-body">
           <div class="dup-side">
-            <span class="dup-side-label">기존 위젯</span>
-            <div class="dup-preview"><iframe src="${iframeUrl(w.duplicate_of)}" loading="lazy"></iframe></div>
-            <div class="dup-meta">${w.duplicate_of}</div>
-            <div class="card-badges">
-              <span class="badge-pill badge-composition">${dw ? (dw.composition || 'stack') : '?'}</span>
-              <span class="badge-pill badge-theme-${dw ? (dw.theme || 'dark') : 'dark'}">${dw ? (dw.theme || 'dark') : '?'}</span>
-            </div>
-            <div class="card-tags">${dw ? (dw.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('') : ''}</div>
+            <span class="dup-side-label">기존 위젯 · ${dw ? (dw.source_ref || '') : ''}</span>
+            <div class="dup-preview"><iframe src="${iframeUrl(w.duplicate_of)}" loading="lazy" scrolling="no"></iframe></div>
           </div>
           <div class="dup-side">
-            <span class="dup-side-label">새 위젯</span>
-            <div class="dup-preview"><iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe></div>
-            <div class="dup-meta">${w.widget_id}</div>
-            <div class="card-badges">
-              <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
-              <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
-            </div>
-            <div class="card-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
+            <span class="dup-side-label">새 위젯 · ${w.source_ref || ''}</span>
+            <div class="dup-preview"><iframe src="${iframeUrl(w.widget_id)}" loading="lazy" scrolling="no"></iframe></div>
           </div>
         </div>
       </div>`;
@@ -1747,6 +1726,11 @@
     // Bind events
     const bulkBtn = document.getElementById('btnBulkReview');
     if (bulkBtn) bulkBtn.addEventListener('click', bulkReviewAll);
+
+    // Fit all iframes in dup cards and non-dup cards
+    grid.querySelectorAll('.dup-preview iframe, .card-preview iframe').forEach(iframe => {
+      iframe.onload = () => fitCardIframe(iframe);
+    });
 
     grid.querySelectorAll('.btn-review[data-review]').forEach(btn => {
       btn.addEventListener('click', (e) => { e.stopPropagation(); reviewWidget(btn.dataset.review); });
@@ -1787,9 +1771,10 @@
     }
 
     const grid = document.getElementById('grid');
-    const filtered = currentFilter
+    let filtered = currentFilter
       ? allWidgets.filter(w => w.taxonomy_id === currentFilter)
       : allWidgets;
+    if (currentRef) filtered = filtered.filter(w => w.source_ref === currentRef);
 
     document.getElementById('filterCount').textContent = `${filtered.length}개 위젯`;
 
@@ -1804,22 +1789,15 @@
     grid.innerHTML = filtered.map(w => `
       <div class="card" data-id="${w.widget_id}">
         <div class="card-preview">
-          <iframe src="${iframeUrl(w.widget_id)}" loading="lazy"></iframe>
-        </div>
-        <div class="card-meta">
-          <div class="card-id">${w.widget_id}${newIdSet.has(w.widget_id) ? ' <span class="badge-new">NEW</span>' : ''}</div>
-          <div class="card-badges">
-            <span class="badge-pill badge-composition">${w.composition || 'stack'}</span>
-            <span class="badge-pill badge-theme-${w.theme || 'dark'}">${w.theme || 'dark'}</span>
-          </div>
-          <div class="card-tags">${(w.style_tags || []).map(t => `<span class="tag-chip">${t}</span>`).join('')}</div>
-          <div class="card-source">${w.source_ref || ''}</div>
+          <iframe src="${iframeUrl(w.widget_id)}" loading="lazy" scrolling="no"></iframe>
         </div>
       </div>
     `).join('');
 
-    // Card click -> modal
+    // Fit iframes & bind card click
     grid.querySelectorAll('.card').forEach(card => {
+      const iframe = card.querySelector('iframe');
+      if (iframe) iframe.onload = () => fitCardIframe(iframe);
       card.addEventListener('click', () => openModal(card.dataset.id));
     });
   }
@@ -1873,21 +1851,29 @@
   // ── Refresh modal preview when mode changes ──
   let currentModalWidgetId = null;
 
+  function fitCardIframe(iframe) {
+    try {
+      const contentH = iframe.contentDocument.documentElement.scrollHeight;
+      const container = iframe.parentElement;
+      const cardW = container.clientWidth;
+      const cardH = container.clientHeight;
+      const scale = Math.min(cardW / 860, cardH / contentH);
+      iframe.style.height = contentH + 'px';
+      iframe.style.transform = `scale(${scale})`;
+    } catch (_) {
+      iframe.style.height = '600px';
+      iframe.style.transform = 'scale(0.38)';
+    }
+  }
+
   function fitIframe(iframe, container) {
     try {
       const contentH = iframe.contentDocument.documentElement.scrollHeight;
       iframe.style.height = contentH + 'px';
-      const containerW = container.clientWidth;
-      const maxH = window.innerHeight * 0.75;
-      const scaleW = containerW / 860;
-      const scaleH = maxH / contentH;
-      const scale = Math.min(scaleW, scaleH, 1);
-      iframe.style.transform = `scale(${scale})`;
-      container.style.height = Math.ceil(contentH * scale) + 'px';
+      iframe.style.marginBottom = -(contentH * 0.5) + 'px';
     } catch (_) {
       iframe.style.height = '600px';
-      iframe.style.transform = 'scale(0.85)';
-      container.style.height = '510px';
+      iframe.style.marginBottom = '-300px';
     }
   }
 
@@ -1996,6 +1982,7 @@
     previewEl.innerHTML = '';
     const iframe = document.createElement('iframe');
     iframe.src = iframeUrl(widgetId);
+    iframe.scrolling = 'no';
     iframe.onload = () => fitIframe(iframe, previewEl);
     previewEl.appendChild(iframe);
 
@@ -2075,7 +2062,7 @@
   // ── Init ──
   async function init() {
     await fetchAll();
-    buildPresetSelect();
+    buildRefSelect();
     setupViewToggle();
     setupModeToggle();
     render();
