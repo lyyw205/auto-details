@@ -1,7 +1,7 @@
 {
   "type": "WIDGET_REGISTRY",
   "version": "2.0",
-  "total_widgets": 23,
+  "total_widgets": 21,
   "presets": [
     "preset--ref-reference3",
     "preset--ref-reference4",
@@ -171,21 +171,6 @@
         "analysis_version": "2.0"
       },
       {
-        "widget_id": "featuredetail--ref-test-sample--v3-stack-light",
-        "file": "featuredetail/featuredetail--ref-test-sample--v3-stack-light.widget.html",
-        "source_ref": "ref-test-sample",
-        "style_tags": [
-          "내추럴",
-          "클린",
-          "식품"
-        ],
-        "composition": "trace",
-        "theme": "light",
-        "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "analysis_version": "3.0"
-      },
-      {
         "widget_id": "featuredetail--ref-test-sample--v4-stack-light",
         "file": "featuredetail/featuredetail--ref-test-sample--v4-stack-light.widget.html",
         "source_ref": "ref-test-sample",
@@ -287,21 +272,6 @@
         "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z",
         "analysis_version": "2.0"
-      },
-      {
-        "widget_id": "differentiator--ref-test-sample--v3",
-        "file": "differentiator/differentiator--ref-test-sample--v3.widget.html",
-        "source_ref": "ref-test-sample",
-        "style_tags": [
-          "내추럴",
-          "클린",
-          "식품"
-        ],
-        "composition": "trace",
-        "theme": "light",
-        "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "analysis_version": "3.0"
       },
       {
         "widget_id": "differentiator--ref-test-sample--v4",
