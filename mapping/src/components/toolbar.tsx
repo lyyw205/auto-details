@@ -23,9 +23,9 @@ interface ToolbarProps {
 }
 
 const STEP_LABELS: Record<AnalyzeMethod, string> = {
-  vision: "Step 1: Claude Vision API",
-  fallback: "Step 2: Auto-detect",
-  manual: "Step 3: Manual",
+  vision: "Pass 1: Gemini box_2d + Pass 2: HF Detection",
+  fallback: "Fallback: Auto-detect",
+  manual: "Manual Mode",
 };
 
 const STEP_COLORS: Record<AnalyzeMethod, string> = {
@@ -36,7 +36,7 @@ const STEP_COLORS: Record<AnalyzeMethod, string> = {
 
 const METHOD_BADGES: Record<AnalyzeMethod, { label: string; className: string }> = {
   vision: {
-    label: "Vision API",
+    label: "2-Pass Pipeline",
     className: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
   },
   fallback: {
@@ -104,7 +104,7 @@ export function Toolbar({
 
         {/* Analyze */}
         <IconButton
-          label="Analyze image (Claude Vision → Auto-detect → Manual)"
+          label="Analyze image (2-Pass Pipeline → Auto-detect → Manual)"
           onClick={onAnalyze}
           disabled={!hasImage || isAnalyzing}
           className="ml-1 text-blue-600 dark:text-blue-400"

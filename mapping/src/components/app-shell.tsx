@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { InteractionMode, AnalyzeMethod, AnalyzeRequest } from "@/lib/types";
+import type { InteractionMode, AnalyzeMethod, AnalyzeRequest, AnalyzeResponse } from "@/lib/types";
 import { downloadHTML } from "@/lib/export-html";
 import { boundsToWidgetHTML } from "@/lib/bounds-to-widget";
 import { fallbackAnalyze } from "@/lib/fallback-analyze";
@@ -35,6 +35,7 @@ export function AppShell() {
   const [analyzeMessage, setAnalyzeMessage] = useState<string | null>(null);
   const [analyzeError, setAnalyzeError] = useState<string | null>(null);
   const [lastMethod, setLastMethod] = useState<AnalyzeMethod | null>(null);
+  const [pipelineInfo, setPipelineInfo] = useState<string | null>(null);
 
   const {
     containerRef,
@@ -71,9 +72,10 @@ export function AppShell() {
     setIsAnalyzing(true);
     setAnalyzeError(null);
 
-    // ── Step 1: Claude Vision API ──
+    // ── Step 1: 2-Pass Pipeline (Gemini box_2d + HF Detection) ──
     setAnalyzeStep("vision");
-    setAnalyzeMessage("Calling Claude Vision API...");
+    setAnalyzeMessage("Preprocessing image + running 2-pass pipeline...");
+    setPipelineInfo(null);
 
     try {
       const base64 = image.src.split(",")[1];
@@ -86,10 +88,15 @@ export function AppShell() {
       });
 
       if (res.ok) {
-        const data = await res.json();
+        const data: AnalyzeResponse = await res.json();
         setAll(data.bounds);
         setSelectedId(null);
         setLastMethod("vision");
+        if (data.pipeline) {
+          setPipelineInfo(
+            `${data.pipeline.pass1Count} Gemini → ${data.pipeline.pass2Count} HF → ${data.pipeline.mergedCount} total (${data.pipeline.tilesUsed} tile${data.pipeline.tilesUsed > 1 ? "s" : ""})`
+          );
+        }
         setAnalyzeMessage(null);
         setAnalyzeStep(null);
         setIsAnalyzing(false);
@@ -220,6 +227,18 @@ export function AppShell() {
         hasBounds={bounds.length > 0}
         lastMethod={lastMethod}
       />
+
+      {pipelineInfo && !isAnalyzing && (
+        <div className="flex items-center justify-between bg-blue-50 px-4 py-1.5 text-xs text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">
+          <span>Pipeline: {pipelineInfo}</span>
+          <button
+            onClick={() => setPipelineInfo(null)}
+            className="ml-4 rounded px-2 py-0.5 text-[10px] font-medium hover:bg-blue-100 dark:hover:bg-blue-900/30"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {analyzeError && (
         <div className="flex items-center justify-between bg-amber-50 px-4 py-2 text-sm text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
