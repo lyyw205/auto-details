@@ -54,7 +54,6 @@ widgets/_presets/preset--ref-{name}.json
 ### 컬러
 - 메인 컬러: {brand_main} (용도 설명)
 - 액센트: {accent} (용도 설명)
-- 배경 교차: {background_pattern}
 
 ### 타이포그래피
 - 제목: {main_copy.fontSize}px, Bold
@@ -132,7 +131,6 @@ widgets/_presets/preset--ref-{name}.json
 ## 디자인 품질 지침
 - 860px 고정 너비 (모바일 상세페이지 기준)
 - 모든 섹션 배경에 subtle gradient 적용 (단색 금지)
-- 인접 섹션 배경 교차 (같은 톤 연속 금지)
 - 타이포그래피: 한국어 Pretendard 폰트
 - 이미지 영역: 위 이미지 가이드 참고
 - 전체적으로 {style_tags} 느낌 유지

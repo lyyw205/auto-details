@@ -6,7 +6,7 @@
 위젯이 이미 HTML이므로, JSON→HTML 변환 없이 **직접 조합**합니다.
 
 ## Context
-- **스타일 가이드**: `templates/style-guide.md` — 토큰 체계, 컬러 리매핑, 배경 교차, 호환성 규칙
+- **스타일 가이드**: `templates/style-guide.md` — 토큰 체계, 컬러 리매핑, 호환성 규칙
 - HTML 골격: `templates/html-base.html`
 - **위젯 셀렉션**: `output/{product}-widget-selection.json` (`/select-widgets` 결과)
 - 위젯 파일: `widgets/{taxonomy_id_lower}/*.widget.html`
@@ -163,28 +163,11 @@
 - **시맨틱 컬러**: `style="color: var(--brand-main)"` 등 CSS 변수 사용
 - **카피라이팅**: taxonomy의 `copywriting_guide` 참고
 
-### 4. 섹션 조합 + 배경 교차 검증
+### 4. 섹션 조합
 
 위젯 HTML을 셀렉션 순서대로 `page-canvas` 안에 배치합니다.
 
-#### 배경 교차 규칙
-인접 섹션 배경이 겹치지 않도록 사후 검증:
-- Hook, PainPoint, CTA: `composed` (배경 이미지 사용)
-- Solution, BrandName, Target, Warranty: `bg-brand-gradient`
-- Differentiator: `bg-accent-gradient`
-- 나머지: `bg-dark-gradient-1` ↔ `bg-dark-gradient-2` 교차
-
-같은 배경이 연속되면 위젯 HTML의 배경 클래스를 교체합니다.
-
-### 5. FeatureDetail 좌우 교차
-
-FeatureDetail 섹션은 split composition에서 **홀짝 교차**합니다:
-- **홀수 번호** (01, 03, 05): 텍스트 좌측 / 이미지 우측
-- **짝수 번호** (02, 04, 06): 이미지 좌측 / 텍스트 우측
-
-위젯의 원래 방향과 다르면 `grid-cols-2` 내 child 순서를 swap합니다.
-
-### 6. 이미지 플레이스홀더 커스터마이징
+### 5. 이미지 플레이스홀더 커스터마이징
 
 ```html
 <div class="img-placeholder w-[760px] h-[500px] rounded-xl"
@@ -203,7 +186,7 @@ FeatureDetail 섹션은 split composition에서 **홀짝 교차**합니다:
 - 제품 특성 반영하여 프롬프트 보강
 - `img-label`을 실제 제품에 맞게 업데이트
 
-### 7. html.to.design 호환 규칙
+### 6. html.to.design 호환 규칙
 
 **반드시 준수**해야 Figma 변환 시 정확하게 반영됩니다:
 
@@ -217,7 +200,7 @@ FeatureDetail 섹션은 split composition에서 **홀짝 교차**합니다:
 | **절대값 크기 선호** | `w-[760px]`, `h-[500px]` 등 |
 | **Tailwind CDN 사용** | 인라인 스타일 최소화 |
 
-### 8. 인라인 검증 체크리스트
+### 7. 인라인 검증 체크리스트
 
 HTML 조합 완료 후, 아래 항목을 자체 검증합니다:
 
@@ -229,7 +212,6 @@ HTML 조합 완료 후, 아래 항목을 자체 검증합니다:
 - [ ] 모든 섹션에 고유 `id` 속성 부여
 - [ ] 모든 이미지에 `img-placeholder` 클래스 + `data-ai-prompt` 속성 (또는 `real-image` + `data-original-style`)
 - [ ] 이미지 제공 시: 매핑된 영역에 `<img class="real-image">` 적용, 나머지는 `img-placeholder` 유지
-- [ ] 인접 섹션 배경 교차 (같은 배경 연속 금지)
 - [ ] `position: fixed/sticky` 사용하지 않음
 - [ ] CSS 애니메이션/트랜지션 사용하지 않음
 - [ ] 모든 카드에 `glass-card` 적용

@@ -1,34 +1,36 @@
 # HANDOFF
 
-## Current [1770896525]
-- **Task**: 와이어프레임 위젯 시스템 재설계 — auto-layout → bounds 기반 절대배치
+## Current [1770957841]
+- **Task**: Agent1 분석/추출 스킬 → Mapping 시스템 교체 + 프로젝트 클린업 + Gemini 프롬프트 강화
 - **Completed**:
-  - `templates/wireframe-base.html` 단순화: 레이아웃 유틸 CSS 제거 (~290줄→~150줄), `.wf-section`/`.wf-card`를 position:relative 컨테이너로 변경, `.wf-reference-bg` 추가
-  - `skills/extract-widgets-v4.skill.md` 전면 재작성: 레이아웃 추론 로직 제거, bounds 좌표 → position:absolute 직접 매핑, WIDGET_META wireframe_info 포맷 변경
-  - `skills/analyze-ref-v3.skill.md` 정리: alternating/vertical/horizontal-list role 제거, layout 필드 섹션 + 레이아웃 판별 가이드 전체 제거
-  - `output/analysis-v3-test-sample.json` 복원: alternating-list → grid-row x2, 2×2 좌표로 복원, g3 그룹 추가
-  - `widgets/featuredetail/featuredetail--ref-test-sample--v4-stack-light.widget.html` 절대배치로 재생성
-  - `output/widgets-preview--ref-test-sample--v4.html` 프리뷰 재생성 (FeatureDetail + Differentiator, bounds-based)
+  - 기존 분석/추출 스킬 7개 삭제 (analyze-ref v1/v2/v4, extract-widgets v1/v2/v3/v5)
+  - `/home/iamooo/repos/mapping/` → `mapping/` 프로젝트 내 복사 (Gemini Vision 매핑 웹앱)
+  - 새 스킬 `/map-reference` 생성 (`skills/map-reference.skill.md`)
+  - `agents/ref-to-widgets.md` 새 파이프라인으로 업데이트 (map-reference → register-widgets)
+  - 불필요 파일 전면 삭제: `_archive/`, `figma-plugin/`, `prompts/`, `HANDOFF.md`, `PROJECT-SUMMARY.md`, `QUICKSTART-GUIDE.md`, `REFACTOR-PLAN.md`, `README.md`, `크래프트볼트/`
+  - `templates/html-section-patterns.md` 삭제 (고정 레이아웃 패턴)
+  - 레이아웃 강제 규칙 전면 제거: composition type 강제, 배경 교차 규칙, FeatureDetail zigzag, 9-grid 제약
+  - Gemini 프롬프트에 style 정보 추가 (fontSize, fontWeight, color, textAlign, bgColor)
+  - `Bound` 타입에 `BoundStyle` 인터페이스 추가
+  - Properties 패널에 Style 섹션 추가 (컬러피커 포함)
+  - `bounds-to-widget.ts` 생성 — bounds → `.widget.html` 변환 로직
+  - Toolbar에 Widget 버튼 추가 (JSON + .widget.html 동시 다운로드)
+  - CLAUDE.md 새 파이프라인 반영 완료
+  - `.gitignore`에 mapping 관련 항목 추가
 - **Next Steps**:
-  - 브라우저에서 프리뷰 확인 (`output/widgets-preview--ref-test-sample--v4.html`)
-  - `node tools/gallery/server.js` → wireframe 위젯 정상 렌더/demo 모드 확인
-  - `widgets/differentiator/differentiator--ref-test-sample--v4.widget.html` 도 bounds-based로 업데이트 필요 (이번 범위에서 제외됨)
-  - 실제 레퍼런스로 `/ref-to-widgets v4` E2E 테스트
+  - 실제 레퍼런스 이미지로 E2E 테스트 (Analyze → 편집 → Widget 다운로드)
+  - 다운로드된 `.widget.html`을 갤러리에서 렌더 확인
+  - `register-widgets` 스킬이 새 포맷 위젯을 정상 등록하는지 확인
+  - 필요 시 섹션 분할 로직 추가 (긴 레퍼런스 → 여러 섹션 위젯으로 분리)
 - **Blockers**: None
 - **Related Files**:
-  - `templates/wireframe-base.html` (CSS 단순화)
-  - `skills/extract-widgets-v4.skill.md` (bounds 기반 재작성)
-  - `skills/analyze-ref-v3.skill.md` (layout 관련 제거)
-  - `output/analysis-v3-test-sample.json` (2×2 그리드 복원)
-  - `widgets/featuredetail/featuredetail--ref-test-sample--v4-stack-light.widget.html`
-  - `output/widgets-preview--ref-test-sample--v4.html`
-
-## Past 1 [1770876228]
-- **Task**: 레퍼런스 충실도(Fidelity) 개선 — analyze-ref-v2 / extract-widgets-v2 스킬 수정 및 테스트
-- **Completed**: 충실도 원칙 추가 (섹션 날조/내용 재해석 금지), cassunut 재분석 (12→10 섹션), test-sample 신규 분석
-- **Note**: skills/analyze-ref-v2.skill.md, skills/extract-widgets-v2.skill.md 수정
-
-## Past 2 [1770871884]
-- **Task**: 위젯 갤러리 UI 대폭 개선 (모달, 카드 썸네일, 중복 비교)
-- **Completed**: 모달 반응형, 카드 썸네일 fit 스케일, 중복 비교 모달 개선, 레퍼런스 필터링 드롭다운
-- **Note**: tools/gallery/index.html 업데이트
+  - `mapping/src/lib/gemini-prompt.ts` (강화된 프롬프트)
+  - `mapping/src/lib/types.ts` (BoundStyle 추가)
+  - `mapping/src/lib/bounds-to-widget.ts` (위젯 변환)
+  - `mapping/src/components/panel/bound-properties.tsx` (Style UI)
+  - `mapping/src/components/app-shell.tsx` (Export Widget 로직)
+  - `mapping/src/components/toolbar.tsx` (Widget 버튼)
+  - `mapping/src/app/api/analyze/route.ts` (style 파싱)
+  - `skills/map-reference.skill.md` (새 스킬)
+  - `agents/ref-to-widgets.md` (새 파이프라인)
+  - `CLAUDE.md` (업데이트됨)

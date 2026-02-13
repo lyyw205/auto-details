@@ -5,7 +5,7 @@
 
 ## Context
 - `skills/section-taxonomy.json`에서 **slim 필드만** 로딩:
-  `id, name, category, purpose, is_required, frequency, keywords, visual_cues, typical_compositions`
+  `id, name, category, purpose, is_required, frequency, keywords, visual_cues`
   (required_elements, copywriting_guide 등은 로딩하지 않음)
 
 ## Input

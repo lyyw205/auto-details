@@ -43,25 +43,16 @@
 | 기준 | 가중치 | 산출 방법 |
 |---|---|---|
 | **스타일 호환성** | 1.0 | 위젯 `style_tags`와 선호 style_tags의 교집합 비율 |
-| **컴포지션 선호도** | 0.5 | taxonomy의 `typical_compositions`에 위젯의 composition이 포함되면 1.0, 아니면 0.3 |
-| **소스 일관성** | 0.3 | 이미 선택된 다른 섹션과 같은 `source_ref`면 1.0, 아니면 0.0 |
+| **소스 일관성** | 0.5 | 이미 선택된 다른 섹션과 같은 `source_ref`면 1.0, 아니면 0.0 |
 | **테마 매칭** | 0.3 | 선호 theme (dark/light)과 일치하면 1.0 |
 
-점수 = `(스타일 × 1.0) + (컴포지션 × 0.5) + (소스 일관성 × 0.3) + (테마 × 0.3)`
+점수 = `(스타일 × 1.0) + (소스 일관성 × 0.5) + (테마 × 0.3)`
 
-#### 2-3. FeatureDetail 특수 처리
-
-- FeatureDetail이 여러 개일 경우, **좌우 교차(zigzag)** 보장
-- 홀수 번째: `variant: "image-left"` 우선 선택
-- 짝수 번째: `variant: "image-right"` 우선 선택
-- split 위젯이 없으면 stack으로 폴백
-
-#### 2-4. 폴백 — 위젯 없는 경우
+#### 2-3. 폴백 — 위젯 없는 경우
 
 레지스트리에 해당 taxonomy_id의 위젯이 없을 경우:
 1. `section-taxonomy.json`에서 해당 섹션의 `required_elements` 로드
-2. `templates/html-section-patterns.md`의 해당 섹션 패턴을 참조하여 기본 HTML 위젯 자동 생성
-3. `composition: "stack"`, theme은 인접 섹션과 교차되도록 설정
+2. 기본 HTML 위젯 자동 생성
 4. 생성된 폴백 위젯은 `<!--WIDGET_META ... -->` + `<section>` HTML 포맷
 
 ### 3단계: 결과 조합
@@ -82,8 +73,7 @@
       "score": 0.92,
       "score_breakdown": {
         "style_compat": 0.95,
-        "composition_pref": 1.0,
-        "source_cohesion": 0.3,
+        "source_cohesion": 0.5,
         "theme_match": 1.0
       },
       "alternatives": [

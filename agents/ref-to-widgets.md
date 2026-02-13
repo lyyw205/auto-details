@@ -1,19 +1,23 @@
 # /ref-to-widgets — 레퍼런스 → 섹션 위젯 추출 에이전트
 
 ## 개요
-레퍼런스 이미지를 분석하여 **개별 HTML 섹션 위젯**과 **스타일 프리셋**을 생성하고 레지스트리에 등록합니다.
+레퍼런스 이미지를 Gemini Vision 기반 매핑 시스템으로 분석하여, 정확한 좌표 기반 요소 감지 + 인터랙티브 편집을 거쳐 **개별 HTML 섹션 위젯**과 **스타일 프리셋**을 생성하고 레지스트리에 등록합니다.
 
 ## 파이프라인
 
 ```
 레퍼런스 이미지
        ↓
-[Step 1] /analyze-ref
-  → output/analysis-{name}.json
+[Step 1] /map-reference (Gemini 매핑 웹앱)
+  → http://localhost:3000 에서 인터랙티브 매핑
+  → output/mapping-{name}.json  (바운드 데이터)
+  → output/mapping-{name}.html  (오버레이 미리보기)
        ↓
-[Step 2] /extract-widgets + /register-widgets (자동 실행)
+[Step 2] 유저 편집/검수
+  → 웹앱에서 바운드 이동, 리사이즈, 타입 변경, 라벨 수정
+       ↓
+[Step 3] /register-widgets
   → widgets/_presets/preset--ref-{name}.json  (프리셋 1개)
-  → output/widgets-preview--ref-{name}.html  (통합 프리뷰, 참고용)
   → widgets/{taxonomy_id}/{widget_id}.widget.html  (위젯 N개)
   → widgets/_registry.json 업데이트 (status: "new")
 ```
@@ -22,60 +26,69 @@
 
 ## 실행 조건
 - 입력: 레퍼런스 이미지 (1장 이상) + 레퍼런스 이름
-- 필요 파일: `skills/section-taxonomy.json`, `templates/html-section-patterns.md`
+- 필요: `mapping/.env.local`에 `GEMINI_API_KEY` 설정
+- 필요 파일: `skills/section-taxonomy.json`
 
-## Step 1: /analyze-ref
+## Step 1: /map-reference
 
-**스킬 파일**: `skills/analyze-ref.skill.md`
+**스킬 파일**: `skills/map-reference.skill.md`
 
-레퍼런스 이미지를 분석하여 구조화된 레이아웃 데이터를 추출합니다.
+Gemini Vision API 기반 매핑 웹앱으로 레퍼런스 이미지의 요소를 자동 감지합니다.
 
-### Input
-- 레퍼런스 이미지
-- 레퍼런스 이름 (영문 소문자 + 하이픈)
+### 매핑 서버 실행
+
+```bash
+cd mapping && npm install && npm run dev
+# http://localhost:3000
+```
+
+### 워크플로우
+1. 브라우저에서 `http://localhost:3000` 접속
+2. 레퍼런스 이미지 업로드 (드래그앤드롭 또는 파일 선택)
+3. Gemini 2.5 Flash가 자동으로 요소 감지 (텍스트, 이미지, 버튼, 아이콘 등)
+4. 인터랙티브 편집: 바운드 이동, 리사이즈, 타입 변경, 라벨 수정, 추가/삭제
+5. Export → bounds JSON + overlay HTML 저장
 
 ### Output
-- `output/analysis-{name}.json`
-  - `global_analysis`: 너비, 색상, 타이포, 스타일, **style_tags**, **theme**
-  - `sections[]`: 각 섹션의 매핑, 레이아웃, composition, 요소, ai_prompt
-  - `pattern_summary`: 전체 구조 요약
+- `output/mapping-{name}.json` — 바운드 데이터 (좌표 % 단위)
+- `output/mapping-{name}.html` — 오버레이 미리보기
 
-### 유저 확인
-- 분석 결과 요약 표시 (섹션 수, 매핑률, 미분류 섹션)
-- 미분류 섹션이 있으면 리포트 (`skills/unmapped-sections/`) 표시
+### Bound 데이터 포맷
+```json
+[
+  {
+    "id": "uuid",
+    "type": "text|image|background|button|icon|input|container|other",
+    "label": "메인 카피",
+    "x": 15.5,    // % (0-100)
+    "y": 8.2,     // % (0-100)
+    "w": 69.0,    // % (0-100)
+    "h": 5.3,     // % (0-100)
+    "zIndex": 2,
+    "content": "감지된 텍스트 내용"
+  }
+]
+```
 
-## Step 2: /extract-widgets + /register-widgets
+## Step 2: 유저 편집/검수
 
-**스킬 파일**: `skills/extract-widgets.skill.md`, `skills/register-widgets.skill.md`
+유저가 매핑 웹앱에서 직접 바운드를 검수하고 수정합니다:
+- 바운드 이동 (드래그)
+- 바운드 리사이즈 (핸들 드래그)
+- 타입 변경 (text, image, background, button, icon, input, container, other)
+- 라벨 수정
+- 바운드 추가/삭제
 
-분석 결과를 HTML 위젯으로 변환하고, 개별 파일로 저장한 뒤 레지스트리에 등록합니다.
-`templates/html-section-patterns.md`의 패턴을 참조하여 실제 HTML/CSS를 생성합니다.
+## Step 3: /register-widgets
 
-### Input
-- `output/analysis-{name}.json`
+**스킬 파일**: `skills/register-widgets.skill.md`
 
-### Output (모두 한 번에 생성)
+매핑 데이터를 기반으로 HTML 위젯을 생성하고, 개별 파일로 저장한 뒤 레지스트리에 등록합니다.
+
+### Output
 1. **스타일 프리셋**: `widgets/_presets/preset--ref-{name}.json`
-2. **통합 프리뷰** (참고용): `output/widgets-preview--ref-{name}.html`
-3. **개별 위젯 파일**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
-4. **레지스트리 업데이트**: `widgets/_registry.json` — 각 위젯이 `status: "new"`로 등록
-
-### 유저에게 표시
-```
-=== ref-{name} 위젯 추출 + 등록 완료 ===
-
-프리셋: preset--ref-{name} ({style_tags})
-
-| # | Taxonomy | Widget ID | Composition | Theme |
-|---|----------|-----------|-------------|-------|
-| 1 | Hook | hook--ref-{name} | stack | light |
-| 2 | WhatIsThis | whatisthis--ref-{name} | stack | light |
-| ... | ... | ... | ... | ... |
-
-총 {N}개 위젯 등록 (status: new)
-
-프리뷰 확인: output/widgets-preview--ref-{name}.html (브라우저에서 열기)
-```
+2. **개별 위젯 파일**: `widgets/{taxonomy_id_lower}/{widget_id}.widget.html` × N개
+3. **레지스트리 업데이트**: `widgets/_registry.json` — 각 위젯이 `status: "new"`로 등록
 
 ## 사후 검수 (갤러리)
 
@@ -100,44 +113,3 @@
 갤러리에서 검수하세요: http://localhost:3333 → "새로 추가" 탭
 이후 /product-to-html로 이 위젯들을 사용할 수 있습니다.
 ```
-
----
-
-## v4 와이어프레임 모드
-
-v4 모드를 사용하면 Figma Make에 최적화된 **와이어프레임 HTML 위젯**을 생성합니다.
-
-### v4 파이프라인
-
-```
-레퍼런스 이미지
-       ↓
-[Step 1] /analyze-ref-v3 (변경 없음)
-  → output/analysis-v3-{name}.json
-       ↓
-[Step 2] /extract-widgets-v4 + /register-widgets (자동 실행)
-  → widgets/_presets/preset--ref-{name}.json  (프리셋 1개)
-  → output/widgets-preview--ref-{name}--v4.html  (와이어프레임 프리뷰)
-  → widgets/{taxonomy_id}/{widget_id}--v4.widget.html  (와이어프레임 위젯 N개)
-  → widgets/_registry.json 업데이트 (status: "new", composition: "wireframe")
-       ↓
-[Step 3] (선택) /generate-figma-make-prompt-v2
-  → output/{name}-figma-make-prompt.md  (Figma Make 프롬프트)
-```
-
-### v4 특징
-- **auto-layout** (flexbox/grid) 사용, absolute positioning 금지
-- **무채색** 와이어프레임 — 회색/흰색만 사용
-- **한글 라벨** — 모든 요소에 역할 라벨 표시
-- **Figma Make 힌트** — WIDGET_META에 `figma_make_hints` 블록 포함
-- **`.wf-*` CSS 클래스** — `templates/wireframe-base.html` 전용 CSS 시스템
-
-### 스킬 파일
-- 분석: `skills/analyze-ref-v3.skill.md`
-- 추출: `skills/extract-widgets-v4.skill.md`
-- 프롬프트: `skills/generate-figma-make-prompt-v2.skill.md`
-
-### 호환성
-- v2/v3 위젯과 동일 레퍼런스에서 공존 가능
-- 갤러리 서버가 `composition: "wireframe"` 감지 시 자동으로 wireframe-base.html 사용
-- 기존 데모 모드(`applyDemoMode`) 호환 (듀얼 클래스 `wf-image img-placeholder`)

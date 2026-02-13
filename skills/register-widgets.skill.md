@@ -74,11 +74,11 @@ FeatureDetail 위젯 추가 필드:
 
 **유사도 공식:**
 ```
-유사도 = (style_tags Jaccard × 0.5) + (composition 일치 × 0.3) + (theme 일치 × 0.2)
+유사도 = (style_tags Jaccard × 0.7) + (theme 일치 × 0.3)
 ```
 
 - **Jaccard** = 교집합 / 합집합 (style_tags 기준)
-- **일치** = 같으면 1.0, 다르면 0.0
+- **theme 일치** = 같으면 1.0, 다르면 0.0
 - **임계값**: 0.7 이상이면 중복 후보로 표시
 
 여러 기존 위젯이 임계값을 초과하면 **최고 점수** 위젯을 `duplicate_of`에 기록합니다.

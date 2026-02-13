@@ -264,53 +264,6 @@ W3C WCAG 2.1 기준:
 | Section padding (large) | 100px 50px | `.section-padding-lg` |
 | Body background | #0A0A0A | `body` 기본 |
 
-### 4.2 Composition Types
-
-#### `stack` (수직 나열 — 기본)
-
-```html
-<section class="flex flex-col items-center gap-6 section-padding {bg-class}">
-  <div class="content-narrow flex flex-col items-center gap-6 text-center">
-    <!-- children -->
-  </div>
-</section>
-```
-
-- 용도: WhatIsThis, BrandName, SetContents, FeaturesOverview, Tips, StatsHighlight, Comparison, Safety, Target, Reviews, ProductSpec, FAQ, Warranty, CTABanner, EventPromo
-
-#### `split` (2분할 레이아웃)
-
-```html
-<section class="grid grid-cols-2 min-h-[500px] {bg-class}">
-  <div class="flex flex-col justify-center px-[50px] py-[60px] gap-4">
-    <!-- 텍스트 패널 -->
-  </div>
-  <div class="flex items-center justify-center">
-    <!-- 이미지 패널 -->
-  </div>
-</section>
-```
-
-- 비율 조정: `grid-cols-[3fr_2fr]`, `grid-cols-[2fr_3fr]`
-- 용도: WhyCore, FeatureDetail
-- **FeatureDetail 교차 규칙**: 홀수(01,03,05) = 텍스트 좌/이미지 우, 짝수(02,04,06) = 이미지 좌/텍스트 우
-
-#### `composed` (레이어 오버레이 — 9-Grid)
-
-```html
-<section class="composed-section relative h-[{height}px] {bg-class}">
-  <div class="composed-layer inset-0"><!-- 배경 이미지 --></div>
-  <div class="composed-layer inset-0 hero-overlay"></div>
-  <div class="composed-layer bottom-0 left-0 right-0 p-[50px]">
-    <!-- 텍스트 오버레이 -->
-  </div>
-</section>
-```
-
-- 9-Grid 포지션: `pos-tl`, `pos-tc`, `pos-tr`, `pos-ml`, `pos-mc`, `pos-mr`, `pos-bl`, `pos-bc`, `pos-br`
-- 스팬: `pos-tl-tr` (상단 전체), `pos-bl-br` (하단 전체), `pos-tl-br` (전체)
-- 용도: Hook, PainPoint, CTA
-
 ---
 
 ## 5. Visual Effects
@@ -326,18 +279,6 @@ W3C WCAG 2.1 기준:
 | Dark Brand Glow | `bg-dark-brand-glow` | `linear-gradient(180deg, #111 0%, #111 60%, brand 8%)` | FeatureDetail 이미지 패널 |
 | Radial Glow | `bg-radial-glow` | `radial-gradient(ellipse at 50% 0%, brand 15%, transparent 70%)` | CTA 브랜드 글로우 |
 
-#### Background Alternation Rule (배경 교차 규칙)
-
-> **인접한 섹션에 동일한 배경 사용 금지.**
-
-```
-Hook (composed) → WhatIsThis (dark-1) → BrandName (brand) → FeatureDetail (dark-2) → ...
-```
-
-- composed 섹션 (Hook, PainPoint, CTA): 배경 이미지 사용
-- brand/accent 섹션: 고유 그라데이션
-- 나머지 일반 섹션: `bg-dark-gradient-1` ↔ `bg-dark-gradient-2` 교차
-- 같은 배경이 연속되면 위젯 HTML의 배경 클래스를 교체
 
 ### 5.2 Glassmorphism
 
@@ -452,35 +393,6 @@ Hook (composed) → WhatIsThis (dark-1) → BrandName (brand) → FeatureDetail 
 ```
 
 ---
-
-## 7. Section-to-Style Mapping
-
-각 Taxonomy 섹션의 기본 스타일 설정.
-
-| Section | Composition | Default Background | 주요 Effect |
-|---------|-------------|-------------------|-------------|
-| Hook | composed | 배경 이미지 | hero-overlay, text-shadow-hero |
-| WhatIsThis | stack | dark-gradient-1/2 | glass-card |
-| BrandName | stack | brand-gradient | divider-gradient, text-shadow-subtle |
-| SetContents | stack | dark-gradient-1/2 | glass-card, border-brand-left |
-| WhyCore | split | dark-gradient-1/2 | glass-card, glass-card-strong |
-| PainPoint | composed | 배경 이미지 | hero-overlay, check-item, text-shadow-hero |
-| Solution | stack | brand-gradient | glass-card, text-shadow-subtle |
-| FeaturesOverview | stack | dark-gradient-1/2 | num-badge, glass-card |
-| FeatureDetail | split | dark-gradient-1/2 교차 | text-gradient-brand, check-item, bg-dark-brand-glow |
-| Tips | stack | dark-gradient-1/2 | glass-card |
-| Differentiator | stack | accent-gradient | glass-card, glass-card-strong |
-| StatsHighlight | stack | dark-gradient-1/2 | text-gradient-brand, glass-card |
-| Comparison | stack | dark-gradient-1/2 | glass-card, divider-gradient |
-| Safety | stack | dark-gradient-1/2 | glass-card |
-| Target | stack | brand-gradient | check-item, text-shadow-subtle |
-| Reviews | stack | dark-gradient-1/2 | glass-card |
-| ProductSpec | stack | dark-gradient-1/2 | border-b border-white/5 |
-| FAQ | stack | dark-gradient-1/2 | glass-card |
-| Warranty | stack | brand-gradient | glass-card, text-shadow-subtle |
-| CTABanner | stack | dark-gradient-1/2 | glass-card-strong |
-| EventPromo | stack | dark-gradient-1/2 | — |
-| CTA | composed | 배경 이미지 | hero-overlay, bg-radial-glow, text-shadow-hero, gradient button |
 
 ---
 
