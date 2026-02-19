@@ -1,0 +1,86 @@
+{
+  "widget_id": "featuredetail--ref-reference4--composed",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "라이프스타일"
+  ],
+  "theme": "light",
+  "composition": "composed",
+  "provenance": {
+    "source_ref": "ref-reference4",
+    "extracted_date": "2026-02-11"
+  },
+  "status": "new",
+  "copywriting_guide": "라이프스타일 전체 배경 이미지 위에 하단 텍스트 오버레이. 실제 사용 환경(화장대/데스크)에서의 활용 장면 전달",
+  "canvas": {
+    "width": 860,
+    "height": 550
+  },
+  "elements": [
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "라이프스타일 활용 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 0,
+      "placeholder": {
+        "ai_prompt": "[product] wooden organizer on a minimalist vanity table in a bright bedroom, natural daylight from window, cozy interior, warm wood tones matching furniture, lifestyle product photography, 8k quality",
+        "ai_style": "product_lifestyle",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 13.333333333333334,
+      "w": 80,
+      "h": 6.333333333333334,
+      "zIndex": 1,
+      "content": "라이프스타일 활용 이미지\n    \n  \n  \n  \n    [라이프스타일 카피]",
+      "style": {}
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 21.666666666666668,
+      "w": 80,
+      "h": 6.333333333333334,
+      "zIndex": 2,
+      "content": "[활용 설명 — 인테리어 조화, 실용성 전달]",
+      "style": {}
+    }
+  ],
+  "html_body": "<section id=\"featuredetail\" class=\"composed-section relative overflow-hidden\" style=\"min-height: 550px;\">\n  <div class=\"composed-layer inset-0\">\n    <div class=\"img-placeholder w-full h-full\" style=\"background: #E8E0D4;\"\n         data-ai-prompt=\"[product] wooden organizer on a minimalist vanity table in a bright bedroom, natural daylight from window, cozy interior, warm wood tones matching furniture, lifestyle product photography, 8k quality\"\n         data-ai-style=\"product_lifestyle\"\n         data-ai-ratio=\"16:9\">\n      <svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">라이프스타일 활용 이미지</span>\n    </div>\n  </div>\n  <div class=\"composed-layer inset-0\" style=\"background: linear-gradient(180deg, transparent 40%, rgba(30, 24, 20, 0.85) 100%);\"></div>\n  <div class=\"composed-layer bottom-0 left-0 right-0 px-[50px] pb-[50px] flex flex-col gap-3\">\n    <h2 class=\"text-[28px] font-bold tracking-tight text-white text-shadow-hero\">[라이프스타일 카피]</h2>\n    <p class=\"text-body text-white/80 text-shadow-subtle\">[활용 설명 — 인테리어 조화, 실용성 전달]</p>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Composed layout with overlapping elements. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "본문 텍스트 2개",
+      "스타일: 내추럴, 우드톤, 라이프스타일",
+      "카피 가이드: 라이프스타일 전체 배경 이미지 위에 하단 텍스트 오버레이. 실제 사용 환경(화장대/데스크)에서의 활용 장면 전달"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[라이프스타일 카피]": "당신의 공간에 자연스럽게 스며드는 디자인",
+      "[활용 설명 — 인테리어 조화, 실용성 전달]": "화장대 위에 놓으면 인테리어 소품처럼, 서재에 놓으면 문구 정리함처럼. 어디에나 어울립니다."
+    },
+    "images": [
+      {
+        "label": "라이프스타일 활용 이미지",
+        "src": "https://images.unsplash.com/photo-1558788833-5189550e2f16?w=760&fit=crop&q=80",
+        "alt": "오거나이저가 있는 라이프스타일 공간"
+      }
+    ]
+  }
+}

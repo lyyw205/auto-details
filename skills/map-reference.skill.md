@@ -9,6 +9,11 @@ Gemini Vision API 기반 매핑 시스템(Next.js 웹앱)을 사용하여 레퍼
 - `mapping/.env.local`에 `GEMINI_API_KEY` 설정 필요
 - Node.js 18+ 필요
 
+### HF_TOKEN (선택)
+- Hugging Face 모델 기반 Pass 2 감지에 필요
+- 미설정 시 경고 표시 + Pass 1 결과만으로 진행 여부 유저에게 확인
+- 없어도 기본 매핑은 정상 동작
+
 ## 실행 방법
 
 ### 1. 매핑 서버 시작
@@ -34,10 +39,9 @@ cd mapping && npm install && npm run dev
 
 ### 3. 결과물 저장
 
-Export 후 다음 파일을 프로젝트 루트 `output/` 폴더로 복사합니다:
+Export 후 결과물이 자동으로 프로젝트 루트 `output/` 폴더에 저장됩니다:
 
 - `output/mapping-{name}.json` — 바운드 데이터 (요소 좌표 + 타입 + 라벨)
-- `output/mapping-{name}.html` — 오버레이 미리보기 HTML
 
 ## Input
 
@@ -76,10 +80,6 @@ Export 후 다음 파일을 프로젝트 루트 `output/` 폴더로 복사합니
 | `zIndex` | number | z-index 순서 |
 | `content` | string | 감지된 텍스트 내용 (텍스트 요소의 경우) |
 
-### 오버레이 HTML (`output/mapping-{name}.html`)
-
-바운드가 오버레이된 레퍼런스 이미지 미리보기. 브라우저에서 직접 열어 확인 가능.
-
 ## 유저에게 표시
 
 ```
@@ -93,7 +93,6 @@ Export 후 다음 파일을 프로젝트 루트 `output/` 폴더로 복사합니
 
 결과물:
 - output/mapping-{name}.json (바운드 데이터)
-- output/mapping-{name}.html (오버레이 미리보기)
 
 편집이 완료되면 알려주세요. register-widgets로 위젯을 등록하겠습니다.
 ```

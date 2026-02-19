@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Mapping Overlay — ref-reverse-formula</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:system-ui,sans-serif; display:flex; justify-content:center; padding:20px 0; }
+  .wrapper { position:relative; width:860px; }
+  .wrapper img { width:860px; display:block; }
+  .section-group { position:absolute; left:0; width:860px; pointer-events:none; }
+  .section-label {
+    position:absolute; left:0; top:0; width:100%;
+    background:rgba(0,0,0,0.6); color:#fff; font-size:13px; font-weight:700;
+    padding:4px 8px; z-index:100; pointer-events:none;
+    border-bottom:2px solid;
+  }
+  .bound-box {
+    position:absolute; border:2px solid; z-index:50;
+    pointer-events:none;
+  }
+  .bound-label {
+    position:absolute; font-size:10px; font-weight:600;
+    padding:1px 4px; white-space:nowrap; z-index:60;
+    pointer-events:none; border-radius:2px;
+  }
+  .controls {
+    position:fixed; top:10px; right:10px; z-index:200;
+    background:rgba(0,0,0,0.85); padding:12px; border-radius:8px; color:#fff;
+    font-size:13px; display:flex; flex-direction:column; gap:6px;
+  }
+  .controls label { cursor:pointer; display:flex; align-items:center; gap:6px; }
+  .controls input[type=range] { width:120px; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <strong>Overlay Controls</strong>
+  <label><input type="range" id="opacityRange" min="0" max="100" value="40"> Bounds opacity: <span id="opVal">40%</span></label>
+  <label><input type="checkbox" id="showLabels" checked> Show labels</label>
+  <label><input type="checkbox" id="showSectionHeaders" checked> Show section headers</label>
+</div>
+
+<div class="wrapper" id="wrapper">
+  <img src="../references/ref-reverse-formula.png" id="refImg" />
+</div>
+
+<script>
+const MAPPING = {
+  "sections": [
+    {
+      "taxonomy_id": "Hook", "position": 1, "canvas_height": 800,
+      "bounds": [
+        { "id": "hook-bg", "type": "background", "label": "그라데이션 배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "hook-brand", "type": "text", "label": "브랜드명", "x": 15, "y": 5, "w": 70, "h": 6 },
+        { "id": "hook-sub", "type": "text", "label": "서브 카피", "x": 25, "y": 12, "w": 50, "h": 4 },
+        { "id": "hook-img", "type": "image", "label": "메인 제품 이미지", "x": 10, "y": 22, "w": 80, "h": 65 },
+        { "id": "hook-desc", "type": "text", "label": "부가 설명", "x": 20, "y": 90, "w": 60, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "WhatIsThis", "position": 2, "canvas_height": 700,
+      "bounds": [
+        { "id": "wit-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "wit-title", "type": "text", "label": "질문 형식 제목", "x": 15, "y": 5, "w": 70, "h": 5 },
+        { "id": "wit-answer", "type": "text", "label": "한줄 정의", "x": 10, "y": 12, "w": 80, "h": 8 },
+        { "id": "wit-img", "type": "image", "label": "제품 구성 이미지", "x": 5, "y": 25, "w": 90, "h": 45 },
+        { "id": "wit-desc", "type": "text", "label": "사용법 설명", "x": 15, "y": 75, "w": 70, "h": 5 },
+        { "id": "wit-summary", "type": "text", "label": "요약", "x": 20, "y": 85, "w": 60, "h": 5 }
+      ]
+    },
+    {
+      "taxonomy_id": "ColorOptions", "position": 3, "canvas_height": 650,
+      "bounds": [
+        { "id": "co-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "co-title", "type": "text", "label": "섹션 제목", "x": 20, "y": 3, "w": 60, "h": 6 },
+        { "id": "co-sub", "type": "text", "label": "서브 카피", "x": 15, "y": 10, "w": 70, "h": 4 },
+        { "id": "co-grid", "type": "container", "label": "컬러 스와치 그리드", "x": 5, "y": 18, "w": 90, "h": 70 },
+        { "id": "co-label1", "type": "text", "label": "컬러명 1", "x": 8, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label2", "type": "text", "label": "컬러명 2", "x": 30, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label3", "type": "text", "label": "컬러명 3", "x": 52, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label4", "type": "text", "label": "컬러명 4", "x": 74, "y": 90, "w": 20, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail", "position": 4, "variant": "split-lr", "canvas_height": 700,
+      "bounds": [
+        { "id": "fd1-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "fd1-img", "type": "image", "label": "기능 상세 이미지", "x": 0, "y": 0, "w": 50, "h": 100 },
+        { "id": "fd1-num", "type": "text", "label": "기능 번호", "x": 55, "y": 15, "w": 15, "h": 8 },
+        { "id": "fd1-q", "type": "text", "label": "질문 형식 제목", "x": 55, "y": 25, "w": 40, "h": 5 },
+        { "id": "fd1-a", "type": "text", "label": "기능 핵심 답변", "x": 55, "y": 32, "w": 40, "h": 10 },
+        { "id": "fd1-b1", "type": "text", "label": "혜택 1", "x": 55, "y": 50, "w": 40, "h": 4 },
+        { "id": "fd1-b2", "type": "text", "label": "혜택 2", "x": 55, "y": 56, "w": 40, "h": 4 },
+        { "id": "fd1-b3", "type": "text", "label": "혜택 3", "x": 55, "y": 62, "w": 40, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail", "position": 5, "variant": "stack", "canvas_height": 750,
+      "bounds": [
+        { "id": "fd2-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "fd2-num", "type": "text", "label": "기능 번호", "x": 10, "y": 3, "w": 15, "h": 6 },
+        { "id": "fd2-q", "type": "text", "label": "질문 형식 제목", "x": 10, "y": 10, "w": 80, "h": 5 },
+        { "id": "fd2-a", "type": "text", "label": "기능 핵심 답변", "x": 10, "y": 17, "w": 80, "h": 8 },
+        { "id": "fd2-img", "type": "image", "label": "기능 상세 이미지", "x": 5, "y": 30, "w": 90, "h": 45 },
+        { "id": "fd2-b1", "type": "text", "label": "혜택 1", "x": 10, "y": 80, "w": 80, "h": 4 },
+        { "id": "fd2-b2", "type": "text", "label": "혜택 2", "x": 10, "y": 86, "w": 80, "h": 4 },
+        { "id": "fd2-spec", "type": "text", "label": "스펙 강조", "x": 10, "y": 92, "w": 80, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "Differentiator", "position": 6, "canvas_height": 700,
+      "bounds": [
+        { "id": "diff-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "diff-badge", "type": "text", "label": "배지", "x": 30, "y": 3, "w": 40, "h": 4 },
+        { "id": "diff-title", "type": "text", "label": "차별화 포인트", "x": 10, "y": 8, "w": 80, "h": 8 },
+        { "id": "diff-img", "type": "image", "label": "차별화 비교 이미지", "x": 5, "y": 20, "w": 90, "h": 50 },
+        { "id": "diff-prob", "type": "text", "label": "기존 문제", "x": 10, "y": 74, "w": 35, "h": 5 },
+        { "id": "diff-sol", "type": "text", "label": "우리의 해결책", "x": 55, "y": 74, "w": 35, "h": 5 },
+        { "id": "diff-result", "type": "text", "label": "결과 강조", "x": 15, "y": 85, "w": 70, "h": 5 }
+      ]
+    },
+    {
+      "taxonomy_id": "ProductSpec", "position": 7, "canvas_height": 700,
+      "bounds": [
+        { "id": "ps-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "ps-title", "type": "text", "label": "섹션 제목", "x": 15, "y": 3, "w": 70, "h": 6 },
+        { "id": "ps-img", "type": "image", "label": "제품 스펙 이미지", "x": 10, "y": 12, "w": 80, "h": 40 },
+        { "id": "ps-cat1", "type": "text", "label": "카테고리 1 제목", "x": 10, "y": 56, "w": 40, "h": 4 },
+        { "id": "ps-spec1", "type": "text", "label": "스펙 1", "x": 10, "y": 62, "w": 40, "h": 3 },
+        { "id": "ps-spec2", "type": "text", "label": "스펙 2", "x": 10, "y": 66, "w": 40, "h": 3 },
+        { "id": "ps-spec3", "type": "text", "label": "스펙 3", "x": 10, "y": 70, "w": 40, "h": 3 },
+        { "id": "ps-cat2", "type": "text", "label": "카테고리 2 제목", "x": 55, "y": 56, "w": 40, "h": 4 },
+        { "id": "ps-spec4", "type": "text", "label": "스펙 4", "x": 55, "y": 62, "w": 40, "h": 3 },
+        { "id": "ps-spec5", "type": "text", "label": "스펙 5", "x": 55, "y": 66, "w": 40, "h": 3 },
+        { "id": "ps-spec6", "type": "text", "label": "스펙 6", "x": 55, "y": 70, "w": 40, "h": 3 },
+        { "id": "ps-common", "type": "text", "label": "공통 정보", "x": 10, "y": 80, "w": 80, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "CTA", "position": 8, "canvas_height": 650,
+      "bounds": [
+        { "id": "cta-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "cta-main", "type": "text", "label": "액션 유도 카피", "x": 10, "y": 8, "w": 80, "h": 10 },
+        { "id": "cta-sub", "type": "text", "label": "메인 카피 반복", "x": 15, "y": 20, "w": 70, "h": 5 },
+        { "id": "cta-img", "type": "image", "label": "제품 감성 이미지", "x": 10, "y": 30, "w": 80, "h": 35 },
+        { "id": "cta-price", "type": "text", "label": "가격", "x": 25, "y": 70, "w": 50, "h": 6 },
+        { "id": "cta-trust", "type": "text", "label": "신뢰 배지", "x": 20, "y": 78, "w": 60, "h": 4 },
+        { "id": "cta-btn", "type": "button", "label": "구매 버튼", "x": 20, "y": 85, "w": 60, "h": 8 }
+      ]
+    }
+  ]
+};
+
+const SECTION_COLORS = [
+  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4',
+  '#FFEAA7', '#DDA0DD', '#98D8C8', '#F7DC6F'
+];
+
+const TYPE_COLORS = {
+  text:       { border: '#00FF00', bg: 'rgba(0,255,0,0.15)' },
+  image:      { border: '#FF6600', bg: 'rgba(255,102,0,0.15)' },
+  background: { border: '#666666', bg: 'rgba(100,100,100,0.05)' },
+  button:     { border: '#FF00FF', bg: 'rgba(255,0,255,0.15)' },
+  container:  { border: '#00CCFF', bg: 'rgba(0,204,255,0.15)' },
+  icon:       { border: '#FFCC00', bg: 'rgba(255,204,0,0.15)' },
+  shape:      { border: '#CC66FF', bg: 'rgba(204,102,255,0.15)' },
+  other:      { border: '#AAAAAA', bg: 'rgba(170,170,170,0.15)' }
+};
+
+const wrapper = document.getElementById('wrapper');
+const img = document.getElementById('refImg');
+
+img.onload = () => {
+  const imgW = img.naturalWidth;
+  const imgH = img.naturalHeight;
+  const scale = 860 / imgW;
+
+  // Total mapping height
+  const totalMapH = MAPPING.sections.reduce((s, sec) => s + sec.canvas_height, 0);
+  const scaleY = (imgH * scale) / totalMapH;
+
+  let yOffset = 0;
+
+  MAPPING.sections.forEach((sec, si) => {
+    const secColor = SECTION_COLORS[si % SECTION_COLORS.length];
+    const secTopPx = yOffset * scaleY;
+    const secHPx = sec.canvas_height * scaleY;
+
+    // Section group
+    const group = document.createElement('div');
+    group.className = 'section-group';
+    group.style.top = secTopPx + 'px';
+    group.style.height = secHPx + 'px';
+
+    // Section header
+    const header = document.createElement('div');
+    header.className = 'section-label section-header';
+    header.style.borderColor = secColor;
+    header.style.color = secColor;
+    header.textContent = `[${sec.position}] ${sec.taxonomy_id}${sec.variant ? ' — ' + sec.variant : ''} (${sec.canvas_height}px)`;
+    group.appendChild(header);
+
+    // Bounds (skip background type for clarity)
+    sec.bounds.forEach(b => {
+      if (b.type === 'background') return;
+
+      const tc = TYPE_COLORS[b.type] || TYPE_COLORS.other;
+
+      const box = document.createElement('div');
+      box.className = 'bound-box';
+      box.style.left = b.x + '%';
+      box.style.top = b.y + '%';
+      box.style.width = b.w + '%';
+      box.style.height = b.h + '%';
+      box.style.borderColor = tc.border;
+      box.style.background = tc.bg;
+      group.appendChild(box);
+
+      const label = document.createElement('div');
+      label.className = 'bound-label label-tag';
+      label.style.left = b.x + '%';
+      label.style.top = b.y + '%';
+      label.style.background = tc.border;
+      label.style.color = '#000';
+      label.textContent = `${b.id} [${b.type}] ${b.label}`;
+      group.appendChild(label);
+    });
+
+    wrapper.appendChild(group);
+    yOffset += sec.canvas_height;
+  });
+};
+
+// Controls
+document.getElementById('opacityRange').addEventListener('input', e => {
+  const v = e.target.value;
+  document.getElementById('opVal').textContent = v + '%';
+  document.querySelectorAll('.bound-box').forEach(el => {
+    el.style.opacity = v / 100;
+  });
+});
+document.getElementById('showLabels').addEventListener('change', e => {
+  document.querySelectorAll('.label-tag').forEach(el => {
+    el.style.display = e.target.checked ? '' : 'none';
+  });
+});
+document.getElementById('showSectionHeaders').addEventListener('change', e => {
+  document.querySelectorAll('.section-header').forEach(el => {
+    el.style.display = e.target.checked ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>

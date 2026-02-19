@@ -1,0 +1,183 @@
+{
+  "widget_id": "whycore--ref-cassunut",
+  "taxonomy_id": "WhyCore",
+  "category": "problem",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "status": "new",
+  "copywriting_guide": "핵심 품질 차이의 기술적 근거를 텍스트 중심으로 신뢰감 있게 설명",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 13.88888888888889,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 1,
+      "content": "[핵심 품질 차이 제목]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 22.77777777777778,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 2,
+      "content": "[품질 차이 설명 1단락]",
+      "style": {
+        "fontSize": "18px",
+        "color": "#666666"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 31.666666666666668,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 3,
+      "content": "[품질 차이 설명 2단락]",
+      "style": {
+        "fontSize": "18px",
+        "color": "#666666"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 40.55555555555556,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 4,
+      "content": "[일반 제품]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#888888"
+      }
+    },
+    {
+      "id": "text_4",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 49.44444444444444,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 5,
+      "content": "[비교 수치]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "semibold",
+        "color": "#AAAAAA"
+      }
+    },
+    {
+      "id": "text_5",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 58.333333333333336,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 6,
+      "content": "[우리 제품]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_6",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 67.22222222222223,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 7,
+      "content": "[비교 수치 (강조)]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "bold",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_7",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 76.11111111111111,
+      "w": 80,
+      "h": 6.888888888888889,
+      "zIndex": 8,
+      "content": "[결론 메시지]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "semibold",
+        "color": "#C19A4C"
+      }
+    }
+  ],
+  "html_body": "<section id=\"whycore\" class=\"flex flex-col items-center gap-6 section-padding\" style=\"background: #FFFFFF;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8 text-center\">\n    <h2 class=\"text-[28px] font-bold leading-tight\" style=\"color: #2D2D2D;\">\n      [핵심 품질 차이 제목]\n    </h2>\n    <div class=\"w-[60px] h-[2px] rounded-full\" style=\"background: linear-gradient(90deg, transparent, #C19A4C, transparent);\"></div>\n    <div class=\"flex flex-col gap-4 max-w-[650px]\">\n      <p class=\"text-[18px] leading-relaxed\" style=\"color: #666666;\">\n        [품질 차이 설명 1단락]\n      </p>\n      <p class=\"text-[18px] leading-relaxed\" style=\"color: #666666;\">\n        [품질 차이 설명 2단락]\n      </p>\n    </div>\n    <div class=\"w-full grid grid-cols-2 gap-4 mt-4\">\n      <div class=\"p-5 rounded-xl text-center\" style=\"background: #F5F5F5; border: 1px solid #E0E0E0;\">\n        <p class=\"text-[16px]\" style=\"color: #888888;\">[일반 제품]</p>\n        <p class=\"text-[20px] font-semibold mt-1\" style=\"color: #AAAAAA;\">[비교 수치]</p>\n      </div>\n      <div class=\"p-5 rounded-xl text-center\" style=\"background: rgba(193,154,76,0.08); border: 2px solid #C19A4C;\">\n        <p class=\"text-[16px]\" style=\"color: #C19A4C;\">[우리 제품]</p>\n        <p class=\"text-[20px] font-bold mt-1\" style=\"color: #C19A4C;\">[비교 수치 (강조)]</p>\n      </div>\n    </div>\n    <p class=\"text-[18px] font-semibold mt-2\" style=\"color: #C19A4C;\">[결론 메시지]</p>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "제목 텍스트 1개",
+      "본문 텍스트 7개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 핵심 품질 차이의 기술적 근거를 텍스트 중심으로 신뢰감 있게 설명"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[핵심 품질 차이 제목]": "로스팅 온도가 맛을 결정합니다",
+      "[품질 차이 설명 1단락]": "대부분의 캐슈넛은 200°C 이상의 고온에서 단시간에 볶습니다. 빠르고 효율적이지만 견과류 고유의 풍미가 날아갑니다.",
+      "[품질 차이 설명 2단락]": "ORIGINUT은 160°C 저온에서 45분간 천천히 로스팅합니다. 시간은 오래 걸리지만, 고소함과 바삭함을 동시에 살릴 수 있는 유일한 방법입니다.",
+      "[일반 제품]": "일반 캐슈넛",
+      "[비교 수치]": "200°C / 15분",
+      "[우리 제품]": "ORIGINUT",
+      "[비교 수치 (강조)]": "160°C / 45분",
+      "[결론 메시지]": "온도를 낮추니, 맛이 올라갔습니다"
+    }
+  }
+}

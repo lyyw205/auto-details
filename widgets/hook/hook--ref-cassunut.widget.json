@@ -1,0 +1,138 @@
+{
+  "widget_id": "hook--ref-cassunut",
+  "taxonomy_id": "Hook",
+  "category": "intro",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "status": "new",
+  "copywriting_guide": "프리미엄 식품의 품질과 산지를 강조하는 메인 카피로 시선 사로잡기",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "메인 제품 패키지 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] packaging bags, premium quality, studio photography, white background, 8k",
+        "ai_style": "product_hero",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 10,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[브랜드명]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "semibold",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "제목 (h1)",
+      "x": 10,
+      "y": 15,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "[메인 카피][두 번째 줄 카피]",
+      "style": {
+        "fontSize": "40px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 20,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "[서브 카피]",
+      "style": {
+        "fontSize": "24px",
+        "fontWeight": "medium",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 25,
+      "w": 80,
+      "h": 5,
+      "zIndex": 5,
+      "content": "메인 제품 패키지 이미지\n    \n    \n      \n        \n      \n      [브랜드명]'s Point",
+      "style": {}
+    }
+  ],
+  "html_body": "<section id=\"hook\" class=\"flex flex-col items-center gap-6 section-padding\" style=\"background: #FFFFFF;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8 text-center\">\n    <p class=\"text-[14px] tracking-[0.2em] uppercase font-semibold\" style=\"color: #C19A4C;\">[브랜드명]</p>\n    <h1 class=\"text-[40px] font-bold leading-tight tracking-tight\" style=\"color: #2D2D2D;\">\n      [메인 카피]<br>[두 번째 줄 카피]\n    </h1>\n    <p class=\"text-[24px] font-medium\" style=\"color: #C19A4C;\">[서브 카피]</p>\n    <div class=\"img-placeholder w-[760px] h-[450px] rounded-xl\" style=\"background: #E8E8E8;\"\n         data-ai-prompt=\"[product] packaging bags, premium quality, studio photography, white background, 8k\"\n         data-ai-style=\"product_hero\"\n         data-ai-ratio=\"16:9\">\n      <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">메인 제품 패키지 이미지</span>\n    </div>\n    <div class=\"flex flex-col items-center gap-2 mt-4\">\n      <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#C19A4C\" stroke-width=\"2\">\n        <path d=\"M12 5v14M5 12l7 7 7-7\"/>\n      </svg>\n      <p class=\"text-[16px] font-semibold\" style=\"color: #C19A4C;\">[브랜드명]'s Point</p>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 1개",
+      "본문 텍스트 3개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 프리미엄 식품의 품질과 산지를 강조하는 메인 카피로 시선 사로잡기"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[브랜드명]": "ORIGINUT",
+      "[메인 카피]": "자연이 키운 고소함",
+      "[두 번째 줄 카피]": "한 알에 담았습니다",
+      "[서브 카피]": "베트남 빈프억 직송 · 프리미엄 로스팅 캐슈넛"
+    },
+    "images": [
+      {
+        "label": "메인 제품 패키지 이미지",
+        "src": "https://images.unsplash.com/photo-1509721434272-b79147e0e708?w=760&fit=crop&q=80",
+        "alt": "프리미엄 캐슈넛 패키지"
+      }
+    ]
+  }
+}

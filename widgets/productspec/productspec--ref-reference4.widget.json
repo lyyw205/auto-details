@@ -1,0 +1,138 @@
+{
+  "widget_id": "productspec--ref-reference4",
+  "taxonomy_id": "ProductSpec",
+  "category": "trust",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "심플"
+  ],
+  "theme": "light",
+  "composition": "split",
+  "provenance": {
+    "source_ref": "ref-reference4",
+    "extracted_date": "2026-02-11"
+  },
+  "status": "new",
+  "copywriting_guide": "좌측 제품 치수 이미지 / 우측 스펙 테이블. 화이트 배경에 깔끔한 데이터 표시",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "제품 치수 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] dimensions diagram, technical drawing with measurement lines, clean white background, minimalist infographic style, 8k quality",
+        "ai_style": "infographic",
+        "ai_ratio": "1:1"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 10,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[제품 사양]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#222222",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 15,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "제품 치수 이미지\n        \n      \n      \n        \n          [카테고리 1]",
+      "style": {}
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "제목 (h3)",
+      "x": 10,
+      "y": 20,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "[카테고리 2]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "semibold",
+        "color": "#6B5344"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 25,
+      "w": 80,
+      "h": 5,
+      "zIndex": 5,
+      "content": "[공통 정보 — 제조국, A/S 등]",
+      "style": {
+        "color": "#888888",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "html_body": "<section id=\"productspec\" class=\"flex flex-col items-center gap-8\" style=\"background: #FFFFFF; padding: 60px 50px;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8\">\n    <h2 class=\"text-[28px] font-bold tracking-tight text-center\" style=\"color: #222222;\">[제품 사양]</h2>\n    <div class=\"w-full grid grid-cols-2 gap-8\">\n      <div class=\"flex items-center justify-center\">\n        <div class=\"img-placeholder w-full h-[350px] rounded-xl\" style=\"background: #E8E0D4;\"\n             data-ai-prompt=\"[product] dimensions diagram, technical drawing with measurement lines, clean white background, minimalist infographic style, 8k quality\"\n             data-ai-style=\"infographic\"\n             data-ai-ratio=\"1:1\">\n          <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n            <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n            <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n          </svg>\n          <span class=\"img-label\">제품 치수 이미지</span>\n        </div>\n      </div>\n      <div class=\"flex flex-col gap-6 text-left justify-center\">\n        <div>\n          <h3 class=\"text-[20px] font-semibold mb-3\" style=\"color: #B8956A;\">[카테고리 1]</h3>\n          <div class=\"flex flex-col gap-2\">\n            <div class=\"flex justify-between py-2\" style=\"border-bottom: 1px solid #EDE5DA;\">\n              <span class=\"text-body\" style=\"color: #888888;\">[항목]</span>\n              <span class=\"text-body font-medium\" style=\"color: #222222;\">[수치]</span>\n            </div>\n            <div class=\"flex justify-between py-2\" style=\"border-bottom: 1px solid #EDE5DA;\">\n              <span class=\"text-body\" style=\"color: #888888;\">[항목]</span>\n              <span class=\"text-body font-medium\" style=\"color: #222222;\">[수치]</span>\n            </div>\n            <div class=\"flex justify-between py-2\" style=\"border-bottom: 1px solid #EDE5DA;\">\n              <span class=\"text-body\" style=\"color: #888888;\">[항목]</span>\n              <span class=\"text-body font-medium\" style=\"color: #222222;\">[수치]</span>\n            </div>\n          </div>\n        </div>\n        <div>\n          <h3 class=\"text-[20px] font-semibold mb-3\" style=\"color: #6B5344;\">[카테고리 2]</h3>\n          <div class=\"flex flex-col gap-2\">\n            <div class=\"flex justify-between py-2\" style=\"border-bottom: 1px solid #EDE5DA;\">\n              <span class=\"text-body\" style=\"color: #888888;\">[항목]</span>\n              <span class=\"text-body font-medium\" style=\"color: #222222;\">[수치]</span>\n            </div>\n          </div>\n        </div>\n        <p class=\"text-caption text-center mt-2\" style=\"color: #888888;\">[공통 정보 — 제조국, A/S 등]</p>\n      </div>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "2-column split layout (image left / text right). Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 2개",
+      "본문 텍스트 2개",
+      "스타일: 내추럴, 우드톤, 심플",
+      "카피 가이드: 좌측 제품 치수 이미지 / 우측 스펙 테이블. 화이트 배경에 깔끔한 데이터 표시"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[제품 사양]": "제품 사양",
+      "[카테고리 1]": "본체 규격",
+      "[카테고리 2]": "소재 정보",
+      "[공통 정보 — 제조국, A/S 등]": "제조국: 대한민국 · A/S: 1년 무상보증"
+    },
+    "images": [
+      {
+        "label": "제품 치수 이미지",
+        "src": "https://images.unsplash.com/photo-1529066745603-f368fa6d32de?w=760&fit=crop&q=80",
+        "alt": "제품 치수 다이어그램"
+      }
+    ]
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "widget_id": "differentiator--ref-cassunut--v2",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12",
+    "analysis_version": "2.0"
+  },
+  "status": "new",
+  "copywriting_guide": "큰따옴표 장식으로 임팩트 있는 차별화 선언, 질문→강한 부정 답변 구조",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FBF0D0"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 25,
+      "w": 80,
+      "h": 18,
+      "zIndex": 1,
+      "content": "[차별화 질문]",
+      "style": {}
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 45,
+      "w": 80,
+      "h": 18,
+      "zIndex": 2,
+      "content": "[강한 답변]",
+      "style": {
+        "fontSize": "40px",
+        "fontWeight": "bold",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 65,
+      "w": 80,
+      "h": 18,
+      "zIndex": 3,
+      "content": "[차별화 부연]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#666666"
+      }
+    }
+  ],
+  "html_body": "<section id=\"differentiator\" class=\"flex flex-col items-center py-[80px] px-[50px] relative overflow-hidden\" style=\"background: #FBF0D0;\">\n  <!-- v2: SHAPE 장식 — 큰따옴표 좌상단 -->\n  <div class=\"absolute\" style=\"top: 60px; left: 130px; width: 60px; height: 60px; opacity: 0.4;\">\n    <svg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" fill=\"#E8C547\">\n      <path d=\"M10 40V25C10 17 15 12 25 10V18C20 19 17 22 17 27H25V40H10ZM35 40V25C35 17 40 12 50 10V18C45 19 42 22 42 27H50V40H35Z\"/>\n    </svg>\n  </div>\n  <!-- v2: SHAPE 장식 — 큰따옴표 우하단 -->\n  <div class=\"absolute\" style=\"bottom: 60px; right: 130px; width: 60px; height: 60px; opacity: 0.4; transform: rotate(180deg);\">\n    <svg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" fill=\"#E8C547\">\n      <path d=\"M10 40V25C10 17 15 12 25 10V18C20 19 17 22 17 27H25V40H10ZM35 40V25C35 17 40 12 50 10V18C45 19 42 22 42 27H50V40H35Z\"/>\n    </svg>\n  </div>\n  <div class=\"content-narrow flex flex-col items-center gap-[20px] text-center relative z-10\">\n    <!-- 차별화 질문 -->\n    <h2 class=\"text-[32px] font-bold leading-tight\" style=\"color: #2D2D2D;\">[차별화 질문]</h2>\n    <!-- 강한 부정 답변 -->\n    <p class=\"text-[40px] font-bold\" style=\"color: #C19A4C;\">[강한 답변]</p>\n    <!-- 부연 설명 -->\n    <p class=\"text-[16px] leading-relaxed\" style=\"color: #666666;\">[차별화 부연]</p>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "본문 텍스트 3개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 큰따옴표 장식으로 임팩트 있는 차별화 선언, 질문→강한 부정 답변 구조"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[차별화 질문]": "모든 캐슈넛이 같다고요?",
+      "[강한 답변]": "아닙니다.",
+      "[차별화 부연]": "원료, 건조, 로스팅까지\n모든 과정이 맛을 결정합니다"
+    },
+    "images": []
+  }
+}

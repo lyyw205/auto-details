@@ -1,21 +1,21 @@
 {
   "type": "WIDGET_REGISTRY",
-  "version": "2.0",
-  "total_widgets": 21,
+  "version": "3.0",
+  "total_widgets": 27,
   "presets": [
     "preset--ref-reference3",
     "preset--ref-reference4",
     "preset--ref-maru",
     "preset--ref-logitech-k120",
     "preset--ref-cassunut",
-    "preset--ref-test-sample",
+    "preset--ref-reverse-formula",
     "preset--default"
   ],
   "widgets": {
     "Hook": [
       {
         "widget_id": "hook--ref-reference4",
-        "file": "hook/hook--ref-reference4.widget.html",
+        "file": "hook/hook--ref-reference4.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -27,7 +27,7 @@
       },
       {
         "widget_id": "hook--ref-cassunut",
-        "file": "hook/hook--ref-cassunut.widget.html",
+        "file": "hook/hook--ref-cassunut.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -43,7 +43,7 @@
       },
       {
         "widget_id": "hook--ref-cassunut--v2",
-        "file": "hook/hook--ref-cassunut--v2.widget.html",
+        "file": "hook/hook--ref-cassunut--v2.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -55,12 +55,26 @@
         "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z",
         "analysis_version": "2.0"
+      },
+      {
+        "widget_id": "hook--ref-reverse-formula",
+        "file": "hook/hook--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "composed",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ],
     "WhatIsThis": [
       {
         "widget_id": "whatisthis--ref-reference4",
-        "file": "whatisthis/whatisthis--ref-reference4.widget.html",
+        "file": "whatisthis/whatisthis--ref-reference4.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -69,12 +83,26 @@
         ],
         "composition": "stack",
         "theme": "light"
+      },
+      {
+        "widget_id": "whatisthis--ref-reverse-formula",
+        "file": "whatisthis/whatisthis--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ],
     "SetContents": [
       {
         "widget_id": "setcontents--ref-cassunut",
-        "file": "setcontents/setcontents--ref-cassunut.widget.html",
+        "file": "setcontents/setcontents--ref-cassunut.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -90,7 +118,7 @@
     "FeaturesOverview": [
       {
         "widget_id": "featuresoverview--ref-reference4",
-        "file": "featuresoverview/featuresoverview--ref-reference4.widget.html",
+        "file": "featuresoverview/featuresoverview--ref-reference4.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -105,7 +133,7 @@
     "FeatureDetail": [
       {
         "widget_id": "featuredetail--ref-reference4--split-rl",
-        "file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.html",
+        "file": "featuredetail/featuredetail--ref-reference4--split-rl.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -118,7 +146,7 @@
       },
       {
         "widget_id": "featuredetail--ref-reference4--split-lr",
-        "file": "featuredetail/featuredetail--ref-reference4--split-lr.widget.html",
+        "file": "featuredetail/featuredetail--ref-reference4--split-lr.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -131,7 +159,7 @@
       },
       {
         "widget_id": "featuredetail--ref-reference4--composed",
-        "file": "featuredetail/featuredetail--ref-reference4--composed.widget.html",
+        "file": "featuredetail/featuredetail--ref-reference4--composed.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -143,7 +171,7 @@
       },
       {
         "widget_id": "featuredetail--ref-cassunut--stack-light",
-        "file": "featuredetail/featuredetail--ref-cassunut--stack-light.widget.html",
+        "file": "featuredetail/featuredetail--ref-cassunut--stack-light.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -157,7 +185,7 @@
       },
       {
         "widget_id": "featuredetail--ref-cassunut--v2--stack-light",
-        "file": "featuredetail/featuredetail--ref-cassunut--v2--stack-light.widget.html",
+        "file": "featuredetail/featuredetail--ref-cassunut--v2--stack-light.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -171,25 +199,39 @@
         "analysis_version": "2.0"
       },
       {
-        "widget_id": "featuredetail--ref-test-sample--v4-stack-light",
-        "file": "featuredetail/featuredetail--ref-test-sample--v4-stack-light.widget.html",
-        "source_ref": "ref-test-sample",
+        "widget_id": "featuredetail--ref-reverse-formula--split-lr",
+        "file": "featuredetail/featuredetail--ref-reverse-formula--split-lr.widget.json",
+        "source_ref": "ref-reverse-formula",
         "style_tags": [
-          "내추럴",
-          "클린",
-          "식품"
+          "코랄",
+          "페미닌",
+          "글래머러스"
         ],
-        "composition": "wireframe",
+        "composition": "split",
+        "theme": "light",
+        "variant": "image-left",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
+      },
+      {
+        "widget_id": "featuredetail--ref-reverse-formula--stack",
+        "file": "featuredetail/featuredetail--ref-reverse-formula--stack.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "stack",
         "theme": "light",
         "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "analysis_version": "3.0"
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ],
     "Target": [
       {
         "widget_id": "target--ref-reference4",
-        "file": "target/target--ref-reference4.widget.html",
+        "file": "target/target--ref-reference4.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -203,7 +245,7 @@
     "ProductSpec": [
       {
         "widget_id": "productspec--ref-reference4",
-        "file": "productspec/productspec--ref-reference4.widget.html",
+        "file": "productspec/productspec--ref-reference4.widget.json",
         "source_ref": "ref-reference4",
         "style_tags": [
           "내추럴",
@@ -215,7 +257,7 @@
       },
       {
         "widget_id": "productspec--ref-cassunut",
-        "file": "productspec/productspec--ref-cassunut.widget.html",
+        "file": "productspec/productspec--ref-cassunut.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -229,7 +271,7 @@
       },
       {
         "widget_id": "productspec--ref-cassunut--v2",
-        "file": "productspec/productspec--ref-cassunut--v2.widget.html",
+        "file": "productspec/productspec--ref-cassunut--v2.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -241,12 +283,26 @@
         "status": "reviewed",
         "added_date": "2026-02-12T00:00:00.000Z",
         "analysis_version": "2.0"
+      },
+      {
+        "widget_id": "productspec--ref-reverse-formula",
+        "file": "productspec/productspec--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ],
     "Differentiator": [
       {
         "widget_id": "differentiator--ref-cassunut",
-        "file": "differentiator/differentiator--ref-cassunut.widget.html",
+        "file": "differentiator/differentiator--ref-cassunut.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -260,7 +316,7 @@
       },
       {
         "widget_id": "differentiator--ref-cassunut--v2",
-        "file": "differentiator/differentiator--ref-cassunut--v2.widget.html",
+        "file": "differentiator/differentiator--ref-cassunut--v2.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -274,25 +330,24 @@
         "analysis_version": "2.0"
       },
       {
-        "widget_id": "differentiator--ref-test-sample--v4",
-        "file": "differentiator/differentiator--ref-test-sample--v4.widget.html",
-        "source_ref": "ref-test-sample",
+        "widget_id": "differentiator--ref-reverse-formula",
+        "file": "differentiator/differentiator--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
         "style_tags": [
-          "내추럴",
-          "클린",
-          "식품"
+          "코랄",
+          "페미닌",
+          "글래머러스"
         ],
-        "composition": "wireframe",
+        "composition": "stack",
         "theme": "light",
         "status": "new",
-        "added_date": "2026-02-12T00:00:00.000Z",
-        "analysis_version": "3.0"
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ],
     "WhyCore": [
       {
         "widget_id": "whycore--ref-cassunut",
-        "file": "whycore/whycore--ref-cassunut.widget.html",
+        "file": "whycore/whycore--ref-cassunut.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -306,7 +361,7 @@
       },
       {
         "widget_id": "whycore--ref-cassunut--v2",
-        "file": "whycore/whycore--ref-cassunut--v2.widget.html",
+        "file": "whycore/whycore--ref-cassunut--v2.widget.json",
         "source_ref": "ref-cassunut",
         "style_tags": [
           "내추럴",
@@ -318,6 +373,38 @@
         "status": "new",
         "added_date": "2026-02-12T00:00:00.000Z",
         "analysis_version": "2.0"
+      }
+    ],
+    "ColorOptions": [
+      {
+        "widget_id": "coloroptions--ref-reverse-formula",
+        "file": "coloroptions/coloroptions--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "stack",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
+      }
+    ],
+    "CTA": [
+      {
+        "widget_id": "cta--ref-reverse-formula",
+        "file": "cta/cta--ref-reverse-formula.widget.json",
+        "source_ref": "ref-reverse-formula",
+        "style_tags": [
+          "코랄",
+          "페미닌",
+          "글래머러스"
+        ],
+        "composition": "composed",
+        "theme": "light",
+        "status": "new",
+        "added_date": "2026-02-20T00:00:00.000Z"
       }
     ]
   }

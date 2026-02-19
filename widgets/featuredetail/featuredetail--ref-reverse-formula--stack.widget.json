@@ -1,0 +1,171 @@
+{
+  "widget_id": "featuredetail--ref-reverse-formula--stack",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "Q&A 형식으로 기능 소개. 번호+질문+답변+이미지+혜택 순서로 스택 배치. 핑크 배경으로 페미닌한 감성 강조.",
+  "canvas": {
+    "width": 860,
+    "height": 750
+  },
+  "elements": [
+    {
+      "id": "fd2-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFF5F7"
+      }
+    },
+    {
+      "id": "fd2-num",
+      "type": "text",
+      "label": "기능 번호",
+      "x": 10,
+      "y": 3,
+      "w": 15,
+      "h": 6,
+      "zIndex": 2,
+      "content": "[feature_num]",
+      "style": {
+        "fontSize": "64px",
+        "fontWeight": "bold",
+        "color": "#E8506A"
+      }
+    },
+    {
+      "id": "fd2-q",
+      "type": "text",
+      "label": "질문 형식 제목",
+      "x": 10,
+      "y": 10,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[question]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd2-a",
+      "type": "text",
+      "label": "기능 핵심 답변",
+      "x": 10,
+      "y": 17,
+      "w": 80,
+      "h": 8,
+      "zIndex": 2,
+      "content": "[answer]",
+      "style": {
+        "fontSize": "17px",
+        "color": "#4A4A4A",
+        "lineHeight": "1.6"
+      }
+    },
+    {
+      "id": "fd2-img",
+      "type": "image",
+      "label": "기능 상세 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 45,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] lip balm texture close-up, light pink background, soft feminine lighting, glossy smooth surface, beauty product photography, 8k quality",
+        "ai_style": "product_detail",
+        "ai_ratio": "4:3"
+      }
+    },
+    {
+      "id": "fd2-b1",
+      "type": "text",
+      "label": "혜택 1",
+      "x": 10,
+      "y": 80,
+      "w": 80,
+      "h": 4,
+      "zIndex": 2,
+      "content": "✓ [benefit_1]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd2-b2",
+      "type": "text",
+      "label": "혜택 2",
+      "x": 10,
+      "y": 86,
+      "w": 80,
+      "h": 4,
+      "zIndex": 2,
+      "content": "✓ [benefit_2]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd2-spec",
+      "type": "text",
+      "label": "스펙 강조",
+      "x": 10,
+      "y": 92,
+      "w": 80,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[spec_highlight]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "semibold",
+        "color": "#E8506A"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, left-aligned content. Canvas 860×750px. Light pink (#FFF5F7) background. Feature number large coral, image in center.",
+    "key_elements": [
+      "기능 번호 텍스트 1개 (64px bold, 코랄)",
+      "질문 제목 텍스트 1개 (28px bold)",
+      "답변 본문 텍스트 1개",
+      "1개 이미지 플레이스홀더 (중앙 와이드)",
+      "혜택 체크리스트 2개",
+      "스펙 강조 텍스트 1개 (코랄)",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[feature_num]": "02",
+      "[question]": "어떤 텍스처인가요?",
+      "[answer]": "가볍고 촉촉한 밤 텍스처로 끈적임 없이 밀착",
+      "✓ [benefit_1]": "✓ 논스틱 포뮬러",
+      "✓ [benefit_2]": "✓ 12시간 보습 지속",
+      "[spec_highlight]": "펩타이드 5종 + 히알루론산 3중 복합체"
+    },
+    "images": [
+      {
+        "label": "기능 상세 이미지",
+        "src": "https://images.unsplash.com/photo-1586495777744-4e6232bf4b3e?w=760&fit=crop&q=80",
+        "alt": "립밤 텍스처 상세 이미지"
+      }
+    ]
+  }
+}

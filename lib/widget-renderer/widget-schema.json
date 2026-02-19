@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "widget.schema.json",
+  "title": "WidgetJSON",
+  "description": "JSON-first widget format for auto-details. All coordinates in % (0-100).",
+  "type": "object",
+  "required": ["widget_id", "taxonomy_id", "category", "style_tags", "theme", "composition", "provenance", "status", "canvas", "elements"],
+  "properties": {
+    "widget_id": {
+      "type": "string",
+      "pattern": "^[a-z]+--ref-[a-z0-9-]+(--[a-z0-9-]+)*$",
+      "description": "Unique widget identifier: {taxonomy_id_lower}--ref-{name}[--variant]"
+    },
+    "taxonomy_id": {
+      "type": "string",
+      "description": "Section taxonomy ID (e.g., Hook, FeatureDetail, CTA)"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["intro", "problem", "features", "trust", "conversion"]
+    },
+    "style_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "theme": {
+      "type": "string",
+      "enum": ["dark", "light"]
+    },
+    "composition": {
+      "type": "string",
+      "enum": ["stack", "split", "composed", "wireframe"]
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_ref", "extracted_date"],
+      "properties": {
+        "source_ref": { "type": "string" },
+        "extracted_date": { "type": "string", "format": "date" },
+        "analysis_version": { "type": "string" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "reviewed", "archived"]
+    },
+    "copywriting_guide": { "type": "string" },
+    "canvas": {
+      "type": "object",
+      "required": ["width", "height"],
+      "properties": {
+        "width": { "type": "integer", "const": 860 },
+        "height": { "type": "number", "minimum": 100 }
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/WidgetElement" },
+      "description": "Layout elements with % coordinates. Single Source of Truth."
+    },
+    "html_body": {
+      "type": "string",
+      "description": "DEPRECATED: Legacy HTML for migrated widgets. New widgets must NOT use this."
+    },
+    "figma_hints": {
+      "type": "object",
+      "properties": {
+        "layout_structure": { "type": "string" },
+        "key_elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sample_data": {
+      "type": "object",
+      "properties": {
+        "texts": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "src", "alt"],
+            "properties": {
+              "label": { "type": "string" },
+              "src": { "type": "string" },
+              "alt": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "WidgetElement": {
+      "type": "object",
+      "required": ["id", "type", "label", "x", "y", "w", "h", "zIndex"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["text", "image", "background", "button", "icon", "input", "container", "shape", "other"]
+        },
+        "label": { "type": "string" },
+        "x": { "type": "number", "minimum": 0, "maximum": 100 },
+        "y": { "type": "number", "minimum": 0, "maximum": 100 },
+        "w": { "type": "number", "minimum": 0, "maximum": 100 },
+        "h": { "type": "number", "minimum": 0, "maximum": 100 },
+        "zIndex": { "type": "integer", "minimum": 0 },
+        "content": { "type": "string" },
+        "style": {
+          "type": "object",
+          "properties": {
+            "fontSize": { "type": "string" },
+            "fontWeight": { "type": "string", "enum": ["normal", "medium", "semibold", "bold"] },
+            "color": { "type": "string" },
+            "textAlign": { "type": "string", "enum": ["left", "center", "right"] },
+            "bgColor": { "type": "string" },
+            "borderRadius": { "type": "string" },
+            "lineHeight": { "type": "string" },
+            "opacity": { "type": "number", "minimum": 0, "maximum": 1 },
+            "gradient": { "type": "string" }
+          }
+        },
+        "placeholder": {
+          "type": "object",
+          "required": ["ai_prompt"],
+          "properties": {
+            "ai_prompt": { "type": "string" },
+            "ai_style": { "type": "string" },
+            "ai_ratio": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "widget_id": "differentiator--ref-cassunut",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "status": "new",
+  "copywriting_guide": "큰따옴표 장식으로 질문을 던지고 강한 부정으로 차별화 선언, 골드 배경으로 시선 집중",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FBF0D0"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 21,
+      "w": 80,
+      "h": 14,
+      "zIndex": 1,
+      "content": "\"",
+      "style": {
+        "fontSize": "72px",
+        "fontWeight": "bold",
+        "color": "#E8C547"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 37,
+      "w": 80,
+      "h": 14,
+      "zIndex": 2,
+      "content": "[차별화 질문][일반 제품과 같다고?]",
+      "style": {
+        "fontSize": "32px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 53,
+      "w": 80,
+      "h": 14,
+      "zIndex": 3,
+      "content": "[강한 부정/선언]",
+      "style": {
+        "fontSize": "40px",
+        "fontWeight": "bold",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 69,
+      "w": 80,
+      "h": 14,
+      "zIndex": 4,
+      "content": "[차별화 근거 설명]",
+      "style": {
+        "fontSize": "18px",
+        "color": "#666666"
+      }
+    }
+  ],
+  "html_body": "<section id=\"differentiator\" class=\"flex flex-col items-center gap-4 section-padding\" style=\"background: #FBF0D0;\">\n  <div class=\"content-narrow flex flex-col items-center gap-6 text-center\">\n    <p class=\"text-[72px] leading-none font-bold\" style=\"color: #E8C547;\">\"</p>\n    <h2 class=\"text-[32px] font-bold leading-tight\" style=\"color: #2D2D2D;\">\n      [차별화 질문]<br>[일반 제품과 같다고?]\n    </h2>\n    <div class=\"w-[60px] h-[3px] rounded-full\" style=\"background: #C19A4C;\"></div>\n    <p class=\"text-[40px] font-bold tracking-tight\" style=\"color: #C19A4C;\">\n      [강한 부정/선언]\n    </p>\n    <p class=\"text-[18px] leading-relaxed\" style=\"color: #666666;\">\n      [차별화 근거 설명]\n    </p>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "제목 텍스트 1개",
+      "본문 텍스트 3개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 큰따옴표 장식으로 질문을 던지고 강한 부정으로 차별화 선언, 골드 배경으로 시선 집중"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[차별화 질문]": "시중 캐슈넛과",
+      "[일반 제품과 같다고?]": "다 같다고 생각하시나요?",
+      "[강한 부정/선언]": "절대 같지 않습니다",
+      "[차별화 근거 설명]": "산지 직송 원두를 무염·무첨가로 저온 로스팅하여 캐슈넛 본연의 고소함만 살렸습니다"
+    }
+  }
+}

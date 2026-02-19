@@ -1,0 +1,124 @@
+{
+  "widget_id": "hook--ref-reverse-formula",
+  "taxonomy_id": "Hook",
+  "category": "intro",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "composed",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "강렬한 첫인상과 브랜드 컬러로 시선 사로잡기",
+  "canvas": {
+    "width": 860,
+    "height": 800
+  },
+  "elements": [
+    {
+      "id": "hook-bg",
+      "type": "background",
+      "label": "그라데이션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "gradient": "linear-gradient(180deg, #E8506A 0%, #F7B5C2 100%)"
+      }
+    },
+    {
+      "id": "hook-brand",
+      "type": "text",
+      "label": "브랜드명",
+      "x": 15,
+      "y": 5,
+      "w": 70,
+      "h": 6,
+      "zIndex": 2,
+      "content": "[brand]",
+      "style": {
+        "fontSize": "48px",
+        "fontWeight": "bold",
+        "color": "#FFFFFF",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "hook-sub",
+      "type": "text",
+      "label": "서브 카피",
+      "x": 25,
+      "y": 12,
+      "w": 50,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[sub_copy]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "normal",
+        "color": "#FFF5F7",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "hook-img",
+      "type": "image",
+      "label": "메인 제품 이미지",
+      "x": 10,
+      "y": 22,
+      "w": 80,
+      "h": 65,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] lip plump balm tubes, coral pink cosmetics, floating product hero shot, gradient background, studio photography",
+        "ai_style": "product_hero",
+        "ai_ratio": "4:5"
+      }
+    },
+    {
+      "id": "hook-desc",
+      "type": "text",
+      "label": "부가 설명",
+      "x": 20,
+      "y": 90,
+      "w": 60,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[main_copy]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "normal",
+        "color": "#FFFFFF",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Full-bleed gradient background with centered brand text and floating product image",
+    "key_elements": [
+      "그라데이션 배경 (#E8506A → #F7B5C2)",
+      "브랜드명 텍스트 (상단 중앙, 흰색 볼드)",
+      "서브 카피 (브랜드명 아래)",
+      "메인 제품 이미지 플레이스홀더 (중앙 대형)",
+      "부가 설명 텍스트 (하단)",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[brand]": "REVERSE FORMULA",
+      "[main_copy]": "볼륨감 있는 입술을 위한 펩타이드 립밤",
+      "[sub_copy]": "Peptide Lip Plump Balm"
+    },
+    "images": [
+      {
+        "label": "메인 제품 이미지",
+        "src": "https://images.unsplash.com/photo-1586495777744-4e6232bf5070?w=760&fit=crop&q=80",
+        "alt": "REVERSE FORMULA 립 플럼프 밤 제품"
+      }
+    ]
+  }
+}

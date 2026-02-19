@@ -1,0 +1,202 @@
+{
+  "widget_id": "setcontents--ref-cassunut",
+  "taxonomy_id": "SetContents",
+  "category": "intro",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "status": "new",
+  "copywriting_guide": "패키지 구성품을 시각적으로 보여주고 각 아이템의 가치를 설명",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFF9ED"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "구성품 전체 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] package contents flat lay, all items arranged neatly, white background, top-down view",
+        "ai_style": "product_flat",
+        "ai_ratio": "4:3"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 7.777777777777778,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[구성품 섹션 제목]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 10.555555555555555,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "[세트명]",
+      "style": {
+        "fontSize": "18px",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 13.333333333333332,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "구성품 전체 이미지\n    \n    \n      \n        [구성품 1 제목]",
+      "style": {}
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 16.11111111111111,
+      "w": 80,
+      "h": 5,
+      "zIndex": 5,
+      "content": "[구성품 1 설명]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#888888"
+      }
+    },
+    {
+      "id": "text_4",
+      "type": "text",
+      "label": "제목 (h3)",
+      "x": 10,
+      "y": 18.88888888888889,
+      "w": 80,
+      "h": 5,
+      "zIndex": 6,
+      "content": "[구성품 2 제목]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "semibold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_5",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 21.666666666666664,
+      "w": 80,
+      "h": 5,
+      "zIndex": 7,
+      "content": "[구성품 2 설명]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#888888"
+      }
+    },
+    {
+      "id": "text_6",
+      "type": "text",
+      "label": "제목 (h3)",
+      "x": 10,
+      "y": 24.444444444444443,
+      "w": 80,
+      "h": 5,
+      "zIndex": 8,
+      "content": "[구성품 3 제목]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "semibold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_7",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 27.22222222222222,
+      "w": 80,
+      "h": 5,
+      "zIndex": 9,
+      "content": "[구성품 3 설명]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#888888"
+      }
+    }
+  ],
+  "html_body": "<section id=\"setcontents\" class=\"flex flex-col items-center gap-6 section-padding\" style=\"background: #FFF9ED;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8 text-center\">\n    <h2 class=\"text-[28px] font-bold leading-tight\" style=\"color: #2D2D2D;\">[구성품 섹션 제목]</h2>\n    <p class=\"text-[18px]\" style=\"color: #C19A4C;\">[세트명]</p>\n    <div class=\"img-placeholder w-[760px] h-[320px] rounded-xl\" style=\"background: #E8E8E8;\"\n         data-ai-prompt=\"[product] package contents flat lay, all items arranged neatly, white background, top-down view\"\n         data-ai-style=\"product_flat\"\n         data-ai-ratio=\"4:3\">\n      <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">구성품 전체 이미지</span>\n    </div>\n    <div class=\"w-full flex flex-col gap-4 mt-4\">\n      <div class=\"p-5 rounded-xl text-left\" style=\"background: #FFFFFF; border: 1px solid #E8E8E8; border-left: 3px solid #C19A4C; padding-left: 16px;\">\n        <h3 class=\"text-[18px] font-semibold mb-1\" style=\"color: #2D2D2D;\">[구성품 1 제목]</h3>\n        <p class=\"text-[16px]\" style=\"color: #888888;\">[구성품 1 설명]</p>\n      </div>\n      <div class=\"p-5 rounded-xl text-left\" style=\"background: #FFFFFF; border: 1px solid #E8E8E8; border-left: 3px solid #C19A4C; padding-left: 16px;\">\n        <h3 class=\"text-[18px] font-semibold mb-1\" style=\"color: #2D2D2D;\">[구성품 2 제목]</h3>\n        <p class=\"text-[16px]\" style=\"color: #888888;\">[구성품 2 설명]</p>\n      </div>\n      <div class=\"p-5 rounded-xl text-left\" style=\"background: #FFFFFF; border: 1px solid #E8E8E8; border-left: 3px solid #C19A4C; padding-left: 16px;\">\n        <h3 class=\"text-[18px] font-semibold mb-1\" style=\"color: #2D2D2D;\">[구성품 3 제목]</h3>\n        <p class=\"text-[16px]\" style=\"color: #888888;\">[구성품 3 설명]</p>\n      </div>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 3개",
+      "본문 텍스트 5개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 패키지 구성품을 시각적으로 보여주고 각 아이템의 가치를 설명"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[구성품 섹션 제목]": "프리미엄 선물세트 구성",
+      "[세트명]": "ORIGINUT 시그니처 세트",
+      "[구성품 1 제목]": "로스팅 캐슈넛 300g",
+      "[구성품 1 설명]": "W320 등급 저온 로스팅 캐슈넛",
+      "[구성품 2 제목]": "허니버터 캐슈넛 200g",
+      "[구성품 2 설명]": "아카시아꿀과 프랑스산 버터로 코팅",
+      "[구성품 3 제목]": "프리미엄 패키지",
+      "[구성품 3 설명]": "고급 크래프트 박스 + 보냉백 포함"
+    },
+    "images": [
+      {
+        "label": "구성품 전체 이미지",
+        "src": "https://images.unsplash.com/photo-1606923829579-0cb981a83e2e?w=760&fit=crop&q=80",
+        "alt": "선물세트 구성품"
+      }
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "widget_id": "coloroptions--ref-reverse-formula",
+  "taxonomy_id": "ColorOptions",
+  "category": "features",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "다양한 컬러 옵션으로 고객의 선택 폭을 넓히기",
+  "canvas": {
+    "width": 860,
+    "height": 650
+  },
+  "elements": [
+    {
+      "id": "co-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFF5F7"
+      }
+    },
+    {
+      "id": "co-title",
+      "type": "text",
+      "label": "섹션 제목",
+      "x": 20,
+      "y": 3,
+      "w": 60,
+      "h": 6,
+      "zIndex": 2,
+      "content": "[title]",
+      "style": {
+        "fontSize": "36px",
+        "fontWeight": "bold",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "co-sub",
+      "type": "text",
+      "label": "서브 카피",
+      "x": 15,
+      "y": 10,
+      "w": 70,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[sub]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "co-grid",
+      "type": "container",
+      "label": "컬러 스와치 그리드",
+      "x": 5,
+      "y": 18,
+      "w": 90,
+      "h": 70,
+      "zIndex": 1,
+      "style": {
+        "bgColor": "#FFEEF1",
+        "borderRadius": "16px"
+      }
+    },
+    {
+      "id": "co-label1",
+      "type": "text",
+      "label": "컬러명 1",
+      "x": 8,
+      "y": 90,
+      "w": 20,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[color1]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "co-label2",
+      "type": "text",
+      "label": "컬러명 2",
+      "x": 30,
+      "y": 90,
+      "w": 20,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[color2]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "co-label3",
+      "type": "text",
+      "label": "컬러명 3",
+      "x": 52,
+      "y": 90,
+      "w": 20,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[color3]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "co-label4",
+      "type": "text",
+      "label": "컬러명 4",
+      "x": 74,
+      "y": 90,
+      "w": 20,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[color4]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Single-column stack layout with title, subtitle, large color swatch grid container, and 4 color name labels below",
+    "key_elements": [
+      "섹션 제목 (코랄 #E8506A 볼드)",
+      "서브 카피 (다크 그레이)",
+      "컬러 스와치 그리드 컨테이너 (light pink #FFEEF1, rounded)",
+      "컬러명 레이블 4개 (하단 균등 배치)",
+      "배경색: light_1 #FFF5F7",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[title]": "Color Palette",
+      "[sub]": "당신의 무드에 맞는 컬러를 선택하세요",
+      "[color1]": "Nude Pink",
+      "[color2]": "Coral",
+      "[color3]": "Rose",
+      "[color4]": "Berry"
+    },
+    "images": []
+  }
+}

@@ -102,6 +102,130 @@ function recountWidgets(registry) {
   return total;
 }
 
+// ── JSON Widget Renderer (elements → HTML) ──
+// Port of lib/widget-renderer/renderer.ts for Node.js
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function fontWeightValue(fw) {
+  switch (fw) {
+    case 'medium': return 500;
+    case 'semibold': return 600;
+    case 'bold': return 700;
+    default: return 400;
+  }
+}
+
+function positionStyle(el) {
+  return `position:absolute;left:${el.x}%;top:${el.y}%;width:${el.w}%;height:${el.h}%;z-index:${el.zIndex}`;
+}
+
+function applyColorOverrides(value, overrides) {
+  let result = value;
+  for (const [from, to] of Object.entries(overrides)) {
+    const pattern = new RegExp(from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    result = result.replace(pattern, to);
+  }
+  return result;
+}
+
+function resolveStyle(style, overrides) {
+  if (!style || !overrides || Object.keys(overrides).length === 0) return style || {};
+  const resolved = { ...style };
+  if (resolved.color) resolved.color = applyColorOverrides(resolved.color, overrides);
+  if (resolved.bgColor) resolved.bgColor = applyColorOverrides(resolved.bgColor, overrides);
+  if (resolved.gradient) resolved.gradient = applyColorOverrides(resolved.gradient, overrides);
+  return resolved;
+}
+
+function applyDemoText(content, texts) {
+  return content.replace(/\[([^\]]+)\]/g, (_match, key) => {
+    return texts[key] ?? texts[key.toLowerCase()] ?? `[${key}]`;
+  });
+}
+
+function renderElementHtml(el, canvasHeight, opts) {
+  const overrides = opts?.colorOverrides ?? {};
+  const style = resolveStyle(el.style, overrides);
+  let content = el.content ?? el.label ?? '';
+  if (Object.keys(overrides).length > 0) content = applyColorOverrides(content, overrides);
+  if (opts?.demoMode && opts.sampleData?.texts) content = applyDemoText(content, opts.sampleData.texts);
+  const demoImages = opts?.demoMode && opts.sampleData?.images ? opts.sampleData.images : [];
+
+  switch (el.type) {
+    case 'text': {
+      const pS = ['margin:0', 'width:100%'];
+      if (style.fontSize) pS.push(`font-size:${style.fontSize}`);
+      if (style.fontWeight) pS.push(`font-weight:${fontWeightValue(style.fontWeight)}`);
+      if (style.color) pS.push(`color:${style.color}`);
+      if (style.textAlign) pS.push(`text-align:${style.textAlign}`);
+      if (style.lineHeight) pS.push(`line-height:${style.lineHeight}`);
+      return `<div style="${positionStyle(el)};overflow:hidden"><p style="${pS.join(';')}">${content}</p></div>`;
+    }
+    case 'image': {
+      const wS = [positionStyle(el), 'overflow:hidden', 'display:flex', 'align-items:center', 'justify-content:center', 'background:#c4c4c4'];
+      if (style.borderRadius) wS.push(`border-radius:${style.borderRadius}`);
+      const matched = demoImages.find(i => i.label.toLowerCase() === el.label.toLowerCase()) ?? (demoImages[0] || null);
+      if (matched) return `<div style="${wS.join(';')}"><img src="${esc(matched.src)}" alt="${esc(matched.alt)}" style="width:100%;height:100%;object-fit:cover;" /></div>`;
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`;
+      return `<div class="img-placeholder" style="${wS.join(';')}"><div style="display:flex;flex-direction:column;align-items:center;">${svg}<div style="margin-top:8px;font-size:11px;color:#888;text-align:center;">${esc(el.label)}</div></div></div>`;
+    }
+    case 'background': {
+      const bS = [positionStyle(el)];
+      if (style.gradient) bS.push(`background:${style.gradient}`);
+      else if (style.bgColor) bS.push(`background:${style.bgColor}`);
+      else bS.push('background:#f5f5f5');
+      if (style.opacity !== undefined) bS.push(`opacity:${style.opacity}`);
+      return `<div style="${bS.join(';')}"></div>`;
+    }
+    case 'button': {
+      const wS = [positionStyle(el), 'display:flex', 'align-items:center', 'justify-content:center'];
+      const btnS = ['border:none', 'cursor:pointer', 'width:100%', 'height:100%'];
+      btnS.push(`background:${style.bgColor || '#333'}`);
+      btnS.push(`color:${style.color || '#fff'}`);
+      if (style.fontSize) btnS.push(`font-size:${style.fontSize}`);
+      if (style.fontWeight) btnS.push(`font-weight:${fontWeightValue(style.fontWeight)}`);
+      if (style.borderRadius) btnS.push(`border-radius:${style.borderRadius}`);
+      return `<div style="${wS.join(';')}"><button style="${btnS.join(';')}">${content}</button></div>`;
+    }
+    case 'container': {
+      const dS = [positionStyle(el), 'border:1px solid rgba(0,0,0,0.12)', 'box-sizing:border-box'];
+      if (style.bgColor) dS.push(`background:${style.bgColor}`);
+      if (style.borderRadius) dS.push(`border-radius:${style.borderRadius}`);
+      return `<div style="${dS.join(';')}"></div>`;
+    }
+    default: {
+      const dS = [positionStyle(el)];
+      if (style.bgColor) dS.push(`background:${style.bgColor}`);
+      return `<div style="${dS.join(';')}"></div>`;
+    }
+  }
+}
+
+function renderWidgetFromJson(widgetJson, opts) {
+  const { canvas, elements, html_body } = widgetJson;
+
+  // Fallback: legacy html_body
+  if ((!elements || elements.length === 0) && html_body) {
+    return html_body;
+  }
+
+  if (!elements || elements.length === 0) return '';
+
+  const sorted = [...elements].sort((a, b) => a.zIndex - b.zIndex);
+  const elementHtml = sorted.map(el =>
+    renderElementHtml(el, canvas.height, {
+      demoMode: opts?.demoMode ?? true,
+      colorOverrides: opts?.colorOverrides ?? {},
+      sampleData: widgetJson.sample_data,
+    })
+  ).join('\n');
+
+  return `<section id="${esc(widgetJson.taxonomy_id.toLowerCase())}" style="position:relative;width:860px;height:${canvas.height}px;overflow:hidden;">\n${elementHtml}\n</section>`;
+}
+
 // ── Demo mode: apply sample_data substitutions ──
 function applyDemoMode(html, meta) {
   if (!meta || !meta.sample_data) return html;
@@ -155,6 +279,34 @@ function handleTaxonomy(res) {
   } catch (e) { send500(res, e); }
 }
 
+// GET /api/widget-json/:id — return raw .widget.json content
+function handleWidgetJson(res, widgetId) {
+  try {
+    const registry = readJSON('widgets/_registry.json');
+
+    let widget = null;
+    for (const widgets of Object.values(registry.widgets)) {
+      widget = widgets.find(w => w.widget_id === widgetId);
+      if (widget) break;
+    }
+    if (!widget) return send404(res, `Widget not found: ${widgetId}`);
+
+    const widgetPath = path.join(ROOT, 'widgets', widget.file);
+    if (!fs.existsSync(widgetPath)) return send404(res, `Widget file not found: ${widget.file}`);
+
+    // If it's a .widget.json file, parse and return it directly
+    if (widget.file.endsWith('.widget.json')) {
+      const widgetJson = JSON.parse(fs.readFileSync(widgetPath, 'utf-8'));
+      return sendJSON(res, widgetJson);
+    }
+
+    // Fallback: .widget.html — return meta + html_body synthesized object
+    const widgetHtml = fs.readFileSync(widgetPath, 'utf-8');
+    const meta = parseWidgetMeta(widgetHtml) || {};
+    return sendJSON(res, { ...meta, html_body: widgetHtml });
+  } catch (e) { send500(res, e); }
+}
+
 // GET /api/widget-preview/:id?brand_main=HEX&accent=HEX&mode=demo|raw
 function handleWidgetPreview(res, widgetId, query) {
   try {
@@ -168,13 +320,24 @@ function handleWidgetPreview(res, widgetId, query) {
     }
     if (!widget) return send404(res, `Widget not found: ${widgetId}`);
 
-    // Read widget HTML
+    // Read widget file — support both .widget.json and .widget.html
     const widgetPath = path.join(ROOT, 'widgets', widget.file);
     if (!fs.existsSync(widgetPath)) return send404(res, `Widget file not found: ${widget.file}`);
-    let widgetHtml = fs.readFileSync(widgetPath, 'utf-8');
 
-    // Parse WIDGET_META for demo mode
-    const meta = parseWidgetMeta(widgetHtml);
+    let widgetHtml;
+    let meta;
+
+    if (widget.file.endsWith('.widget.json')) {
+      // New JSON format: render from elements array (or fallback to html_body)
+      const widgetJson = JSON.parse(fs.readFileSync(widgetPath, 'utf-8'));
+      meta = widgetJson;
+      const mode = query.mode || 'demo';
+      widgetHtml = renderWidgetFromJson(widgetJson, { demoMode: mode === 'demo', colorOverrides: {} });
+    } else {
+      // Legacy HTML format: read file and parse WIDGET_META comment
+      widgetHtml = fs.readFileSync(widgetPath, 'utf-8');
+      meta = parseWidgetMeta(widgetHtml);
+    }
 
     // Apply demo mode if requested (default: demo)
     const mode = query.mode || 'demo';
@@ -246,9 +409,15 @@ function handleWidgetDelete(res, widgetId) {
 
     if (!found) return send404(res, `Widget not found: ${widgetId}`);
 
-    // Delete widget file
+    // Delete widget file (and both .widget.json / .widget.html counterparts for cleanup)
     const filePath = path.join(ROOT, 'widgets', widgetFile);
     if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+
+    // Also try deleting the alternate format file
+    const altPath = filePath.endsWith('.widget.json')
+      ? filePath.replace(/\.widget\.json$/, '.widget.html')
+      : filePath.replace(/\.widget\.html$/, '.widget.json');
+    if (fs.existsSync(altPath)) fs.unlinkSync(altPath);
 
     const total = recountWidgets(registry);
     saveRegistry(registry);
@@ -617,6 +786,9 @@ const server = http.createServer((req, res) => {
 
   const previewMatch = pathname.match(/^\/api\/widget-preview\/(.+)$/);
   if (previewMatch) return handleWidgetPreview(res, decodeURIComponent(previewMatch[1]), query);
+
+  const widgetJsonMatch = pathname.match(/^\/api\/widget-json\/(.+)$/);
+  if (widgetJsonMatch) return handleWidgetJson(res, decodeURIComponent(widgetJsonMatch[1]));
 
   // PATCH /api/widget/:id
   if (req.method === 'PATCH') {

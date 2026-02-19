@@ -1,0 +1,161 @@
+{
+  "widget_id": "cta--ref-reverse-formula",
+  "taxonomy_id": "CTA",
+  "category": "conversion",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "composed",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "Hook 섹션의 메인 카피를 다시 한번 상기시키며 마무리",
+  "canvas": {
+    "width": 860,
+    "height": 650
+  },
+  "elements": [
+    {
+      "id": "cta-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "gradient": "linear-gradient(180deg, #FFF5F7 0%, #FFFFFF 100%)"
+      }
+    },
+    {
+      "id": "cta-main",
+      "type": "text",
+      "label": "액션 유도 카피",
+      "x": 10,
+      "y": 8,
+      "w": 80,
+      "h": 10,
+      "zIndex": 2,
+      "content": "[메인 카피]",
+      "style": {
+        "fontSize": "48px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "cta-sub",
+      "type": "text",
+      "label": "서브 카피",
+      "x": 15,
+      "y": 20,
+      "w": 70,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[서브 카피]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "normal",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "cta-img",
+      "type": "image",
+      "label": "제품 감성 이미지",
+      "x": 10,
+      "y": 30,
+      "w": 80,
+      "h": 35,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "코랄 핑크 립 플럼프 밤 제품 감성 광고 이미지, 핑크 꽃잎과 함께 배치, 부드러운 파스텔 배경",
+        "ai_style": "뷰티 광고 스타일, 따뜻한 핑크/코랄 톤",
+        "ai_ratio": "4:2"
+      }
+    },
+    {
+      "id": "cta-price",
+      "type": "text",
+      "label": "가격",
+      "x": 25,
+      "y": 70,
+      "w": 50,
+      "h": 6,
+      "zIndex": 2,
+      "content": "[가격]",
+      "style": {
+        "fontSize": "36px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "cta-trust",
+      "type": "text",
+      "label": "신뢰 배지",
+      "x": 20,
+      "y": 78,
+      "w": 60,
+      "h": 4,
+      "zIndex": 2,
+      "content": "무료배송 | 100% 정품 | 14일 교환/환불",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "cta-btn",
+      "type": "button",
+      "label": "구매 버튼",
+      "x": 20,
+      "y": 85,
+      "w": 60,
+      "h": 8,
+      "zIndex": 2,
+      "content": "[CTA 버튼]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "bold",
+        "color": "#FFFFFF",
+        "bgColor": "#E8506A",
+        "borderRadius": "50px",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Composed single-column layout. 그라데이션 배경(light_1 → white) → 메인 카피(대형) → 서브 카피(코랄) → 제품 감성 이미지 → 가격 → 신뢰 배지 → 둥근 CTA 버튼. Canvas 860px, height 650px.",
+    "key_elements": [
+      "메인 카피 48px bold #1A1A1A 가운데 정렬",
+      "서브 카피 20px #E8506A (브랜드 코랄) 가운데 정렬",
+      "제품 감성 이미지 (뷰티 광고 스타일)",
+      "가격 36px bold #1A1A1A",
+      "신뢰 배지 14px #4A4A4A 가운데 정렬 (파이프 구분)",
+      "CTA 버튼: #E8506A 배경, 흰 텍스트, borderRadius 50px (풀 라운드)"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[메인 카피]": "지금 시작하세요",
+      "[서브 카피]": "REVERSE FORMULA로 완성하는 볼륨 립",
+      "[가격]": "29,000원",
+      "[CTA 버튼]": "지금 구매하기"
+    },
+    "images": [
+      {
+        "label": "제품 감성 이미지",
+        "src": "",
+        "alt": "REVERSE FORMULA 립 플럼프 밤 감성 광고 이미지"
+      }
+    ]
+  }
+}

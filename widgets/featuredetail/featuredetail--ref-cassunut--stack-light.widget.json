@@ -1,0 +1,139 @@
+{
+  "widget_id": "featuredetail--ref-cassunut--stack-light",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12"
+  },
+  "status": "new",
+  "copywriting_guide": "Part.N 넘버링으로 기능을 순차적으로 소개, Q&A 형식으로 이해하기 쉽게 전달",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "기능 상세 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] feature detail, close-up photography, warm natural lighting, 8k quality",
+        "ai_style": "product_detail",
+        "ai_ratio": "4:3"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 10,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "Part.[N]",
+      "style": {
+        "fontSize": "14px",
+        "fontWeight": "bold",
+        "color": "#C19A4C"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 15,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "[기능 질문 형식 제목]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 20,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "기능 상세 이미지\n    \n    \n      \n        [기능 설명 본문 텍스트][두 번째 줄 설명]",
+      "style": {}
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 25,
+      "w": 80,
+      "h": 5,
+      "zIndex": 5,
+      "content": "[핵심 혜택 강조]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "semibold",
+        "color": "#C19A4C"
+      }
+    }
+  ],
+  "html_body": "<section id=\"featuredetail\" class=\"flex flex-col items-center gap-6 section-padding\" style=\"background: #FFFFFF;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8 text-center\">\n    <p class=\"text-[14px] tracking-[0.15em] uppercase font-bold\" style=\"color: #C19A4C;\">Part.[N]</p>\n    <h2 class=\"text-[28px] font-bold leading-tight\" style=\"color: #2D2D2D;\">\n      [기능 질문 형식 제목]\n    </h2>\n    <div class=\"img-placeholder w-[760px] h-[420px] rounded-xl\" style=\"background: #E8E8E8;\"\n         data-ai-prompt=\"[product] feature detail, close-up photography, warm natural lighting, 8k quality\"\n         data-ai-style=\"product_detail\"\n         data-ai-ratio=\"4:3\">\n      <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">기능 상세 이미지</span>\n    </div>\n    <div class=\"flex flex-col gap-3 max-w-[650px]\">\n      <p class=\"text-[18px] leading-relaxed\" style=\"color: #666666;\">\n        [기능 설명 본문 텍스트]<br>[두 번째 줄 설명]\n      </p>\n      <p class=\"text-[18px] font-semibold mt-2\" style=\"color: #C19A4C;\">[핵심 혜택 강조]</p>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 1개",
+      "본문 텍스트 3개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: Part.N 넘버링으로 기능을 순차적으로 소개, Q&A 형식으로 이해하기 쉽게 전달"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "Part.[N]": "Part.1",
+      "[기능 질문 형식 제목]": "왜 캐슈넛의 크기가 중요할까요?",
+      "[기능 설명 본문 텍스트]": "캐슈넛은 크기에 따라 W180, W240, W320 등급으로 나뉩니다.",
+      "[두 번째 줄 설명]": "저희는 가장 인기 있는 W320 등급만 사용합니다.",
+      "[핵심 혜택 강조]": "한 알 한 알 균일한 크기, 완벽한 식감"
+    },
+    "images": [
+      {
+        "label": "기능 상세 이미지",
+        "src": "https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=760&fit=crop&q=80",
+        "alt": "캐슈넛 상세 이미지"
+      }
+    ]
+  }
+}

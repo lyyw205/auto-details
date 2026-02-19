@@ -1,0 +1,162 @@
+{
+  "widget_id": "differentiator--ref-reverse-formula",
+  "taxonomy_id": "Differentiator",
+  "category": "features",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "국내 최초, 업계 유일 등 강력한 차별점 강조. Before & After 비교 구조로 기존 제품과의 차이를 시각적으로 명확히 제시. 결과 수치로 신뢰성 확보.",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "diff-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "diff-badge",
+      "type": "text",
+      "label": "배지",
+      "x": 30,
+      "y": 3,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[badge]",
+      "style": {
+        "fontSize": "13px",
+        "fontWeight": "bold",
+        "color": "#FFFFFF",
+        "bgColor": "#E8506A",
+        "borderRadius": "20px",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "diff-title",
+      "type": "text",
+      "label": "차별화 포인트",
+      "x": 10,
+      "y": 8,
+      "w": 80,
+      "h": 8,
+      "zIndex": 2,
+      "content": "[main_copy]",
+      "style": {
+        "fontSize": "36px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "diff-img",
+      "type": "image",
+      "label": "차별화 비교 이미지",
+      "x": 5,
+      "y": 20,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "lip close-up before and after comparison, left side thin lips vs right side plump full lips, coral pink feminine aesthetic, beauty photography, 8k quality",
+        "ai_style": "before_after_comparison",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "diff-prob",
+      "type": "text",
+      "label": "기존 문제",
+      "x": 10,
+      "y": 74,
+      "w": 35,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[problem_text]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#999999",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "diff-sol",
+      "type": "text",
+      "label": "우리의 해결책",
+      "x": 55,
+      "y": 74,
+      "w": 35,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[solution_text]",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "semibold",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "diff-result",
+      "type": "text",
+      "label": "결과 강조",
+      "x": 15,
+      "y": 85,
+      "w": 70,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[result]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "bold",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860×700px. Badge with coral background at top, wide comparison image in center, problem vs solution side-by-side below, result highlight at bottom.",
+    "key_elements": [
+      "배지 텍스트 1개 (코랄 배경, 흰 글씨, 라운드)",
+      "메인 타이틀 텍스트 1개 (36px bold)",
+      "1개 이미지 플레이스홀더 (Before & After 비교)",
+      "기존 문제 텍스트 1개 (gray, 좌측)",
+      "해결책 텍스트 1개 (코랄, 우측)",
+      "결과 강조 텍스트 1개 (20px bold, 코랄)",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[badge]": "Before & After",
+      "[main_copy]": "바르는 순간, 눈에 보이는 변화",
+      "[problem_text]": "일반 립밤: 보습만 제공",
+      "[solution_text]": "REVERSE: 볼륨 + 보습 + 광택",
+      "[result]": "1회 사용으로 최대 40% 볼륨 업"
+    },
+    "images": [
+      {
+        "label": "차별화 비교 이미지",
+        "src": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=760&fit=crop&q=80",
+        "alt": "립 볼륨 Before & After 비교"
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "widget_id": "whatisthis--ref-reverse-formula",
+  "taxonomy_id": "WhatIsThis",
+  "category": "intro",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "한마디로, [제품]은 [핵심 가치]입니다 형식으로 명확하게 정의",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "wit-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "wit-title",
+      "type": "text",
+      "label": "질문 형식 제목",
+      "x": 15,
+      "y": 5,
+      "w": 70,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[question]",
+      "style": {
+        "fontSize": "32px",
+        "fontWeight": "bold",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "wit-answer",
+      "type": "text",
+      "label": "한줄 정의",
+      "x": 10,
+      "y": 12,
+      "w": 80,
+      "h": 8,
+      "zIndex": 2,
+      "content": "[answer]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "normal",
+        "color": "#1A1A1A",
+        "textAlign": "center",
+        "lineHeight": "1.6"
+      }
+    },
+    {
+      "id": "wit-img",
+      "type": "image",
+      "label": "제품 구성 이미지",
+      "x": 5,
+      "y": 25,
+      "w": 90,
+      "h": 45,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] lip balm product lineup flat lay, coral pink cosmetics, clean white background, multiple shades",
+        "ai_style": "product_flat_lay",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "wit-desc",
+      "type": "text",
+      "label": "사용법 설명",
+      "x": 15,
+      "y": 75,
+      "w": 70,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[desc]",
+      "style": {
+        "fontSize": "16px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "wit-summary",
+      "type": "text",
+      "label": "요약",
+      "x": 20,
+      "y": 85,
+      "w": 60,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[summary]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "bold",
+        "color": "#E8506A",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Single-column stack layout with question title, answer text, full-width product image, and summary text",
+    "key_elements": [
+      "질문 형식 제목 (코랄 #E8506A 볼드)",
+      "한줄 정의 텍스트 (중앙 정렬, 다크 컬러)",
+      "제품 구성 이미지 플레이스홀더 (와이드 비율)",
+      "사용법 설명 텍스트",
+      "요약 강조 텍스트 (코랄 #E8506A)",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[question]": "이게 뭔가요?",
+      "[answer]": "펩타이드 성분으로 입술 볼륨을 채워주는 립 플럼프 밤",
+      "[desc]": "입술에 직접 도포하여 즉각적인 플럼핑 효과",
+      "[summary]": "바르는 순간 달라지는 입술 볼륨"
+    },
+    "images": [
+      {
+        "label": "제품 구성 이미지",
+        "src": "https://images.unsplash.com/photo-1631214524020-3c69a859a8f0?w=760&fit=crop&q=80",
+        "alt": "REVERSE FORMULA 립 플럼프 밤 구성"
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "type": "REFERENCE_MAPPING",
+  "version": "2.0",
+  "reference_name": "reverse-formula",
+  "source_image": "references/ref-reverse-formula.png",
+  "analysis_date": "2026-02-20",
+  "analysis_method": "visual",
+  "style_analysis": {
+    "brand_main": "#E8506A",
+    "accent": "#F7B5C2",
+    "dark_1": "#1A1A1A",
+    "dark_2": "#4A4A4A",
+    "light_1": "#FFF5F7",
+    "light_2": "#FFEEF1",
+    "style_tags": ["코랄", "페미닌", "글래머러스"],
+    "theme": "light",
+    "typography": {
+      "main_copy": { "fontSize": 48, "fontWeight": 700 },
+      "sub_copy": { "fontSize": 22, "fontWeight": 400 },
+      "body": { "fontSize": 16, "fontWeight": 400 }
+    }
+  },
+  "sections": [
+    {
+      "taxonomy_id": "Hook",
+      "position": 1,
+      "composition": "composed",
+      "canvas_height": 800,
+      "bounds": [
+        { "id": "hook-bg", "type": "background", "label": "그라데이션 배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "hook-brand", "type": "text", "label": "브랜드명", "x": 15, "y": 5, "w": 70, "h": 6, "zIndex": 2, "content": "REVERSE FORMULA" },
+        { "id": "hook-sub", "type": "text", "label": "서브 카피", "x": 25, "y": 12, "w": 50, "h": 4, "zIndex": 2, "content": "Peptide Lip Plump Balm" },
+        { "id": "hook-img", "type": "image", "label": "메인 제품 이미지", "x": 10, "y": 22, "w": 80, "h": 65, "zIndex": 1, "content": null },
+        { "id": "hook-desc", "type": "text", "label": "부가 설명", "x": 20, "y": 90, "w": 60, "h": 4, "zIndex": 2, "content": "볼륨감 있는 입술을 위한 펩타이드 립밤" }
+      ]
+    },
+    {
+      "taxonomy_id": "WhatIsThis",
+      "position": 2,
+      "composition": "stack",
+      "canvas_height": 700,
+      "bounds": [
+        { "id": "wit-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "wit-title", "type": "text", "label": "질문 형식 제목", "x": 15, "y": 5, "w": 70, "h": 5, "zIndex": 2, "content": "이게 뭔가요?" },
+        { "id": "wit-answer", "type": "text", "label": "한줄 정의", "x": 10, "y": 12, "w": 80, "h": 8, "zIndex": 2, "content": "펩타이드 성분으로 입술 볼륨을 채워주는 립 플럼프 밤" },
+        { "id": "wit-img", "type": "image", "label": "제품 구성 이미지", "x": 5, "y": 25, "w": 90, "h": 45, "zIndex": 1, "content": null },
+        { "id": "wit-desc", "type": "text", "label": "사용법 설명", "x": 15, "y": 75, "w": 70, "h": 5, "zIndex": 2, "content": "입술에 직접 도포하여 즉각적인 플럼핑 효과" },
+        { "id": "wit-summary", "type": "text", "label": "요약", "x": 20, "y": 85, "w": 60, "h": 5, "zIndex": 2, "content": "바르는 순간 달라지는 입술 볼륨" }
+      ]
+    },
+    {
+      "taxonomy_id": "ColorOptions",
+      "position": 3,
+      "composition": "stack",
+      "canvas_height": 650,
+      "bounds": [
+        { "id": "co-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "co-title", "type": "text", "label": "섹션 제목", "x": 20, "y": 3, "w": 60, "h": 6, "zIndex": 2, "content": "Color Palette" },
+        { "id": "co-sub", "type": "text", "label": "서브 카피", "x": 15, "y": 10, "w": 70, "h": 4, "zIndex": 2, "content": "당신의 무드에 맞는 컬러를 선택하세요" },
+        { "id": "co-grid", "type": "container", "label": "컬러 스와치 그리드", "x": 5, "y": 18, "w": 90, "h": 70, "zIndex": 1, "content": null },
+        { "id": "co-label1", "type": "text", "label": "컬러명 1", "x": 8, "y": 90, "w": 20, "h": 4, "zIndex": 2, "content": "Nude Pink" },
+        { "id": "co-label2", "type": "text", "label": "컬러명 2", "x": 30, "y": 90, "w": 20, "h": 4, "zIndex": 2, "content": "Coral" },
+        { "id": "co-label3", "type": "text", "label": "컬러명 3", "x": 52, "y": 90, "w": 20, "h": 4, "zIndex": 2, "content": "Rose" },
+        { "id": "co-label4", "type": "text", "label": "컬러명 4", "x": 74, "y": 90, "w": 20, "h": 4, "zIndex": 2, "content": "Berry" }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail",
+      "position": 4,
+      "variant": "split-lr",
+      "composition": "split",
+      "canvas_height": 700,
+      "bounds": [
+        { "id": "fd1-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "fd1-img", "type": "image", "label": "기능 상세 이미지", "x": 0, "y": 0, "w": 50, "h": 100, "zIndex": 1, "content": null },
+        { "id": "fd1-num", "type": "text", "label": "기능 번호", "x": 55, "y": 15, "w": 15, "h": 8, "zIndex": 2, "content": "01" },
+        { "id": "fd1-q", "type": "text", "label": "질문 형식 제목", "x": 55, "y": 25, "w": 40, "h": 5, "zIndex": 2, "content": "왜 펩타이드인가요?" },
+        { "id": "fd1-a", "type": "text", "label": "기능 핵심 답변", "x": 55, "y": 32, "w": 40, "h": 10, "zIndex": 2, "content": "콜라겐 생성을 촉진하는 펩타이드가 입술을 내부부터 채워줍니다" },
+        { "id": "fd1-b1", "type": "text", "label": "혜택 1", "x": 55, "y": 50, "w": 40, "h": 4, "zIndex": 2, "content": "즉각적인 볼륨 업 효과" },
+        { "id": "fd1-b2", "type": "text", "label": "혜택 2", "x": 55, "y": 56, "w": 40, "h": 4, "zIndex": 2, "content": "지속적인 입술 케어" },
+        { "id": "fd1-b3", "type": "text", "label": "혜택 3", "x": 55, "y": 62, "w": 40, "h": 4, "zIndex": 2, "content": "자연스러운 광택감" }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail",
+      "position": 5,
+      "variant": "stack",
+      "composition": "stack",
+      "canvas_height": 750,
+      "bounds": [
+        { "id": "fd2-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "fd2-num", "type": "text", "label": "기능 번호", "x": 10, "y": 3, "w": 15, "h": 6, "zIndex": 2, "content": "02" },
+        { "id": "fd2-q", "type": "text", "label": "질문 형식 제목", "x": 10, "y": 10, "w": 80, "h": 5, "zIndex": 2, "content": "어떤 텍스처인가요?" },
+        { "id": "fd2-a", "type": "text", "label": "기능 핵심 답변", "x": 10, "y": 17, "w": 80, "h": 8, "zIndex": 2, "content": "가볍고 촉촉한 밤 텍스처로 끈적임 없이 밀착" },
+        { "id": "fd2-img", "type": "image", "label": "기능 상세 이미지", "x": 5, "y": 30, "w": 90, "h": 45, "zIndex": 1, "content": null },
+        { "id": "fd2-b1", "type": "text", "label": "혜택 1", "x": 10, "y": 80, "w": 80, "h": 4, "zIndex": 2, "content": "논스틱 포뮬러" },
+        { "id": "fd2-b2", "type": "text", "label": "혜택 2", "x": 10, "y": 86, "w": 80, "h": 4, "zIndex": 2, "content": "12시간 보습 지속" },
+        { "id": "fd2-spec", "type": "text", "label": "스펙 강조", "x": 10, "y": 92, "w": 80, "h": 4, "zIndex": 2, "content": "펩타이드 5종 + 히알루론산 3중 복합체" }
+      ]
+    },
+    {
+      "taxonomy_id": "Differentiator",
+      "position": 6,
+      "composition": "stack",
+      "canvas_height": 700,
+      "bounds": [
+        { "id": "diff-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "diff-badge", "type": "text", "label": "배지", "x": 30, "y": 3, "w": 40, "h": 4, "zIndex": 2, "content": "Before & After" },
+        { "id": "diff-title", "type": "text", "label": "차별화 포인트", "x": 10, "y": 8, "w": 80, "h": 8, "zIndex": 2, "content": "바르는 순간, 눈에 보이는 변화" },
+        { "id": "diff-img", "type": "image", "label": "차별화 비교 이미지", "x": 5, "y": 20, "w": 90, "h": 50, "zIndex": 1, "content": null },
+        { "id": "diff-prob", "type": "text", "label": "기존 문제", "x": 10, "y": 74, "w": 35, "h": 5, "zIndex": 2, "content": "일반 립밤: 보습만 제공" },
+        { "id": "diff-sol", "type": "text", "label": "우리의 해결책", "x": 55, "y": 74, "w": 35, "h": 5, "zIndex": 2, "content": "REVERSE: 볼륨 + 보습 + 광택" },
+        { "id": "diff-result", "type": "text", "label": "결과 강조", "x": 15, "y": 85, "w": 70, "h": 5, "zIndex": 2, "content": "1회 사용으로 최대 40% 볼륨 업" }
+      ]
+    },
+    {
+      "taxonomy_id": "ProductSpec",
+      "position": 7,
+      "composition": "stack",
+      "canvas_height": 700,
+      "bounds": [
+        { "id": "ps-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "ps-title", "type": "text", "label": "섹션 제목", "x": 15, "y": 3, "w": 70, "h": 6, "zIndex": 2, "content": "Product Information" },
+        { "id": "ps-img", "type": "image", "label": "제품 스펙 이미지", "x": 10, "y": 12, "w": 80, "h": 40, "zIndex": 1, "content": null },
+        { "id": "ps-cat1", "type": "text", "label": "카테고리 1 제목", "x": 10, "y": 56, "w": 40, "h": 4, "zIndex": 2, "content": "기본 정보" },
+        { "id": "ps-spec1", "type": "text", "label": "스펙 1", "x": 10, "y": 62, "w": 40, "h": 3, "zIndex": 2, "content": "용량: 3.2g" },
+        { "id": "ps-spec2", "type": "text", "label": "스펙 2", "x": 10, "y": 66, "w": 40, "h": 3, "zIndex": 2, "content": "제형: 밤 스틱" },
+        { "id": "ps-spec3", "type": "text", "label": "스펙 3", "x": 10, "y": 70, "w": 40, "h": 3, "zIndex": 2, "content": "사용기한: 제조일로부터 36개월" },
+        { "id": "ps-cat2", "type": "text", "label": "카테고리 2 제목", "x": 55, "y": 56, "w": 40, "h": 4, "zIndex": 2, "content": "주요 성분" },
+        { "id": "ps-spec4", "type": "text", "label": "스펙 4", "x": 55, "y": 62, "w": 40, "h": 3, "zIndex": 2, "content": "아세틸 헥사펩타이드-8" },
+        { "id": "ps-spec5", "type": "text", "label": "스펙 5", "x": 55, "y": 66, "w": 40, "h": 3, "zIndex": 2, "content": "히알루론산 나트륨" },
+        { "id": "ps-spec6", "type": "text", "label": "스펙 6", "x": 55, "y": 70, "w": 40, "h": 3, "zIndex": 2, "content": "시어버터, 호호바 오일" },
+        { "id": "ps-common", "type": "text", "label": "공통 정보", "x": 10, "y": 80, "w": 80, "h": 4, "zIndex": 2, "content": "제조국: 대한민국 | 전성분 표시 별도 안내" }
+      ]
+    },
+    {
+      "taxonomy_id": "CTA",
+      "position": 8,
+      "composition": "composed",
+      "canvas_height": 650,
+      "bounds": [
+        { "id": "cta-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100, "zIndex": 0, "content": null },
+        { "id": "cta-main", "type": "text", "label": "액션 유도 카피", "x": 10, "y": 8, "w": 80, "h": 10, "zIndex": 2, "content": "지금 시작하세요" },
+        { "id": "cta-sub", "type": "text", "label": "메인 카피 반복", "x": 15, "y": 20, "w": 70, "h": 5, "zIndex": 2, "content": "REVERSE FORMULA로 완성하는 볼륨 립" },
+        { "id": "cta-img", "type": "image", "label": "제품 감성 이미지", "x": 10, "y": 30, "w": 80, "h": 35, "zIndex": 1, "content": null },
+        { "id": "cta-price", "type": "text", "label": "가격", "x": 25, "y": 70, "w": 50, "h": 6, "zIndex": 2, "content": "29,000원" },
+        { "id": "cta-trust", "type": "text", "label": "신뢰 배지", "x": 20, "y": 78, "w": 60, "h": 4, "zIndex": 2, "content": "무료배송 | 100% 정품 | 14일 교환/환불" },
+        { "id": "cta-btn", "type": "button", "label": "구매 버튼", "x": 20, "y": 85, "w": 60, "h": 8, "zIndex": 2, "content": "지금 구매하기" }
+      ]
+    }
+  ]
+}

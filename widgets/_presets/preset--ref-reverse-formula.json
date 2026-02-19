@@ -1,0 +1,19 @@
+{
+  "type": "STYLE_PRESET",
+  "id": "preset--ref-reverse-formula",
+  "name": "코랄 페미닌 글래머",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "color_system": {
+    "brand_main": "#E8506A",
+    "accent": "#F7B5C2",
+    "dark_1": "#1A1A1A",
+    "dark_2": "#4A4A4A",
+    "light_1": "#FFF5F7",
+    "light_2": "#FFEEF1"
+  },
+  "typography": {
+    "main_copy": { "fontSize": 48, "fontWeight": 700 },
+    "sub_copy": { "fontSize": 22, "fontWeight": 400 },
+    "body": { "fontSize": 16, "fontWeight": 400 }
+  }
+}

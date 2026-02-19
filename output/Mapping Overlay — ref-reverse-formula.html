@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)file://wsl.localhost/Ubuntu-24.04/home/lyyw205/repos/auto-details/output/overlay-reverse-formula.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Mapping Overlay — ref-reverse-formula</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#111; font-family:system-ui,sans-serif; display:flex; justify-content:center; padding:20px 0; }
+  .wrapper { position:relative; width:860px; }
+  .wrapper img { width:860px; display:block; }
+  .section-group { position:absolute; left:0; width:860px; pointer-events:none; }
+  .section-label {
+    position:absolute; left:0; top:0; width:100%;
+    background:rgba(0,0,0,0.6); color:#fff; font-size:13px; font-weight:700;
+    padding:4px 8px; z-index:100; pointer-events:none;
+    border-bottom:2px solid;
+  }
+  .bound-box {
+    position:absolute; border:2px solid; z-index:50;
+    pointer-events:none;
+  }
+  .bound-label {
+    position:absolute; font-size:10px; font-weight:600;
+    padding:1px 4px; white-space:nowrap; z-index:60;
+    pointer-events:none; border-radius:2px;
+  }
+  .controls {
+    position:fixed; top:10px; right:10px; z-index:200;
+    background:rgba(0,0,0,0.85); padding:12px; border-radius:8px; color:#fff;
+    font-size:13px; display:flex; flex-direction:column; gap:6px;
+  }
+  .controls label { cursor:pointer; display:flex; align-items:center; gap:6px; }
+  .controls input[type=range] { width:120px; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <strong>Overlay Controls</strong>
+  <label><input type="range" id="opacityRange" min="0" max="100" value="40"> Bounds opacity: <span id="opVal">40%</span></label>
+  <label><input type="checkbox" id="showLabels" checked=""> Show labels</label>
+  <label><input type="checkbox" id="showSectionHeaders" checked=""> Show section headers</label>
+</div>
+
+<div class="wrapper" id="wrapper">
+  <img src="./Mapping Overlay — ref-reverse-formula_files/ref-reverse-formula.png" id="refImg">
+<div class="section-group" style="top: 0px; height: 917.381px;"><div class="section-label section-header" style="border-color: rgb(255, 107, 107); color: rgb(255, 107, 107);">[1] Hook (800px)</div><div class="bound-box" style="left: 15%; top: 5%; width: 70%; height: 6%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 5%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">hook-brand [text] 브랜드명</div><div class="bound-box" style="left: 25%; top: 12%; width: 50%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 25%; top: 12%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">hook-sub [text] 서브 카피</div><div class="bound-box" style="left: 10%; top: 22%; width: 80%; height: 65%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 22%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">hook-img [image] 메인 제품 이미지</div><div class="bound-box" style="left: 20%; top: 90%; width: 60%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 20%; top: 90%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">hook-desc [text] 부가 설명</div></div><div class="section-group" style="top: 917.381px; height: 802.708px;"><div class="section-label section-header" style="border-color: rgb(78, 205, 196); color: rgb(78, 205, 196);">[2] WhatIsThis (700px)</div><div class="bound-box" style="left: 15%; top: 5%; width: 70%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 5%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">wit-title [text] 질문 형식 제목</div><div class="bound-box" style="left: 10%; top: 12%; width: 80%; height: 8%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 12%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">wit-answer [text] 한줄 정의</div><div class="bound-box" style="left: 5%; top: 25%; width: 90%; height: 45%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 5%; top: 25%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">wit-img [image] 제품 구성 이미지</div><div class="bound-box" style="left: 15%; top: 75%; width: 70%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 75%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">wit-desc [text] 사용법 설명</div><div class="bound-box" style="left: 20%; top: 85%; width: 60%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 20%; top: 85%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">wit-summary [text] 요약</div></div><div class="section-group" style="top: 1720.09px; height: 745.372px;"><div class="section-label section-header" style="border-color: rgb(69, 183, 209); color: rgb(69, 183, 209);">[3] ColorOptions (650px)</div><div class="bound-box" style="left: 20%; top: 3%; width: 60%; height: 6%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 20%; top: 3%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-title [text] 섹션 제목</div><div class="bound-box" style="left: 15%; top: 10%; width: 70%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 10%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-sub [text] 서브 카피</div><div class="bound-box" style="left: 5%; top: 18%; width: 90%; height: 70%; border-color: rgb(0, 204, 255); background: rgba(0, 204, 255, 0.15);"></div><div class="bound-label label-tag" style="left: 5%; top: 18%; background: rgb(0, 204, 255); color: rgb(0, 0, 0);">co-grid [container] 컬러 스와치 그리드</div><div class="bound-box" style="left: 8%; top: 90%; width: 20%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 8%; top: 90%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-label1 [text] 컬러명 1</div><div class="bound-box" style="left: 30%; top: 90%; width: 20%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 30%; top: 90%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-label2 [text] 컬러명 2</div><div class="bound-box" style="left: 52%; top: 90%; width: 20%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 52%; top: 90%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-label3 [text] 컬러명 3</div><div class="bound-box" style="left: 74%; top: 90%; width: 20%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 74%; top: 90%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">co-label4 [text] 컬러명 4</div></div><div class="section-group" style="top: 2465.46px; height: 802.708px;"><div class="section-label section-header" style="border-color: rgb(150, 206, 180); color: rgb(150, 206, 180);">[4] FeatureDetail — split-lr (700px)</div><div class="bound-box" style="left: 0%; top: 0%; width: 50%; height: 100%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 0%; top: 0%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">fd1-img [image] 기능 상세 이미지</div><div class="bound-box" style="left: 55%; top: 15%; width: 15%; height: 8%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 15%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-num [text] 기능 번호</div><div class="bound-box" style="left: 55%; top: 25%; width: 40%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 25%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-q [text] 질문 형식 제목</div><div class="bound-box" style="left: 55%; top: 32%; width: 40%; height: 10%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 32%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-a [text] 기능 핵심 답변</div><div class="bound-box" style="left: 55%; top: 50%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 50%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-b1 [text] 혜택 1</div><div class="bound-box" style="left: 55%; top: 56%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 56%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-b2 [text] 혜택 2</div><div class="bound-box" style="left: 55%; top: 62%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 62%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd1-b3 [text] 혜택 3</div></div><div class="section-group" style="top: 3268.17px; height: 860.044px;"><div class="section-label section-header" style="border-color: rgb(255, 234, 167); color: rgb(255, 234, 167);">[5] FeatureDetail — stack (750px)</div><div class="bound-box" style="left: 10%; top: 3%; width: 15%; height: 6%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 3%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-num [text] 기능 번호</div><div class="bound-box" style="left: 10%; top: 10%; width: 80%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 10%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-q [text] 질문 형식 제목</div><div class="bound-box" style="left: 10%; top: 17%; width: 80%; height: 8%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 17%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-a [text] 기능 핵심 답변</div><div class="bound-box" style="left: 5%; top: 30%; width: 90%; height: 45%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 5%; top: 30%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">fd2-img [image] 기능 상세 이미지</div><div class="bound-box" style="left: 10%; top: 80%; width: 80%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 80%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-b1 [text] 혜택 1</div><div class="bound-box" style="left: 10%; top: 86%; width: 80%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 86%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-b2 [text] 혜택 2</div><div class="bound-box" style="left: 10%; top: 92%; width: 80%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 92%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">fd2-spec [text] 스펙 강조</div></div><div class="section-group" style="top: 4128.21px; height: 802.708px;"><div class="section-label section-header" style="border-color: rgb(221, 160, 221); color: rgb(221, 160, 221);">[6] Differentiator (700px)</div><div class="bound-box" style="left: 30%; top: 3%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 30%; top: 3%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">diff-badge [text] 배지</div><div class="bound-box" style="left: 10%; top: 8%; width: 80%; height: 8%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 8%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">diff-title [text] 차별화 포인트</div><div class="bound-box" style="left: 5%; top: 20%; width: 90%; height: 50%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 5%; top: 20%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">diff-img [image] 차별화 비교 이미지</div><div class="bound-box" style="left: 10%; top: 74%; width: 35%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 74%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">diff-prob [text] 기존 문제</div><div class="bound-box" style="left: 55%; top: 74%; width: 35%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 74%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">diff-sol [text] 우리의 해결책</div><div class="bound-box" style="left: 15%; top: 85%; width: 70%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 85%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">diff-result [text] 결과 강조</div></div><div class="section-group" style="top: 4930.92px; height: 802.708px;"><div class="section-label section-header" style="border-color: rgb(152, 216, 200); color: rgb(152, 216, 200);">[7] ProductSpec (700px)</div><div class="bound-box" style="left: 15%; top: 3%; width: 70%; height: 6%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 3%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-title [text] 섹션 제목</div><div class="bound-box" style="left: 10%; top: 12%; width: 80%; height: 40%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 12%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">ps-img [image] 제품 스펙 이미지</div><div class="bound-box" style="left: 10%; top: 56%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 56%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-cat1 [text] 카테고리 1 제목</div><div class="bound-box" style="left: 10%; top: 62%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 62%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec1 [text] 스펙 1</div><div class="bound-box" style="left: 10%; top: 66%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 66%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec2 [text] 스펙 2</div><div class="bound-box" style="left: 10%; top: 70%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 70%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec3 [text] 스펙 3</div><div class="bound-box" style="left: 55%; top: 56%; width: 40%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 56%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-cat2 [text] 카테고리 2 제목</div><div class="bound-box" style="left: 55%; top: 62%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 62%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec4 [text] 스펙 4</div><div class="bound-box" style="left: 55%; top: 66%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 66%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec5 [text] 스펙 5</div><div class="bound-box" style="left: 55%; top: 70%; width: 40%; height: 3%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 55%; top: 70%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-spec6 [text] 스펙 6</div><div class="bound-box" style="left: 10%; top: 80%; width: 80%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 80%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">ps-common [text] 공통 정보</div></div><div class="section-group" style="top: 5733.63px; height: 745.372px;"><div class="section-label section-header" style="border-color: rgb(247, 220, 111); color: rgb(247, 220, 111);">[8] CTA (650px)</div><div class="bound-box" style="left: 10%; top: 8%; width: 80%; height: 10%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 8%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">cta-main [text] 액션 유도 카피</div><div class="bound-box" style="left: 15%; top: 20%; width: 70%; height: 5%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 15%; top: 20%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">cta-sub [text] 메인 카피 반복</div><div class="bound-box" style="left: 10%; top: 30%; width: 80%; height: 35%; border-color: rgb(255, 102, 0); background: rgba(255, 102, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 10%; top: 30%; background: rgb(255, 102, 0); color: rgb(0, 0, 0);">cta-img [image] 제품 감성 이미지</div><div class="bound-box" style="left: 25%; top: 70%; width: 50%; height: 6%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 25%; top: 70%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">cta-price [text] 가격</div><div class="bound-box" style="left: 20%; top: 78%; width: 60%; height: 4%; border-color: rgb(0, 255, 0); background: rgba(0, 255, 0, 0.15);"></div><div class="bound-label label-tag" style="left: 20%; top: 78%; background: rgb(0, 255, 0); color: rgb(0, 0, 0);">cta-trust [text] 신뢰 배지</div><div class="bound-box" style="left: 20%; top: 85%; width: 60%; height: 8%; border-color: rgb(255, 0, 255); background: rgba(255, 0, 255, 0.15);"></div><div class="bound-label label-tag" style="left: 20%; top: 85%; background: rgb(255, 0, 255); color: rgb(0, 0, 0);">cta-btn [button] 구매 버튼</div></div></div>
+
+<script>
+const MAPPING = {
+  "sections": [
+    {
+      "taxonomy_id": "Hook", "position": 1, "canvas_height": 800,
+      "bounds": [
+        { "id": "hook-bg", "type": "background", "label": "그라데이션 배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "hook-brand", "type": "text", "label": "브랜드명", "x": 15, "y": 5, "w": 70, "h": 6 },
+        { "id": "hook-sub", "type": "text", "label": "서브 카피", "x": 25, "y": 12, "w": 50, "h": 4 },
+        { "id": "hook-img", "type": "image", "label": "메인 제품 이미지", "x": 10, "y": 22, "w": 80, "h": 65 },
+        { "id": "hook-desc", "type": "text", "label": "부가 설명", "x": 20, "y": 90, "w": 60, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "WhatIsThis", "position": 2, "canvas_height": 700,
+      "bounds": [
+        { "id": "wit-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "wit-title", "type": "text", "label": "질문 형식 제목", "x": 15, "y": 5, "w": 70, "h": 5 },
+        { "id": "wit-answer", "type": "text", "label": "한줄 정의", "x": 10, "y": 12, "w": 80, "h": 8 },
+        { "id": "wit-img", "type": "image", "label": "제품 구성 이미지", "x": 5, "y": 25, "w": 90, "h": 45 },
+        { "id": "wit-desc", "type": "text", "label": "사용법 설명", "x": 15, "y": 75, "w": 70, "h": 5 },
+        { "id": "wit-summary", "type": "text", "label": "요약", "x": 20, "y": 85, "w": 60, "h": 5 }
+      ]
+    },
+    {
+      "taxonomy_id": "ColorOptions", "position": 3, "canvas_height": 650,
+      "bounds": [
+        { "id": "co-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "co-title", "type": "text", "label": "섹션 제목", "x": 20, "y": 3, "w": 60, "h": 6 },
+        { "id": "co-sub", "type": "text", "label": "서브 카피", "x": 15, "y": 10, "w": 70, "h": 4 },
+        { "id": "co-grid", "type": "container", "label": "컬러 스와치 그리드", "x": 5, "y": 18, "w": 90, "h": 70 },
+        { "id": "co-label1", "type": "text", "label": "컬러명 1", "x": 8, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label2", "type": "text", "label": "컬러명 2", "x": 30, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label3", "type": "text", "label": "컬러명 3", "x": 52, "y": 90, "w": 20, "h": 4 },
+        { "id": "co-label4", "type": "text", "label": "컬러명 4", "x": 74, "y": 90, "w": 20, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail", "position": 4, "variant": "split-lr", "canvas_height": 700,
+      "bounds": [
+        { "id": "fd1-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "fd1-img", "type": "image", "label": "기능 상세 이미지", "x": 0, "y": 0, "w": 50, "h": 100 },
+        { "id": "fd1-num", "type": "text", "label": "기능 번호", "x": 55, "y": 15, "w": 15, "h": 8 },
+        { "id": "fd1-q", "type": "text", "label": "질문 형식 제목", "x": 55, "y": 25, "w": 40, "h": 5 },
+        { "id": "fd1-a", "type": "text", "label": "기능 핵심 답변", "x": 55, "y": 32, "w": 40, "h": 10 },
+        { "id": "fd1-b1", "type": "text", "label": "혜택 1", "x": 55, "y": 50, "w": 40, "h": 4 },
+        { "id": "fd1-b2", "type": "text", "label": "혜택 2", "x": 55, "y": 56, "w": 40, "h": 4 },
+        { "id": "fd1-b3", "type": "text", "label": "혜택 3", "x": 55, "y": 62, "w": 40, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "FeatureDetail", "position": 5, "variant": "stack", "canvas_height": 750,
+      "bounds": [
+        { "id": "fd2-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "fd2-num", "type": "text", "label": "기능 번호", "x": 10, "y": 3, "w": 15, "h": 6 },
+        { "id": "fd2-q", "type": "text", "label": "질문 형식 제목", "x": 10, "y": 10, "w": 80, "h": 5 },
+        { "id": "fd2-a", "type": "text", "label": "기능 핵심 답변", "x": 10, "y": 17, "w": 80, "h": 8 },
+        { "id": "fd2-img", "type": "image", "label": "기능 상세 이미지", "x": 5, "y": 30, "w": 90, "h": 45 },
+        { "id": "fd2-b1", "type": "text", "label": "혜택 1", "x": 10, "y": 80, "w": 80, "h": 4 },
+        { "id": "fd2-b2", "type": "text", "label": "혜택 2", "x": 10, "y": 86, "w": 80, "h": 4 },
+        { "id": "fd2-spec", "type": "text", "label": "스펙 강조", "x": 10, "y": 92, "w": 80, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "Differentiator", "position": 6, "canvas_height": 700,
+      "bounds": [
+        { "id": "diff-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "diff-badge", "type": "text", "label": "배지", "x": 30, "y": 3, "w": 40, "h": 4 },
+        { "id": "diff-title", "type": "text", "label": "차별화 포인트", "x": 10, "y": 8, "w": 80, "h": 8 },
+        { "id": "diff-img", "type": "image", "label": "차별화 비교 이미지", "x": 5, "y": 20, "w": 90, "h": 50 },
+        { "id": "diff-prob", "type": "text", "label": "기존 문제", "x": 10, "y": 74, "w": 35, "h": 5 },
+        { "id": "diff-sol", "type": "text", "label": "우리의 해결책", "x": 55, "y": 74, "w": 35, "h": 5 },
+        { "id": "diff-result", "type": "text", "label": "결과 강조", "x": 15, "y": 85, "w": 70, "h": 5 }
+      ]
+    },
+    {
+      "taxonomy_id": "ProductSpec", "position": 7, "canvas_height": 700,
+      "bounds": [
+        { "id": "ps-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "ps-title", "type": "text", "label": "섹션 제목", "x": 15, "y": 3, "w": 70, "h": 6 },
+        { "id": "ps-img", "type": "image", "label": "제품 스펙 이미지", "x": 10, "y": 12, "w": 80, "h": 40 },
+        { "id": "ps-cat1", "type": "text", "label": "카테고리 1 제목", "x": 10, "y": 56, "w": 40, "h": 4 },
+        { "id": "ps-spec1", "type": "text", "label": "스펙 1", "x": 10, "y": 62, "w": 40, "h": 3 },
+        { "id": "ps-spec2", "type": "text", "label": "스펙 2", "x": 10, "y": 66, "w": 40, "h": 3 },
+        { "id": "ps-spec3", "type": "text", "label": "스펙 3", "x": 10, "y": 70, "w": 40, "h": 3 },
+        { "id": "ps-cat2", "type": "text", "label": "카테고리 2 제목", "x": 55, "y": 56, "w": 40, "h": 4 },
+        { "id": "ps-spec4", "type": "text", "label": "스펙 4", "x": 55, "y": 62, "w": 40, "h": 3 },
+        { "id": "ps-spec5", "type": "text", "label": "스펙 5", "x": 55, "y": 66, "w": 40, "h": 3 },
+        { "id": "ps-spec6", "type": "text", "label": "스펙 6", "x": 55, "y": 70, "w": 40, "h": 3 },
+        { "id": "ps-common", "type": "text", "label": "공통 정보", "x": 10, "y": 80, "w": 80, "h": 4 }
+      ]
+    },
+    {
+      "taxonomy_id": "CTA", "position": 8, "canvas_height": 650,
+      "bounds": [
+        { "id": "cta-bg", "type": "background", "label": "배경", "x": 0, "y": 0, "w": 100, "h": 100 },
+        { "id": "cta-main", "type": "text", "label": "액션 유도 카피", "x": 10, "y": 8, "w": 80, "h": 10 },
+        { "id": "cta-sub", "type": "text", "label": "메인 카피 반복", "x": 15, "y": 20, "w": 70, "h": 5 },
+        { "id": "cta-img", "type": "image", "label": "제품 감성 이미지", "x": 10, "y": 30, "w": 80, "h": 35 },
+        { "id": "cta-price", "type": "text", "label": "가격", "x": 25, "y": 70, "w": 50, "h": 6 },
+        { "id": "cta-trust", "type": "text", "label": "신뢰 배지", "x": 20, "y": 78, "w": 60, "h": 4 },
+        { "id": "cta-btn", "type": "button", "label": "구매 버튼", "x": 20, "y": 85, "w": 60, "h": 8 }
+      ]
+    }
+  ]
+};
+
+const SECTION_COLORS = [
+  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4',
+  '#FFEAA7', '#DDA0DD', '#98D8C8', '#F7DC6F'
+];
+
+const TYPE_COLORS = {
+  text:       { border: '#00FF00', bg: 'rgba(0,255,0,0.15)' },
+  image:      { border: '#FF6600', bg: 'rgba(255,102,0,0.15)' },
+  background: { border: '#666666', bg: 'rgba(100,100,100,0.05)' },
+  button:     { border: '#FF00FF', bg: 'rgba(255,0,255,0.15)' },
+  container:  { border: '#00CCFF', bg: 'rgba(0,204,255,0.15)' },
+  icon:       { border: '#FFCC00', bg: 'rgba(255,204,0,0.15)' },
+  shape:      { border: '#CC66FF', bg: 'rgba(204,102,255,0.15)' },
+  other:      { border: '#AAAAAA', bg: 'rgba(170,170,170,0.15)' }
+};
+
+const wrapper = document.getElementById('wrapper');
+const img = document.getElementById('refImg');
+
+img.onload = () => {
+  const imgW = img.naturalWidth;
+  const imgH = img.naturalHeight;
+  const scale = 860 / imgW;
+
+  // Total mapping height
+  const totalMapH = MAPPING.sections.reduce((s, sec) => s + sec.canvas_height, 0);
+  const scaleY = (imgH * scale) / totalMapH;
+
+  let yOffset = 0;
+
+  MAPPING.sections.forEach((sec, si) => {
+    const secColor = SECTION_COLORS[si % SECTION_COLORS.length];
+    const secTopPx = yOffset * scaleY;
+    const secHPx = sec.canvas_height * scaleY;
+
+    // Section group
+    const group = document.createElement('div');
+    group.className = 'section-group';
+    group.style.top = secTopPx + 'px';
+    group.style.height = secHPx + 'px';
+
+    // Section header
+    const header = document.createElement('div');
+    header.className = 'section-label section-header';
+    header.style.borderColor = secColor;
+    header.style.color = secColor;
+    header.textContent = `[${sec.position}] ${sec.taxonomy_id}${sec.variant ? ' — ' + sec.variant : ''} (${sec.canvas_height}px)`;
+    group.appendChild(header);
+
+    // Bounds (skip background type for clarity)
+    sec.bounds.forEach(b => {
+      if (b.type === 'background') return;
+
+      const tc = TYPE_COLORS[b.type] || TYPE_COLORS.other;
+
+      const box = document.createElement('div');
+      box.className = 'bound-box';
+      box.style.left = b.x + '%';
+      box.style.top = b.y + '%';
+      box.style.width = b.w + '%';
+      box.style.height = b.h + '%';
+      box.style.borderColor = tc.border;
+      box.style.background = tc.bg;
+      group.appendChild(box);
+
+      const label = document.createElement('div');
+      label.className = 'bound-label label-tag';
+      label.style.left = b.x + '%';
+      label.style.top = b.y + '%';
+      label.style.background = tc.border;
+      label.style.color = '#000';
+      label.textContent = `${b.id} [${b.type}] ${b.label}`;
+      group.appendChild(label);
+    });
+
+    wrapper.appendChild(group);
+    yOffset += sec.canvas_height;
+  });
+};
+
+// Controls
+document.getElementById('opacityRange').addEventListener('input', e => {
+  const v = e.target.value;
+  document.getElementById('opVal').textContent = v + '%';
+  document.querySelectorAll('.bound-box').forEach(el => {
+    el.style.opacity = v / 100;
+  });
+});
+document.getElementById('showLabels').addEventListener('change', e => {
+  document.querySelectorAll('.label-tag').forEach(el => {
+    el.style.display = e.target.checked ? '' : 'none';
+  });
+});
+document.getElementById('showSectionHeaders').addEventListener('change', e => {
+  document.querySelectorAll('.section-header').forEach(el => {
+    el.style.display = e.target.checked ? '' : 'none';
+  });
+});
+</script>
+
+
+</body></html>

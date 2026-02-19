@@ -1,0 +1,459 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1771510628062,
+  "projectRoot": "/home/lyyw205/repos/auto-details",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "agents": {
+      "path": "agents",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1771510628055,
+      "keyFiles": [
+        "product-to-html.md",
+        "ref-to-widgets.md"
+      ]
+    },
+    "mapping": {
+      "path": "mapping",
+      "purpose": null,
+      "fileCount": 8,
+      "lastAccessed": 1771510628058,
+      "keyFiles": [
+        "README.md",
+        "eslint.config.mjs",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json"
+      ]
+    },
+    "output": {
+      "path": "output",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1771510628058,
+      "keyFiles": [
+        "test-sample-analysis (1).html"
+      ]
+    },
+    "references": {
+      "path": "references",
+      "purpose": null,
+      "fileCount": 10,
+      "lastAccessed": 1771510628059,
+      "keyFiles": [
+        "ref-cassunut.png",
+        "ref-collagen.png",
+        "ref-diffuser.png",
+        "ref-melatonine.png",
+        "ref-reverse-formula.png"
+      ]
+    },
+    "skills": {
+      "path": "skills",
+      "purpose": null,
+      "fileCount": 8,
+      "lastAccessed": 1771510628059,
+      "keyFiles": [
+        "generate-figma-make-prompt-v2.skill.md",
+        "generate-figma-make-prompt.skill.md",
+        "generate-html.skill.md",
+        "map-reference.skill.md",
+        "plan-sections.skill.md"
+      ]
+    },
+    "templates": {
+      "path": "templates",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1771510628059,
+      "keyFiles": [
+        "html-base.html",
+        "style-guide.md",
+        "wireframe-base.html"
+      ]
+    },
+    "tools": {
+      "path": "tools",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1771510628060,
+      "keyFiles": [
+        "preview.html",
+        "style-guide.html",
+        "template-editor.html"
+      ]
+    },
+    "widgets": {
+      "path": "widgets",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1771510628060,
+      "keyFiles": [
+        "_registry.json"
+      ]
+    },
+    "크래프트볼트": {
+      "path": "크래프트볼트",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1771510628060,
+      "keyFiles": [
+        "craftvolt-chainsaw-v3-final.json"
+      ]
+    },
+    "mapping/public": {
+      "path": "mapping/public",
+      "purpose": "Public files",
+      "fileCount": 5,
+      "lastAccessed": 1771510628061,
+      "keyFiles": [
+        "file.svg",
+        "globe.svg",
+        "next.svg"
+      ]
+    },
+    "mapping/src": {
+      "path": "mapping/src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1771510628061,
+      "keyFiles": [
+        "test-sample-analysis.html",
+        "test-sample-mapping.html",
+        "test-sample.bounds.json"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "widgets/_registry.json",
+      "accessCount": 21,
+      "lastAccessed": 1771518434768,
+      "type": "file"
+    },
+    {
+      "path": "tools/gallery/server.js",
+      "accessCount": 17,
+      "lastAccessed": 1771518997712,
+      "type": "file"
+    },
+    {
+      "path": "skills/register-widgets.skill.md",
+      "accessCount": 16,
+      "lastAccessed": 1771514493142,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 15,
+      "lastAccessed": 1771516963428,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 15,
+      "lastAccessed": 1771518054802,
+      "type": "directory"
+    },
+    {
+      "path": "skills/map-reference.skill.md",
+      "accessCount": 12,
+      "lastAccessed": 1771519393637,
+      "type": "file"
+    },
+    {
+      "path": "lib/widget-renderer/types.ts",
+      "accessCount": 9,
+      "lastAccessed": 1771518252015,
+      "type": "file"
+    },
+    {
+      "path": "skills/select-widgets.skill.md",
+      "accessCount": 6,
+      "lastAccessed": 1771514493953,
+      "type": "file"
+    },
+    {
+      "path": "skills/plan-sections.skill.md",
+      "accessCount": 5,
+      "lastAccessed": 1771514493634,
+      "type": "file"
+    },
+    {
+      "path": "lib/widget-renderer/index.ts",
+      "accessCount": 5,
+      "lastAccessed": 1771516950315,
+      "type": "file"
+    },
+    {
+      "path": "lib/widget-renderer/renderer.ts",
+      "accessCount": 5,
+      "lastAccessed": 1771518585441,
+      "type": "file"
+    },
+    {
+      "path": "skills/generate-html.skill.md",
+      "accessCount": 4,
+      "lastAccessed": 1771514158120,
+      "type": "file"
+    },
+    {
+      "path": "skills/generate-figma-make-prompt-v2.skill.md",
+      "accessCount": 4,
+      "lastAccessed": 1771514175729,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/types.ts",
+      "accessCount": 3,
+      "lastAccessed": 1771513413679,
+      "type": "file"
+    },
+    {
+      "path": "agents/ref-to-widgets.md",
+      "accessCount": 3,
+      "lastAccessed": 1771513827255,
+      "type": "file"
+    },
+    {
+      "path": "agents/product-to-html.md",
+      "accessCount": 3,
+      "lastAccessed": 1771513827695,
+      "type": "file"
+    },
+    {
+      "path": "skills/generate-figma-make-prompt.skill.md",
+      "accessCount": 3,
+      "lastAccessed": 1771514175443,
+      "type": "file"
+    },
+    {
+      "path": "tools/scraper/scrape-behance.js",
+      "accessCount": 3,
+      "lastAccessed": 1771514428729,
+      "type": "file"
+    },
+    {
+      "path": "skills/section-taxonomy.json",
+      "accessCount": 3,
+      "lastAccessed": 1771517921530,
+      "type": "file"
+    },
+    {
+      "path": "widgets/hook/hook--ref-cassunut--v2.widget.json",
+      "accessCount": 3,
+      "lastAccessed": 1771518226019,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/gemini-prompt.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771511758448,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/merge-bounds.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771511758955,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/bounds-to-widget.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771511759493,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/export-html.ts",
+      "accessCount": 2,
+      "lastAccessed": 1771511767325,
+      "type": "file"
+    },
+    {
+      "path": "widgets/hook/hook--ref-reference4.widget.html",
+      "accessCount": 2,
+      "lastAccessed": 1771513579680,
+      "type": "file"
+    },
+    {
+      "path": "widgets/featuredetail/featuredetail--ref-reference4--split-lr.widget.html",
+      "accessCount": 2,
+      "lastAccessed": 1771513584497,
+      "type": "file"
+    },
+    {
+      "path": "widgets/differentiator/differentiator--ref-cassunut--v2.widget.html",
+      "accessCount": 2,
+      "lastAccessed": 1771513585052,
+      "type": "file"
+    },
+    {
+      "path": "tools/migrate-widgets.js",
+      "accessCount": 2,
+      "lastAccessed": 1771513681790,
+      "type": "file"
+    },
+    {
+      "path": "lib/widget-renderer/widget-schema.json",
+      "accessCount": 2,
+      "lastAccessed": 1771513700298,
+      "type": "file"
+    },
+    {
+      "path": "agents/validator.md",
+      "accessCount": 2,
+      "lastAccessed": 1771514364538,
+      "type": "file"
+    },
+    {
+      "path": "agents/composer.md",
+      "accessCount": 2,
+      "lastAccessed": 1771514365352,
+      "type": "file"
+    },
+    {
+      "path": "skills/compose-page.skill.md",
+      "accessCount": 2,
+      "lastAccessed": 1771514463469,
+      "type": "file"
+    },
+    {
+      "path": "mapping/package.json",
+      "accessCount": 1,
+      "lastAccessed": 1771510730757,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/detection-pass.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771510737187,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/app/api/analyze/route.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771510739371,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/app/page.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771510739753,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/components/app-shell.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1771510740609,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/constants.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771510746331,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/image-preprocess.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771510747239,
+      "type": "file"
+    },
+    {
+      "path": "tools/preview.html",
+      "accessCount": 1,
+      "lastAccessed": 1771510748417,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/fallback-analyze.ts",
+      "accessCount": 1,
+      "lastAccessed": 1771510755032,
+      "type": "file"
+    },
+    {
+      "path": "agents/analyzer.md",
+      "accessCount": 1,
+      "lastAccessed": 1771513963930,
+      "type": "file"
+    },
+    {
+      "path": "agents/planner.md",
+      "accessCount": 1,
+      "lastAccessed": 1771513988304,
+      "type": "file"
+    },
+    {
+      "path": "skills/generate-figma-prompt.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514243598,
+      "type": "file"
+    },
+    {
+      "path": "skills/scrape-reference.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514453447,
+      "type": "file"
+    },
+    {
+      "path": "skills/validate-mapping.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514505249,
+      "type": "file"
+    },
+    {
+      "path": "skills/validate-widgets.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514509883,
+      "type": "file"
+    },
+    {
+      "path": "skills/patch-section.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514550679,
+      "type": "file"
+    },
+    {
+      "path": "skills/validate-output.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514559693,
+      "type": "file"
+    },
+    {
+      "path": "skills/expand-library.skill.md",
+      "accessCount": 1,
+      "lastAccessed": 1771514583542,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

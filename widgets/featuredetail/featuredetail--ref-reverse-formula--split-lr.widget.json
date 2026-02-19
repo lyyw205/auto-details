@@ -1,0 +1,169 @@
+{
+  "widget_id": "featuredetail--ref-reverse-formula--split-lr",
+  "taxonomy_id": "FeatureDetail",
+  "category": "features",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "split",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "이 기능이 고객에게 주는 구체적인 혜택과 가치를 설명. 좌측 제품 클로즈업 이미지 / 우측 텍스트(번호+질문+답변+혜택). 화이트 배경 split-lr(이미지 좌) 레이아웃.",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "fd1-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "fd1-img",
+      "type": "image",
+      "label": "기능 상세 이미지",
+      "x": 0,
+      "y": 0,
+      "w": 50,
+      "h": 100,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] lip plump balm close-up, coral pink aesthetic, glossy texture, macro detail photography, feminine soft lighting, 8k quality",
+        "ai_style": "product_detail",
+        "ai_ratio": "1:2"
+      }
+    },
+    {
+      "id": "fd1-num",
+      "type": "text",
+      "label": "기능 번호",
+      "x": 55,
+      "y": 15,
+      "w": 15,
+      "h": 8,
+      "zIndex": 2,
+      "content": "[feature_num]",
+      "style": {
+        "fontSize": "72px",
+        "fontWeight": "bold",
+        "color": "#E8506A"
+      }
+    },
+    {
+      "id": "fd1-q",
+      "type": "text",
+      "label": "질문 형식 제목",
+      "x": 55,
+      "y": 25,
+      "w": 40,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[question]",
+      "style": {
+        "fontSize": "24px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd1-a",
+      "type": "text",
+      "label": "기능 핵심 답변",
+      "x": 55,
+      "y": 32,
+      "w": 40,
+      "h": 10,
+      "zIndex": 2,
+      "content": "[answer]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#4A4A4A",
+        "lineHeight": "1.6"
+      }
+    },
+    {
+      "id": "fd1-b1",
+      "type": "text",
+      "label": "혜택 1",
+      "x": 55,
+      "y": 50,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "✓ [benefit_1]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd1-b2",
+      "type": "text",
+      "label": "혜택 2",
+      "x": 55,
+      "y": 56,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "✓ [benefit_2]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#1A1A1A"
+      }
+    },
+    {
+      "id": "fd1-b3",
+      "type": "text",
+      "label": "혜택 3",
+      "x": 55,
+      "y": 62,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "✓ [benefit_3]",
+      "style": {
+        "fontSize": "15px",
+        "color": "#1A1A1A"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "2-column split layout (image left 50% / text right 50%). Canvas 860×700px. Feature number in large coral accent color.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더 (좌측 전체 높이)",
+      "기능 번호 텍스트 1개 (72px bold, 코랄)",
+      "질문 제목 텍스트 1개 (24px bold)",
+      "답변 본문 텍스트 1개",
+      "혜택 체크리스트 3개",
+      "스타일: 코랄, 페미닌, 글래머러스"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[feature_num]": "01",
+      "[question]": "왜 펩타이드인가요?",
+      "[answer]": "콜라겐 생성을 촉진하는 펩타이드가 입술을 내부부터 채워줍니다",
+      "✓ [benefit_1]": "✓ 즉각적인 볼륨 업 효과",
+      "✓ [benefit_2]": "✓ 지속적인 입술 케어",
+      "✓ [benefit_3]": "✓ 자연스러운 광택감"
+    },
+    "images": [
+      {
+        "label": "기능 상세 이미지",
+        "src": "https://images.unsplash.com/photo-1617897903246-719242758050?w=430&fit=crop&q=80",
+        "alt": "립 플럼프 밤 클로즈업"
+      }
+    ]
+  }
+}

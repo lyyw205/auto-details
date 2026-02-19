@@ -1,0 +1,123 @@
+{
+  "widget_id": "whatisthis--ref-reference4",
+  "taxonomy_id": "WhatIsThis",
+  "category": "intro",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reference4",
+    "extracted_date": "2026-02-11"
+  },
+  "status": "new",
+  "copywriting_guide": "제품의 정체성을 한마디로 정의. 화이트 배경 위 깔끔한 제품 사진 중심",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "제품 정면 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] front view, empty shelves visible, clean natural wood grain, minimalist product photography, warm soft lighting, white background, 8k quality",
+        "ai_style": "product_hero",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 11.25,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[질문 — 이게 뭔가요?]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "semibold",
+        "color": "#B8956A"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 17.5,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "[한줄 정의 — 한마디로, 이것은 ○○입니다]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#222222"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 23.75,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "[제품 컨셉 설명]",
+      "style": {
+        "color": "#888888"
+      }
+    }
+  ],
+  "html_body": "<section id=\"whatisthis\" class=\"flex flex-col items-center gap-8 text-center\" style=\"background: #FFFFFF; padding: 60px 50px;\">\n  <div class=\"content-narrow flex flex-col items-center gap-6\">\n    <p class=\"text-[22px] font-semibold\" style=\"color: #B8956A;\">[질문 — 이게 뭔가요?]</p>\n    <h2 class=\"text-[28px] font-bold tracking-tight\" style=\"color: #222222;\">[한줄 정의 — 한마디로, 이것은 ○○입니다]</h2>\n    <p class=\"text-body\" style=\"color: #888888;\">[제품 컨셉 설명]</p>\n    <div class=\"img-placeholder w-[760px] h-[450px] rounded-xl\" style=\"background: #E8E0D4;\"\n         data-ai-prompt=\"[product] front view, empty shelves visible, clean natural wood grain, minimalist product photography, warm soft lighting, white background, 8k quality\"\n         data-ai-style=\"product_hero\"\n         data-ai-ratio=\"16:9\">\n      <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">제품 정면 이미지</span>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 1개",
+      "본문 텍스트 2개",
+      "스타일: 내추럴, 우드톤, 따뜻한",
+      "카피 가이드: 제품의 정체성을 한마디로 정의. 화이트 배경 위 깔끔한 제품 사진 중심"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[질문 — 이게 뭔가요?]": "이게 뭔가요?",
+      "[한줄 정의 — 한마디로, 이것은 ○○입니다]": "당신의 화장대를 갤러리로 만드는 우드 오거나이저",
+      "[제품 컨셉 설명]": "천연 호두나무로 만든 6단 맞춤 수납함. 화장품, 소품, 악세서리를 한눈에 정리하세요."
+    },
+    "images": [
+      {
+        "label": "제품 정면 이미지",
+        "src": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=760&fit=crop&q=80",
+        "alt": "우드 오거나이저 정면"
+      }
+    ]
+  }
+}

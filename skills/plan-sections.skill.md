@@ -26,6 +26,18 @@
 - 카테고리별 균형 유지: `intro → problem → features → trust → conversion`
 - 사용자 지정 필수/제외 섹션 우선 반영
 
+### FeatureDetail 자동 산출
+FeatureDetail 반복 횟수 = min(핵심 기능 수, 8)
+- 유저가 핵심 기능 수를 명시한 경우: 해당 수만큼 FeatureDetail 배치
+- 미명시 시: 제품 설명에서 기능 수를 추론하여 min(추론 수, 8) 적용
+
+### 제품 카테고리별 자동 매핑
+제품 카테고리(가전, 뷰티, 식품, 패션 등)에 따라 기본 섹션 구조를 자동 추천:
+- 식품: Hook → WhyCore → Differentiator → FeatureDetail×3 → SetContents → Safety → ProductSpec → CTA
+- 뷰티: Hook → BrandName → PainPoint → Solution → FeatureDetail×4 → Reviews → CTA
+- 가전: Hook → FeaturesOverview → FeatureDetail×5 → StatsHighlight → Comparison → ProductSpec → CTA
+유저 수정 요청에 따라 조정 가능.
+
 ### 섹션 선택 가이드
 
 | 제품 특성 | 추천 섹션 |

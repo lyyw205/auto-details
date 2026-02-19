@@ -1,0 +1,149 @@
+{
+  "widget_id": "target--ref-reference4",
+  "taxonomy_id": "Target",
+  "category": "trust",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reference4",
+    "extracted_date": "2026-02-11"
+  },
+  "status": "new",
+  "copywriting_guide": "추천 대상을 체크리스트 형태로 나열. 크림 배경 + 따뜻한 톤의 텍스트 중심 섹션",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "gradient": "linear-gradient(180deg, #F7F3EE 0%, #EDE5DA 100%)"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 16.42857142857143,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 1,
+      "content": "[이런 분들께 추천합니다]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#222222"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 27.857142857142858,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 2,
+      "content": "&#10003;[추천 대상 1]",
+      "style": {
+        "color": "#444444",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 39.285714285714285,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 3,
+      "content": "&#10003;[추천 대상 2]",
+      "style": {
+        "color": "#444444",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 50.714285714285715,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 4,
+      "content": "&#10003;[추천 대상 3]",
+      "style": {
+        "color": "#444444",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text_4",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 62.142857142857146,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 5,
+      "content": "&#10003;[추천 대상 4]",
+      "style": {
+        "color": "#444444",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text_5",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 73.57142857142857,
+      "w": 80,
+      "h": 9.428571428571429,
+      "zIndex": 6,
+      "content": "&#10003;[추천 대상 5]",
+      "style": {
+        "color": "#444444",
+        "textAlign": "left"
+      }
+    }
+  ],
+  "html_body": "<section id=\"target\" class=\"flex flex-col items-center gap-8 text-center\" style=\"background: linear-gradient(180deg, #F7F3EE 0%, #EDE5DA 100%); padding: 60px 50px;\">\n  <div class=\"content-narrow flex flex-col items-center gap-8\">\n    <h2 class=\"text-[28px] font-bold tracking-tight\" style=\"color: #222222;\">[이런 분들께 추천합니다]</h2>\n    <div class=\"w-full flex flex-col gap-3 max-w-[600px]\">\n      <p class=\"text-body text-left\" style=\"color: #444444;\"><span style=\"color: #B8956A; font-weight: 700; margin-right: 12px;\">&#10003;</span>[추천 대상 1]</p>\n      <p class=\"text-body text-left\" style=\"color: #444444;\"><span style=\"color: #B8956A; font-weight: 700; margin-right: 12px;\">&#10003;</span>[추천 대상 2]</p>\n      <p class=\"text-body text-left\" style=\"color: #444444;\"><span style=\"color: #B8956A; font-weight: 700; margin-right: 12px;\">&#10003;</span>[추천 대상 3]</p>\n      <p class=\"text-body text-left\" style=\"color: #444444;\"><span style=\"color: #B8956A; font-weight: 700; margin-right: 12px;\">&#10003;</span>[추천 대상 4]</p>\n      <p class=\"text-body text-left\" style=\"color: #444444;\"><span style=\"color: #B8956A; font-weight: 700; margin-right: 12px;\">&#10003;</span>[추천 대상 5]</p>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "제목 텍스트 1개",
+      "본문 텍스트 5개",
+      "스타일: 내추럴, 우드톤, 따뜻한",
+      "카피 가이드: 추천 대상을 체크리스트 형태로 나열. 크림 배경 + 따뜻한 톤의 텍스트 중심 섹션"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[이런 분들께 추천합니다]": "이런 분들께 추천합니다",
+      "[추천 대상 1]": "화장대 위가 늘 어수선한 분",
+      "[추천 대상 2]": "인테리어와 어울리는 수납함을 찾는 분",
+      "[추천 대상 3]": "플라스틱 정리함에 질린 분",
+      "[추천 대상 4]": "선물용으로 특별한 아이템을 찾는 분",
+      "[추천 대상 5]": "천연 소재 제품을 선호하는 분"
+    },
+    "images": []
+  }
+}

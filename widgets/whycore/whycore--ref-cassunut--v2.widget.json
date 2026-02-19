@@ -1,0 +1,119 @@
+{
+  "widget_id": "whycore--ref-cassunut--v2",
+  "taxonomy_id": "WhyCore",
+  "category": "problem",
+  "style_tags": [
+    "내추럴",
+    "따뜻한",
+    "라이트톤"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-cassunut",
+    "extracted_date": "2026-02-12",
+    "analysis_version": "2.0"
+  },
+  "status": "new",
+  "copywriting_guide": "핵심 품질 차이를 텍스트 중심으로 설명, 구분선으로 단락 분리",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 21,
+      "w": 80,
+      "h": 14,
+      "zIndex": 1,
+      "content": "[품질 제목]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#2D2D2D"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 37,
+      "w": 80,
+      "h": 14,
+      "zIndex": 2,
+      "content": "[품질 설명 1]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#666666"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 53,
+      "w": 80,
+      "h": 14,
+      "zIndex": 3,
+      "content": "[품질 설명 2]",
+      "style": {
+        "fontSize": "16px",
+        "color": "#666666"
+      }
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 69,
+      "w": 80,
+      "h": 14,
+      "zIndex": 4,
+      "content": "[핵심 포인트]",
+      "style": {
+        "fontSize": "20px",
+        "fontWeight": "semibold",
+        "color": "#C19A4C"
+      }
+    }
+  ],
+  "html_body": "<section id=\"whycore\" class=\"flex flex-col items-center py-[80px] px-[50px]\" style=\"background: #FFFFFF;\">\n  <div class=\"content-narrow flex flex-col items-center gap-[20px] text-center\">\n    <!-- 섹션 제목 -->\n    <h2 class=\"text-[28px] font-bold leading-tight\" style=\"color: #2D2D2D;\">[품질 제목]</h2>\n    <!-- v2: LINE 장식 — 골드 구분선 -->\n    <div class=\"w-[200px] h-px mx-auto\" style=\"background: linear-gradient(90deg, transparent, #C19A4C4D, transparent);\"></div>\n    <!-- 설명 본문 1 -->\n    <p class=\"text-[16px] leading-relaxed\" style=\"color: #666666;\">[품질 설명 1]</p>\n    <!-- v2: LINE 장식 — 뉴트럴 구분선 -->\n    <div class=\"w-[200px] h-px mx-auto\" style=\"background: linear-gradient(90deg, transparent, #E8E8E880, transparent);\"></div>\n    <!-- 설명 본문 2 -->\n    <p class=\"text-[16px] leading-relaxed\" style=\"color: #666666;\">[품질 설명 2]</p>\n    <!-- 핵심 포인트 강조 -->\n    <p class=\"text-[20px] font-semibold mt-4\" style=\"color: #C19A4C;\">[핵심 포인트]</p>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "제목 텍스트 1개",
+      "본문 텍스트 3개",
+      "스타일: 내추럴, 따뜻한, 라이트톤",
+      "카피 가이드: 핵심 품질 차이를 텍스트 중심으로 설명, 구분선으로 단락 분리"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[품질 제목]": "ORIGINUT이 다른 이유",
+      "[품질 설명 1]": "원료 선별부터 가공, 포장까지 모든 과정에서\n품질을 최우선으로 관리합니다",
+      "[품질 설명 2]": "베트남 현지 농장에서 직접 수매한 원료를\n국내 HACCP 인증 시설에서 가공합니다",
+      "[핵심 포인트]": "원료부터 다른 프리미엄 캐슈넛"
+    },
+    "images": []
+  }
+}

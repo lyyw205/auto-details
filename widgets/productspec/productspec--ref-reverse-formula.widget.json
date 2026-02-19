@@ -1,0 +1,243 @@
+{
+  "widget_id": "productspec--ref-reverse-formula",
+  "taxonomy_id": "ProductSpec",
+  "category": "trust",
+  "style_tags": ["코랄", "페미닌", "글래머러스"],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reverse-formula",
+    "extracted_date": "2026-02-20"
+  },
+  "status": "new",
+  "copywriting_guide": "숫자와 단위를 명확하게, 차별화 스펙은 강조 색상 사용",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "ps-bg",
+      "type": "background",
+      "label": "배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "ps-title",
+      "type": "text",
+      "label": "섹션 제목",
+      "x": 15,
+      "y": 3,
+      "w": 70,
+      "h": 6,
+      "zIndex": 2,
+      "content": "[섹션 제목]",
+      "style": {
+        "fontSize": "40px",
+        "fontWeight": "bold",
+        "color": "#1A1A1A",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "ps-img",
+      "type": "image",
+      "label": "제품 스펙 이미지",
+      "x": 10,
+      "y": 12,
+      "w": 80,
+      "h": 40,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "코랄 핑크 립 플럼프 밤 제품 스펙 인포그래픽, 성분과 효능 시각화, 화이트 배경",
+        "ai_style": "클린 인포그래픽, 핑크/코랄 색상 계열",
+        "ai_ratio": "4:2"
+      }
+    },
+    {
+      "id": "ps-cat1",
+      "type": "text",
+      "label": "카테고리 1 제목",
+      "x": 10,
+      "y": 56,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[카테고리 1]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "bold",
+        "color": "#E8506A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec1",
+      "type": "text",
+      "label": "스펙 1",
+      "x": 10,
+      "y": 62,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "용량: 3.2g",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec2",
+      "type": "text",
+      "label": "스펙 2",
+      "x": 10,
+      "y": 66,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "제형: 밤 스틱",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec3",
+      "type": "text",
+      "label": "스펙 3",
+      "x": 10,
+      "y": 70,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "사용기한: 제조일로부터 36개월",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-cat2",
+      "type": "text",
+      "label": "카테고리 2 제목",
+      "x": 55,
+      "y": 56,
+      "w": 40,
+      "h": 4,
+      "zIndex": 2,
+      "content": "[카테고리 2]",
+      "style": {
+        "fontSize": "18px",
+        "fontWeight": "bold",
+        "color": "#F7B5C2",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec4",
+      "type": "text",
+      "label": "스펙 4",
+      "x": 55,
+      "y": 62,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "아세틸 헥사펩타이드-8",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec5",
+      "type": "text",
+      "label": "스펙 5",
+      "x": 55,
+      "y": 66,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "히알루론산 나트륨",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-spec6",
+      "type": "text",
+      "label": "스펙 6",
+      "x": 55,
+      "y": 70,
+      "w": 40,
+      "h": 3,
+      "zIndex": 2,
+      "content": "시어버터/호호바 오일",
+      "style": {
+        "fontSize": "15px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "ps-common",
+      "type": "text",
+      "label": "공통 정보",
+      "x": 10,
+      "y": 80,
+      "w": 80,
+      "h": 4,
+      "zIndex": 2,
+      "content": "제조국: 대한민국 | 전성분 표시 별도 안내",
+      "style": {
+        "fontSize": "13px",
+        "fontWeight": "normal",
+        "color": "#4A4A4A",
+        "textAlign": "center"
+      }
+    }
+  ],
+  "figma_hints": {
+    "layout_structure": "Single-column stack layout. 상단 섹션 제목 → 제품 스펙 이미지 → 하단 2열 분리(기본 정보 / 주요 성분) → 공통 정보. Canvas 860px, height 700px.",
+    "key_elements": [
+      "섹션 제목 40px bold #1A1A1A 가운데 정렬",
+      "제품 스펙 이미지 (인포그래픽 스타일)",
+      "카테고리 1 제목 18px bold #E8506A (브랜드 코랄)",
+      "카테고리 2 제목 18px bold #F7B5C2 (액센트 핑크)",
+      "스펙 항목 15px #4A4A4A 좌측 정렬",
+      "공통 정보 13px 가운데 정렬"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[섹션 제목]": "Product Information",
+      "[카테고리 1]": "기본 정보",
+      "[카테고리 2]": "주요 성분"
+    },
+    "images": [
+      {
+        "label": "제품 스펙 이미지",
+        "src": "",
+        "alt": "REVERSE FORMULA 립 플럼프 밤 성분 및 스펙 인포그래픽"
+      }
+    ]
+  }
+}

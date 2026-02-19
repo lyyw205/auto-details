@@ -1,0 +1,170 @@
+{
+  "widget_id": "featuresoverview--ref-reference4",
+  "taxonomy_id": "FeaturesOverview",
+  "category": "features",
+  "style_tags": [
+    "내추럴",
+    "우드톤",
+    "따뜻한"
+  ],
+  "theme": "light",
+  "composition": "stack",
+  "provenance": {
+    "source_ref": "ref-reference4",
+    "extracted_date": "2026-02-11"
+  },
+  "status": "new",
+  "copywriting_guide": "핵심 기능 4~6가지를 번호+제목 형태로 한눈에 정리. 화이트 배경 + 깔끔한 카드",
+  "canvas": {
+    "width": 860,
+    "height": 700
+  },
+  "elements": [
+    {
+      "id": "bg",
+      "type": "background",
+      "label": "섹션 배경",
+      "x": 0,
+      "y": 0,
+      "w": 100,
+      "h": 100,
+      "zIndex": 0,
+      "style": {
+        "bgColor": "#FFFFFF"
+      }
+    },
+    {
+      "id": "img_0",
+      "type": "image",
+      "label": "기능 개요 제품 이미지",
+      "x": 5,
+      "y": 30,
+      "w": 90,
+      "h": 50,
+      "zIndex": 1,
+      "placeholder": {
+        "ai_prompt": "[product] overview showing all features, slightly angled view, all compartments and shelves visible, clean white background, product photography, soft shadows, 8k quality",
+        "ai_style": "product_hero",
+        "ai_ratio": "16:9"
+      }
+    },
+    {
+      "id": "text_0",
+      "type": "text",
+      "label": "제목 (h2)",
+      "x": 10,
+      "y": 8.571428571428571,
+      "w": 80,
+      "h": 5,
+      "zIndex": 2,
+      "content": "[핵심 기능 제목]",
+      "style": {
+        "fontSize": "28px",
+        "fontWeight": "bold",
+        "color": "#222222"
+      }
+    },
+    {
+      "id": "text_1",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 12.142857142857142,
+      "w": 80,
+      "h": 5,
+      "zIndex": 3,
+      "content": "[N가지 핵심 기능]",
+      "style": {
+        "color": "#888888"
+      }
+    },
+    {
+      "id": "text_2",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 15.714285714285715,
+      "w": 80,
+      "h": 5,
+      "zIndex": 4,
+      "content": "기능 개요 제품 이미지\n    \n    \n      \n        01\n        [기능 1 제목]",
+      "style": {}
+    },
+    {
+      "id": "text_3",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 19.285714285714285,
+      "w": 80,
+      "h": 5,
+      "zIndex": 5,
+      "content": "[기능 2 제목]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "semibold",
+        "color": "#222222"
+      }
+    },
+    {
+      "id": "text_4",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 22.857142857142858,
+      "w": 80,
+      "h": 5,
+      "zIndex": 6,
+      "content": "[기능 3 제목]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "semibold",
+        "color": "#222222"
+      }
+    },
+    {
+      "id": "text_5",
+      "type": "text",
+      "label": "텍스트",
+      "x": 10,
+      "y": 26.42857142857143,
+      "w": 80,
+      "h": 5,
+      "zIndex": 7,
+      "content": "[기능 4 제목]",
+      "style": {
+        "fontSize": "22px",
+        "fontWeight": "semibold",
+        "color": "#222222"
+      }
+    }
+  ],
+  "html_body": "<section id=\"featuresoverview\" class=\"flex flex-col items-center gap-10 text-center\" style=\"background: #FFFFFF; padding: 80px 50px;\">\n  <div class=\"content-narrow flex flex-col items-center gap-10\">\n    <div class=\"flex flex-col items-center gap-3\">\n      <h2 class=\"text-[28px] font-bold tracking-tight\" style=\"color: #222222;\">[핵심 기능 제목]</h2>\n      <p class=\"text-body\" style=\"color: #888888;\">[N가지 핵심 기능]</p>\n    </div>\n    <div class=\"img-placeholder w-[760px] h-[400px] rounded-xl\" style=\"background: #E8E0D4;\"\n         data-ai-prompt=\"[product] overview showing all features, slightly angled view, all compartments and shelves visible, clean white background, product photography, soft shadows, 8k quality\"\n         data-ai-style=\"product_hero\"\n         data-ai-ratio=\"16:9\">\n      <svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\">\n        <path d=\"M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z\"/>\n        <circle cx=\"12\" cy=\"13\" r=\"4\"/>\n      </svg>\n      <span class=\"img-label\">기능 개요 제품 이미지</span>\n    </div>\n    <div class=\"w-full grid grid-cols-2 gap-4\">\n      <div class=\"p-5 flex items-center gap-4 text-left rounded-2xl\" style=\"background: #F7F3EE;\">\n        <span class=\"shrink-0 w-[48px] h-[48px] flex items-center justify-center rounded-xl text-[20px] font-bold\" style=\"background: rgba(184, 149, 106, 0.12); color: #B8956A;\">01</span>\n        <p class=\"text-[22px] font-semibold\" style=\"color: #222222;\">[기능 1 제목]</p>\n      </div>\n      <div class=\"p-5 flex items-center gap-4 text-left rounded-2xl\" style=\"background: #F7F3EE;\">\n        <span class=\"shrink-0 w-[48px] h-[48px] flex items-center justify-center rounded-xl text-[20px] font-bold\" style=\"background: rgba(184, 149, 106, 0.12); color: #B8956A;\">02</span>\n        <p class=\"text-[22px] font-semibold\" style=\"color: #222222;\">[기능 2 제목]</p>\n      </div>\n      <div class=\"p-5 flex items-center gap-4 text-left rounded-2xl\" style=\"background: #F7F3EE;\">\n        <span class=\"shrink-0 w-[48px] h-[48px] flex items-center justify-center rounded-xl text-[20px] font-bold\" style=\"background: rgba(184, 149, 106, 0.12); color: #B8956A;\">03</span>\n        <p class=\"text-[22px] font-semibold\" style=\"color: #222222;\">[기능 3 제목]</p>\n      </div>\n      <div class=\"p-5 flex items-center gap-4 text-left rounded-2xl\" style=\"background: #F7F3EE;\">\n        <span class=\"shrink-0 w-[48px] h-[48px] flex items-center justify-center rounded-xl text-[20px] font-bold\" style=\"background: rgba(184, 149, 106, 0.12); color: #B8956A;\">04</span>\n        <p class=\"text-[22px] font-semibold\" style=\"color: #222222;\">[기능 4 제목]</p>\n      </div>\n    </div>\n  </div>\n</section>",
+  "figma_hints": {
+    "layout_structure": "Single-column stacked layout, centered content. Canvas 860px.",
+    "key_elements": [
+      "1개 이미지 플레이스홀더",
+      "제목 텍스트 1개",
+      "본문 텍스트 5개",
+      "스타일: 내추럴, 우드톤, 따뜻한",
+      "카피 가이드: 핵심 기능 4~6가지를 번호+제목 형태로 한눈에 정리. 화이트 배경 + 깔끔한 카드"
+    ]
+  },
+  "sample_data": {
+    "texts": {
+      "[핵심 기능 제목]": "이런 점이 다릅니다",
+      "[N가지 핵심 기능]": "4가지 핵심 기능",
+      "[기능 1 제목]": "6단 맞춤 수납",
+      "[기능 2 제목]": "천연 호두나무",
+      "[기능 3 제목]": "탈착식 칸막이",
+      "[기능 4 제목]": "미끄럼 방지"
+    },
+    "images": [
+      {
+        "label": "기능 개요 제품 이미지",
+        "src": "https://images.unsplash.com/photo-1563697599-f9a7b6843285?w=760&fit=crop&q=80",
+        "alt": "기능 개요 제품 이미지"
+      }
+    ]
+  }
+}
