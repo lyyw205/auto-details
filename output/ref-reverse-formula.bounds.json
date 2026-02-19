@@ -1,0 +1,6126 @@
+[
+  {
+    "id": "bound-1771520133456-0",
+    "type": "background",
+    "label": "상단 분홍색 배경",
+    "x": 0,
+    "y": 0,
+    "w": 100,
+    "h": 8.130884395740084,
+    "zIndex": 0,
+    "content": "분홍색 그라데이션 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#fce9ed"
+    }
+  },
+  {
+    "id": "bound-1771520133456-1",
+    "type": "text",
+    "label": "메인 타이틀",
+    "x": 26.400000000000002,
+    "y": 1.6854452847661676,
+    "w": 26.8,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-3",
+    "type": "text",
+    "label": "립밤 색상명",
+    "x": 69.8,
+    "y": 3.870967741935484,
+    "w": 3.2,
+    "h": 1.741009415033184,
+    "zIndex": 2,
+    "content": "Raw Pink",
+    "style": {
+      "fontSize": "15px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-4",
+    "type": "text",
+    "label": "립밤 용량",
+    "x": 67.4,
+    "y": 3.9080104954468275,
+    "w": 3.2,
+    "h": 2.426300354993055,
+    "zIndex": 2,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "15px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-5",
+    "type": "text",
+    "label": "립밤 제품명 일부",
+    "x": 79.2,
+    "y": 4.685908319185059,
+    "w": 11.1,
+    "h": 0.9260688377836086,
+    "zIndex": 2,
+    "content": "Peptide",
+    "style": {
+      "fontSize": "40px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-6",
+    "type": "text",
+    "label": "립밤 제품명 일부",
+    "x": 90.10000000000001,
+    "y": 5.7045840407470285,
+    "w": 2.8000000000000003,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "BA",
+    "style": {
+      "fontSize": "24px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-7",
+    "type": "background",
+    "label": "중간 흰색 배경",
+    "x": 0,
+    "y": 8.130884395740084,
+    "w": 100,
+    "h": 3.9080104954468275,
+    "zIndex": 0,
+    "content": "흰색 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520133456-8",
+    "type": "text",
+    "label": "섹션 제목",
+    "x": 14.2,
+    "y": 8.87173946596697,
+    "w": 13.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Web Contents",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-9",
+    "type": "text",
+    "label": "서브 섹션 제목 (한글)",
+    "x": 31.8,
+    "y": 8.87173946596697,
+    "w": 28.999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "립밤 제품 상세페이지 및 콘텐츠 디자인",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-10",
+    "type": "text",
+    "label": "본문 내용 (한글)",
+    "x": 31.8,
+    "y": 9.371816638370118,
+    "w": 53.800000000000004,
+    "h": 0.7223336934712147,
+    "zIndex": 1,
+    "content": "브랜드의 기존 가이드라인을 기반으로 신제품 립밤의 상세페이지, 제품 소개서, 인스타그램 피드 콘텐츠를 제작하였습니다. 브랜드 아이덴티티와 톤앤매너를 유지하면서, 신제품의 특징을 효과적으로 전달할 수 있는 일관된 비주얼을 구축하는 데 중점을 두었습니다.",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#545454",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-11",
+    "type": "text",
+    "label": "서브 섹션 제목 (영어)",
+    "x": 31.8,
+    "y": 10.409013736687761,
+    "w": 29.799999999999997,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Lip Balm Product Page & Content Design",
+    "style": {
+      "fontSize": "13px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-12",
+    "type": "text",
+    "label": "본문 내용 (영어)",
+    "x": 31.8,
+    "y": 10.816484025312548,
+    "w": 52.5,
+    "h": 0.7778978237382312,
+    "zIndex": 1,
+    "content": "Created the product detail page, product introduction deck, and Instagram feed visuals for the new lip balm launch. Focused on maintaining visual consistency aligned with the existing brand guidelines, while clearly highlighting the key features of the new product.",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#545454",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-13",
+    "type": "background",
+    "label": "하단 회색 배경",
+    "x": 0,
+    "y": 12.038894891186912,
+    "w": 100,
+    "h": 6.48248186448526,
+    "zIndex": 0,
+    "content": "회색 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#f5f5f5"
+    }
+  },
+  {
+    "id": "bound-1771520133456-14",
+    "type": "text",
+    "label": "립밤 특징 태그",
+    "x": 5.1,
+    "y": 14.835622781293411,
+    "w": 16.7,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Stylish Lip Aging Care",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520133456-15",
+    "type": "text",
+    "label": "제품명 메인 (상단)",
+    "x": 5.1,
+    "y": 15.317178576940883,
+    "w": 15.9,
+    "h": 0.5926840561815095,
+    "zIndex": 1,
+    "content": "Peptide",
+    "style": {
+      "fontSize": "30px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-16",
+    "type": "text",
+    "label": "제품명 서브 (하단)",
+    "x": 5.1,
+    "y": 15.983948140145085,
+    "w": 25.2,
+    "h": 0.5926840561815095,
+    "zIndex": 1,
+    "content": "Lip Plump Balm",
+    "style": {
+      "fontSize": "30px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-18",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 38.1,
+    "y": 16.00246951690076,
+    "w": 14.000000000000002,
+    "h": 0.9445902145392807,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-19",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 39.6,
+    "y": 16.854452847661676,
+    "w": 3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-20",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 44.2,
+    "y": 16.872974224417348,
+    "w": 2.8000000000000003,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Clear",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-21",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 40.1,
+    "y": 17.206359006019447,
+    "w": 6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-22",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 47,
+    "y": 16.55811081957092,
+    "w": 9.3,
+    "h": 0.963111591294953,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520213669-51",
+    "type": "image",
+    "label": "베리색 제품 박스",
+    "x": 57.4,
+    "y": 15.43448062972681,
+    "w": 17.599999999999998,
+    "h": 1.4076246334310851,
+    "zIndex": 1,
+    "content": "상단에 쌓여있는 베리색 립밤 제품 박스",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520133456-24",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 69.39999999999999,
+    "y": 14.668930390492362,
+    "w": 9.2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-25",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 69.39999999999999,
+    "y": 14.928229665071772,
+    "w": 2.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-26",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 72,
+    "y": 14.928229665071772,
+    "w": 3.5000000000000004,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Muted Coral",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-27",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 77,
+    "y": 14.928229665071772,
+    "w": 9.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-28",
+    "type": "text",
+    "label": "제품 박스 설명 텍스트",
+    "x": 88.1,
+    "y": 14.928229665071772,
+    "w": 11.1,
+    "h": 0.6852909399598703,
+    "zIndex": 2,
+    "content": "Lightweight tinted lip balm formulated with 6 peptide complex and 100% plant-based antioxidant ingredients for smoother, hydrated, fuller lips with instant and lasting volume.",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520213669-57",
+    "type": "text",
+    "label": "베리색 박스 제품명",
+    "x": 70.3,
+    "y": 15.69377990430622,
+    "w": 10.100000000000001,
+    "h": 0.5556413026701651,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520133456-30",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 67.2,
+    "y": 15.928384009878068,
+    "w": 2.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-31",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 69.69999999999999,
+    "y": 15.928384009878068,
+    "w": 3.3000000000000003,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Fig Berry",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-32",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 74.9,
+    "y": 15.928384009878068,
+    "w": 9.700000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-33",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 58.4,
+    "y": 16.68776045686063,
+    "w": 9.2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-34",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 58.4,
+    "y": 16.94705973144004,
+    "w": 2.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-35",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 60.9,
+    "y": 16.94705973144004,
+    "w": 3.3000000000000003,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Raw Pink",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520133456-36",
+    "type": "text",
+    "label": "제품 박스 텍스트",
+    "x": 66.10000000000001,
+    "y": 16.94705973144004,
+    "w": 9.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520213669-37",
+    "type": "background",
+    "label": "상단 좌측 배경",
+    "x": 0,
+    "y": 15.43448062972681,
+    "w": 49.7,
+    "h": 9.20512424756907,
+    "zIndex": 0,
+    "content": "밝은 회색 배경",
+    "style": {
+      "bgColor": "#f8f8f8"
+    }
+  },
+  {
+    "id": "bound-1771520213669-38",
+    "type": "background",
+    "label": "상단 우측 배경",
+    "x": 49.7,
+    "y": 15.43448062972681,
+    "w": 50.3,
+    "h": 9.20512424756907,
+    "zIndex": 0,
+    "content": "옅은 베이지색 배경",
+    "style": {
+      "bgColor": "#f0ebe8"
+    }
+  },
+  {
+    "id": "bound-1771520213669-39",
+    "type": "background",
+    "label": "중간 좌측 배경",
+    "x": 0,
+    "y": 24.63960487729588,
+    "w": 49.7,
+    "h": 3.556104337089057,
+    "zIndex": 0,
+    "content": "밝은 회색 배경",
+    "style": {
+      "bgColor": "#f8f8f8"
+    }
+  },
+  {
+    "id": "bound-1771520213669-40",
+    "type": "background",
+    "label": "중간 우측 배경",
+    "x": 49.7,
+    "y": 24.63960487729588,
+    "w": 50.3,
+    "h": 3.556104337089057,
+    "zIndex": 0,
+    "content": "적갈색 배경",
+    "style": {
+      "bgColor": "#d07a64"
+    }
+  },
+  {
+    "id": "bound-1771520213669-41",
+    "type": "background",
+    "label": "하단 좌측 배경",
+    "x": 0,
+    "y": 28.195709214384934,
+    "w": 49.7,
+    "h": 5.760148171014046,
+    "zIndex": 0,
+    "content": "밝은 핑크색 배경",
+    "style": {
+      "bgColor": "#fcd9d3"
+    }
+  },
+  {
+    "id": "bound-1771520213669-42",
+    "type": "background",
+    "label": "하단 우측 배경",
+    "x": 49.7,
+    "y": 28.195709214384934,
+    "w": 50.3,
+    "h": 5.760148171014046,
+    "zIndex": 0,
+    "content": "매우 옅은 핑크색 배경",
+    "style": {
+      "bgColor": "#fae1dd"
+    }
+  },
+  {
+    "id": "bound-1771520213669-44",
+    "type": "text",
+    "label": "메인 타이틀",
+    "x": 4.7,
+    "y": 16.693934249112516,
+    "w": 26,
+    "h": 0.7038123167155426,
+    "zIndex": 1,
+    "content": "Lip Pliump Balm",
+    "style": {
+      "fontSize": "38px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-45",
+    "type": "image",
+    "label": "기울어진 투명 립밤 튜브",
+    "x": 33.4,
+    "y": 15.471523383238154,
+    "w": 32.9,
+    "h": 4.630344188918043,
+    "zIndex": 1,
+    "content": "상단에 비스듬히 놓인 투명한 립밤 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-46",
+    "type": "text",
+    "label": "투명 립밤 튜브 문구",
+    "x": 52.1,
+    "y": 16.064207439419665,
+    "w": 9.700000000000001,
+    "h": 2.2225652106806604,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-47",
+    "type": "text",
+    "label": "투명 립밤 튜브 브랜드명",
+    "x": 37.3,
+    "y": 18.32381540361167,
+    "w": 9.4,
+    "h": 0.6667695632041981,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#7f7f7f",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-48",
+    "type": "text",
+    "label": "투명 립밤 튜브 색상명",
+    "x": 46.9,
+    "y": 18.360858157123012,
+    "w": 2.7,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Clear",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-49",
+    "type": "text",
+    "label": "투명 립밤 튜브 용량",
+    "x": 46.9,
+    "y": 18.67572156196944,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-50",
+    "type": "text",
+    "label": "투명 립밤 튜브 용량 단위",
+    "x": 46.9,
+    "y": 18.93502083654885,
+    "w": 4.3999999999999995,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-52",
+    "type": "text",
+    "label": "베리색 박스 브랜드명",
+    "x": 61,
+    "y": 15.69377990430622,
+    "w": 8.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-53",
+    "type": "text",
+    "label": "베리색 박스 용량",
+    "x": 61.1,
+    "y": 15.916036425374287,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-54",
+    "type": "text",
+    "label": "베리색 박스 용량 단위",
+    "x": 61.1,
+    "y": 16.10125019293101,
+    "w": 3.5000000000000004,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "0.33 fl.oz",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-56",
+    "type": "text",
+    "label": "베리색 박스 색상명",
+    "x": 64.2,
+    "y": 16.10125019293101,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Berry",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-58",
+    "type": "text",
+    "label": "베리색 박스 제품 설명",
+    "x": 81,
+    "y": 15.69377990430622,
+    "w": 18.5,
+    "h": 0.6297268096928539,
+    "zIndex": 2,
+    "content": "Lightweight tinted lip balm formulated with 6 peptide complex and...",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-59",
+    "type": "image",
+    "label": "핑크색 제품 박스",
+    "x": 57.4,
+    "y": 16.87914801666924,
+    "w": 17.599999999999998,
+    "h": 1.389103256675413,
+    "zIndex": 1,
+    "content": "중간에 쌓여있는 핑크색 립밤 제품 박스",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-60",
+    "type": "text",
+    "label": "핑크색 박스 브랜드명",
+    "x": 61,
+    "y": 17.082883160981634,
+    "w": 8.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-61",
+    "type": "text",
+    "label": "핑크색 박스 용량",
+    "x": 61.1,
+    "y": 17.286618305294027,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-62",
+    "type": "text",
+    "label": "핑크색 박스 용량 단위",
+    "x": 61.1,
+    "y": 17.47183207285075,
+    "w": 3.5000000000000004,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "0.33 fl.oz",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-64",
+    "type": "text",
+    "label": "핑크색 박스 색상명",
+    "x": 64.2,
+    "y": 17.47183207285075,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Pink",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-65",
+    "type": "text",
+    "label": "핑크색 박스 제품명",
+    "x": 70.3,
+    "y": 17.082883160981634,
+    "w": 10.100000000000001,
+    "h": 0.5371199259144931,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-66",
+    "type": "text",
+    "label": "핑크색 박스 제품 설명",
+    "x": 81,
+    "y": 17.082883160981634,
+    "w": 18.5,
+    "h": 0.6112054329371817,
+    "zIndex": 2,
+    "content": "Lightweight tinted lip balm formulated with 6 peptide complex and...",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-67",
+    "type": "image",
+    "label": "베이지색 제품 박스",
+    "x": 57.4,
+    "y": 18.32381540361167,
+    "w": 17.599999999999998,
+    "h": 1.3705818799197407,
+    "zIndex": 1,
+    "content": "하단에 쌓여있는 베이지색 립밤 제품 박스",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-68",
+    "type": "text",
+    "label": "베이지색 박스 브랜드명",
+    "x": 61,
+    "y": 18.50902917116839,
+    "w": 8.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "9px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-69",
+    "type": "text",
+    "label": "베이지색 박스 용량",
+    "x": 61.1,
+    "y": 18.712764315480783,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-70",
+    "type": "text",
+    "label": "베이지색 박스 용량 단위",
+    "x": 61.1,
+    "y": 18.897978083037508,
+    "w": 3.5000000000000004,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "0.33 fl.oz",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-71",
+    "type": "text",
+    "label": "베이지색 박스 색상명",
+    "x": 64.2,
+    "y": 18.712764315480783,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Toasty",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-73",
+    "type": "text",
+    "label": "베이지색 박스 제품명",
+    "x": 70.3,
+    "y": 18.50902917116839,
+    "w": 10.100000000000001,
+    "h": 0.5371199259144931,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-74",
+    "type": "text",
+    "label": "베이지색 박스 제품 설명",
+    "x": 81,
+    "y": 18.50902917116839,
+    "w": 18.5,
+    "h": 0.6297268096928539,
+    "zIndex": 2,
+    "content": "Lightweight tinted lip balm formulated with 6 peptide complex and...",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f0f0f0",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-75",
+    "type": "text",
+    "label": "REVERSE FORMULA",
+    "x": 4.8,
+    "y": 20.083346195400523,
+    "w": 11.1,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "normal",
+      "color": "#7f7f7f",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-76",
+    "type": "image",
+    "label": "열린 레드 립밤 튜브",
+    "x": 15.1,
+    "y": 24.898904151875293,
+    "w": 15,
+    "h": 3.0930699181972523,
+    "zIndex": 1,
+    "content": "뚜껑이 열린 레드 립밤 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-77",
+    "type": "image",
+    "label": "베이지색 립밤 튜브",
+    "x": 28.000000000000004,
+    "y": 25.047075165920667,
+    "w": 15.9,
+    "h": 2.9448989041518754,
+    "zIndex": 1,
+    "content": "비스듬히 기울어진 베이지색 립밤 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-78",
+    "type": "image",
+    "label": "레드 립밤 뚜껑",
+    "x": 8.3,
+    "y": 25.806451612903228,
+    "w": 6.9,
+    "h": 2.1855224571693164,
+    "zIndex": 1,
+    "content": "분리되어 놓여있는 레드 립밤 뚜껑",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-79",
+    "type": "text",
+    "label": "레드 립밤 색상명",
+    "x": 20.9,
+    "y": 25.30637444050008,
+    "w": 3.5000000000000004,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Fig Berry",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-80",
+    "type": "text",
+    "label": "레드 립밤 용량",
+    "x": 20.9,
+    "y": 25.56567371507949,
+    "w": 6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-81",
+    "type": "text",
+    "label": "레드 립밤 제품명",
+    "x": 20.9,
+    "y": 25.899058496681587,
+    "w": 7.1,
+    "h": 0.8890260842722643,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-82",
+    "type": "text",
+    "label": "레드 립밤 브랜드명",
+    "x": 20.9,
+    "y": 26.899212841487884,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-83",
+    "type": "text",
+    "label": "레드 립밤 프랑스어 문구",
+    "x": 20.9,
+    "y": 27.325204506868346,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "BAUME À LÈVRES AUX PEPTIDES",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-84",
+    "type": "text",
+    "label": "베이지 립밤 색상명",
+    "x": 31.4,
+    "y": 25.4915882080568,
+    "w": 4.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Toasty Beige",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-85",
+    "type": "text",
+    "label": "베이지 립밤 용량",
+    "x": 31.4,
+    "y": 25.75088748263621,
+    "w": 5.8999999999999995,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-86",
+    "type": "text",
+    "label": "베이지 립밤 제품명",
+    "x": 31.4,
+    "y": 26.084272264238308,
+    "w": 7.1,
+    "h": 0.9075474610279365,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-87",
+    "type": "text",
+    "label": "베이지 립밤 브랜드명",
+    "x": 31.4,
+    "y": 27.102947985800277,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-88",
+    "type": "text",
+    "label": "베이지 립밤 프랑스어 문구",
+    "x": 31.4,
+    "y": 27.52893965118074,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "BAUME À LÈVRES AUX PEPTIDES",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520213669-92",
+    "type": "text",
+    "label": "좌측 튜브 브랜드명",
+    "x": 54.50000000000001,
+    "y": 25.528630961568144,
+    "w": 3.9,
+    "h": 1.0186757215619695,
+    "zIndex": 3,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-93",
+    "type": "text",
+    "label": "좌측 튜브 제품명",
+    "x": 59.699999999999996,
+    "y": 24.787775891341255,
+    "w": 4.1000000000000005,
+    "h": 3.3708905695323352,
+    "zIndex": 3,
+    "content": "Lip Plump Balm",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-94",
+    "type": "text",
+    "label": "우측 튜브 브랜드명",
+    "x": 83.1,
+    "y": 25.528630961568144,
+    "w": 3.9,
+    "h": 1.0186757215619695,
+    "zIndex": 3,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-95",
+    "type": "text",
+    "label": "우측 튜브 제품명",
+    "x": 88.3,
+    "y": 24.787775891341255,
+    "w": 4.1000000000000005,
+    "h": 3.3708905695323352,
+    "zIndex": 3,
+    "content": "Lip Plump Balm",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-96",
+    "type": "text",
+    "label": "중앙 튜브 색상명",
+    "x": 71.5,
+    "y": 25.695323352369194,
+    "w": 4.9,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "Toasty Beige",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-97",
+    "type": "text",
+    "label": "중앙 튜브 용량",
+    "x": 71.5,
+    "y": 26.12131501774965,
+    "w": 6.5,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-98",
+    "type": "text",
+    "label": "중앙 튜브 제품명 일부",
+    "x": 71.5,
+    "y": 26.565828059885785,
+    "w": 4,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "Peptide",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-99",
+    "type": "image",
+    "label": "단일 핑크 립밤 튜브",
+    "x": 17.2,
+    "y": 28.362401605185987,
+    "w": 15.299999999999999,
+    "h": 5.408242012656274,
+    "zIndex": 1,
+    "content": "세로로 서 있는 단일 핑크 립밤 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-100",
+    "type": "text",
+    "label": "핑크 립밤 색상명",
+    "x": 21.9,
+    "y": 32.02963420280908,
+    "w": 3.6999999999999997,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Raw Pink",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-101",
+    "type": "text",
+    "label": "핑크 립밤 용량",
+    "x": 21.9,
+    "y": 32.28893347738848,
+    "w": 5.800000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-102",
+    "type": "text",
+    "label": "핑크 립밤 제품명",
+    "x": 21.9,
+    "y": 30.029325513196483,
+    "w": 7.1,
+    "h": 0.8890260842722643,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-103",
+    "type": "text",
+    "label": "핑크 립밤 브랜드명",
+    "x": 21.9,
+    "y": 29.010649791634513,
+    "w": 7.1,
+    "h": 0.7778978237382312,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-104",
+    "type": "text",
+    "label": "핑크 립밤 프랑스어 문구",
+    "x": 21.9,
+    "y": 30.95539435098009,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "BAUME À LÈVRES AUX PEPTIDES",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-106",
+    "type": "image",
+    "label": "선명한 핑크 립밤 튜브",
+    "x": 71.8,
+    "y": 28.584658126254052,
+    "w": 14.2,
+    "h": 5.148942738076864,
+    "zIndex": 2,
+    "content": "가장 앞쪽에 선명하게 보이는 핑크 립밤 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520213669-107",
+    "type": "text",
+    "label": "선명한 핑크 립밤 색상명",
+    "x": 76.2,
+    "y": 32.17780521685445,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "Raw Pink",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-108",
+    "type": "text",
+    "label": "선명한 핑크 립밤 용량",
+    "x": 76.2,
+    "y": 32.437104491433864,
+    "w": 5.800000000000001,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-109",
+    "type": "text",
+    "label": "선명한 핑크 립밤 제품명",
+    "x": 76.2,
+    "y": 30.251582034264548,
+    "w": 7.3,
+    "h": 0.9260688377836086,
+    "zIndex": 3,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-110",
+    "type": "text",
+    "label": "선명한 핑크 립밤 브랜드명",
+    "x": 76.2,
+    "y": 29.25142768945825,
+    "w": 7.3,
+    "h": 0.7778978237382312,
+    "zIndex": 3,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520213669-111",
+    "type": "text",
+    "label": "선명한 핑크 립밤 프랑스어 문구",
+    "x": 76.2,
+    "y": 31.214693625559498,
+    "w": 7.3,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "BAUME À LÈVRES AUX PEPTIDES",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#f8f8f8",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520271974-112",
+    "type": "background",
+    "label": "상단 섹션 배경",
+    "x": 0,
+    "y": 30.86896125945362,
+    "w": 100,
+    "h": 12.038894891186912,
+    "zIndex": 0,
+    "content": "밝은 분홍색 단색 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#f7e5e7"
+    }
+  },
+  {
+    "id": "bound-1771520271974-113",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 19.2,
+    "y": 30.86896125945362,
+    "w": 10,
+    "h": 4.3895662910943045,
+    "zIndex": 1,
+    "content": "핑크색 립밤 튜브와 내용물",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-114",
+    "type": "text",
+    "label": "제품명 영문",
+    "x": 21.9,
+    "y": 30.86896125945362,
+    "w": 5.4,
+    "h": 1.7224880382775123,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "medium",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-115",
+    "type": "text",
+    "label": "제품명 색상/용량",
+    "x": 22.2,
+    "y": 32.721098935020834,
+    "w": 4.9,
+    "h": 0.5556413026701651,
+    "zIndex": 2,
+    "content": "Raw Pink 10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-116",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 64.9,
+    "y": 30.86896125945362,
+    "w": 18.2,
+    "h": 3.8154036116684673,
+    "zIndex": 1,
+    "content": "핑크색 립밤 튜브와 내용물 (흐릿하게)",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-117",
+    "type": "text",
+    "label": "제품명 영문",
+    "x": 69.39999999999999,
+    "y": 30.86896125945362,
+    "w": 5.3,
+    "h": 1.7595307917888563,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "medium",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-118",
+    "type": "text",
+    "label": "제품명 색상/용량",
+    "x": 69.5,
+    "y": 32.758141688532184,
+    "w": 5.1,
+    "h": 0.5371199259144931,
+    "zIndex": 2,
+    "content": "Raw Pink 10ml / 0.33 fl.oz",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-119",
+    "type": "container",
+    "label": "모바일 목업 1",
+    "x": 18.7,
+    "y": 36.66615218397901,
+    "w": 18.3,
+    "h": 5.11189998456552,
+    "zIndex": 1,
+    "content": "립밤 색상 소개 모바일 화면",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-120",
+    "type": "text",
+    "label": "쉐이드 제목",
+    "x": 25.2,
+    "y": 37.110665226115145,
+    "w": 5.1,
+    "h": 0.5371199259144931,
+    "zIndex": 2,
+    "content": "Shades",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-121",
+    "type": "image",
+    "label": "클리어 색상 입술 이미지",
+    "x": 19.5,
+    "y": 37.907084426609046,
+    "w": 8,
+    "h": 0.5926840561815095,
+    "zIndex": 2,
+    "content": "입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-122",
+    "type": "text",
+    "label": "클리어 색상명",
+    "x": 28.1,
+    "y": 37.8700416730977,
+    "w": 5.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Clear 클리어",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-123",
+    "type": "text",
+    "label": "클리어 색상 설명",
+    "x": 28.1,
+    "y": 38.31455471523383,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#투명하고청량한 #민낯에활력",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-124",
+    "type": "image",
+    "label": "토스티 베이지 색상 입술 이미지",
+    "x": 19.5,
+    "y": 38.62941812008026,
+    "w": 8,
+    "h": 0.5926840561815095,
+    "zIndex": 2,
+    "content": "입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-125",
+    "type": "text",
+    "label": "토스티 베이지 색상명",
+    "x": 28.1,
+    "y": 38.61089674332459,
+    "w": 7.7,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Toasty Beige 토스티 베이지",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-126",
+    "type": "text",
+    "label": "토스티 베이지 색상 설명",
+    "x": 28.1,
+    "y": 39.07393116221639,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#따뜻한뉴트럴 #분위기여신",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-127",
+    "type": "image",
+    "label": "로우 핑크 색상 입술 이미지",
+    "x": 19.5,
+    "y": 39.35175181355147,
+    "w": 8,
+    "h": 0.5926840561815095,
+    "zIndex": 2,
+    "content": "입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-128",
+    "type": "text",
+    "label": "로우 핑크 색상명",
+    "x": 28.1,
+    "y": 39.31470906004013,
+    "w": 5.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Raw Pink 로우 핑크",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-129",
+    "type": "text",
+    "label": "로우 핑크 색상 설명",
+    "x": 28.1,
+    "y": 39.77774347893194,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#자연스러운혈색 #데일리립",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-130",
+    "type": "image",
+    "label": "뮤티드 코랄 색상 입술 이미지",
+    "x": 19.5,
+    "y": 40.11112826053403,
+    "w": 8,
+    "h": 0.6112054329371817,
+    "zIndex": 2,
+    "content": "입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-131",
+    "type": "text",
+    "label": "뮤티드 코랄 색상명",
+    "x": 28.1,
+    "y": 40.07408550702269,
+    "w": 7.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Muted Coral 뮤티드 코랄",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-132",
+    "type": "text",
+    "label": "뮤티드 코랄 색상 설명",
+    "x": 28.1,
+    "y": 40.537119925914496,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#웜톤찰떡 #청순립",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-133",
+    "type": "image",
+    "label": "피그 베리 색상 입술 이미지",
+    "x": 19.5,
+    "y": 40.83346195400525,
+    "w": 8,
+    "h": 0.6112054329371817,
+    "zIndex": 2,
+    "content": "입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-134",
+    "type": "text",
+    "label": "피그 베리 색상명",
+    "x": 28.1,
+    "y": 40.7964192004939,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Fig Berry 피그 베리",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-135",
+    "type": "text",
+    "label": "피그 베리 색상 설명",
+    "x": 28.1,
+    "y": 41.25945361938571,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#쿨톤찰떡 #고혹립",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-136",
+    "type": "container",
+    "label": "모바일 목업 2",
+    "x": 40.8,
+    "y": 36.66615218397901,
+    "w": 18.3,
+    "h": 5.11189998456552,
+    "zIndex": 1,
+    "content": "립밤 제품 특징 소개 모바일 화면",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-137",
+    "type": "text",
+    "label": "해시태그 1",
+    "x": 42,
+    "y": 37.27735761691619,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#볼륨립밤",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#e0aab0",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-138",
+    "type": "text",
+    "label": "해시태그 2",
+    "x": 50.2,
+    "y": 37.27735761691619,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#에이징케어립밤",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#e0aab0",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-140",
+    "type": "text",
+    "label": "제품명 영문",
+    "x": 42,
+    "y": 37.8700416730977,
+    "w": 8.9,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-141",
+    "type": "text",
+    "label": "제품명",
+    "x": 42,
+    "y": 38.2034264546998,
+    "w": 11.200000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-142",
+    "type": "text",
+    "label": "해시태그 3",
+    "x": 42,
+    "y": 38.75906775736996,
+    "w": 7.9,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#자연스러운혈색",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-143",
+    "type": "text",
+    "label": "해시태그 4",
+    "x": 42,
+    "y": 39.018367031949374,
+    "w": 11.200000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#끈적임No 주름부각No",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-144",
+    "type": "text",
+    "label": "해시태그 5",
+    "x": 42,
+    "y": 39.277666306528786,
+    "w": 15.2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#전색상모두립밤으로사용가능",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-145",
+    "type": "container",
+    "label": "추천 대상 섹션",
+    "x": 42,
+    "y": 40.68529093995987,
+    "w": 15.9,
+    "h": 0.963111591294953,
+    "zIndex": 2,
+    "content": "RECOMMEND TO 문구와 세 가지 추천 질문",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#f7f7f7"
+    }
+  },
+  {
+    "id": "bound-1771520271974-146",
+    "type": "text",
+    "label": "추천 대상 제목",
+    "x": 45.7,
+    "y": 40.870504707516595,
+    "w": 8.5,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "RECOMMEND TO",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-147",
+    "type": "text",
+    "label": "추천 질문 1",
+    "x": 43.6,
+    "y": 41.24093224263004,
+    "w": 11.899999999999999,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "입술 볼륨이 없어 고민이세요?",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-148",
+    "type": "icon",
+    "label": "화살표 아이콘",
+    "x": 42.699999999999996,
+    "y": 41.25945361938571,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "작은 화살표 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#999999",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-151",
+    "type": "text",
+    "label": "추천 질문 3",
+    "x": 43.6,
+    "y": 41.666923908010496,
+    "w": 11.899999999999999,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "수시로 바르는 립밤을 찾고 있다면?",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-152",
+    "type": "icon",
+    "label": "화살표 아이콘",
+    "x": 42.699999999999996,
+    "y": 41.666923908010496,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "작은 화살표 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#999999",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-153",
+    "type": "container",
+    "label": "모바일 목업 3",
+    "x": 63,
+    "y": 36.66615218397901,
+    "w": 18.099999999999998,
+    "h": 5.11189998456552,
+    "zIndex": 1,
+    "content": "립밤 효과 및 제형 설명 모바일 화면",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-154",
+    "type": "text",
+    "label": "제목",
+    "x": 68,
+    "y": 37.27735761691619,
+    "w": 7.9,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Feels like",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#e0aab0",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-156",
+    "type": "text",
+    "label": "제형 설명 텍스트",
+    "x": 64.2,
+    "y": 37.647785152029634,
+    "w": 15,
+    "h": 0.8334619540052477,
+    "zIndex": 3,
+    "content": "안바른듯 편안한 젤리 멜팅 텍스처 입술 위에 촘촘하게 차오르는 고보습 오일로 인한 반사광이 매끈한 볼륨감을 연출해주는",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-157",
+    "type": "text",
+    "label": "제품명",
+    "x": 64.2,
+    "y": 38.48124710603488,
+    "w": 12.3,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-158",
+    "type": "text",
+    "label": "워터리한 광택 설명",
+    "x": 64.2,
+    "y": 39.148016669239084,
+    "w": 11.4,
+    "h": 0.5556413026701651,
+    "zIndex": 2,
+    "content": "글로시함이 높은 에스테르 오일이 입술에 워터리한 광택을 선사 입술에 반사광이 높아보이는 듯 잘 바른듯한 워터리한 립 표현",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-159",
+    "type": "image",
+    "label": "피부 단면 이미지",
+    "x": 67.2,
+    "y": 39.81478623244328,
+    "w": 9.9,
+    "h": 1.2594536193857078,
+    "zIndex": 2,
+    "content": "피부 단면 이미지와 표피/진피 설명",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-160",
+    "type": "text",
+    "label": "입술 주름 개선 설명",
+    "x": 64.2,
+    "y": 41.407624633431084,
+    "w": 14.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "입술사이사이에 complex 가득하여 입술 주름을 매워주고, 밀도있는 볼륨감을 더해주는",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-161",
+    "type": "background",
+    "label": "하단 섹션 배경",
+    "x": 0,
+    "y": 42.907856150640534,
+    "w": 100,
+    "h": 6.48248186448526,
+    "zIndex": 0,
+    "content": "하얀색 단색 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520326376-198",
+    "type": "image",
+    "label": "제품 메인 이미지",
+    "x": 9.6,
+    "y": 46.303441889180434,
+    "w": 20,
+    "h": 3.24124093224263,
+    "zIndex": 1,
+    "content": "핑크색 립밤 제품 튜브",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520271974-163",
+    "type": "text",
+    "label": "제품명 영문",
+    "x": 17.2,
+    "y": 45.94536193857077,
+    "w": 5.6000000000000005,
+    "h": 2.000308689612595,
+    "zIndex": 2,
+    "content": "REVERSE FORMULA Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-164",
+    "type": "image",
+    "label": "중앙 하단 섹션 이미지",
+    "x": 38.1,
+    "y": 44.00061737922519,
+    "w": 17.4,
+    "h": 4.51921592838401,
+    "zIndex": 1,
+    "content": "핑크색 배경의 립밤 제품 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-165",
+    "type": "text",
+    "label": "스타일리시한 립 에이징케어",
+    "x": 41.099999999999994,
+    "y": 44.167309770026236,
+    "w": 11.5,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "스타일리시한 립 에이징케어",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-166",
+    "type": "text",
+    "label": "제품 설명 문구",
+    "x": 41.099999999999994,
+    "y": 44.519215928384014,
+    "w": 12.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "리버스포뮬러 펩타이드 립 플럼프 밤",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-167",
+    "type": "text",
+    "label": "해시태그 1",
+    "x": 40.699999999999996,
+    "y": 47.76045686062664,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#볼륨립밤",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-168",
+    "type": "text",
+    "label": "해시태그 2",
+    "x": 47.5,
+    "y": 47.76045686062664,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#에이징케어립밤",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-169",
+    "type": "text",
+    "label": "해시태그 3",
+    "x": 39.2,
+    "y": 48.07532026547307,
+    "w": 7.5,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#자연스러운혈색",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-170",
+    "type": "text",
+    "label": "해시태그 4",
+    "x": 47.099999999999994,
+    "y": 48.07532026547307,
+    "w": 7.8,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "#끈적임No 주름부각No",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520271974-171",
+    "type": "text",
+    "label": "하단 텍스트 1",
+    "x": 43.1,
+    "y": 48.87173946596697,
+    "w": 8.6,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "나이가 들수록 입술이 작아진다는 것",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-172",
+    "type": "text",
+    "label": "하단 텍스트 2",
+    "x": 44.2,
+    "y": 49.1866028708134,
+    "w": 6.4,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "알고 계셨나요?",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-173",
+    "type": "text",
+    "label": "중앙 섹션 제목",
+    "x": 58.9,
+    "y": 44.18583114678191,
+    "w": 14.799999999999999,
+    "h": 0.7038123167155426,
+    "zIndex": 1,
+    "content": "한번에 해결하는 립 스타일링과 케어 리버스포뮬러 펩타이드 립 플럼프 밤",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-174",
+    "type": "text",
+    "label": "펩타이드 콤플렉스 문구",
+    "x": 64.9,
+    "y": 45.11189998456552,
+    "w": 6.6000000000000005,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "6 PEPTIDE COMPLEX",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "semibold",
+      "color": "#e0aab0",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-175",
+    "type": "image",
+    "label": "립밤 상단 부분 이미지",
+    "x": 57.699999999999996,
+    "y": 45.315635128877915,
+    "w": 17.299999999999997,
+    "h": 1.2964963728970522,
+    "zIndex": 1,
+    "content": "립밤 튜브 상단 부분 클로즈업",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-176",
+    "type": "text",
+    "label": "텍스트 블록 1",
+    "x": 65.8,
+    "y": 45.44528476616762,
+    "w": 4.8,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "보습부터 볼륨까지",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-177",
+    "type": "text",
+    "label": "텍스트 블록 2",
+    "x": 65.8,
+    "y": 45.649019910480014,
+    "w": 8.9,
+    "h": 0.6852909399598703,
+    "zIndex": 2,
+    "content": "탄력 없는 입술에 볼륨감을 더해주는 자연에서 온 볼륨 효모 PLUMPLEX",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-178",
+    "type": "image",
+    "label": "PLUMPLEX 다이어그램",
+    "x": 57.699999999999996,
+    "y": 46.64917425528631,
+    "w": 6.800000000000001,
+    "h": 0.9445902145392807,
+    "zIndex": 1,
+    "content": "PLUMPLEX 설명 다이어그램",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-179",
+    "type": "text",
+    "label": "PLUMPLEX 설명 텍스트",
+    "x": 65.8,
+    "y": 46.83438802284303,
+    "w": 8.5,
+    "h": 0.5371199259144931,
+    "zIndex": 2,
+    "content": "PLUMPLEX는 입술 탄력 개선과 주름 개선에 도움을 줍니다. 100% 식물성 원료로 만들어진 효모추출물입니다.",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-180",
+    "type": "text",
+    "label": "이미지 제목",
+    "x": 65.8,
+    "y": 47.723414107115296,
+    "w": 8.799999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "캐어받지 못한 맨 입술",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520326376-210",
+    "type": "image",
+    "label": "입술 변화 전후 이미지",
+    "x": 57.599999999999994,
+    "y": 47.674023769100174,
+    "w": 17.4,
+    "h": 1.3335391264083962,
+    "zIndex": 1,
+    "content": "립밤 사용 전후 입술 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520271974-182",
+    "type": "text",
+    "label": "입술 관리 필요성 설명",
+    "x": 65.8,
+    "y": 47.96419200493904,
+    "w": 9.1,
+    "h": 0.6667695632041981,
+    "zIndex": 2,
+    "content": "입술 피부는 일반 피부보다 얇고 연약하여 건조함, 잔주름, 각질이 쉽게 발생합니다. 립밤 사용은 건강한 입술 유지를 위해 필수적입니다.",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-183",
+    "type": "text",
+    "label": "추천 대상 제목",
+    "x": 79.9,
+    "y": 44.037660132736534,
+    "w": 11.799999999999999,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "RECOMMEND TO",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-184",
+    "type": "text",
+    "label": "추천 대상 리스트 1",
+    "x": 80.4,
+    "y": 44.70442969594073,
+    "w": 10.7,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술 볼륨이 없어 고민이신 분",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-185",
+    "type": "icon",
+    "label": "체크 아이콘",
+    "x": 79.5,
+    "y": 44.722951072696404,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "작은 체크 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#e0aab0",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-186",
+    "type": "text",
+    "label": "추천 대상 리스트 2",
+    "x": 80.4,
+    "y": 44.982250347275816,
+    "w": 10.7,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술에 생기없는 연출을 원하시는 분",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-187",
+    "type": "icon",
+    "label": "체크 아이콘",
+    "x": 79.5,
+    "y": 45.00077172403149,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "작은 체크 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#e0aab0",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-188",
+    "type": "text",
+    "label": "추천 대상 리스트 3",
+    "x": 80.4,
+    "y": 45.2600709986109,
+    "w": 10.7,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "건강하고 촉촉한 입술을 원하는 분",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-189",
+    "type": "icon",
+    "label": "체크 아이콘",
+    "x": 79.5,
+    "y": 45.27859237536657,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "작은 체크 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#e0aab0",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-190",
+    "type": "text",
+    "label": "추천 대상 리스트 4",
+    "x": 80.4,
+    "y": 45.53789164994598,
+    "w": 10.7,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "수시로 바르는 립밤을 찾고 있는 분",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-191",
+    "type": "icon",
+    "label": "체크 아이콘",
+    "x": 79.5,
+    "y": 45.55641302670165,
+    "w": 0.7000000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "작은 체크 아이콘",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "#e0aab0",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520326376-213",
+    "type": "text",
+    "label": "제품 특징 제목",
+    "x": 79.60000000000001,
+    "y": 47.87775891341257,
+    "w": 11.899999999999999,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "플럼핑 밤 보습신화 3 in 1 케어\n러버스포뮬러 펩타이드 립 플럼프 밤",
+    "style": {
+      "fontSize": "15px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520271974-193",
+    "type": "text",
+    "label": "립밤 3 in 1 케어 설명",
+    "x": 79.2,
+    "y": 48.29757678654113,
+    "w": 13,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "강력한 플럼핑 효과는 물론, 입술 보습과 항산화까지 동시에! 하나의 립밤으로 세가지 효과를 경험해보세요.",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-194",
+    "type": "text",
+    "label": "01 플럼핑+고스펙 보습",
+    "x": 79.5,
+    "y": 48.81617533569995,
+    "w": 12.4,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "01 플럼핑+고스펙 보습",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "medium",
+      "color": "#000000",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520271974-195",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 79.7,
+    "y": 48.66800432165458,
+    "w": 3.8,
+    "h": 0.7223336934712147,
+    "zIndex": 1,
+    "content": "립밤 튜브 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520326376-196",
+    "type": "background",
+    "label": "메인 배경",
+    "x": 0,
+    "y": 46.303441889180434,
+    "w": 100,
+    "h": 18.521376755672172,
+    "zIndex": 0,
+    "content": "전체 페이지를 덮는 흰색 배경",
+    "style": {
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520326376-197",
+    "type": "background",
+    "label": "중앙 좌측 핑크 배경 이미지",
+    "x": 0,
+    "y": 53.526778823892585,
+    "w": 38.1,
+    "h": 9.316252508103103,
+    "zIndex": 0,
+    "content": "Peptide Lip Plump Balm 텍스트가 있는 핑크 배경 이미지",
+    "style": {
+      "bgColor": "#fce0e3"
+    }
+  },
+  {
+    "id": "bound-1771520326376-199",
+    "type": "other",
+    "label": "색상 선택 인디케이터",
+    "x": 18.7,
+    "y": 49.155733909553945,
+    "w": 9.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "다섯 개의 작은 원형 색상 스와치",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-200",
+    "type": "text",
+    "label": "제품명",
+    "x": 11.600000000000001,
+    "y": 49.7854607192468,
+    "w": 15.9,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-201",
+    "type": "text",
+    "label": "제품 설명 해시태그",
+    "x": 13.100000000000001,
+    "y": 50.211452384627265,
+    "w": 13.3,
+    "h": 0.5556413026701651,
+    "zIndex": 1,
+    "content": "#플럼립밤 #에이징케어립밤\n피부탄력에 효과적인 펩타이드와\n수분케어를 할 수 있는 립 플럼프 밤",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "normal",
+      "color": "#808080",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-203",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 42,
+    "y": 46.303441889180434,
+    "w": 9.700000000000001,
+    "h": 2.259607964192005,
+    "zIndex": 1,
+    "content": "핑크색 립밤 제품",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-204",
+    "type": "text",
+    "label": "제품 관련 해시태그",
+    "x": 57.599999999999994,
+    "y": 49.970674486803524,
+    "w": 17.299999999999997,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "#입술탄력 #각질개선 #생기부여\n#안색개선 #탱글입술 #생기 #플럼핑 #립밤",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-205",
+    "type": "text",
+    "label": "상단 소제목",
+    "x": 57.599999999999994,
+    "y": 46.5256984102485,
+    "w": 11.1,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "자연에서 온 불륨 플럼플렉스",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-209",
+    "type": "image",
+    "label": "입술 변화 전후 이미지",
+    "x": 38.1,
+    "y": 49.76693934249113,
+    "w": 17.4,
+    "h": 0.8890260842722643,
+    "zIndex": 1,
+    "content": "입술 변화를 보여주는 전후 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-211",
+    "type": "text",
+    "label": "제품 강조 문구",
+    "x": 59.699999999999996,
+    "y": 49.34094767711067,
+    "w": 7.5,
+    "h": 0.5926840561815095,
+    "zIndex": 1,
+    "content": "Peptide Lip\nPlump Balm",
+    "style": {
+      "fontSize": "22px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-212",
+    "type": "image",
+    "label": "제품 사용 이미지",
+    "x": 57.599999999999994,
+    "y": 49.00756289550857,
+    "w": 17.4,
+    "h": 3.24124093224263,
+    "zIndex": 1,
+    "content": "립밤 튜브와 손으로 바르는 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-215",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 79.3,
+    "y": 48.76678499768483,
+    "w": 4.3,
+    "h": 2.1114369501466275,
+    "zIndex": 1,
+    "content": "핑크색 립밤 제품 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-216",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 48.89643463497454,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "01",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-217",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 48.89643463497454,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "아름다운 생기",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-218",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 49.26686217008798,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "02",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-219",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 49.26686217008798,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "도톰한 볼륨",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-220",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 49.60024695169008,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "03",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-221",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 49.60024695169008,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "보습력",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-222",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 49.95215311004785,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "04",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-223",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 49.95215311004785,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "각질케어",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-224",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 50.28553789164995,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "05",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-225",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 50.28553789164995,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "피부진정",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-226",
+    "type": "text",
+    "label": "제품 특징 번호",
+    "x": 85.2,
+    "y": 50.63744405000772,
+    "w": 1.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "06",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-227",
+    "type": "text",
+    "label": "제품 특징 내용",
+    "x": 87,
+    "y": 50.63744405000772,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "안전성",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-228",
+    "type": "text",
+    "label": "성분 설명 제목",
+    "x": 80.80000000000001,
+    "y": 51.15604259916654,
+    "w": 8.3,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Formulated with",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-229",
+    "type": "image",
+    "label": "성분 아이콘",
+    "x": 78.3,
+    "y": 51.56351288779133,
+    "w": 3.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "다섯 개의 점 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-230",
+    "type": "text",
+    "label": "성분명",
+    "x": 82.89999999999999,
+    "y": 51.56351288779133,
+    "w": 9.3,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "5 Peptide complex 100PPM",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-232",
+    "type": "image",
+    "label": "성분 아이콘",
+    "x": 78.3,
+    "y": 52.21176107423986,
+    "w": 3.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "잎사귀 모양 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-234",
+    "type": "text",
+    "label": "성분 설명",
+    "x": 82.89999999999999,
+    "y": 52.39697484179658,
+    "w": 8.6,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "스페셜 립케어 성분 플럼플렉스로\n풍성하고 탄력있는 입술 연출",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#808080",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-235",
+    "type": "image",
+    "label": "성분 아이콘",
+    "x": 78.3,
+    "y": 52.9155733909554,
+    "w": 3.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "버터 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-237",
+    "type": "text",
+    "label": "성분 설명",
+    "x": 82.89999999999999,
+    "y": 53.08226578175645,
+    "w": 8.6,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "건조하고 거친 입술에 풍부한 보습과\n영양 공급으로 촉촉하게 케어",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#808080",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-238",
+    "type": "text",
+    "label": "상세 설명 텍스트",
+    "x": 40.699999999999996,
+    "y": 50.84117919432012,
+    "w": 12.2,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술 볼륨이 작아질수록\n입술 주름이 부각되어 나이 들어 보이죠.",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-239",
+    "type": "text",
+    "label": "상세 설명 텍스트",
+    "x": 39.6,
+    "y": 51.41534187374595,
+    "w": 14.399999999999999,
+    "h": 0.5926840561815095,
+    "zIndex": 1,
+    "content": "365일 궁금한 100일의 썸\n매일매일 더해지는 쫀쫀함에\n조금 더 가까워질 수 있지 않을까요?\n입술에는 피부탄력의 핵심 성분 펩타이드와,\n수분부족은 리플럼프밤으로 해결하세요.",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-240",
+    "type": "text",
+    "label": "상세 설명 텍스트",
+    "x": 40.300000000000004,
+    "y": 52.21176107423986,
+    "w": 13,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "데일리 립밤처럼 가볍고 편안하게\n매일 사용 가능해요.\n끈적임 없이 답답함 없이 입술에\n매끈하게 스며들고, 촉촉함을 남겨줍니다.",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#808080",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-241",
+    "type": "text",
+    "label": "섹션 제목",
+    "x": 64.5,
+    "y": 52.489581725574936,
+    "w": 3.5999999999999996,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Shades",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-242",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 38.1,
+    "y": 53.156351288779135,
+    "w": 17.4,
+    "h": 1.185368112363019,
+    "zIndex": 1,
+    "content": "여러 개의 립밤 제품 박스",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-243",
+    "type": "text",
+    "label": "소제목",
+    "x": 83.1,
+    "y": 53.86016360549468,
+    "w": 5.1,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Feels like",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-244",
+    "type": "text",
+    "label": "제품 효과 설명",
+    "x": 79.2,
+    "y": 54.54545454545455,
+    "w": 13,
+    "h": 0.5926840561815095,
+    "zIndex": 1,
+    "content": "언제든 편안한 젤리 텍스처\n고밀도 오일로 인한 반짝임이\n매끈한 플럼립을 연출해주는",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-245",
+    "type": "text",
+    "label": "제품명",
+    "x": 79.80000000000001,
+    "y": 55.26778823892576,
+    "w": 11.700000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Peptide Lip Plump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-246",
+    "type": "text",
+    "label": "입술케어 설명",
+    "x": 81.5,
+    "y": 56.045686062664,
+    "w": 7.9,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "하루종일 보습에너지! 입술에\n깊은 보습감과 영양을 공급",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-247",
+    "type": "image",
+    "label": "피부 단면 이미지",
+    "x": 80.7,
+    "y": 56.69393424911252,
+    "w": 9.6,
+    "h": 1.2038894891186913,
+    "zIndex": 1,
+    "content": "피부 단면 일러스트레이션",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-248",
+    "type": "text",
+    "label": "추가 설명",
+    "x": 80,
+    "y": 58.10155888254361,
+    "w": 11.200000000000001,
+    "h": 0.5741626794258373,
+    "zIndex": 1,
+    "content": "입술에 수분을 가득 채워주는\n플럼핑 효과와 함께 영양 공급",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-249",
+    "type": "image",
+    "label": "피부 단면 이미지",
+    "x": 79,
+    "y": 58.87945670628184,
+    "w": 13.200000000000001,
+    "h": 1.0371970983176417,
+    "zIndex": 1,
+    "content": "피부 단면 일러스트레이션",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-250",
+    "type": "container",
+    "label": "입술 컬러 쉐이드",
+    "x": 57.599999999999994,
+    "y": 52.76740237691002,
+    "w": 17.4,
+    "h": 0.870504707516592,
+    "zIndex": 1,
+    "content": "Clear Glow 쉐이드 컨테이너",
+    "style": {
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520326376-252",
+    "type": "text",
+    "label": "컬러명",
+    "x": 66.3,
+    "y": 53.02670165148943,
+    "w": 5.2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Clear Glow\n투명 광채",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-253",
+    "type": "container",
+    "label": "입술 컬러 쉐이드",
+    "x": 57.599999999999994,
+    "y": 53.637907084426615,
+    "w": 17.4,
+    "h": 0.8890260842722643,
+    "zIndex": 1,
+    "content": "Toasty Beige 쉐이드 컨테이너",
+    "style": {
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520326376-255",
+    "type": "text",
+    "label": "컬러명",
+    "x": 66.3,
+    "y": 53.93424911251737,
+    "w": 6.2,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Toasty Beige\n차분한 누디 베이지",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-256",
+    "type": "container",
+    "label": "입술 컬러 쉐이드",
+    "x": 57.599999999999994,
+    "y": 54.526933168698875,
+    "w": 17.4,
+    "h": 0.8519833307609199,
+    "zIndex": 1,
+    "content": "Raw Pink 쉐이드 컨테이너",
+    "style": {
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520326376-258",
+    "type": "text",
+    "label": "컬러명",
+    "x": 66.3,
+    "y": 54.78623244327829,
+    "w": 5.6000000000000005,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Raw Pink\n생기 발랄한 라이트 핑크",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-259",
+    "type": "container",
+    "label": "입술 컬러 쉐이드",
+    "x": 57.599999999999994,
+    "y": 55.3789164994598,
+    "w": 17.4,
+    "h": 0.870504707516592,
+    "zIndex": 1,
+    "content": "Muted Coral 쉐이드 컨테이너",
+    "style": {
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520326376-261",
+    "type": "text",
+    "label": "컬러명",
+    "x": 66.3,
+    "y": 55.63821577403921,
+    "w": 6.6000000000000005,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Muted Coral\n데일리 오렌지 코랄",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-262",
+    "type": "container",
+    "label": "입술 컬러 쉐이드",
+    "x": 57.599999999999994,
+    "y": 56.24942120697639,
+    "w": 17.4,
+    "h": 0.6112054329371817,
+    "zIndex": 1,
+    "content": "Fig Berry 쉐이드 컨테이너",
+    "style": {
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520326376-264",
+    "type": "text",
+    "label": "컬러명",
+    "x": 66.3,
+    "y": 56.490199104800126,
+    "w": 4.9,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Fig Berry\n매력적인 브릭 베리",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520326376-265",
+    "type": "background",
+    "label": "핑크색 컨테이너 배경",
+    "x": 38.1,
+    "y": 54.526933168698875,
+    "w": 17.4,
+    "h": 2.8893347738848587,
+    "zIndex": 0,
+    "content": "핑크색 배경",
+    "style": {
+      "bgColor": "#fce0e3"
+    }
+  },
+  {
+    "id": "bound-1771520326376-267",
+    "type": "text",
+    "label": "제품 관련 해시태그",
+    "x": 38.1,
+    "y": 59.13875598086125,
+    "w": 17.4,
+    "h": 0.7778978237382312,
+    "zIndex": 1,
+    "content": "#플럼립밤\n#에이징케어립밤\n#세련된무광택\n#끈적임No_수분유지No\n#단_바르는_편안함_인생템_인정",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-285",
+    "type": "image",
+    "label": "피부 단면 이미지",
+    "x": 79.2,
+    "y": 60.15743170242322,
+    "w": 13,
+    "h": 0.6297268096928539,
+    "zIndex": 1,
+    "content": "피부 단면 일러스트레이션",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-286",
+    "type": "image",
+    "label": "피부 단면 이미지",
+    "x": 79.2,
+    "y": 60.8982867726501,
+    "w": 13,
+    "h": 0.6297268096928539,
+    "zIndex": 1,
+    "content": "피부 단면 일러스트레이션",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-270",
+    "type": "image",
+    "label": "립밤 제품 이미지",
+    "x": 57.599999999999994,
+    "y": 56.87914801666924,
+    "w": 17.4,
+    "h": 2.5003858620157433,
+    "zIndex": 1,
+    "content": "립밤 제품을 짜는 모습",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-271",
+    "type": "text",
+    "label": "제품명",
+    "x": 59.699999999999996,
+    "y": 57.990430622009576,
+    "w": 13.200000000000001,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Peptide Lip\nPlump Balm",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-272",
+    "type": "text",
+    "label": "핵심 기능 제목",
+    "x": 63.5,
+    "y": 59.62031177650872,
+    "w": 5.6000000000000005,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "Key features",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-273",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 60.6,
+    "y": 60.06482481864486,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술 보습 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-274",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 59.3,
+    "y": 60.4352523537583,
+    "w": 4.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "고보습 케어\n촉촉함과 볼륨감을\n동시에!",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-275",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 65.4,
+    "y": 60.06482481864486,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술 영양 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-276",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 64.1,
+    "y": 60.4352523537583,
+    "w": 4.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "풍부한 영양\n깊은 보습감과\n영양 공급",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-277",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 70.1,
+    "y": 60.06482481864486,
+    "w": 1.9,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "별 모양 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-278",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 69,
+    "y": 60.4352523537583,
+    "w": 3.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "생기 UP\n나이 들어 보이는\n입술 케어",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-279",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 60.6,
+    "y": 60.91680814940578,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "입술 각질 제거 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-280",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 59.3,
+    "y": 61.19462880074086,
+    "w": 4.5,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "각질 케어\n매끈하고 부드러운\n입술로",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-281",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 65.4,
+    "y": 60.91680814940578,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "확인 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-282",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 64.1,
+    "y": 61.19462880074086,
+    "w": 4.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "안심 성분\n유해 성분 없이\n만든",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-283",
+    "type": "icon",
+    "label": "핵심 기능 아이콘",
+    "x": 70.1,
+    "y": 60.91680814940578,
+    "w": 1.9,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "잎사귀 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520326376-284",
+    "type": "text",
+    "label": "핵심 기능 내용",
+    "x": 69,
+    "y": 61.19462880074086,
+    "w": 3.8,
+    "h": 0.5,
+    "zIndex": 1,
+    "content": "VEGAN\n비건 인증\n받은",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#4d4d4d",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520326376-287",
+    "type": "image",
+    "label": "하단 인물 눈 클로즈업",
+    "x": 5.6000000000000005,
+    "y": 63.71353603951228,
+    "w": 44.5,
+    "h": 1.1112826053403302,
+    "zIndex": 1,
+    "content": "클로즈업된 인물 눈 부분",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-288",
+    "type": "background",
+    "label": "전체 배경",
+    "x": 0,
+    "y": 61.73792251890724,
+    "w": 100,
+    "h": 18.521376755672172,
+    "zIndex": 0,
+    "content": "밝은 핑크/베이지 색상 배경",
+    "style": {
+      "bgColor": "#fbf8f7"
+    }
+  },
+  {
+    "id": "bound-1771520376635-289",
+    "type": "background",
+    "label": "상단 블러 이미지 배경",
+    "x": 0,
+    "y": 61.73792251890724,
+    "w": 100,
+    "h": 1.8521376755672172,
+    "zIndex": 1,
+    "content": "상단에 흐릿하게 처리된 제품 이미지 또는 배경",
+    "style": {
+      "bgColor": "#f0e6e4"
+    }
+  },
+  {
+    "id": "bound-1771520376635-290",
+    "type": "image",
+    "label": "두 인물의 립 클로즈업 이미지",
+    "x": 5.3,
+    "y": 63.75675258527551,
+    "w": 45.300000000000004,
+    "h": 6.1120543293718175,
+    "zIndex": 2,
+    "content": "촉촉하고 글로시한 핑크 립을 강조한 두 인물의 클로즈업 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-291",
+    "type": "image",
+    "label": "단일 립 클로즈업 이미지",
+    "x": 59.699999999999996,
+    "y": 64.71986417657045,
+    "w": 30.5,
+    "h": 4.074702886247878,
+    "zIndex": 2,
+    "content": "글로시한 핑크 립의 클로즈업 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-292",
+    "type": "image",
+    "label": "립 제품 스와치 이미지",
+    "x": 53.900000000000006,
+    "y": 67.90554097854607,
+    "w": 10.7,
+    "h": 1.611359777743479,
+    "zIndex": 2,
+    "content": "핑크색 립 제품 스와치 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-293",
+    "type": "container",
+    "label": "컬러 정보 텍스트 컨테이너",
+    "x": 64.60000000000001,
+    "y": 67.90554097854607,
+    "w": 16.8,
+    "h": 1.611359777743479,
+    "zIndex": 2,
+    "content": "흰색 배경의 둥근 모서리 컨테이너",
+    "style": {
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520376635-294",
+    "type": "text",
+    "label": "립 컬러 이름",
+    "x": 66.3,
+    "y": 68.2204043833925,
+    "w": 14.099999999999998,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "Fig Berry 픽그베리",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "medium",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-295",
+    "type": "text",
+    "label": "립 컬러 해시태그",
+    "x": 66.3,
+    "y": 68.64639604877296,
+    "w": 6.2,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "#무화과",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "normal",
+      "color": "#999999",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-296",
+    "type": "text",
+    "label": "섹션 타이틀",
+    "x": 37.3,
+    "y": 71.73946596697022,
+    "w": 25.3,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "Product Introduction",
+    "style": {
+      "fontSize": "20px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520376635-297",
+    "type": "image",
+    "label": "제품 소개 상세 이미지 1",
+    "x": 14.7,
+    "y": 72.59144929773113,
+    "w": 35.9,
+    "h": 2.6485568760611202,
+    "zIndex": 4,
+    "content": "제품명, 브랜드, 웹사이트 정보 및 두 개의 립밤 제품 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-298",
+    "type": "image",
+    "label": "제품 컬러 스와치 상세 이미지",
+    "x": 51.300000000000004,
+    "y": 72.59144929773113,
+    "w": 35.9,
+    "h": 2.6485568760611202,
+    "zIndex": 4,
+    "content": "자연스러운 6가지 컬러의 립 발색 및 스와치 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-299",
+    "type": "image",
+    "label": "고글콜라겐 효능 상세 이미지",
+    "x": 27.3,
+    "y": 75.31409168081494,
+    "w": 36,
+    "h": 2.8708133971291865,
+    "zIndex": 4,
+    "content": "고글콜라겐이 입술에 미치는 영향 다이어그램 및 설명 텍스트",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-300",
+    "type": "container",
+    "label": "제품 효능 정보 카드 컨테이너",
+    "x": 63.9,
+    "y": 75.31409168081494,
+    "w": 22,
+    "h": 2.8708133971291865,
+    "zIndex": 4,
+    "content": "흰색 배경의 제품 효능 정보 카드",
+    "style": {
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520376635-301",
+    "type": "text",
+    "label": "브랜드명 (카드 내)",
+    "x": 65.5,
+    "y": 75.55486957863869,
+    "w": 7.7,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#817a78",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-302",
+    "type": "text",
+    "label": "제품명 (카드 내)",
+    "x": 65.5,
+    "y": 75.86973298348511,
+    "w": 12.6,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "펩타이드 립 플럼 밤",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-303",
+    "type": "text",
+    "label": "소제목 (Benefit)",
+    "x": 65.5,
+    "y": 76.36981015588826,
+    "w": 3.6999999999999997,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "Benefit",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-304",
+    "type": "text",
+    "label": "효능 상세 내용 1",
+    "x": 67.4,
+    "y": 76.79580182126871,
+    "w": 11.799999999999999,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "식물성 성분으로 민감한 입술에도 안전하게",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-305",
+    "type": "text",
+    "label": "효능 상세 내용 2",
+    "x": 67.4,
+    "y": 77.12918660287082,
+    "w": 11.799999999999999,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "끈적임 없이 촉촉하게",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-306",
+    "type": "text",
+    "label": "효능 상세 내용 3",
+    "x": 67.4,
+    "y": 77.46257138447291,
+    "w": 11.799999999999999,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "QUALITY FREE",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-307",
+    "type": "image",
+    "label": "다수의 립 플럼 밤 제품 이미지",
+    "x": 85.9,
+    "y": 75.31409168081494,
+    "w": 14.099999999999998,
+    "h": 2.8708133971291865,
+    "zIndex": 4,
+    "content": "여러 개의 핑크색 립밤 튜브가 나열된 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520422705-338",
+    "type": "container",
+    "label": "좌측 상품 설명 카드",
+    "x": 5.6000000000000005,
+    "y": 78.22812162370737,
+    "w": 19.2,
+    "h": 2.630035499305448,
+    "zIndex": 3,
+    "content": "입술 노화에 대한 설명 카드",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520422705-340",
+    "type": "image",
+    "label": "입술 전후 비교 이미지",
+    "x": 8.799999999999999,
+    "y": 79.69131038740547,
+    "w": 13.700000000000001,
+    "h": 0.6112054329371817,
+    "zIndex": 4,
+    "content": "전후 입술 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520376635-311",
+    "type": "container",
+    "label": "볼륨감 비결 정보 카드 컨테이너",
+    "x": 23.9,
+    "y": 78.22194783145548,
+    "w": 24.4,
+    "h": 2.018830066368267,
+    "zIndex": 4,
+    "content": "흰색 배경의 볼륨감 비결 정보 카드",
+    "style": {
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520376635-312",
+    "type": "text",
+    "label": "볼륨감 비결 타이틀",
+    "x": 26,
+    "y": 78.59237536656892,
+    "w": 20.200000000000003,
+    "h": 0.5000771724031488,
+    "zIndex": 5,
+    "content": "30대 얼굴로 100% 만족하고 싶은 볼륨감을 더해주는 비결",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-344",
+    "type": "container",
+    "label": "중앙 우측 상품 성분 카드",
+    "x": 42.3,
+    "y": 78.22812162370737,
+    "w": 36,
+    "h": 2.630035499305448,
+    "zIndex": 3,
+    "content": "성분 소개 카드",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520376635-315",
+    "type": "text",
+    "label": "브랜드명 (성분 카드 내)",
+    "x": 50.2,
+    "y": 78.46272572927921,
+    "w": 7.7,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#817a78",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-316",
+    "type": "text",
+    "label": "핵심 성분 타이틀",
+    "x": 50.2,
+    "y": 78.77758913412563,
+    "w": 19.2,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "핵심성분&특허성분 함유",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-317",
+    "type": "text",
+    "label": "6 Peptide complex 100PPM 성분명",
+    "x": 50.2,
+    "y": 79.29618768328446,
+    "w": 14.399999999999999,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "6 Peptide complex 100PPM",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-318",
+    "type": "image",
+    "label": "펩타이드 성분 아이콘",
+    "x": 50.2,
+    "y": 79.64809384164224,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "펩타이드 관련 원형 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-319",
+    "type": "text",
+    "label": "펩타이드 성분 설명",
+    "x": 53.2,
+    "y": 79.64809384164224,
+    "w": 11.4,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "주름개선에 도움을 주는 6가지 펩타이드",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#666666",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-353",
+    "type": "text",
+    "label": "성분 설명 3",
+    "x": 66.8,
+    "y": 79.3949683593147,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "보습 및 영양 공급",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#8c8c8c",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520376635-321",
+    "type": "image",
+    "label": "플럼플렉스 성분 아이콘",
+    "x": 65.5,
+    "y": 79.64809384164224,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "골드 플레이크 관련 원형 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520422705-354",
+    "type": "image",
+    "label": "성분 이미지 3",
+    "x": 68,
+    "y": 79.69131038740547,
+    "w": 6.6000000000000005,
+    "h": 0.8519833307609199,
+    "zIndex": 4,
+    "content": "하얀색 휘핑크림 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520376635-323",
+    "type": "container",
+    "label": "추가 성분 정보 카드 컨테이너",
+    "x": 73.7,
+    "y": 78.22194783145548,
+    "w": 20.9,
+    "h": 2.018830066368267,
+    "zIndex": 4,
+    "content": "흰색 배경의 추가 성분 정보 카드",
+    "style": {
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520376635-324",
+    "type": "text",
+    "label": "Shea Butter 1% 성분명",
+    "x": 75.4,
+    "y": 79.29618768328446,
+    "w": 8.1,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "Shea Butter 1%",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-325",
+    "type": "image",
+    "label": "시어 버터 성분 아이콘",
+    "x": 75.4,
+    "y": 79.64809384164224,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "시어 버터 관련 원형 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-326",
+    "type": "text",
+    "label": "시어 버터 성분 설명",
+    "x": 78.4,
+    "y": 79.64809384164224,
+    "w": 5.6000000000000005,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "보습효과",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#666666",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-327",
+    "type": "text",
+    "label": "Jojoba Seed Oil 1% 성분명",
+    "x": 86,
+    "y": 79.29618768328446,
+    "w": 7.6,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "Jojoba Seed Oil 1%",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "medium",
+      "color": "#333333",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520376635-328",
+    "type": "image",
+    "label": "호호바씨 오일 성분 아이콘",
+    "x": 86,
+    "y": 79.64809384164224,
+    "w": 2.4,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "호호바씨 오일 관련 원형 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520376635-329",
+    "type": "text",
+    "label": "호호바씨 오일 성분 설명",
+    "x": 89,
+    "y": 79.64809384164224,
+    "w": 4.6,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "영양공급",
+    "style": {
+      "fontSize": "11px",
+      "fontWeight": "normal",
+      "color": "#666666",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-330",
+    "type": "background",
+    "label": "전체 페이지 배경",
+    "x": 0,
+    "y": 77.17240314863405,
+    "w": 100,
+    "h": 18.521376755672172,
+    "zIndex": 0,
+    "content": "흰색 및 회색 그라디언트 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#fbfbfb"
+    }
+  },
+  {
+    "id": "bound-1771520422705-332",
+    "type": "container",
+    "label": "상품 디테일 정보 섹션",
+    "x": 5.6000000000000005,
+    "y": 78.04290785615063,
+    "w": 72.7,
+    "h": 2.8522920203735143,
+    "zIndex": 2,
+    "content": "상단 상품 상세 정보 블록",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#ffffff"
+    }
+  },
+  {
+    "id": "bound-1771520422705-333",
+    "type": "image",
+    "label": "상단 디테일 이미지 1",
+    "x": 30.3,
+    "y": 77.17240314863405,
+    "w": 8.3,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "분홍색 스킨 셀 구조 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-334",
+    "type": "image",
+    "label": "상단 디테일 이미지 2",
+    "x": 40.8,
+    "y": 77.17240314863405,
+    "w": 9.1,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "분홍색 스킨 셀 구조 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-335",
+    "type": "image",
+    "label": "상단 디테일 이미지 3",
+    "x": 51,
+    "y": 77.17240314863405,
+    "w": 10.299999999999999,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "분홍색 스킨 셀 구조 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-337",
+    "type": "image",
+    "label": "상단 디테일 이미지 4",
+    "x": 78.2,
+    "y": 77.17240314863405,
+    "w": 10.5,
+    "h": 0.870504707516592,
+    "zIndex": 3,
+    "content": "두 개의 립밤 제품",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-339",
+    "type": "text",
+    "label": "좌측 상품 설명 제목",
+    "x": 8.9,
+    "y": 78.83932705664454,
+    "w": 10.4,
+    "h": 0.5556413026701651,
+    "zIndex": 4,
+    "content": "나이가 들수록 입술이 작아진다는 것 알고 계셨나요?",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-342",
+    "type": "text",
+    "label": "중앙 좌측 상품 설명 제목",
+    "x": 26,
+    "y": 78.78376292637752,
+    "w": 12.7,
+    "h": 0.7593764469825592,
+    "zIndex": 4,
+    "content": "30대 입술로 100% 만족하고 싶다면 리버스포뮬라 펩타이드 립 플럼프 밤",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-343",
+    "type": "image",
+    "label": "제품 이미지 (립밤)",
+    "x": 28.999999999999996,
+    "y": 79.6727890106498,
+    "w": 12.7,
+    "h": 1.1668467356073469,
+    "zIndex": 4,
+    "content": "다양한 각도의 립밤 제품 사진",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-345",
+    "type": "text",
+    "label": "중앙 우측 성분 설명 제목",
+    "x": 66.3,
+    "y": 78.56150640530946,
+    "w": 9.2,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "타사엔 없는 데일리케어 핵심성분",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-347",
+    "type": "text",
+    "label": "성분 설명 1",
+    "x": 45.2,
+    "y": 79.3949683593147,
+    "w": 8,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "피부 장벽 강화",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#8c8c8c",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-348",
+    "type": "image",
+    "label": "성분 이미지 1",
+    "x": 45.1,
+    "y": 79.69131038740547,
+    "w": 6.3,
+    "h": 0.8519833307609199,
+    "zIndex": 4,
+    "content": "분홍색 추상적인 물방울 이미지",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-349",
+    "type": "text",
+    "label": "성분명 2",
+    "x": 55.50000000000001,
+    "y": 79.17271183824664,
+    "w": 6.2,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "PLUMPLEX 2%",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-356",
+    "type": "image",
+    "label": "노트북",
+    "x": 22.6,
+    "y": 83.15480784071616,
+    "w": 49.9,
+    "h": 4.574780058651027,
+    "zIndex": 3,
+    "content": "실버 노트북 컴퓨터",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#cccccc"
+    }
+  },
+  {
+    "id": "bound-1771520422705-358",
+    "type": "text",
+    "label": "노트북 화면 상단 제목",
+    "x": 40.400000000000006,
+    "y": 83.50671399907392,
+    "w": 5.7,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "스킨레시피랩의 데일리케어",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#888888",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-359",
+    "type": "text",
+    "label": "노트북 화면 메인 제목",
+    "x": 39.7,
+    "y": 84.13644080876678,
+    "w": 16.900000000000002,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "펩타이드 립 플럼프 밤",
+    "style": {
+      "fontSize": "22px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-360",
+    "type": "text",
+    "label": "노트북 화면 부제목",
+    "x": 39.900000000000006,
+    "y": 84.85877450223799,
+    "w": 3.2,
+    "h": 0.5,
+    "zIndex": 5,
+    "content": "Benefit",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#555555",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-361",
+    "type": "image",
+    "label": "노트북 화면 제품 이미지",
+    "x": 52.1,
+    "y": 83.35854298502855,
+    "w": 19.400000000000002,
+    "h": 3.4449760765550246,
+    "zIndex": 5,
+    "content": "핑크색 립밤 제품들",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-362",
+    "type": "text",
+    "label": "노트북 화면 설명 텍스트 1",
+    "x": 39.900000000000006,
+    "y": 85.22920203735144,
+    "w": 7.8,
+    "h": 0.5926840561815095,
+    "zIndex": 5,
+    "content": "95% 이상 입술 볼륨 개선 효과",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#555555",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-363",
+    "type": "text",
+    "label": "노트북 화면 설명 텍스트 2",
+    "x": 49.5,
+    "y": 85.22920203735144,
+    "w": 7.9,
+    "h": 0.5926840561815095,
+    "zIndex": 5,
+    "content": "입술 주름 및 잔주름 개선 효과",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#555555",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-364",
+    "type": "text",
+    "label": "노트북 화면 설명 텍스트 3",
+    "x": 59.099999999999994,
+    "y": 85.22920203735144,
+    "w": 7.9,
+    "h": 0.5926840561815095,
+    "zIndex": 5,
+    "content": "24시간 지속되는 보습 효과",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#555555",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-365",
+    "type": "text",
+    "label": "프로모션 페이지 제목",
+    "x": 40.400000000000006,
+    "y": 90.78561506405309,
+    "w": 19.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "Promotion Page",
+    "style": {
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513548-394",
+    "type": "background",
+    "label": "좌측 상단 보라색 배경",
+    "x": 0,
+    "y": 92.60688377836087,
+    "w": 38.800000000000004,
+    "h": 2.964639604877296,
+    "zIndex": 0,
+    "content": "보라색 추상 디자인 배경",
+    "style": {
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520422705-367",
+    "type": "text",
+    "label": "카드 1 메인 텍스트",
+    "x": 20.3,
+    "y": 92.19323969748417,
+    "w": 15,
+    "h": 0.5926840561815095,
+    "zIndex": 3,
+    "content": "네소페",
+    "style": {
+      "fontSize": "48px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-368",
+    "type": "text",
+    "label": "카드 1 서브 텍스트",
+    "x": 23,
+    "y": 92.8414878839327,
+    "w": 10.2,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "일년에 딱한번! 역대급 혜택",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "semibold",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-369",
+    "type": "image",
+    "label": "카드 1 제품 이미지",
+    "x": 20.4,
+    "y": 93.28600092606884,
+    "w": 9.700000000000001,
+    "h": 1.7224880382775123,
+    "zIndex": 3,
+    "content": "분홍색 제품 병",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513548-407",
+    "type": "other",
+    "label": "제품명 태그 배경",
+    "x": 21.5,
+    "y": 95.1057570612749,
+    "w": 10.7,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "어두운 회색 배경의 제품명 태그",
+    "style": {
+      "bgColor": "#222222"
+    }
+  },
+  {
+    "id": "bound-1771520513548-396",
+    "type": "background",
+    "label": "중앙 보라색 배경",
+    "x": 38.800000000000004,
+    "y": 92.60688377836087,
+    "w": 22,
+    "h": 5.396974841796573,
+    "zIndex": 0,
+    "content": "보라색 추상 디자인 배경",
+    "style": {
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520422705-372",
+    "type": "container",
+    "label": "카드 2 하단 배경",
+    "x": 39.2,
+    "y": 94.87883932705664,
+    "w": 21.6,
+    "h": 0.8149405772495755,
+    "zIndex": 3,
+    "content": "어두운 파란색 하단 배경",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#2e2b5e"
+    }
+  },
+  {
+    "id": "bound-1771520422705-374",
+    "type": "image",
+    "label": "카드 2 제품 이미지 1",
+    "x": 43.9,
+    "y": 92.0450686834388,
+    "w": 1.9,
+    "h": 0.981632968050625,
+    "zIndex": 4,
+    "content": "핑크색 밀크 토너 제품",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-375",
+    "type": "text",
+    "label": "카드 2 제품명 1",
+    "x": 47.099999999999994,
+    "y": 92.02654730668313,
+    "w": 8.9,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "핑크 펩타이드 나노 밀크 토너",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-376",
+    "type": "text",
+    "label": "카드 2 정상가 1",
+    "x": 49.4,
+    "y": 92.50810310233061,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "정상가 39,000원",
+    "style": {
+      "fontSize": "10px",
+      "fontWeight": "normal",
+      "color": "#bbbbbb",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-378",
+    "type": "text",
+    "label": "카드 2 할인율 1 (행사가)",
+    "x": 56.49999999999999,
+    "y": 92.67479549313165,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "54%",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#888888",
+      "textAlign": "right",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513549-414",
+    "type": "text",
+    "label": "중앙 상단 제품 정상가",
+    "x": 47.699999999999996,
+    "y": 92.92478777589135,
+    "w": 8.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "정상가 18,000원",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#AAAAAA",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-381",
+    "type": "image",
+    "label": "카드 2 제품 이미지 2",
+    "x": 42.1,
+    "y": 93.36008643309152,
+    "w": 5.6000000000000005,
+    "h": 1.0186757215619695,
+    "zIndex": 4,
+    "content": "두 개의 에이징 케어 제품",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-382",
+    "type": "text",
+    "label": "카드 2 제품명 2",
+    "x": 49.4,
+    "y": 93.32304367958018,
+    "w": 7.1,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "데일리 리버스 에이징 케어 2 STEP",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "left",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513549-418",
+    "type": "text",
+    "label": "중앙 중간 제품명 하단",
+    "x": 47.699999999999996,
+    "y": 93.87110665226116,
+    "w": 11.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "에이징 케어 2 STEP",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "normal",
+      "color": "#222222",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-385",
+    "type": "text",
+    "label": "카드 2 할인율 2 (행사가)",
+    "x": 56.49999999999999,
+    "y": 93.98981324278438,
+    "w": 2,
+    "h": 0.5,
+    "zIndex": 4,
+    "content": "49%",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "semibold",
+      "color": "#888888",
+      "textAlign": "right",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513549-420",
+    "type": "text",
+    "label": "중앙 중간 제품 행사가",
+    "x": 47.699999999999996,
+    "y": 94.24815557956475,
+    "w": 9.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "행사가 55,000원",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#555555",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-388",
+    "type": "container",
+    "label": "프로모션 카드 3",
+    "x": 61.4,
+    "y": 91.61907701805833,
+    "w": 21.7,
+    "h": 4.074702886247878,
+    "zIndex": 2,
+    "content": "갓생세일 프로모션 카드",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "#fff9cc"
+    }
+  },
+  {
+    "id": "bound-1771520422705-389",
+    "type": "text",
+    "label": "카드 3 서브 텍스트",
+    "x": 67.9,
+    "y": 92.0450686834388,
+    "w": 6.7,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "갓생세일",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "semibold",
+      "color": "#333333",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-390",
+    "type": "text",
+    "label": "카드 3 메인 타이틀",
+    "x": 65,
+    "y": 92.3043679580182,
+    "w": 12.8,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "리버스포뮬러 특가 프로모션",
+    "style": {
+      "fontSize": "20px",
+      "fontWeight": "bold",
+      "color": "#333333",
+      "textAlign": "center",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520513549-427",
+    "type": "text",
+    "label": "우측 프로모션 설명",
+    "x": 62.2,
+    "y": 92.90260842722644,
+    "w": 30.7,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "산뜻하고 간편하게 시작하는 에이징 케어 루틴",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#555555",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520422705-392",
+    "type": "image",
+    "label": "카드 3 제품 이미지",
+    "x": 68,
+    "y": 93.19339404229048,
+    "w": 10,
+    "h": 2.3151720944590215,
+    "zIndex": 3,
+    "content": "분홍색 제품 병",
+    "style": {
+      "fontSize": "N/A",
+      "fontWeight": "N/A",
+      "color": "N/A",
+      "textAlign": "N/A",
+      "bgColor": "N/A"
+    }
+  },
+  {
+    "id": "bound-1771520422705-393",
+    "type": "icon",
+    "label": "할인율 뱃지",
+    "x": 63.1,
+    "y": 93.36008643309152,
+    "w": 4.8,
+    "h": 0.6297268096928539,
+    "zIndex": 4,
+    "content": "UP TO 52% 텍스트가 있는 검은색 원형 뱃지",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#ffffff",
+      "textAlign": "center",
+      "bgColor": "#333333"
+    }
+  },
+  {
+    "id": "bound-1771520513548-395",
+    "type": "background",
+    "label": "좌측 하단 검은색 배경",
+    "x": 0,
+    "y": 95.54934403457325,
+    "w": 38.800000000000004,
+    "h": 1.5599475227658586,
+    "zIndex": 0,
+    "content": "검은색 배경",
+    "style": {
+      "bgColor": "#000000"
+    }
+  },
+  {
+    "id": "bound-1771520513548-397",
+    "type": "background",
+    "label": "우측 연노랑-흰색 그라데이션 배경",
+    "x": 60.8,
+    "y": 92.60688377836087,
+    "w": 39.2,
+    "h": 7.393116221639142,
+    "zIndex": 0,
+    "content": "연노랑색에서 흰색으로 이어지는 그라데이션 배경",
+    "style": {
+      "bgColor": "#FFFDEE"
+    }
+  },
+  {
+    "id": "bound-1771520513548-398",
+    "type": "container",
+    "label": "중앙 상단 제품 정보 카드",
+    "x": 39.6,
+    "y": 92.60688377836087,
+    "w": 20.4,
+    "h": 0.9315326439265319,
+    "zIndex": 1,
+    "content": "흰색 배경의 제품 정보 카드",
+    "style": {
+      "bgColor": "#FFFFFF"
+    }
+  },
+  {
+    "id": "bound-1771520513548-399",
+    "type": "container",
+    "label": "중앙 중간 제품 정보 카드",
+    "x": 39.6,
+    "y": 93.6123475845038,
+    "w": 20.4,
+    "h": 1.0128569223645625,
+    "zIndex": 1,
+    "content": "흰색 배경의 제품 정보 카드",
+    "style": {
+      "bgColor": "#FFFFFF"
+    }
+  },
+  {
+    "id": "bound-1771520513548-400",
+    "type": "container",
+    "label": "우측 중간 제품 정보 카드",
+    "x": 61.6,
+    "y": 95.97814477542832,
+    "w": 22,
+    "h": 1.4342645469979938,
+    "zIndex": 1,
+    "content": "흰색 배경의 제품 정보 카드",
+    "style": {
+      "bgColor": "#FFFFFF"
+    }
+  },
+  {
+    "id": "bound-1771520513548-401",
+    "type": "container",
+    "label": "우측 하단 제품 정보 카드",
+    "x": 61.6,
+    "y": 97.4863404846427,
+    "w": 22,
+    "h": 1.4342645469979938,
+    "zIndex": 1,
+    "content": "흰색 배경의 제품 정보 카드",
+    "style": {
+      "bgColor": "#FFFFFF"
+    }
+  },
+  {
+    "id": "bound-1771520513548-402",
+    "type": "container",
+    "label": "중앙 쿠폰 카드",
+    "x": 43.2,
+    "y": 95.76374440500078,
+    "w": 13.100000000000001,
+    "h": 1.2568297576786542,
+    "zIndex": 1,
+    "content": "초록색 테두리의 쿠폰 카드",
+    "style": {
+      "bgColor": "#00CC33"
+    }
+  },
+  {
+    "id": "bound-1771520513548-403",
+    "type": "text",
+    "label": "메인 프로모션 문구",
+    "x": 10.100000000000001,
+    "y": 93.64931316561199,
+    "w": 26.1,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "일년에 딱한번! 역대급 혜택",
+    "style": {
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513548-404",
+    "type": "image",
+    "label": "트럼펫 부는 캐릭터 이미지",
+    "x": 7.000000000000001,
+    "y": 94.38123167155426,
+    "w": 9,
+    "h": 1.1828985954622626,
+    "zIndex": 2,
+    "content": "노란색 의상을 입고 트럼펫을 부는 캐릭터",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513548-405",
+    "type": "image",
+    "label": "춤추는 캐릭터 이미지",
+    "x": 28.999999999999996,
+    "y": 94.67695632041983,
+    "w": 9.8,
+    "h": 0.887173946596697,
+    "zIndex": 2,
+    "content": "분홍색 머리의 춤추는 캐릭터",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513548-410",
+    "type": "text",
+    "label": "좌측 프로모션 문구 2",
+    "x": 11.4,
+    "y": 96.06686217008799,
+    "w": 21.5,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "선착순 쿠폰까지!",
+    "style": {
+      "fontSize": "22px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "right"
+    }
+  },
+  {
+    "id": "bound-1771520513548-411",
+    "type": "image",
+    "label": "좌측 쿠폰 이미지",
+    "x": 27.500000000000004,
+    "y": 95.80810310233062,
+    "w": 10.6,
+    "h": 0.6505942275042444,
+    "zIndex": 2,
+    "content": "20% 할인 쿠폰 이미지",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513548-412",
+    "type": "button",
+    "label": "쿠폰 받기 버튼",
+    "x": 16.3,
+    "y": 96.39955240006175,
+    "w": 10.6,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "쿠폰 받기 >",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "semibold",
+      "color": "#000000",
+      "textAlign": "center",
+      "bgColor": "#00FF38"
+    }
+  },
+  {
+    "id": "bound-1771520513549-413",
+    "type": "image",
+    "label": "중앙 상단 제품 이미지",
+    "x": 42,
+    "y": 92.82867726501004,
+    "w": 4.1000000000000005,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "리버스 포뮬러 토너 제품",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513549-425",
+    "type": "text",
+    "label": "중앙 쿠폰 설명 문구",
+    "x": 43.2,
+    "y": 97.32369192776665,
+    "w": 13.4,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "3천원 할인 쿠폰",
+    "style": {
+      "fontSize": "16px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520513549-429",
+    "type": "other",
+    "label": "녹색 구분선",
+    "x": 60.8,
+    "y": 95.53455780212997,
+    "w": 23.5,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "가로로 긴 녹색 선",
+    "style": {
+      "bgColor": "#00CC33"
+    }
+  },
+  {
+    "id": "bound-1771520513549-430",
+    "type": "image",
+    "label": "우측 중간 제품 이미지",
+    "x": 62.8,
+    "y": 96.1999382620775,
+    "w": 5,
+    "h": 0.7984565519370274,
+    "zIndex": 2,
+    "content": "핑크 펩타이드 나노 밀크 토너 제품",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513549-431",
+    "type": "text",
+    "label": "우측 중간 제품명 상단",
+    "x": 69.3,
+    "y": 96.22951072696405,
+    "w": 10.299999999999999,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "핑크 펩타이드",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "bold",
+      "color": "#222222",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-433",
+    "type": "text",
+    "label": "우측 중간 제품 정상가",
+    "x": 69.3,
+    "y": 96.599166538046,
+    "w": 9.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "정상가 35,000원",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#AAAAAA",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-435",
+    "type": "text",
+    "label": "우측 중간 제품 최종 가격",
+    "x": 69.3,
+    "y": 96.90967741935485,
+    "w": 8.200000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "16,500원",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "bold",
+      "color": "#7E1FFF",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-436",
+    "type": "image",
+    "label": "우측 하단 제품 이미지",
+    "x": 62.8,
+    "y": 97.70813397129187,
+    "w": 5,
+    "h": 0.7984565519370274,
+    "zIndex": 2,
+    "content": "152 EGF 바쿠치올 세라마이드 크림 제품",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513549-438",
+    "type": "text",
+    "label": "우측 하단 제품명 하단",
+    "x": 69.3,
+    "y": 97.88556876061122,
+    "w": 14.099999999999998,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "세라마이드 배리어 크림",
+    "style": {
+      "fontSize": "14px",
+      "fontWeight": "normal",
+      "color": "#222222",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-439",
+    "type": "text",
+    "label": "우측 하단 제품 정상가",
+    "x": 69.3,
+    "y": 98.10736224726038,
+    "w": 9.3,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "정상가 68,000원",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "normal",
+      "color": "#AAAAAA",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-441",
+    "type": "text",
+    "label": "우측 하단 제품 최종 가격",
+    "x": 69.3,
+    "y": 98.41787312856923,
+    "w": 8.200000000000001,
+    "h": 0.5,
+    "zIndex": 2,
+    "content": "36,500원",
+    "style": {
+      "fontSize": "18px",
+      "fontWeight": "bold",
+      "color": "#7E1FFF",
+      "textAlign": "left"
+    }
+  },
+  {
+    "id": "bound-1771520513549-442",
+    "type": "other",
+    "label": "중앙 상단 할인율 배지",
+    "x": 56.8,
+    "y": 93.05786386788085,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "57% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520513549-443",
+    "type": "other",
+    "label": "중앙 중간 할인율 배지",
+    "x": 55.50000000000001,
+    "y": 94.3886247877759,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "49% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520513549-445",
+    "type": "text",
+    "label": "중앙 쿠폰 금액",
+    "x": 45.2,
+    "y": 96.17036579719094,
+    "w": 9.3,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "3,000",
+    "style": {
+      "fontSize": "40px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520513549-446",
+    "type": "text",
+    "label": "중앙 쿠폰 브랜드명",
+    "x": 46.2,
+    "y": 96.70267016514896,
+    "w": 7.199999999999999,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "REVERSE FORMULA",
+    "style": {
+      "fontSize": "8px",
+      "fontWeight": "normal",
+      "color": "#FFFFFF",
+      "textAlign": "center"
+    }
+  },
+  {
+    "id": "bound-1771520513549-447",
+    "type": "icon",
+    "label": "중앙 쿠폰 알림 아이콘",
+    "x": 54.900000000000006,
+    "y": 95.80810310233062,
+    "w": 2.5,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "종 모양의 알림 아이콘",
+    "style": {}
+  },
+  {
+    "id": "bound-1771520513549-449",
+    "type": "other",
+    "label": "우측 중간 할인율 배지",
+    "x": 79,
+    "y": 96.73224263003551,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "44% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520513549-450",
+    "type": "other",
+    "label": "우측 중간 최종 가격 할인율 배지",
+    "x": 77.9,
+    "y": 96.91707053557649,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "52% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#FFCC00"
+    }
+  },
+  {
+    "id": "bound-1771520513549-451",
+    "type": "other",
+    "label": "우측 하단 할인율 배지",
+    "x": 79,
+    "y": 98.24043833924989,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "41% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#7E1FFF"
+    }
+  },
+  {
+    "id": "bound-1771520513549-452",
+    "type": "other",
+    "label": "우측 하단 최종 가격 할인율 배지",
+    "x": 77.9,
+    "y": 98.42526624479088,
+    "w": 2.6,
+    "h": 0.5,
+    "zIndex": 3,
+    "content": "46% 할인율",
+    "style": {
+      "fontSize": "12px",
+      "fontWeight": "bold",
+      "color": "#FFFFFF",
+      "textAlign": "center",
+      "bgColor": "#FFCC00"
+    }
+  }
+]
