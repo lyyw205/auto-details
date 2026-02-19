@@ -1,8 +1,17 @@
 # Windows Zone.Identifier metadata
 *:Zone.Identifier
 
+# Node modules
+node_modules/
+
 # Mapping system
-mapping/node_modules/
 mapping/.next/
 mapping/.env.local
 mapping/output/
+
+# OMC state
+.omc/
+
+# OS files
+.DS_Store
+Thumbs.db
