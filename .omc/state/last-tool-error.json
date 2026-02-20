@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"node -e \\\"\\nconst files = [\\n  'widgets/featuredetail/featuredetail--ref-reverse-formula--split-lr.widget.json',\\n  'widgets/featuredetail/featuredetail--ref-reverse-formula--stack.widget....",
-  "error": "Exit code 1\n[eval]:12\n    if (\\!data.widget_id) issues.push('missing widget_id');\n        ^\nExpected unicode escape\n\nSyntaxError: Invalid or unexpected token\n    at makeContextifyScript (node:internal/vm:194:14)\n    at compileScript (node:internal/process/execution:388:10)\n    at evalTypeScript (node:internal/process/execution:260:22)\n    at node:internal/main/eval_string:71:3\n\nNode.js v24.12.0\n\n[eval]:12\n    if (\\!data.widget_id) issues.push('missing widget_id');\n        ^\nExpected unicode esca...",
-  "timestamp": "2026-02-19T16:25:21.740Z",
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/home/iamooo/repos/figma-detail-page-agent-main/output/ref-reverse-formula-analysis.html\",\"limit\":80}",
+  "error": "File content (3838879 tokens) exceeds maximum allowed tokens (25000). Please use offset and limit parameters to read specific portions of the file, or use the GrepTool to search for specific content.",
+  "timestamp": "2026-02-20T01:40:19.078Z",
   "retry_count": 1
 }

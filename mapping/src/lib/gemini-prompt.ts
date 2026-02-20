@@ -1,11 +1,21 @@
 import type { Bound, BoundType, BoundStyle, GeminiRawElement } from "./types";
 import { BOX2D_SCALE } from "./constants";
 
-export const ANALYZE_PROMPT = `You are a pixel-precise visual element detector for Korean product detail pages (상품 상세페이지).
+export const ANALYZE_PROMPT = `You are a visual element detector for Korean product detail pages (상품 상세페이지).
 
-Analyze the image and detect every visually distinct element. Return bounding boxes using the box_2d format.
+Analyze the image and detect the design elements. Return bounding boxes using the box_2d format.
 
-IMPORTANT: Do NOT assume any layout structure. Detect what you actually SEE.
+STEP 1 — SECTION BACKGROUNDS FIRST:
+Identify every distinct background color or gradient region. Each background change marks a section boundary.
+Detect these as type "background" elements FIRST, spanning the full width of that section.
+
+STEP 2 — KEY ELEMENTS PER SECTION:
+Within each section, detect only the KEY design elements: headings, body text blocks, product images, buttons, icons.
+
+CRITICAL RULES FOR PRODUCT IMAGES:
+- A product photo (제품 사진) is ONE "image" element. Do NOT detect text printed on or inside the product photo separately.
+- Multiple products grouped together in one area = ONE "image" element labeled "제품셋 이미지".
+- Only detect "text" elements for copywriting text that is part of the PAGE DESIGN (titles, descriptions, captions), NOT text that is part of a product photograph.
 
 Rules:
 1. Return ONLY a JSON array. No markdown, no explanation, no code fences.
@@ -28,19 +38,18 @@ Rules:
    - 0 = top-left corner, 1000 = bottom-right corner
    - y_min: top edge, x_min: left edge, y_max: bottom edge, x_max: right edge
 4. type classification:
-   - "text": any text block (heading, body, label, caption)
-   - "image": photo, illustration, product shot
-   - "background": large colored/gradient area behind other elements
+   - "background": full-width colored/gradient area defining a section. ALWAYS detect these.
+   - "text": page design text (heading, body, caption). NOT text inside product photos.
+   - "image": product photo or illustration. One product = one image. Multiple products grouped = one image.
    - "button": clickable button with text
    - "icon": small graphic symbol
-   - "input": form input field
    - "container": card, box, or grouping area
    - "other": divider, badge, decorative element
-5. z-index: largest area behind = 0, smaller elements on top get higher values.
-6. label: short Korean name describing the element's role (e.g., "메인 타이틀", "제품 이미지", "CTA 버튼", "배경")
-7. content: actual text content for text elements, visual description for non-text elements.
+5. z-index: background = 0, elements on top get higher values (1, 2, 3...).
+6. label: short Korean name (e.g., "메인 타이틀", "제품 이미지", "제품셋 이미지", "섹션 배경", "CTA 버튼")
+7. content: actual text for text elements, visual description for non-text elements.
 8. style: estimate visual properties from what you see.
-9. Detect EVERY visible element: text blocks, photos, icons, badges, dividers, colored areas, buttons, etc.
+9. Aim for 15-40 elements total. Focus on meaningful design elements, not every tiny detail.
 10. Bounding boxes must tightly fit the actual visual edges of each element.
 
 Analyze the image now. Return ONLY the JSON array.`;

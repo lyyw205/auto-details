@@ -155,15 +155,33 @@
   },
   "hotPaths": [
     {
+      "path": "",
+      "accessCount": 22,
+      "lastAccessed": 1771552156011,
+      "type": "directory"
+    },
+    {
       "path": "widgets/_registry.json",
       "accessCount": 21,
       "lastAccessed": 1771518434768,
       "type": "file"
     },
     {
+      "path": "mapping/src/lib/types.ts",
+      "accessCount": 18,
+      "lastAccessed": 1771552675179,
+      "type": "file"
+    },
+    {
       "path": "tools/gallery/server.js",
       "accessCount": 17,
       "lastAccessed": 1771518997712,
+      "type": "file"
+    },
+    {
+      "path": "skills/map-reference.skill.md",
+      "accessCount": 17,
+      "lastAccessed": 1771550392966,
       "type": "file"
     },
     {
@@ -179,21 +197,69 @@
       "type": "file"
     },
     {
-      "path": "",
-      "accessCount": 15,
-      "lastAccessed": 1771518054802,
-      "type": "directory"
+      "path": "mapping/src/components/app-shell.tsx",
+      "accessCount": 14,
+      "lastAccessed": 1771552667765,
+      "type": "file"
     },
     {
-      "path": "skills/map-reference.skill.md",
+      "path": "mapping/src/lib/gemini-prompt.ts",
+      "accessCount": 13,
+      "lastAccessed": 1771560550493,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/app/api/analyze/route.ts",
       "accessCount": 12,
-      "lastAccessed": 1771519393637,
+      "lastAccessed": 1771552667191,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/constants.ts",
+      "accessCount": 11,
+      "lastAccessed": 1771552680067,
       "type": "file"
     },
     {
       "path": "lib/widget-renderer/types.ts",
       "accessCount": 9,
       "lastAccessed": 1771518252015,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/image-preprocess.ts",
+      "accessCount": 8,
+      "lastAccessed": 1771552674521,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/merge-bounds.ts",
+      "accessCount": 8,
+      "lastAccessed": 1771552674724,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/fallback-analyze.ts",
+      "accessCount": 8,
+      "lastAccessed": 1771552674866,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/bounds-to-widget.ts",
+      "accessCount": 7,
+      "lastAccessed": 1771550387616,
+      "type": "file"
+    },
+    {
+      "path": "agents/analyzer.md",
+      "accessCount": 7,
+      "lastAccessed": 1771552362764,
+      "type": "file"
+    },
+    {
+      "path": "mapping/src/lib/detection-pass.ts",
+      "accessCount": 7,
+      "lastAccessed": 1771552680644,
       "type": "file"
     },
     {
@@ -221,6 +287,12 @@
       "type": "file"
     },
     {
+      "path": "mapping/package.json",
+      "accessCount": 5,
+      "lastAccessed": 1771550389134,
+      "type": "file"
+    },
+    {
       "path": "skills/generate-html.skill.md",
       "accessCount": 4,
       "lastAccessed": 1771514158120,
@@ -233,9 +305,15 @@
       "type": "file"
     },
     {
-      "path": "mapping/src/lib/types.ts",
-      "accessCount": 3,
-      "lastAccessed": 1771513413679,
+      "path": "mapping/src/lib/export-html.ts",
+      "accessCount": 4,
+      "lastAccessed": 1771549777237,
+      "type": "file"
+    },
+    {
+      "path": "skills/section-taxonomy.json",
+      "accessCount": 4,
+      "lastAccessed": 1771549806072,
       "type": "file"
     },
     {
@@ -263,39 +341,9 @@
       "type": "file"
     },
     {
-      "path": "skills/section-taxonomy.json",
-      "accessCount": 3,
-      "lastAccessed": 1771517921530,
-      "type": "file"
-    },
-    {
       "path": "widgets/hook/hook--ref-cassunut--v2.widget.json",
       "accessCount": 3,
       "lastAccessed": 1771518226019,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/gemini-prompt.ts",
-      "accessCount": 2,
-      "lastAccessed": 1771511758448,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/merge-bounds.ts",
-      "accessCount": 2,
-      "lastAccessed": 1771511758955,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/bounds-to-widget.ts",
-      "accessCount": 2,
-      "lastAccessed": 1771511759493,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/export-html.ts",
-      "accessCount": 2,
-      "lastAccessed": 1771511767325,
       "type": "file"
     },
     {
@@ -347,63 +395,15 @@
       "type": "file"
     },
     {
-      "path": "mapping/package.json",
-      "accessCount": 1,
-      "lastAccessed": 1771510730757,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/detection-pass.ts",
-      "accessCount": 1,
-      "lastAccessed": 1771510737187,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/app/api/analyze/route.ts",
-      "accessCount": 1,
-      "lastAccessed": 1771510739371,
-      "type": "file"
-    },
-    {
       "path": "mapping/src/app/page.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1771510739753,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/components/app-shell.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1771510740609,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/constants.ts",
-      "accessCount": 1,
-      "lastAccessed": 1771510746331,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/image-preprocess.ts",
-      "accessCount": 1,
-      "lastAccessed": 1771510747239,
+      "accessCount": 2,
+      "lastAccessed": 1771549672578,
       "type": "file"
     },
     {
       "path": "tools/preview.html",
       "accessCount": 1,
       "lastAccessed": 1771510748417,
-      "type": "file"
-    },
-    {
-      "path": "mapping/src/lib/fallback-analyze.ts",
-      "accessCount": 1,
-      "lastAccessed": 1771510755032,
-      "type": "file"
-    },
-    {
-      "path": "agents/analyzer.md",
-      "accessCount": 1,
-      "lastAccessed": 1771513963930,
       "type": "file"
     },
     {
